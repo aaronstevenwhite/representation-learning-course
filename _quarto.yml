@@ -41,6 +41,7 @@ website:
 format:
   html:
     theme: lux
+    highlight-style: oblivion
     css: styles.css
     toc: true
 
