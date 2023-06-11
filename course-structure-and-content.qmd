@@ -7,7 +7,7 @@ This course is partitioned into four modules, each structured around a case stud
 
 ## Module 1: Island Effects
 
-In [Module 1](island-effects/index.qmd), we will focus on *island effects*. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as *islands*. []{#exm-comitative-good} []{#exm-coordination-bad} For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (@exm-coordination-bad) from [Motivations](motivations.qmd). Compare (@exm-coordination-bad) with (@exm-comitative-good), which would be used to express the same question and is much better.
+In [Module 1](island-effects/index.ipynb), we will focus on *island effects*. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as *islands*. []{#exm-comitative-good} []{#exm-coordination-bad} For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (@exm-coordination-bad) from [Motivations](motivations.qmd). Compare (@exm-coordination-bad) with (@exm-comitative-good), which would be used to express the same question and is much better.
 
 (@exm-comitative-good) What would you like with your coffee?
 (@exm-coordination-bad) What would you like and your coffee?
