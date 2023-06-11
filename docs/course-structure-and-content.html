@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.321">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Representation Learning for Syntactic and Semantic Theory - Course Structure and Content</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./foundational-concepts-in-probability-and-statistics/index.html" rel="next">
+<link href="./methodological-approach.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course-structure-and-content.html">Course Structure and Content</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Representation Learning for Syntactic and Semantic Theory</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./motivations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./methodological-approach.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methodological Approach</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course-structure-and-content.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Course Structure and Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Foundational Concepts in Probability and Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is a probability?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random variables and probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./island-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 1: Island Effects</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 2: Projective Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./selection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Selection</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./thematic-roles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#module-1-island-effects" id="toc-module-1-island-effects" class="nav-link active" data-scroll-target="#module-1-island-effects">Module 1: Island Effects</a></li>
+  <li><a href="#module-2-projective-content" id="toc-module-2-projective-content" class="nav-link" data-scroll-target="#module-2-projective-content">Module 2: Projective Content</a></li>
+  <li><a href="#module-3-argument-selection" id="toc-module-3-argument-selection" class="nav-link" data-scroll-target="#module-3-argument-selection">Module 3: Argument Selection</a></li>
+  <li><a href="#module-4-thematic-roles" id="toc-module-4-thematic-roles" class="nav-link" data-scroll-target="#module-4-thematic-roles">Module 4: Thematic Roles</a></li>
+  <li><a href="#preliminaries" id="toc-preliminaries" class="nav-link" data-scroll-target="#preliminaries">Preliminaries</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Course Structure and Content</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>This course is partitioned into four modules, each structured around a case study of an empirical phenomenon that has proven important in developing syntactic and semantic theories. As the course progresses, we will develop and implement increasingly more expressive statistical models that encode interpretable assumptions about the constructs (<em>representations</em>) that might explain these phenomena. We will begin in Module 1 with models that minimally extend standard <a href="https://en.wikipedia.org/wiki/Generalized_linear_model">generalized linear</a> <a href="https://en.wikipedia.org/wiki/Mixed_model">mixed effects models</a> and end in Module 4 with models that integrate <a href="https://en.wikipedia.org/wiki/Large_language_model">large language models</a> as a subcomponent.</p>
+<section id="module-1-island-effects" class="level2">
+<h2 class="anchored" data-anchor-id="module-1-island-effects">Module 1: Island Effects</h2>
+<p>In <a href="./island-effects/index.html">Module 1</a>, we will focus on <em>island effects</em>. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as <em>islands</em>. <span id="exm-comitative-good"></span> <span id="exm-coordination-bad"></span> For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (2) from <a href="./motivations.html">Motivations</a>. Compare (2) with (1), which would be used to express the same question and is much better.</p>
+<ol class="example" type="1">
+<li>What would you like with your coffee?</li>
+<li>What would you like and your coffee?</li>
+</ol>
+<p>Our main question will be whether–once we adjust for various potential sources of noise in judgments to sentences like (1) and (2)–there is clear evidence one way or another for whether islands are the product of a discrete or continuous representation and/or process.</p>
+</section>
+<section id="module-2-projective-content" class="level2">
+<h2 class="anchored" data-anchor-id="module-2-projective-content">Module 2: Projective Content</h2>
+<p>In <a href="./projective-content/index.html">Module 2</a>, we will focus on <em>projective content</em>. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (<em>not</em>, <em>no</em>, <em>none</em>, etc.), found in that containing expression. <span id="exm-like"></span> <span id="exm-not-like"></span> <a href="#exm-inference"></a> For instance, from uses of both (3) and (4)—which both contain (5) as a subexpression—comprehenders tend to infer that (5), even though (4) contains negation.</p>
+<ol start="3" class="example" type="1">
+<li>Jo liked that Bo left.</li>
+<li>Jo didn’t like that Bo left.</li>
+<li>Bo left.</li>
+</ol>
+<p>In these cases, we say that the content of the clause embedding under <em>like</em> projects. Our main question will be whether inferences about projective content are undergirded by some discrete representation and/or process–as has been classically assumed–or whether they are better modeled as fundamentally continuous in nature.</p>
+</section>
+<section id="module-3-argument-selection" class="level2">
+<h2 class="anchored" data-anchor-id="module-3-argument-selection">Module 3: Argument Selection</h2>
+<p>In <a href="./selection/index.html">Module 3</a>, we will focus on <em>argument selection</em>. <a href="#exm-see-that"></a> <a href="#exm-think-that"></a> <a href="#exm-see-VPing"></a> <a href="#exm-think-VPing"></a> Our aim will be to explain why certain predicates are acceptable when paired with certain kinds of arguments but not others. For example, (7) and (6), are generally judged acceptable, suggesting that <em>think</em> and <em>see</em> are compatible with finite declarative subordinate clauses, such as <em>that Bo left</em>.</p>
+<ol start="6" class="example" type="1">
+<li>Jo saw that Bo left.</li>
+<li>Jo thought that Bo left.</li>
+</ol>
+<p>But while (8) is generally judged acceptable, suggesting that that <em>see</em> is additionally compatible with bare infinitive subordinate clauses, (9) is generally judged unacceptable, suggesting that <em>think</em> is not.</p>
+<ol start="8" class="example" type="1">
+<li>Jo saw Bo leave.</li>
+<li>Jo thought Bo leave.</li>
+</ol>
+<p>At least two things are generally assumed to determine the arguments a predicate is compatible with: the kind of meaning it has and idiosyncratic knowledge about the predicate. We will compare classes of models that constrain kinds of meanings in various ways.</p>
+</section>
+<section id="module-4-thematic-roles" class="level2">
+<h2 class="anchored" data-anchor-id="module-4-thematic-roles">Module 4: Thematic Roles</h2>
+<p>In <a href="./thematic-roles/index.html">Module 4</a>, we will focus on thematic roles–investigating, in particular, different theories of generalized thematic roles. Generalized thematic roles–such as AGENT and PATIENT–contrast with individual thematic roles–such as BREAKER and BREAKEE–and are often posited in order to explain how individual thematic roles are linked to particular syntactic positions. <a href="#exm-break"></a> <a href="#exm-shbreak"></a> For instance, in expressing that a BREAKER caused a BREAKEE to be broken, we find predicates like <em>break</em> in (10), which realize the BREAKER in subject position and BREAKEE in object position, but not predicates like <em>shbreak</em> that do the inverse–i.e.&nbsp;such that (11) means the same thing as (10)?</p>
+<ol start="10" class="example" type="1">
+<li>The boy broke the vase.</li>
+<li>The vase shbroke the boy.</li>
+</ol>
+<p>One kind of explanation posited in the literature is that individual thematic roles are grouped into generalized thematic roles and that the generalized thematic role an individual thematic role falls into determines which syntactic position that indivudal thematic role is associated with. Theories differ as to what generalized thematic roles exist, how they ar related to each other, and how they determine the association of individual thematic roles with syntactic positions.</p>
+</section>
+<section id="preliminaries" class="level2">
+<h2 class="anchored" data-anchor-id="preliminaries">Preliminaries</h2>
+<p>Before starting on the main content of the course, it will be useful to cover an array of <a href="./foundational-concepts-in-probability-and-statistics/index.html">foundational concepts in probability and statistics</a>. These notes will be <em>excessively</em> formal and pedantic–taking you from the definition of a probability space in terms of the the Kolmogorov axioms, through the formal definition of a random variable and probability distribution, up to the implementation of simple Metropolis-Hastings-based samplers.</p>
+<p>I do not expect you to know most of this stuff to this level of formality already; and for the most part, I will not stay at the level of formality found in this section anywhere else in the course. The purpose of these notes is mainly to act as a reference for cases where including a more formal explanation of a concept in the main body of the course notes would detract from the flow.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./methodological-approach.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Methodological Approach</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./foundational-concepts-in-probability-and-statistics/index.html" class="pagination-link">
+        <span class="nav-page-text">What is a probability?</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,55 @@
+project:
+  type: website
+  output-dir: docs
+  render: 
+    - index.qmd
+    - installation.qmd
+    - motivations.qmd
+    - methodological-approach.qmd
+    - course-structure-and-content.qmd
+    - foundational-concepts-in-probability-and-statistics/index.ipynb
+    - foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.ipynb
+    - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
+    - island-effects/index.qmd
+    - projective-content/index.qmd
+    - selection/index.qmd
+    - thematic-roles/index.qmd
+
+
+website:
+  title: "Representation Learning for Syntactic and Semantic Theory"
+  page-navigation: true
+  sidebar:
+    style: docked
+    search: true
+    contents:
+      - index.qmd
+      - installation.qmd
+      - motivations.qmd
+      - methodological-approach.qmd
+      - course-structure-and-content.qmd
+      - section: "Foundational Concepts in Probability and Statistics"
+        contents:
+          - foundational-concepts-in-probability-and-statistics/index.ipynb
+          - foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.ipynb
+          - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
+      - island-effects/index.qmd
+      - projective-content/index.qmd
+      - selection/index.qmd
+      - thematic-roles/index.qmd
+
+format:
+  html:
+    theme: lux
+    css: styles.css
+    toc: true
+
+filters:
+  - include-code-files
+
+comments:
+  giscus: 
+    repo: aaronstevenwhite/representation-learning-course
+
+
+

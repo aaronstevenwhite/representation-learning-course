@@ -1,0 +1,46 @@
+---
+title: Installation
+---
+
+The site itself is built using [Quarto](https://quarto.org/). The source files for this site are available on github at [`aaronstevenwhite/representation-learning-course`](https://github.com/aaronstevenwhite/representation-learning-course). You can obtain the files by cloning this repo.
+
+```bash
+git clone https://github.com/aaronstevenwhite/representation-learning-course.git
+```
+
+All further code on this page assumes that you are inside of this cloned repo.
+
+```bash
+cd representation-learning-course
+```
+
+## Installing Quarto and extensions
+
+To build this site, you will need to [install Quarto](https://quarto.org/docs/get-started/) as well as its [`include-code-files` extension](https://github.com/quarto-ext/include-code-files).
+
+```bash
+quarto add quarto-ext/include-code-files
+```
+
+This extension is mainly used for including external [STAN](https://mc-stan.org/) files.
+
+## Building the Docker container
+
+All pages that have executed code blocks are generated from jupyter notebooks, which were run within a [Docker](https://www.docker.com/) container constructed using the Dockerfile contained in this repo. 
+
+```{.dockerfile include="Dockerfile"}
+```
+
+Assuming you have Docker installed, the image can be built using:
+
+```bash
+docker build -t representation-learning-course .
+```
+
+A container based on this image can then be constructed using:
+
+```bash
+docker run -it --rm -p 8888:8888 -v "${PWD}":/home/jovyan/work representation-learning-course
+```
+
+To access jupyter, simply copy the link provided when running this command. You can change the port that docker forwards to by changing the first `8888` in the `-p 8888:8888` option. Just remember to correspondingly change the port you attempt to access in your browser.

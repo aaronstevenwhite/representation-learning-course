@@ -1,0 +1,54 @@
+---
+title: Course Structure and Content
+bibliography: references.bib
+---
+
+This course is partitioned into four modules, each structured around a case study of an empirical phenomenon that has proven important in developing syntactic and semantic theories. As the course progresses, we will develop and implement increasingly more expressive statistical models that encode interpretable assumptions about the constructs (*representations*) that might explain these phenomena. We will begin in Module 1 with models that minimally extend standard [generalized linear](https://en.wikipedia.org/wiki/Generalized_linear_model) [mixed effects models](https://en.wikipedia.org/wiki/Mixed_model) and end in Module 4 with models that integrate [large language models](https://en.wikipedia.org/wiki/Large_language_model) as a subcomponent.
+
+## Module 1: Island Effects
+
+In [Module 1](island-effects/index.qmd), we will focus on *island effects*. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as *islands*. []{#exm-comitative-good} []{#exm-coordination-bad} For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (@exm-coordination-bad) from [Motivations](motivations.qmd). Compare (@exm-coordination-bad) with (@exm-comitative-good), which would be used to express the same question and is much better.
+
+(@exm-comitative-good) What would you like with your coffee?
+(@exm-coordination-bad) What would you like and your coffee?
+
+Our main question will be whether–once we adjust for various potential sources of noise in judgments to sentences like (@exm-comitative-good) and (@exm-coordination-bad)–there is clear evidence one way or another for whether islands are the product of a discrete or continuous representation and/or process.
+
+## Module 2: Projective Content
+
+In [Module 2](projective-content/index.qmd), we will focus on *projective content*. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (*not*, *no*, *none*, etc.), found in that containing expression.  []{#exm-like} []{#exm-not-like} [](#exm-inference) For instance, from uses of both (@exm-like) and (@exm-not-like)---which both contain (@exm-inference) as a subexpression---comprehenders tend to infer that (@exm-inference), even though (@exm-not-like) contains negation. 
+
+(@exm-like) Jo liked that Bo left.
+(@exm-not-like) Jo didn't like that Bo left.
+(@exm-inference) Bo left.
+
+In these cases, we say that the content of the clause embedding under *like* projects. Our main question will be whether inferences about projective content are undergirded by some discrete representation and/or process–as has been classically assumed–or whether they are better modeled as fundamentally continuous in nature.
+
+## Module 3: Argument Selection
+
+In [Module 3](selection/index.qmd), we will focus on *argument selection*. [](#exm-see-that) [](#exm-think-that) [](#exm-see-VPing) [](#exm-think-VPing) Our aim will be to explain why certain predicates are acceptable when paired with certain kinds of arguments but not others. For example, (@exm-think-that) and (@exm-see-that), are generally judged acceptable, suggesting that *think* and *see* are compatible with finite declarative subordinate clauses, such as *that Bo left*. 
+
+(@exm-see-that)  Jo saw that Bo left.
+(@exm-think-that)  Jo thought that Bo left.
+
+But while (@exm-see-VPing) is generally judged acceptable, suggesting that that *see* is additionally compatible with bare infinitive subordinate clauses, (@exm-think-VPing) is generally judged unacceptable, suggesting that *think* is not.
+
+(@exm-see-VPing)  Jo saw Bo leave.
+(@exm-think-VPing) Jo thought Bo leave.
+
+At least two things are generally assumed to determine the arguments a predicate is compatible with: the kind of meaning it has and idiosyncratic knowledge about the predicate. We will compare classes of models that constrain kinds of meanings in various ways.
+
+## Module 4: Thematic Roles
+
+In [Module 4](thematic-roles/index.qmd), we will focus on thematic roles–investigating, in particular, different theories of generalized thematic roles. Generalized thematic roles–such as AGENT and PATIENT–contrast with individual thematic roles–such as BREAKER and BREAKEE–and are often posited in order to explain how individual thematic roles are linked to particular syntactic positions. [](#exm-break) [](#exm-shbreak) For instance, in expressing that a BREAKER caused a BREAKEE to be broken, we find predicates like *break* in (@exm-break), which realize the BREAKER in subject position and BREAKEE in object position, but not predicates like *shbreak* that do the inverse–i.e. such that (@exm-shbreak) means the same thing as (@exm-break)?
+
+(@exm-break) The boy broke the vase.
+(@exm-shbreak) The vase shbroke the boy.
+
+One kind of explanation posited in the literature is that individual thematic roles are grouped into generalized thematic roles and that the generalized thematic role an individual thematic role falls into determines which syntactic position that indivudal thematic role is associated with. Theories differ as to what generalized thematic roles exist, how they ar related to each other, and how they determine the association of individual thematic roles with syntactic positions.
+
+## Preliminaries
+
+Before starting on the main content of the course, it will be useful to cover an array of [foundational concepts in probability and statistics](foundational-concepts-in-probability-and-statistics/index.ipynb). These notes will be *excessively* formal and pedantic–taking you from the definition of a probability space in terms of the the Kolmogorov axioms, through the formal definition of a random variable and probability distribution, up to the implementation of simple Metropolis-Hastings-based samplers. 
+
+I do not expect you to know most of this stuff to this level of formality already; and for the most part, I will not stay at the level of formality found in this section anywhere else in the course. The purpose of these notes is mainly to act as a reference for cases where including a more formal explanation of a concept in the main body of the course notes would detract from the flow.

@@ -1,0 +1,33 @@
+---
+title: Motivations
+bibliography: references.bib
+---
+
+At their core, syntactic and semantic theories are (at least) explanations of judgments about strings–i.e. elements of the set $\Sigma^* = \bigcup_{i=0}^\infty \Sigma^i$ for some vocabulary $\Sigma$.^[Depending on your persuasian, the vocabulary $\Sigma$ might be a set of words; or it might be a set of morphemes. Nothing's going to hinge on this distinction in this course.] One kind of judgment we are often concerned with is acceptability [see @schütze_gramaticality_2016 and references therein]: introspective judgments of strings' well-formedness relative to a language, context of use, etc. []{#exm-comitative-good} []{#exm-coordination-bad} For example, in a context where a host is asking a guest what they would like in addition to coffee, (@exm-comitative-good) is clearly well-formed (or *acceptable*), while (@exm-coordination-bad) is clearly not [@ross_constraints_1967; see @sprouse_island_2021 and references therein].
+
+(@exm-comitative-good) What would you like with your coffee?
+(@exm-coordination-bad) What would you like and your coffee?
+
+Another kind of judgment we are often concerned with–particularly in semantic theory–is about inferential relationships between strings [see @davis_semantics_2004, Ch. 4 and references therein]. []{#exm-love-antecedent} []{#exm-veridicality-inference} For example, in a context where someone uses (@exm-love-antecedent) and their addressee both trusts the user and doesn't know that (@exm-veridicality-inference), the addressee will tend to infer that (@exm-veridicality-inference)–i.e. the content of the subordinate clause in (@exm-love-antecedent) [see @white_lexically_2019 and references therein].
+
+(@exm-love-antecedent) Jo loved that Mo left.
+(@exm-veridicality-inference) Mo left.
+
+One important property we want syntactic and semantic theories to have is *observational adequacy* [@chomsky_current_1964]: for any string $s \in \Sigma^*$, we can predict how acceptable someone who knows the language will find $s$ relative to a particular context; and for any pair of strings $s, s' \in \Sigma^*$ that person judges acceptable, we can predict whether that person judges $s'$ to be inferable from $s$ and vice versa–again, relative to a particular context.^[We may furthermore want explanations that handle inference judgements between strings that are judged to be degraded in some sense [@higginbotham_semantics_1985; @berwick_poverty_2011].]
+
+In addition to observational adequacy, we tend to want theories that are parsimonious. A common way of moving forward in this respect is to posit methods for mapping vocabulary elements and strings to a more or less constrained set of abstractions for use in predicting the relationship between a string and judgments of its acceptability or inferential relationships to other strings.^[Definition of a set of vocabulary elements and segmentation of a string into those elements is already a highly nontrivial form of abstraction. This course will generally presuppose that the correct segmentations are given.]
+
+These abstractions may take a wide variety of forms: 
+
+i. They may be discrete, continuous, or some hybrid of the two.
+ii. They may be interrelated–e.g. by some type of [ordering](https://en.wikipedia.org/wiki/Order_theory).
+iii. They may be more or less richly structured–e.g. they may be strings, trees, etc. constructed from a set of abstractions that themselves might have any combination of the properties (i) and (ii).
+
+This course covers techniques both for learning such abstractions (or *representations*) from experimental and/or corpus data–with a focus on acceptability and inference judgment data–and for quantitatively assessing the observational adequacy and parsimony of some set of assumptions about the nature of those representations.
+
+This approach is motivated by the mutually supportive goals of enabling syntacticians and semanticists to:
+
+a. develop and use models that accord with their representational assumptions in order to assist in constructing quantitatively grounded analyses under those assumptions.
+b. compare different sorts of representational assumptions in a formally explicit, quantitatively grounded way.
+
+My aim in this course is to give you the conceptual and practical tools to understand (what I take to be) the theoretically relevant portions of the computational modeling literature and to provide you with a jumping off point from which to begin your research journey into it. You should not expect the course to provide you with a comprehensive overview of the literature in a particular area–even the areas that we will use as case studies. For example, I am not going to cover all the ways that researchers have modeled island effects. Rather, I will demonstrate *how* to incrementally develop hypothesis-driven models that can help us answer particular theoretical questions.

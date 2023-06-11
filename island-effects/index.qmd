@@ -1,0 +1,16 @@
+---
+title: "Module 1: Island Effects"
+bibliography: ../references.bib
+---
+
+::: {.callout-caution}
+## Availability
+
+This section will be available Monday, 19 June 2023. Please complete the below reading prior to that date.
+:::
+
+::: {.callout-tip}
+## Reading
+1. @sprouse_experimental_2016 on variation in the strength of island effects on acceptabiliy judgments. We will use the data collected for that paper, which can be found [here](https://www.jonsprouse.com/data/NLLT2016/), in this module.
+2. @sprouse_acceptability_2018 on the relationship between acceptability and grammaticality. We will specifically be concerned with his discussion of what apparent gradience in acceptability implies about discreteness v. continuity in grammatical representations.
+:::
