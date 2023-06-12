@@ -13,7 +13,7 @@ project:
     - island-effects/index.qmd
     - projective-content/index.qmd
     - selection/index.qmd
-    - thematic-roles/index.qmd
+    - thematic-roles/index.ipynb
 
 
 website:
@@ -36,7 +36,9 @@ website:
       - island-effects/index.qmd
       - projective-content/index.qmd
       - selection/index.qmd
-      - thematic-roles/index.qmd
+      - section: "Module 4: Thematic Roles"
+        contents:
+          - thematic-roles/index.ipynb
 
 format:
   html:
