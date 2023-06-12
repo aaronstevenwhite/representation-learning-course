@@ -16,7 +16,7 @@ Our main question will be whether–once we adjust for various potential sources
 
 ## Module 2: Projective Content
 
-In [Module 2](projective-content/index.qmd), we will focus on *projective content*. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (*not*, *no*, *none*, etc.), found in that containing expression.  []{#exm-like} []{#exm-not-like} [](#exm-inference) For instance, from uses of both (@exm-like) and (@exm-not-like)---which both contain (@exm-inference) as a subexpression---comprehenders tend to infer that (@exm-inference), even though (@exm-not-like) contains negation. 
+In [Module 2](projective-content/index.ipynb), we will focus on *projective content*. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (*not*, *no*, *none*, etc.), found in that containing expression.  []{#exm-like} []{#exm-not-like} [](#exm-inference) For instance, from uses of both (@exm-like) and (@exm-not-like)---which both contain (@exm-inference) as a subexpression---comprehenders tend to infer that (@exm-inference), even though (@exm-not-like) contains negation. 
 
 (@exm-like) Jo liked that Bo left.
 (@exm-not-like) Jo didn't like that Bo left.
