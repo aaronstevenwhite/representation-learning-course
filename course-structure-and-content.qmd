@@ -26,7 +26,7 @@ In these cases, we say that the content of the clause embedding under *like* pro
 
 ## Module 3: Argument Selection
 
-In [Module 3](selection/index.qmd), we will focus on *argument selection*. [](#exm-see-that) [](#exm-think-that) [](#exm-see-VPing) [](#exm-think-VPing) Our aim will be to explain why certain predicates are acceptable when paired with certain kinds of arguments but not others. For example, (@exm-think-that) and (@exm-see-that), are generally judged acceptable, suggesting that *think* and *see* are compatible with finite declarative subordinate clauses, such as *that Bo left*. 
+In [Module 3](selection/), we will focus on *argument selection*. [](#exm-see-that) [](#exm-think-that) [](#exm-see-VPing) [](#exm-think-VPing) Our aim will be to explain why certain predicates are acceptable when paired with certain kinds of arguments but not others. For example, (@exm-think-that) and (@exm-see-that), are generally judged acceptable, suggesting that *think* and *see* are compatible with finite declarative subordinate clauses, such as *that Bo left*. 
 
 (@exm-see-that)  Jo saw that Bo left.
 (@exm-think-that)  Jo thought that Bo left.
