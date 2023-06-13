@@ -48,9 +48,9 @@ format:
 filters:
   - include-code-files
 
-comments:
-  giscus: 
-    repo: aaronstevenwhite/representation-learning-course
+# comments:
+#   giscus: 
+#     repo: aaronstevenwhite/representation-learning-course
 
 
 
