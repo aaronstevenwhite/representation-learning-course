@@ -28,11 +28,11 @@
     "text": "About the site\nThe site itself is built using Quarto. The source files for this site are available on github at aaronstevenwhite/representation-learning-course. See Installation for information on how to run the code documented here."
   },
   {
-    "objectID": "index.html#acknowledgments",
-    "href": "index.html#acknowledgments",
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
     "title": "About",
-    "section": "Acknowledgments",
-    "text": "Acknowledgments\nModule 1 of this course builds on unpublished collaborative research with Jon Sprouse. A version of this work was presented as a poster at WCCFL34. Module 2 builds on unpublished collaborative research with Julian Grove, who led the development of the models covered in that module. Module 3 builds on collaborative research with Kyle Rawlins as well as the rest of the MegaAttitude Project team. Module 4 builds on work with Kyle Rawlins and Ben Van Durme as well as the rest of the Decompositional Semantics Initiative team–with specific acknowledgment of Will Gantt and Elias Stengel-Eskin for their work on the decomp toolkit.\nThe development of these course materials was supported by multiple National Science Foundation grants:\n\nThe MegaAttitude Project: Investigating selection and polysemy at the scale of the lexicon (BCS-1748969/BCS-1749025)\nComputational Modeling of the Internal Structure of Events (BCS-2040831/BCS-2040820)\nThe typology of subordinate clauses: A case study (BCS-2214933)\nCAREER: Logical Form Induction (BCS/IIS-2237175)"
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThe development of these course materials builds on collaborations between Aaron Steven White and a variety of other researchers:\n\nModule 1 of this course builds on unpublished collaborative research with Jon Sprouse. A version of this work was presented as a poster at WCCFL34.\nModule 2 builds on unpublished collaborative research with Julian Grove, who led the development of the models covered in that module.\nModule 3 builds on collaborative research with Kyle Rawlins as well as the rest of the MegaAttitude Project team.\nModule 4 builds on work with Kyle Rawlins and Ben Van Durme as well as the rest of the Decompositional Semantics Initiative team–with specific acknowledgment of Will Gantt and Elias Stengel-Eskin for their work on the decomp toolkit.\n\nIt was additionally supported by multiple National Science Foundation grants:\n\nThe MegaAttitude Project: Investigating selection and polysemy at the scale of the lexicon (BCS-1748969/BCS-1749025)\nComputational Modeling of the Internal Structure of Events (BCS-2040831/BCS-2040820)\nThe typology of subordinate clauses: A case study (BCS-2214933)\nCAREER: Logical Form Induction (BCS/IIS-2237175)"
   },
   {
     "objectID": "index.html#license",
