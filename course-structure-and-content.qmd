@@ -7,7 +7,7 @@ This course is partitioned into four modules, each structured around a case stud
 
 ## Module 1: Island Effects
 
-In [Module 1](island-effects/index.qmd), we will focus on *island effects*. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as *islands*. []{#exm-comitative-good} []{#exm-coordination-bad} For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (@exm-coordination-bad) from [Motivations](motivations.qmd). Compare (@exm-coordination-bad) with (@exm-comitative-good), which would be used to express the same question and is much better.
+In [Module 1](island-effects/), we will focus on *island effects*. Island effects are modulations of acceptability that arise when a dependency crosses into particular kinds of constitutents. We classify these constitutents as *islands*. []{#exm-comitative-good} []{#exm-coordination-bad} For example, one type of island effect is observed when a WH dependency crosses into a coordinate structure, as in (@exm-coordination-bad) from [Motivations](motivations.qmd). Compare (@exm-coordination-bad) with (@exm-comitative-good), which would be used to express the same question and is much better.
 
 (@exm-comitative-good) What would you like with your coffee?
 (@exm-coordination-bad) What would you like and your coffee?
@@ -16,7 +16,7 @@ Our main question will be whether–once we adjust for various potential sources
 
 ## Module 2: Projective Content
 
-In [Module 2](projective-content/index.qmd), we will focus on *projective content*. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (*not*, *no*, *none*, etc.), found in that containing expression.  []{#exm-like} []{#exm-not-like} [](#exm-inference) For instance, from uses of both (@exm-like) and (@exm-not-like)---which both contain (@exm-inference) as a subexpression---comprehenders tend to infer that (@exm-inference), even though (@exm-not-like) contains negation. 
+In [Module 2](projective-content/), we will focus on *projective content*. Projective content is propositional content associated with a linguistic expression that a comprehender infers a user of some containing expression to be committed to irrespective of inference-modifying linguistic operators, such as negation (*not*, *no*, *none*, etc.), found in that containing expression.  []{#exm-like} []{#exm-not-like} [](#exm-inference) For instance, from uses of both (@exm-like) and (@exm-not-like)---which both contain (@exm-inference) as a subexpression---comprehenders tend to infer that (@exm-inference), even though (@exm-not-like) contains negation. 
 
 (@exm-like) Jo liked that Bo left.
 (@exm-not-like) Jo didn't like that Bo left.
@@ -40,12 +40,12 @@ At least two things are generally assumed to determine the arguments a predicate
 
 ## Module 4: Thematic Roles
 
-In [Module 4](thematic-roles/index.qmd), we will focus on thematic roles–investigating, in particular, different theories of generalized thematic roles. Generalized thematic roles–such as AGENT and PATIENT–contrast with individual thematic roles–such as BREAKER and BREAKEE–and are often posited in order to explain how individual thematic roles are linked to particular syntactic positions. [](#exm-break) [](#exm-shbreak) For instance, in expressing that a BREAKER caused a BREAKEE to be broken, we find predicates like *break* in (@exm-break), which realize the BREAKER in subject position and BREAKEE in object position, but not predicates like *shbreak* that do the inverse–i.e. such that (@exm-shbreak) means the same thing as (@exm-break)?
+In [Module 4](thematic-roles/), we will focus on thematic roles–investigating, in particular, different theories of generalized thematic roles. Generalized thematic roles–such as AGENT and PATIENT–contrast with individual thematic roles–such as BREAKER and BREAKEE–and are often posited in order to explain how individual thematic roles are linked to particular syntactic positions. [](#exm-break) [](#exm-shbreak) For instance, in expressing that a BREAKER caused a BREAKEE to be broken, we find predicates like *break* in (@exm-break), which realize the BREAKER in subject position and BREAKEE in object position, but not predicates like *shbreak* that do the inverse–i.e. such that (@exm-shbreak) means the same thing as (@exm-break)?
 
 (@exm-break) The boy broke the vase.
 (@exm-shbreak) The vase shbroke the boy.
 
-One kind of explanation posited in the literature is that individual thematic roles are grouped into generalized thematic roles and that the generalized thematic role an individual thematic role falls into determines which syntactic position that indivudal thematic role is associated with. Theories differ as to what generalized thematic roles exist, how they ar related to each other, and how they determine the association of individual thematic roles with syntactic positions.
+One kind of explanation posited in the literature is that individual thematic roles are grouped into generalized thematic roles and that the generalized thematic role an individual thematic role falls into determines which syntactic position that individual thematic role is associated with. Theories differ as to what generalized thematic roles exist, how they ar related to each other, and how they determine the association of individual thematic roles with syntactic positions.
 
 ## Preliminaries
 
