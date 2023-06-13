@@ -21,7 +21,7 @@ In addition to being a principal investigator on numerous federally funded grant
 
 The site itself is built using [Quarto](https://quarto.org/). The source files for this site are available on github at [`aaronstevenwhite/representation-learning-course`](https://github.com/aaronstevenwhite/representation-learning-course). See [Installation](installation.qmd) for information on how to run the code documented here.
 
-## Acknowledgements
+## Acknowledgments
 
 The development of these course materials builds on collaborations between Aaron Steven White and a variety of other researchers:
 
