@@ -53,7 +53,7 @@ generated quantities {
     cutpoints_mean[c] = mean(cutpoints[,c]);
 
   // compute the mean for each cutpoint distance across subjects
-  vector[N_resp_levels-1] jumps_mean; 
+  vector[N_resp_levels-2] jumps_mean; 
 
   for (j in 1:(N_resp_levels-2))
     jumps_mean[j] = mean(jumps[,j]);
