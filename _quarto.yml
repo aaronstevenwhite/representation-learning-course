@@ -10,7 +10,8 @@ project:
     - foundational-concepts-in-probability-and-statistics/index.ipynb
     - foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.ipynb
     - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
-    - island-effects/index.ipynb
+    - island-effects/index.qmd
+    - island-effects/model-definition.ipynb
     - projective-content/index.qmd
     - selection/index.qmd
     - thematic-roles/index.qmd
@@ -35,7 +36,8 @@ website:
           - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
       - section: "Module 1: Island Effects"
         contents:
-          - island-effects/index.ipynb
+          - island-effects/index.qmd
+          - island-effects/model-definition.ipynb
       - projective-content/index.qmd
       - selection/index.qmd
       - thematic-roles/index.qmd
@@ -49,10 +51,11 @@ format:
 
 filters:
   - include-code-files
+  - line-highlight
 
-# comments:
-#   giscus: 
-#     repo: aaronstevenwhite/representation-learning-course
+comments:
+  giscus: 
+    repo: aaronstevenwhite/representation-learning-course
 
 
 
