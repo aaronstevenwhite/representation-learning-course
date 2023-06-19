@@ -75,6 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -194,22 +195,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 1: Island Effects</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Module 2: Projective Content</span></a>
+ <span class="menu-text">Module 1: Island Effects</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Projective Content</span></a>
@@ -293,7 +308,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="two-event-spaces-for-a-subset-of-english-pronouns">Two event spaces for (a subset of) English pronouns</h3>
 <p>The event space is where interesting linguistic structure enters the picture. Let’s look at a few examples of event spaces that assume that the sample space is the following set of pronouns of English: <span class="math inline">\(\Omega = \{\text{I}, \text{me}, \text{you}, \text{they}, \text{them}, \text{it}, \text{she}, \text{her}, \text{he}, \text{him}, \text{we}, \text{us}\}\)</span>.</p>
 <div class="cell" data-tags="[]" data-execution_count="92">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>emptyset <span class="op">=</span> <span class="bu">frozenset</span>()</span>
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>emptyset <span class="op">=</span> <span class="bu">frozenset</span>()</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pronouns <span class="op">=</span> <span class="bu">frozenset</span>({</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I"</span>, <span class="st">"me"</span>, </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"you"</span>, </span>
@@ -308,7 +323,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="the-person-event-space">The person event space</h4>
 <p>One possible event space distinguishes these pronouns with respect to third v. non-third: <span class="math inline">\(\mathcal{F}_\text{person} = \{F_\text{[+third]}, F_\text{[-third]}, \Omega, \emptyset\}\)</span>, with <span class="math inline">\(F_\text{[+third]} = \{\text{they}, \text{them}, \text{it}, \text{she}, \text{her}, \text{he}, \text{him}\}\)</span> and <span class="math inline">\(F_\text{[-third]} = \Omega - F_\text{[+third]}\)</span>.</p>
 <div class="cell" data-tags="[]" data-execution_count="93">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>third <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"they"</span>, <span class="st">"them"</span>, <span class="st">"it"</span>, <span class="st">"she"</span>, <span class="st">"her"</span>, <span class="st">"he"</span>, <span class="st">"him"</span>,})</span>
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>third <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"they"</span>, <span class="st">"them"</span>, <span class="st">"it"</span>, <span class="st">"she"</span>, <span class="st">"her"</span>, <span class="st">"he"</span>, <span class="st">"him"</span>,})</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>nonthird <span class="op">=</span> pronouns <span class="op">-</span> third</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>f_person <span class="op">=</span> <span class="bu">frozenset</span>({</span>
@@ -326,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>You can check that all of these conditions are satisfied for <span class="math inline">\(\mathcal{F}_\text{person}\)</span> only if <span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\emptyset\)</span> are both in <span class="math inline">\(\mathcal{F}\)</span>. When <span class="math inline">\(\mathcal{F} \subseteq 2^\Omega\)</span> is a <span class="math inline">\(\sigma\)</span>-algebra, the pair <span class="math inline">\(\langle \Omega, \mathcal{F} \rangle\)</span> is referred to as a <a href="https://en.wikipedia.org/wiki/Measurable_space">measurable space</a>. When <span class="math inline">\(\Omega\)</span> is finite–as it is here–we say that <span class="math inline">\(\langle \Omega, \mathcal{F} \rangle\)</span> is more specifically a <em>finite</em> measurable space.</p>
 <div class="cell" data-execution_count="94">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Set, FrozenSet, Iterable</span>
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Set, FrozenSet, Iterable</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itertools <span class="im">import</span> chain, combinations</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functools <span class="im">import</span> <span class="bu">reduce</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -416,9 +431,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>The <span class="math inline">\(\sigma\)</span>-algebra conditions are checked as part of initializing the implementation of <code>FiniteMeasurableSpace</code>, and so we see that <span class="math inline">\(\langle \Omega, \mathcal{F}_\text{person}\rangle\)</span> is a measurable space.</p>
 <div class="cell" data-tags="[]" data-execution_count="95">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>person_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>person_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This pair is a finite measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This pair is a finite measurable space.</code></pre>
 </div>
 </div>
 </section>
@@ -433,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>The first set is required to be in <span class="math inline">\(\mathcal{F}_\text{case}\)</span> according to condition 4 of being a <span class="math inline">\(\sigma\)</span>-algebra.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> The other three sets are required to be in <span class="math inline">\(\mathcal{F}_\text{case}\)</span> according to condition 2 of being a <span class="math inline">\(\sigma\)</span>-algebra.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <div class="cell" data-execution_count="96">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"me"</span>, <span class="st">"you"</span>, <span class="st">"them"</span>, <span class="st">"her"</span>, <span class="st">"him"</span>, <span class="st">"it"</span>, <span class="st">"us"</span>})</span>
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"me"</span>, <span class="st">"you"</span>, <span class="st">"them"</span>, <span class="st">"her"</span>, <span class="st">"him"</span>, <span class="st">"it"</span>, <span class="st">"us"</span>})</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nonacc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"I"</span>, <span class="st">"you"</span>, <span class="st">"they"</span>, <span class="st">"she"</span>, <span class="st">"he"</span>, <span class="st">"it"</span>, <span class="st">"we"</span>})</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>f_case <span class="op">=</span> <span class="bu">frozenset</span>({</span>
@@ -448,7 +463,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>case_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This pair is a finite measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This pair is a finite measurable space.</code></pre>
 </div>
 </div>
 </section>
@@ -486,17 +501,17 @@ Answer
 </div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:6,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183612456,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="930414ce-e929-4bab-8581-11c4718ee218" data-execution_count="97">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    person_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_person.union(f_case))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"ValueError: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ValueError: The σ-algebra must be closed under countable union. frozenset({'he', 'me', 'we', 'I', 'they', 'it', 'she', 'you', 'us'}) is a union of events [frozenset({'they', 'he', 'it', 'she', 'you', 'we', 'I'}), frozenset({'me', 'we', 'I', 'you', 'us'})] but not an event.</code></pre>
+<pre data-code-line-numbers=""><code>ValueError: The σ-algebra must be closed under countable union. frozenset({'he', 'me', 'we', 'I', 'they', 'it', 'she', 'you', 'us'}) is a union of events [frozenset({'they', 'he', 'it', 'she', 'you', 'we', 'I'}), frozenset({'me', 'we', 'I', 'you', 'us'})] but not an event.</code></pre>
 </div>
 </div>
 <p>This point demonstrates an important fact about <span class="math inline">\(\sigma\)</span>-algebras: if you design a classification based on some (countable) set of features like person and case, the constraint that <span class="math inline">\(\mathcal{F}\)</span> be a <span class="math inline">\(\sigma\)</span>-algebra on <span class="math inline">\(\Omega\)</span> implies that <span class="math inline">\(\mathcal{F}\)</span> contains events corresponding to all possible conjunctions (e.g.&nbsp;third and accusative) and disjunctions (e.g.&nbsp;third and/or accusative) of those features. So we need to extend <span class="math inline">\(\mathcal{F}_\text{person} \cup \mathcal{F}_\text{case}\)</span> with additional sets. We call this extension the <span class="math inline">\(\sigma\)</span>-algebra <em>generated by the family of sets</em> <span class="math inline">\(\mathcal{F}_\text{person} \cup \mathcal{F}_\text{case}\)</span>, denoted <span class="math inline">\(\sigma\left(\mathcal{F}_\text{person} \cup \mathcal{F}_\text{case}\right)\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:352,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183612804,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="73f585f7-b3ad-4d73-c852-425dfd570166" data-execution_count="98">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_sigma_algebra(family: SigmaAlgebra) <span class="op">-&gt;</span> SigmaAlgebra:</span>
+<div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> generate_sigma_algebra(family: SigmaAlgebra) <span class="op">-&gt;</span> SigmaAlgebra:</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Generate a σ-algebra from a family of sets</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
@@ -530,7 +545,7 @@ Answer
 </div>
 <p>One challenge is that generating this <span class="math inline">\(\sigma\)</span>-algebra for even relatively small families of sets can take a non-trivial amount of time. So for the remainder of this review, I’m going to cheat a bit and artificially distinguish the pronouns whose accusative and non-accusative variants are the same.</p>
 <div class="cell" data-tags="[]" data-execution_count="99">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pronouns <span class="op">=</span> <span class="bu">frozenset</span>({</span>
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>pronouns <span class="op">=</span> <span class="bu">frozenset</span>({</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I"</span>, <span class="st">"me"</span>, </span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"you_nonacc"</span>, <span class="st">"you_acc"</span>, </span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"they"</span>, <span class="st">"them"</span>, </span>
@@ -542,7 +557,7 @@ Answer
 </div>
 <p>This move allows us to define the event space more simply.</p>
 <div class="cell" data-execution_count="100">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"me"</span>, <span class="st">"you_acc"</span>, <span class="st">"them"</span>, <span class="st">"her"</span>, <span class="st">"him"</span>, <span class="st">"it_acc"</span>, <span class="st">"us"</span>})</span>
+<div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>acc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"me"</span>, <span class="st">"you_acc"</span>, <span class="st">"them"</span>, <span class="st">"her"</span>, <span class="st">"him"</span>, <span class="st">"it_acc"</span>, <span class="st">"us"</span>})</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>nonacc <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"I"</span>, <span class="st">"you_nonacc"</span>, <span class="st">"they"</span>, <span class="st">"she"</span>, <span class="st">"he"</span>, <span class="st">"it_nonacc"</span>, <span class="st">"we"</span>})</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>f_case <span class="op">=</span> <span class="bu">frozenset</span>({</span>
@@ -553,12 +568,12 @@ Answer
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>case_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This pair is a finite measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This pair is a finite measurable space.</code></pre>
 </div>
 </div>
 <p>To ensure that the person and case spaces have the same sample space, we will similarly need to redefine the person space.</p>
 <div class="cell" data-tags="[]" data-execution_count="101">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>third <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"they"</span>, <span class="st">"them"</span>, <span class="st">"it_acc"</span>, <span class="st">"it_nonacc"</span>, <span class="st">"she"</span>, <span class="st">"her"</span>, <span class="st">"he"</span>, <span class="st">"him"</span>})</span>
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>third <span class="op">=</span> <span class="bu">frozenset</span>({<span class="st">"they"</span>, <span class="st">"them"</span>, <span class="st">"it_acc"</span>, <span class="st">"it_nonacc"</span>, <span class="st">"she"</span>, <span class="st">"her"</span>, <span class="st">"he"</span>, <span class="st">"him"</span>})</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>nonthird <span class="op">=</span> pronouns <span class="op">-</span> third</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>f_person <span class="op">=</span> <span class="bu">frozenset</span>({</span>
@@ -569,16 +584,16 @@ Answer
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>person_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_person)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This pair is a finite measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This pair is a finite measurable space.</code></pre>
 </div>
 </div>
 <p>Finally, we can generate the <span class="math inline">\(\sigma\)</span>-algebra for our person-case space and check that it’s valid.</p>
 <div class="cell" data-tags="[]" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>f_person_case <span class="op">=</span> generate_sigma_algebra(f_person <span class="op">|</span> f_case)</span>
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>f_person_case <span class="op">=</span> generate_sigma_algebra(f_person <span class="op">|</span> f_case)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>person_case_space <span class="op">=</span> FiniteMeasurableSpace(pronouns, f_person_case)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This pair is a finite measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This pair is a finite measurable space.</code></pre>
 </div>
 </div>
 </section>
@@ -601,7 +616,7 @@ Answer
 <li>Given a countable collection of events <span class="math inline">\(E_1, E_2, \ldots \in \mathcal{F}\)</span> that is pairwise disjoint–i.e.&nbsp;<span class="math inline">\(E_i \cap E_j = \emptyset\)</span> for all <span class="math inline">\(i \neq j\)</span>–<span class="math inline">\(\mathbb{P}\left(\bigcup_i E_i\right) = \sum_i \mathbb{P}(E_i)\)</span> (the <em>assumption of <a href="https://en.wikipedia.org/wiki/Sigma-additive_set_function"><span class="math inline">\(\sigma\)</span>-additivity</a></em>)</li>
 </ol>
 <div class="cell" data-execution_count="103">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Dict</span>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Dict</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure:</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""A probability measure with finite support</span></span>
@@ -657,13 +672,13 @@ Answer
 </div>
 <p>One example of a probability measure for our measurable space <span class="math inline">\(\langle \Omega, \mathcal{F}_\text{person-case}\rangle\)</span> is the uniform measure: <span class="math inline">\(\mathbb{P}(E) = \frac{|E|}{|\Omega|}\)</span>.</p>
 <div class="cell" data-execution_count="104">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    person_case_space,</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    {e: <span class="bu">len</span>(e)<span class="op">/</span><span class="bu">len</span>(person_case_space.atoms) </span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> e <span class="kw">in</span> person_case_space.sigma_algebra} </span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>This probability measure is valid for the given measurable space.</code></pre>
+<pre data-code-line-numbers=""><code>This probability measure is valid for the given measurable space.</code></pre>
 </div>
 </div>
 <p>These axioms imply that the range of <span class="math inline">\(\mathbb{P}\)</span> is <span class="math inline">\([0, 1]\)</span>, even if its codomain is <span class="math inline">\(\mathbb{R}_+\)</span>; otherwise, it would have to be the case that <span class="math inline">\(\mathbb{P}(E) &gt; 1\)</span> for some <span class="math inline">\(E \subset \Omega\)</span>. (<span class="math inline">\(E\)</span> would have to be a strict subset of <span class="math inline">\(\Omega\)</span>, since <span class="math inline">\(\Omega \supseteq E\)</span> for all <span class="math inline">\(E \in \mathcal{F}\)</span> and <span class="math inline">\(\mathbb{P}(\Omega) = 1\)</span> by definition.) But <span class="math inline">\(\mathbb{P}(E) &gt; 1\)</span> cannot hold, since <span class="math inline">\(\mathbb{P}(\Omega - E)\)</span>–which must be defined, given that <span class="math inline">\(\mathcal{F}\)</span> is closed under complementation–is nonnegative; and thus <span class="math inline">\(\mathbb{P}(E) + \mathbb{P}(\Omega - E) &gt; \mathbb{P}(\Omega) = 1\)</span> contradicts the third axiom <span class="math inline">\(\mathbb{P}(E) + \mathbb{P}(\Omega - E) = \mathbb{P}(E \cup [\Omega - E]) = \mathbb{P}(\Omega) = 1\)</span>.</p>
@@ -694,7 +709,7 @@ Answer
 <h3 class="anchored" data-anchor-id="mutual-exclusivity">Mutual exclusivity</h3>
 <p>Two events <span class="math inline">\(A \in \mathcal{F}\)</span> and <span class="math inline">\(B \in \mathcal{F}\)</span> are <em>mutually exclusive</em> if they are disjoint: <span class="math inline">\(A \cap B = \emptyset\)</span>. This implies that <span class="math inline">\(\mathbb{P}(A \cap B) = \mathbb{P}(\emptyset) = 0\)</span> for all mutually exclusive events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>.</p>
 <div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> are_mutually_exclusive(<span class="va">self</span>, <span class="op">*</span>events: Iterable[Event]):</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._validate_events(events)</span>
@@ -707,7 +722,7 @@ Answer
 </div>
 <p>In our running example, the set of third-person pronouns <span class="math inline">\(F_\text{[+third]}\)</span> and the set of non-third person pronouns <span class="math inline">\(F_\text{[-third]}\)</span> are mutually exclusive events because <span class="math inline">\(F_\text{[+third]} \cap F_\text{[-third]} = \emptyset\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183613617,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="f1bc196d-1c02-43b7-d035-d778846f0800" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    person_case_space,</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    {e: <span class="bu">len</span>(e)<span class="op">/</span><span class="bu">len</span>(person_case_space.atoms) </span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> e <span class="kw">in</span> person_case_space.sigma_algebra} </span>
@@ -715,7 +730,7 @@ Answer
 <span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>measure_person_case.are_mutually_exclusive(third, nonthird)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="32">
-<pre><code>True</code></pre>
+<pre data-code-line-numbers=""><code>True</code></pre>
 </div>
 </div>
 </section>
@@ -723,7 +738,7 @@ Answer
 <h3 class="anchored" data-anchor-id="joint-probability">Joint probability</h3>
 <p>The <em>joint probability</em> <span class="math inline">\(\mathbb{P}(A, B)\)</span> of two events <span class="math inline">\(A \in \mathcal{F}\)</span> and <span class="math inline">\(B \in \mathcal{F}\)</span> is defined as the probability of the intersection of those two events <span class="math inline">\(\mathbb{P}(A, B) = \mathbb{P}(A \cap B)\)</span>, which must be defined given that <span class="math inline">\(\mathcal{F}\)</span> is closed under countable intersection.</p>
 <div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
+<div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> List</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -736,7 +751,7 @@ Answer
 </div>
 <p>In our running example, the probability of a third-person accusative pronoun is the joint probability <span class="math inline">\(\mathbb{P}\left(F_\text{[+third]}, F_\text{[+acc]}\right)\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:163,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183613777,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="4d7e4345-0898-47b7-a9e1-e4b875063abc" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
+<div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    person_case_space,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    {e: <span class="bu">len</span>(e)<span class="op">/</span><span class="bu">len</span>(person_case_space.atoms) </span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> e <span class="kw">in</span> person_case_space.sigma_algebra} </span>
@@ -744,7 +759,7 @@ Answer
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>measure_person_case(<span class="bu">frozenset</span>(third), <span class="bu">frozenset</span>(acc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
-<pre><code>0.2857142857142857</code></pre>
+<pre data-code-line-numbers=""><code>0.2857142857142857</code></pre>
 </div>
 </div>
 </section>
@@ -752,7 +767,7 @@ Answer
 <h3 class="anchored" data-anchor-id="conditional-probability">Conditional probability</h3>
 <p>The probability of an event <span class="math inline">\(A \in \mathcal{F}\)</span> <em>conditioned on</em> (or <em>given</em>) an event <span class="math inline">\(B \in \mathcal{F}\)</span> is defined as <span class="math inline">\(\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A, B)}{\mathbb{P}(B)}\)</span>. Note that <span class="math inline">\(\mathbb{P}(A \mid B)\)</span> is undefined if <span class="math inline">\(\mathbb{P}(B) = 0\)</span>.</p>
 <div class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__or__</span>(<span class="va">self</span>, conditions: Iterable[Event]) <span class="op">-&gt;</span> ProbabilityMeasure:</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        condition <span class="op">=</span> <span class="bu">reduce</span>(<span class="bu">frozenset</span>.intersection, conditions)</span>
@@ -775,7 +790,7 @@ Answer
 </div>
 <p>In our running example, the probability that a pronoun is third-person given that it is accusative is the conditional probability <span class="math inline">\(\mathbb{P}\left(F_\text{[+third]} \mid F_\text{[+acc]}\right) = \frac{\mathbb{P}\left(F_\text{[+third]}, F_\text{[+acc]}\right)}{\mathbb{P}\left(F_\text{[+acc]}\right)}\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:381,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183614156,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="4ce759cb-a3e7-40dc-880a-f58a046ff49f" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>person_case_measure <span class="op">=</span> {</span>
+<div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>person_case_measure <span class="op">=</span> {</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>    event: <span class="bu">len</span>(event)<span class="op">/</span><span class="bu">len</span>(person_case_space.atoms) </span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> event <span class="kw">in</span> person_case_space.sigma_algebra</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>}</span>
@@ -789,7 +804,7 @@ Answer
 <span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>measure_given_back(third)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="38">
-<pre><code>0.5714285714285714</code></pre>
+<pre data-code-line-numbers=""><code>0.5714285714285714</code></pre>
 </div>
 </div>
 <p>From this definition, it immediately follows that <span class="math inline">\(\mathbb{P}(A, B) = \mathbb{P}(A \mid B)\mathbb{P}(B) = \mathbb{P}(B \mid A)\mathbb{P}(A)\)</span>, which in turn implies <a href="https://en.wikipedia.org/wiki/Bayes%27_theorem"><em>Bayes’ theorem</em></a>.</p>
@@ -803,7 +818,7 @@ Answer
 <h3 class="anchored" data-anchor-id="independence">Independence</h3>
 <p>An event <span class="math inline">\(A \in \mathcal{F}\)</span> is <em>independent</em> of an event <span class="math inline">\(B \in \mathcal{F}\)</span> (under <span class="math inline">\(\mathbb{P}\)</span>) if <span class="math inline">\(\mathbb{P}(A \mid B) = \mathbb{P}(A)\)</span>. A theorem that immediately follows from this definition is that <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent under <span class="math inline">\(\mathbb{P}\)</span> if and only if <span class="math inline">\(\mathbb{P}(A, B) = \mathbb{P}(A \mid B)\mathbb{P}(B) = \mathbb{P}(A)\mathbb{P}(B)\)</span>.</p>
 <div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ProbabilityMeasure(ProbabilityMeasure):</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> are_independent(<span class="va">self</span>, <span class="op">*</span>events):</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._validate_events(events)</span>
@@ -815,7 +830,7 @@ Answer
 </div>
 <p>In our running example of an event space structured by person and case, assuming all pronouns are equiprobable, none of the events are independent. In the discrete event space, many events will be independent.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:5,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183614157,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="ba72bd41-3541-4154-ff90-ee0b19030173" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
+<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>measure_person_case <span class="op">=</span> ProbabilityMeasure(</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    person_case_space,</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    {e: <span class="bu">len</span>(e)<span class="op">/</span><span class="bu">len</span>(person_case_space.atoms) </span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>     <span class="cf">for</span> e <span class="kw">in</span> person_case_space.sigma_algebra} </span>
@@ -823,7 +838,7 @@ Answer
 <span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>measure_person_case.are_independent(<span class="bu">frozenset</span>(third), <span class="bu">frozenset</span>(acc))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="43">
-<pre><code>True</code></pre>
+<pre data-code-line-numbers=""><code>True</code></pre>
 </div>
 </div>
 <p>Note that independence is not the same as <em>mutual exclusivity</em>; indeed, mutually exclusive events are <em>not</em> independent, since <span class="math inline">\(\mathbb{P}(A \mid B) = \frac{\mathbb{P}(A, B)}{\mathbb{P}(B)} = \frac{0}{\mathbb{P}(B)} = 0\)</span> (or is undefined if <span class="math inline">\(\mathbb{P}(B) = 0\)</span>) regardless of <span class="math inline">\(\mathbb{P}(A)\)</span>, and therefore either <span class="math inline">\(\mathbb{P}(A \mid B)\)</span> does not equal <span class="math inline">\(\mathbb{P}(A)\)</span> or <span class="math inline">\(\mathbb{P}(B \mid A)\)</span> is undefined (because <span class="math inline">\(\mathbb{P}(A) = 0\)</span>), even when <span class="math inline">\(\mathbb{P}(B)\)</span> is.</p>
@@ -1128,6 +1143,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../course-structure-and-content.html" class="pagination-link">
@@ -1144,4 +1161,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>
