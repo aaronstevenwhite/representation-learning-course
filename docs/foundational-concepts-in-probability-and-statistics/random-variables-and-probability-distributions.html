@@ -94,6 +94,7 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -225,7 +226,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Island Effects</span></a>
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
   </div>
 </li>
       </ul>
@@ -308,7 +321,7 @@ div.csl-indent {
 <p>For our purposes, the codomain <span class="math inline">\(A\)</span> of <span class="math inline">\(X\)</span> will almost always be the real numbers <span class="math inline">\(\mathbb{R}\)</span> and <span class="math inline">\(\mathcal{G}\)</span> will be almost always be the <a href="https://en.wikipedia.org/wiki/Borel_set">Borel <span class="math inline">\(\sigma\)</span>-algebra</a> on <span class="math inline">\(\mathbb{R}\)</span>. As I mentioned above, knowing the fine details of what a Borel <span class="math inline">\(\sigma\)</span>-algebra is is not going to be necessary: all you really need to know is that it’s got every real interval, so <span class="math inline">\(E \in \mathcal{G}\)</span> will always be an interval (and crucially, not just a single real number).</p>
 <p>To ground this out, we can consider our running example of English pronouns again, where <span class="math inline">\(\Omega = \left\{\text{I}, \text{me}, \text{you}_\text{[+acc]}, \text{you}_\text{[-acc]}, \text{they}, \text{them}, \text{it}_\text{[+acc]}, \text{it}_\text{[-acc]} \text{she}, \text{her}, \text{he}, \text{him}, \text{we}, \text{us}\right\}\)</span>.</p>
 <div class="cell" data-tags="[]" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pronouns <span class="op">=</span> <span class="bu">frozenset</span>({</span>
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pronouns <span class="op">=</span> <span class="bu">frozenset</span>({</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"I"</span>, <span class="st">"me"</span>, </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"you_nonacc"</span>, <span class="st">"you_acc"</span>, </span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"they"</span>, <span class="st">"them"</span>, </span>
@@ -350,13 +363,13 @@ div.csl-indent {
 <p>The PMF (and by extension the CDF) is <em>parameterized</em> in terms of the information necessary to define their outputs for all possible inputs <span class="math inline">\(x \in X(\Omega)\)</span>. This parameterization allows us to talk about <em>families of distributions</em>, which all share a functional form (modulo the values of the parameters). We’ll see a few examples of this below.</p>
 <p>In <code>scipy</code>, discrete distributions are implemented using <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.rv_discrete.html"><code>scipy.rv_discrete</code></a>, either by direct instantiation or subclassing.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> rv_discrete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> rv_discrete</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="finite-distributions" class="level4">
 <h4 class="anchored" data-anchor-id="finite-distributions">Finite distributions</h4>
 <p>When there are a finite number of values that the random variables can take, as in the example of <span class="math inline">\(V\)</span> above, the probability of each possibility can simply be listed. One such distribution—or really family of distributions—that we will make extensive use of—indeed, the distribution that our pronoun random variable <span class="math inline">\(V\)</span> from above has—is the <a href="https://en.wikipedia.org/wiki/Categorical_distribution">categorical distribution</a>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> This distribution is parameterized by a list of probabilities <span class="math inline">\(\boldsymbol\theta\)</span>, where <span class="math inline">\(\theta_i\)</span> gives <span class="math inline">\(p_V(i) = \mathbb{P}(V = i) = \mathbb{P}(\{\omega \in \Omega \mid V(\omega) = i\}) = \theta_i\)</span> and <span class="math inline">\(\sum_{i \in V(\Omega)} \theta_i\)</span>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> arange</span>
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> arange</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> arange(<span class="dv">14</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> (<span class="fl">0.03</span>, <span class="fl">0.09</span>, <span class="fl">0.03</span>, <span class="fl">0.12</span>, <span class="fl">0.07</span>, <span class="fl">0.28</span>, <span class="fl">0.07</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>, <span class="fl">0.02</span>, <span class="fl">0.07</span>, <span class="fl">0.08</span>, <span class="fl">0.05</span>, <span class="fl">0.02</span>)</span>
@@ -366,7 +379,7 @@ div.csl-indent {
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:220,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183614815,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="1c90f4b1-fa7c-41e4-f618-f2e30d87d833" data-execution_count="93">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplot</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>warnings.filterwarnings(<span class="st">'ignore'</span>)</span>
@@ -390,7 +403,7 @@ div.csl-indent {
 </div>
 <p>The <a href="https://en.wikipedia.org/wiki/Bernoulli_distribution">Bernoulli distribution</a>, which we will also make extensive use of, is a special case of the categorical distribution where <span class="math inline">\(|X(\Omega)| = 2\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:408,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183615217,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="5ea994f6-e792-43e1-c780-42f1c516df68" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> bernoulli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>By convention, <span class="math inline">\(X(\Omega) = \{0, 1\}\)</span>. In this case, we need to specify the probability <span class="math inline">\(\pi\)</span> for only one value of <span class="math inline">\(X\)</span>, since the probability of the other must be <span class="math inline">\(1- \pi\)</span>. Indeed, more generally, we need to specify only <span class="math inline">\(|X(\Omega)| - 1\)</span> values for a random variable <span class="math inline">\(X\)</span> that is distributed categorical.</p>
 <p>Importantly, note that the condition that <span class="math inline">\(|X(\Omega)| = 2\)</span> is a condition on the range of <span class="math inline">\(X\)</span>, not on <span class="math inline">\(\Omega\)</span>. So it may be that <span class="math inline">\(|\Omega| &gt; 2\)</span>. Indeed, we would want this in the case where we had an event space like <span class="math inline">\(\mathcal{F}_\text{case}\)</span>, where <span class="math inline">\(\mathcal{F}_\text{case} = \{F_\text{[+acc]}, F_\text{[-acc]}, \Omega, \emptyset\}\)</span>, with <span class="math inline">\(F_\text{[+acc]} = \{\text{me}, \text{you}_\text{[+acc]}, \text{them}, \text{her}, \text{him}, \text{it}_\text{[+acc]}, \text{us}\}\)</span> and <span class="math inline">\(F_\text{[-acc]} = \Omega - F_\text{[+acc]}\)</span>.</p>
@@ -401,12 +414,12 @@ div.csl-indent {
 \end{cases}\]</span></p>
 <p>That is, the function that maps a pronoun to whether it is accusative or not is a Bernoulli random variable.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:408,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183615217,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="5ea994f6-e792-43e1-c780-42f1c516df68" data-execution_count="87">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bern <span class="op">=</span> bernoulli(<span class="fl">0.27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>bern <span class="op">=</span> bernoulli(<span class="fl">0.27</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:408,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183615217,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="5ea994f6-e792-43e1-c780-42f1c516df68" data-execution_count="88">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>ax.plot([<span class="st">"[–acc]"</span>, <span class="st">"[+acc]"</span>], bern.pmf([<span class="dv">0</span>, <span class="dv">1</span>]), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>ax.vlines([<span class="st">"[–acc]"</span>, <span class="st">"[+acc]"</span>], <span class="dv">0</span>, bern.pmf([<span class="dv">0</span>, <span class="dv">1</span>]), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -480,7 +493,7 @@ Answer
 <p>However we compute these values, they must sum to one as required by the assumption of unit measure: <span class="math inline">\(\mathbb{P}(\Omega) = 1\)</span>. Since <span class="math inline">\(\mathbb{P}(\Omega) = \sum_{x \in X(\Omega)} p_X(x)\)</span>, another way of stating this requirement is to say that the series <span class="math inline">\(\sum_{x \in X(\Omega)} p_X(x)\)</span> must converge to 1.</p>
 <p>One example of such a series is a geometric series, such as <span class="math inline">\(\sum_{k=1}^\infty \frac{1}{2^k} = \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \ldots = 1\)</span>.</p>
 <div class="cell" data-tags="[]" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> parameterless_geometric_gen(rv_discrete):</span>
+<div class="sourceCode cell-code" id="cb8" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> parameterless_geometric_gen(rv_discrete):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"A special case of the geometric distribution without parameters"</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _pmf(<span class="va">self</span>, k):</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">2.0</span> <span class="op">**</span> <span class="op">-</span>(k<span class="op">+</span><span class="dv">1</span>)</span>
@@ -491,7 +504,7 @@ Answer
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:247,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183615462,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="66ed0e1f-c34e-4fe7-b0b9-639b53625081" data-execution_count="9">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> arange(<span class="dv">10</span>)</span>
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> arange(<span class="dv">10</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax.plot(k, parameterless_geometric.pmf(k), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
@@ -507,13 +520,13 @@ Answer
 <p>As it stands, this distribution has no parameters, meaning that we have no control over how quickly the probabilities drop off. The geometric distribution provides us this control using a parameter to <span class="math inline">\(\pi \in (0, 1]\)</span>:</p>
 <p><span class="math display">\[\text{Geom}(k; \pi) = (1-\pi)^k\pi\]</span></p>
 <div class="cell" data-tags="[]" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> geom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> geom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When <span class="math inline">\(\pi = \frac{1}{2}\)</span>, we get exactly the distribution above.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:453,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183615912,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="0a298213-8dd3-4a15-9216-9867a0b4859a" data-execution_count="11">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>ax.plot(k, geom(p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
@@ -529,7 +542,7 @@ Answer
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:256,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183616167,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="b2e5d3e3-4633-4737-c864-f0cc1dfd94b7" data-execution_count="12">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
+<div class="sourceCode cell-code" id="cb12" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>ax.plot(k, geom(p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
@@ -545,7 +558,7 @@ Answer
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:388,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183616550,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="f3f09786-e28a-4f61-b528-1e6fdb0437a8" data-tags="[]" data-execution_count="13">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>ax.plot(k, geom(p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
@@ -560,7 +573,7 @@ Answer
 <p>At this point, it’s useful to pause for a moment to think about what exactly a parameter like <span class="math inline">\(\pi\)</span> is. I said above that random variables and probability distributions together provide a way of classifying probability spaces: in saying that <span class="math inline">\(p_X(k) = (1-\pi)^k\pi\)</span> we are <em>describing</em> <span class="math inline">\(\mathbb{P}: \mathcal{F} \rightarrow \mathbb{R}_+\)</span> by using <span class="math inline">\(X\)</span> to abstract across whatever the underlying measurable space <span class="math inline">\(\langle \Omega, \mathcal{F} \rangle\)</span> is. The distribution gives you the form of that description; the parameter <span class="math inline">\(\pi\)</span> gives the content of the description. Because the use of <span class="math inline">\(X\)</span> is always implied, unless it really matters, I’m going to start dropping <span class="math inline">\(X\)</span> from <span class="math inline">\(p_X\)</span> unless I’m emphasizing the random variable in some way.</p>
 <p>The <span class="math inline">\(\pi\)</span> parameter of a geometric distribution allows us to describe distributions that have a very particular shape–namely, ones where <span class="math inline">\(\forall k \in \mathbb{N}: p(k) &gt; p(k + 1)\)</span>. But this isn’t always a good way of describing a particular distribution. For instance, for our string-length variable <span class="math inline">\(L\)</span>, it’s probably a pretty bad description regardless of what particular distribution on string lengths (type or token) we’re describing because 1 grapheme/phoneme words just aren’t more frequent than two grapheme/phoneme words. This point can be seen if we look at the distribution of word lengths at the type level in the <a href="http://www.speech.cs.cmu.edu/cgi-bin/cmudict">CMU Pronouncing Dictionary</a>, which contains phonemic transcriptions of English words.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2236,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183618784,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c3a41fd7-2c21-4684-bbf4-84964b8c90a5" data-tags="[]" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> urllib.request <span class="im">import</span> urlopen</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>cmudict_url <span class="op">=</span> <span class="st">"http://svn.code.sf.net/p/cmusphinx/code/trunk/cmudict/cmudict-0.7b"</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -572,7 +585,7 @@ Answer
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:2236,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183618784,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c3a41fd7-2c21-4684-bbf4-84964b8c90a5" data-tags="[]" data-execution_count="15">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>ax.hist([<span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> words], bins<span class="op">=</span><span class="dv">32</span>, density<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -587,18 +600,18 @@ Answer
 <p>One such distribution that give us more flexibility in this respect is the <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">negative binomial distribution</a>, which is a very useful for modeling token frequency in text <span class="citation" data-cites="church_poisson_1995">(<a href="#ref-church_poisson_1995" role="doc-biblioref">Church and Gale 1995</a>)</span>. This distribution effectively generalizes the geometric by allowing us to control the exponent on <span class="math inline">\(\pi\)</span> with a new parameter <span class="math inline">\(r\)</span>.</p>
 <p><span class="math display">\[\text{NegBin}(k; \pi, r) = {k+r-1 \choose r-1}(1-\pi)^{k}\pi^{r}\]</span></p>
 <div class="cell" data-tags="[]" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> nbinom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> nbinom</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This added flexibility in turn requires us to add an additional term <span class="math inline">\({k+r-1 \choose r-1} = \frac{(k+r-1)!}{(r-1)!\,(k)!}\)</span> that ensures that the series <span class="math inline">\(\sum_{k=0}^\infty \text{NegBin}(k; \pi, r)\)</span> converges to <span class="math inline">\(1\)</span>. The pieces of this term that do not include the value we’re computing the probability of–i.e.&nbsp;<span class="math inline">\(\frac{1}{(r-1)!}\)</span>–are often called the <em>normalizing constant</em>. We will make extensive use of this concept as the course moves forward.</p>
 <p>When <span class="math inline">\(r = 1\)</span>, we of course just get the geometric distribution. As such, if we keep <span class="math inline">\(r = 1\)</span>, manipulating <span class="math inline">\(\pi\)</span> will have the same effect we saw above.</p>
 <div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
+<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:426,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183619207,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="1bacf3e3-7fea-44e2-a82a-4ef48acc5247" data-execution_count="18">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ax.plot(k, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ax.vlines(k, <span class="dv">0</span>, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -610,13 +623,13 @@ Answer
 </div>
 <p>As <span class="math inline">\(r\)</span> grows, though, we get very different behavior: <span class="math inline">\(p(k)\)</span> is no longer always greater than <span class="math inline">\(p(k + 1)\)</span>. Another way of saying this is that we can use <span class="math inline">\(r\)</span> to shift the probability mass rightward.</p>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.5</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:259,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183619462,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="74db893f-451d-417d-adf3-0d2130aec407" data-execution_count="20">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ax.plot(k, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ax.vlines(k, <span class="dv">0</span>, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -628,13 +641,13 @@ Answer
 </div>
 <p>The mass-shifting effect is modulated by <span class="math inline">\(\pi\)</span>: it accelerates with small <span class="math inline">\(\pi\)</span>…</p>
 <div class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.1</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:468,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183619923,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="61b05284-928c-46c0-bc8d-ff05d6c6d04d" data-execution_count="22">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>ax.plot(k, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>ax.vlines(k, <span class="dv">0</span>, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -646,13 +659,13 @@ Answer
 </div>
 <p>…but decelerates with large <span class="math inline">\(\pi\)</span>.</p>
 <div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
+<div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:302,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183620222,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="9fe2e6b8-54d4-4182-a589-949faeaa5277" data-execution_count="24">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>ax.plot(k, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>ax.vlines(k, <span class="dv">0</span>, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -663,13 +676,13 @@ Answer
 </div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:172,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183620389,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c9b4467e-31e7-4be4-a043-120566da58ae" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
+<div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> <span class="fl">0.9</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="dv">40</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:172,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183620389,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c9b4467e-31e7-4be4-a043-120566da58ae" data-execution_count="26">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>ax.plot(k, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), <span class="st">'ro'</span>, ms<span class="op">=</span><span class="dv">12</span>, mec<span class="op">=</span><span class="st">'r'</span>)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>ax.vlines(k, <span class="dv">0</span>, nbinom(r, p).pmf(k<span class="op">+</span><span class="dv">1</span>), colors<span class="op">=</span><span class="st">'r'</span>, lw<span class="op">=</span><span class="dv">4</span>)</span>
 <span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Probability"</span>)</span>
@@ -681,7 +694,7 @@ Answer
 </div>
 <p>We won’t talk about how to fit a distribution to some data until later, when we talk about parameter estimation; but the negative binomial distribution can provide a reasonably good description of the <a href="https://en.wikipedia.org/wiki/Empirical_distribution_function">empirical distribution</a> of word lengths. One way to visualize this is to compare the empirical CDF with the CDF of the best fitting negative binomial.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:5661,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183626046,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="3d4d76d0-f213-4d4c-f0f8-2abb9cb8e39e" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> ones, exp, <span class="bu">round</span>, mgrid</span>
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> ones, exp, <span class="bu">round</span>, mgrid</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.distributions.empirical_distribution <span class="im">import</span> ECDF</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.discrete.discrete_model <span class="im">import</span> NegativeBinomial</span>
@@ -694,7 +707,7 @@ Answer
 <span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"p = </span><span class="sc">{</span><span class="bu">round</span>(p, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">, r = </span><span class="sc">{</span><span class="bu">round</span>(r, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Optimization terminated successfully.
+<pre data-code-line-numbers=""><code>Optimization terminated successfully.
          Current function value: 2.180477
          Iterations: 22
          Function evaluations: 24
@@ -705,7 +718,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:5661,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183626046,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="3d4d76d0-f213-4d4c-f0f8-2abb9cb8e39e" data-execution_count="28">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> arange(<span class="dv">30</span>)</span>
+<div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> arange(<span class="dv">30</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>ax.plot(mgrid[<span class="dv">1</span>:<span class="dv">30</span>:<span class="fl">0.1</span>], ecdf(mgrid[<span class="dv">1</span>:<span class="dv">30</span>:<span class="fl">0.1</span>]), label<span class="op">=</span><span class="st">"Empirical CDF"</span>)</span>
@@ -743,12 +756,12 @@ p = 0.37, r = 3.71</code></pre>
 <p>The simplest example of a continuous distribution is the univariate uniform distribution, which is parameterized by an infimum <span class="math inline">\(a\)</span> and a supremum <span class="math inline">\(b\)</span> and has a PDF:</p>
 <p><span class="math display">\[\mathcal{U}(x; a, b) = \begin{cases}\frac{1}{b - a} &amp; \text{if } x \in [a, b] \\ 0 &amp; \text{otherwise}\end{cases}\]</span></p>
 <div class="cell" data-tags="[]" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> uniform</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> uniform</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:508,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183626548,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="e8bfd4c7-fc9a-4f05-e65f-9addb2274ac9" data-execution_count="30">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> uniform(<span class="dv">0</span>, <span class="dv">1</span>)</span>
+<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> uniform(<span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -771,7 +784,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:482,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183627027,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="b5df24d1-23b2-4634-b696-0846ad37753d" data-execution_count="31">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    mgrid[<span class="op">-</span><span class="dv">1</span>:<span class="dv">2</span>:<span class="fl">0.01</span>], </span>
@@ -798,7 +811,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:391,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183627414,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="9a63efef-1fe6-464f-d77d-0563b345ac09" data-execution_count="32">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    mgrid[<span class="op">-</span><span class="dv">1</span>:<span class="dv">2</span>:<span class="fl">0.01</span>], </span>
@@ -819,17 +832,17 @@ p = 0.37, r = 3.71</code></pre>
 <p><span class="math display">\[\text{Beta}(x; \alpha, \beta) = \begin{cases}\frac{x^{\alpha-1}(1-x)^{\beta-1}} {\mathrm{B}(\alpha,\beta)} &amp; \text{if } x \in (0, 1)\\0 &amp; \text{otherwise}\end{cases}\]</span></p>
 <p>where <span class="math inline">\(\mathrm{B}(\alpha,\beta) = \frac {\Gamma (\alpha)\Gamma (\beta)}{\Gamma (\alpha+\beta)}\)</span>, the normalizing constant, is known as the <a href="https://en.wikipedia.org/wiki/Beta_function">beta function</a> and <span class="math inline">\(\Gamma\)</span> (the <a href="https://en.wikipedia.org/wiki/Gamma_function">gamma function</a>) generalizes the factorial function to real numbers: <span class="math inline">\(\Gamma(x+1) = x\Gamma(x) = x!\)</span> for all positive natural numbers; and more generally, for positive really numbers <span class="math inline">\(\Gamma(x) = \int_0^\infty t^{x-1} e^{-t}\,\mathrm{d}t\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:230,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183627641,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c253f991-fbff-467f-8fe5-5cf5f210cc63" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> beta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> beta</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The beta distribution can be thought of as a generalization of the uniform distribution <span class="math inline">\(\mathcal{U}(0, 1)\)</span>, since it is equivalent when <span class="math inline">\(\alpha = \beta = 1\)</span>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:230,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183627641,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c253f991-fbff-467f-8fe5-5cf5f210cc63" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
+<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">1</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:230,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183627641,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="c253f991-fbff-467f-8fe5-5cf5f210cc63" data-execution_count="35">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>ax.plot(</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    mgrid[<span class="op">-</span><span class="dv">1</span>:<span class="dv">2</span>:<span class="fl">0.01</span>], </span>
@@ -848,7 +861,7 @@ p = 0.37, r = 3.71</code></pre>
 <p>This definition makes the beta distribution a true generalization of <span class="math inline">\(\mathcal{U}(a, b) = \text{Beta}(1, 1, a, b)\)</span>. We’ll mainly work with the two-parameter version for the sake of simplicity, and because for most use cases, we actually only need support on <span class="math inline">\((0, 1)\)</span>.</p>
 <p>Manipulating the <em>shape</em> parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> introduces bias toward <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, or <span class="math inline">\(\frac{\alpha}{\alpha + \beta}\)</span>. When <span class="math inline">\(\alpha = \beta &gt; 1\)</span>, we get more and more density closer to <span class="math inline">\(\frac{\alpha}{\alpha + \beta} = 0.5\)</span>. We say that these distributions are <em>symmetric</em> (and <em>dense</em>, for reasons I will discuss in a second).</p>
 <div class="cell" data-tags="[]" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dense_symmetric_beta_params <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb37" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>dense_symmetric_beta_params <span class="op">=</span> [</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">3</span>),</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="dv">5</span>),</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">10</span>, <span class="dv">10</span>)</span>
@@ -857,7 +870,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:442,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183628079,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="998b3941-9ebc-439f-9ebb-79310bd6be77" data-execution_count="37">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb38" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> dense_symmetric_beta_params:</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
@@ -876,7 +889,7 @@ p = 0.37, r = 3.71</code></pre>
 </div>
 <p>If we increase <span class="math inline">\(\alpha\)</span> relative to <span class="math inline">\(\beta &gt; 1\)</span>, we shift this density to the right; and if we increase <span class="math inline">\(\beta\)</span> relative to <span class="math inline">\(\alpha &gt; 1\)</span>, we shift the density toward the left. We say that these are <em>asymmetric</em>.</p>
 <div class="cell" data-tags="[]" data-execution_count="38">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dense_asymmetric_beta_params <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb39" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>dense_asymmetric_beta_params <span class="op">=</span> [</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="dv">3</span>),</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">3</span>, <span class="dv">5</span>)</span>
 <span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -884,7 +897,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:422,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183628499,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="a7435620-a60e-46cc-e3a2-61c5a30c7674" data-execution_count="39">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb40" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> dense_asymmetric_beta_params:</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
@@ -904,7 +917,7 @@ p = 0.37, r = 3.71</code></pre>
 <p>In both cases, we have a bias against values nearer to <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> in proportion to how much greater than one the smaller of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> are.</p>
 <p>When either <span class="math inline">\(\alpha &gt; 1 \geq \beta\)</span> or <span class="math inline">\(\alpha \leq 1 &lt; \beta\)</span>, we get bias toward values nearer to <span class="math inline">\(1\)</span> or <span class="math inline">\(0\)</span>, respectively. We say that these distributions are <em>sparse</em> (in contrast to <em>dense</em>), but like the other beta distributions we’ve seen–besides <span class="math inline">\(\text{Beta}(1, 1)\)</span>–they are unimodal.</p>
 <div class="cell" data-tags="[]" data-execution_count="40">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sparse_unimodal_beta_params <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb41" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>sparse_unimodal_beta_params <span class="op">=</span> [</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">5</span>, <span class="dv">1</span>),</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">5</span>)</span>
 <span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -912,7 +925,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:543,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183629039,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="822b76ff-6d4d-4160-ea23-3ba36ee1cd66" data-execution_count="43">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb42" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> sparse_unimodal_beta_params:</span>
 <span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
@@ -931,7 +944,7 @@ p = 0.37, r = 3.71</code></pre>
 </div>
 <p>When <span class="math inline">\(\alpha, \beta &lt; 1\)</span>, we get a bias toward values near both <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span> with more density shifted toward <span class="math inline">\(1\)</span> if <span class="math inline">\(\alpha\)</span> is larger and more density shifted toward <span class="math inline">\(0\)</span> if <span class="math inline">\(\beta\)</span> is larger. These distributions are sparse and <em>bimodal</em>.</p>
 <div class="cell" data-tags="[]" data-execution_count="44">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sparse_bimodal_beta_params <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb43" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>sparse_bimodal_beta_params <span class="op">=</span> [</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">0.5</span>, <span class="fl">0.5</span>),</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">0.6</span>, <span class="fl">0.4</span>),</span>
 <span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>    (<span class="fl">0.4</span>, <span class="fl">0.6</span>),</span>
@@ -940,7 +953,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:543,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183629039,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="822b76ff-6d4d-4160-ea23-3ba36ee1cd66" data-tags="[]" data-execution_count="45">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb44" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> sparse_bimodal_beta_params:</span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
@@ -964,12 +977,12 @@ p = 0.37, r = 3.71</code></pre>
 <p><span class="math display">\[\mathcal{N}(x; \mu, \sigma^2) = \frac{1}{\sigma\sqrt{2\pi}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)\]</span></p>
 <p>where <span class="math inline">\(\mu\)</span> is referred to as the <em>mean</em> and <span class="math inline">\(\sigma^2\)</span> as the <em>variance</em>.</p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:441,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183631150,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="d1afdba8-c419-43fe-b917-1dd8984fb8c1" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> norm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:441,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183631150,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="d1afdba8-c419-43fe-b917-1dd8984fb8c1" data-execution_count="47">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb46" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>ax.plot(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>], norm(<span class="dv">0</span>, <span class="dv">1</span>).pdf(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>]))</span>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -982,7 +995,7 @@ p = 0.37, r = 3.71</code></pre>
 </div>
 <p>The mean controls the position and the variance controls the width–specifically, the wideness.</p>
 <div class="cell" data-tags="[]" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>normal_params <span class="op">=</span> [</span>
+<div class="sourceCode cell-code" id="cb47" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>normal_params <span class="op">=</span> [</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, <span class="dv">1</span>),</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, <span class="dv">1</span>),</span>
 <span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">0</span>, <span class="dv">2</span>)</span>
@@ -991,7 +1004,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:390,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183631537,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="62540596-0bd5-4594-849c-0f755d492871" data-execution_count="49">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb48" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> a, b <span class="kw">in</span> normal_params:</span>
 <span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    ax.plot(</span>
@@ -1015,7 +1028,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:407,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183631941,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="f043d41d-090c-4f05-9953-d4b3fb992050" data-execution_count="50">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb49" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>ax.plot(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>], norm(<span class="dv">0</span>, <span class="dv">1</span>).cdf(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>]))</span>
 <span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1031,7 +1044,7 @@ p = 0.37, r = 3.71</code></pre>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:399,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183632338,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="8a4c1527-032a-4b94-8c3b-b5f14e30e7b0" data-execution_count="70">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<div class="sourceCode cell-code" id="cb50" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>ax.plot(mgrid[<span class="dv">0</span>:<span class="dv">1</span>:<span class="fl">0.01</span>], beta(<span class="dv">5</span>, <span class="dv">5</span>).cdf(mgrid[<span class="dv">0</span>:<span class="dv">1</span>:<span class="fl">0.01</span>]))</span>
 <span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -1091,7 +1104,7 @@ p = 0.37, r = 3.71</code></pre>
 <p>The mean of a <a href="https://en.wikipedia.org/wiki/Cauchy_distribution">Cauchy-distributed random variable</a> <span class="math inline">\(X \sim \text{Cauchy}(x_0, \gamma)\)</span> is one instance of a random variable where <span class="math inline">\(\mathbb{E}[X]\)</span> is not defined. This fact is not immediately obvious from its PDF.</p>
 <p><span class="math display">\[\text{Cauchy}(x; x_{0},\gamma )={\frac {1}{\pi \gamma \left[1+\left({\frac {x-x_{0}}{\gamma }}\right)^{2}\right]}}\]</span></p>
 <div class="cell" data-executioninfo="{&quot;elapsed&quot;:146,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1663183632482,&quot;user&quot;:{&quot;displayName&quot;:&quot;Aaron Steven White&quot;,&quot;userId&quot;:&quot;06256629009318567325&quot;},&quot;user_tz&quot;:240}" data-outputid="5a7b4eea-20d3-4ab4-bf0d-395a3daafec6">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> cauchy</span>
+<div class="sourceCode cell-code" id="cb51" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> cauchy</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plt.plot(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>], cauchy(<span class="dv">0</span>, <span class="dv">1</span>).pdf(mgrid[<span class="op">-</span><span class="dv">3</span>:<span class="dv">3</span>:<span class="fl">0.01</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1437,6 +1450,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../foundational-concepts-in-probability-and-statistics/index.html" class="pagination-link">
@@ -1453,4 +1468,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>

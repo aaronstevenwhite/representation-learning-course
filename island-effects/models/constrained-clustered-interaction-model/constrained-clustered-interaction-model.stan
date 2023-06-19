@@ -15,7 +15,6 @@ data {
   int<lower=1,upper=N_subj> subj[N_resp];                 // subject who gave response n
   int<lower=1,upper=N_item> item[N_resp];                 // item corresponding to response n
   int<lower=1,upper=N_resp_levels> resp[N_resp];          // likert scale acceptability judgment responses
-
 }
 
 parameters {
@@ -26,15 +25,27 @@ parameters {
   cov_matrix[N_by_item] item_cov;                         // item random effects covariance              
   vector[N_by_subj] by_subj_coefs[N_subj];                // by-subject coefficients (including intercept)
   vector[N_by_item] by_item_coefs[N_item];                // by-item coefficients (including intercept)
-  ordered[N_resp_levels-1] cutpoints;                     // cutpoints
+  vector<lower=0>[N_resp_levels-2] jumps;                 // cutpoint distances for each subject
 }
 
 transformed parameters {
-  real mu[N_resp,N_grammaticality_levels];
+  // compute the cutpoints by taking a cumulative sum
+  vector[N_resp_levels-1] cutpoints;
+
+  for (c in 1:(N_resp_levels-1)) {
+    if (c == 1) {
+      cutpoints[c] = 0.0;
+    } else {
+      cutpoints[c] = cutpoints[c-1] + jumps[c-1];
+    }
+  }
+
+  // compute the acceptability
+  real acc[N_resp,N_grammaticality_levels];
   
   for (n in 1:N_resp) {
     for (g in 1:N_grammaticality_levels) {
-      mu[n,g] = fixed_predictors[n] * fixed_coefs + 
+      acc[n,g] = fixed_predictors[n] * fixed_coefs + 
                 by_subj_predictors[n] * by_subj_coefs[subj[n]] + 
                 by_item_predictors[n] * by_item_coefs[item[n]] +
                 (g-1) * penalty;
@@ -54,8 +65,9 @@ model {
   vector[N_by_item] item_mean;
   item_mean = rep_vector(0.0, N_by_item);
   
-  // sample the cutpoints
-  cutpoints ~ normal(0, 1);
+  // sample the cutpoints distances
+  for (j in 1:(N_resp_levels-2))
+    jumps[j] ~ gamma(2,1);
   
   // sample the subject intercepts
   for (s in 1:N_subj)
@@ -81,7 +93,9 @@ model {
   // assuming a particular grammaticality level 
   for (n in 1:N_resp) {
     for (g in 1:N_grammaticality_levels) {
-      theta[interactions[n],g] += ordered_logistic_lpmf(resp[n] | mu[n,g], cutpoints);
+      theta[interactions[n],g] += ordered_logistic_lpmf(
+        resp[n] | acc[n,g], cutpoints
+      );
     }
   }
   
@@ -92,46 +106,7 @@ model {
   }
 }
 
-generated quantities {
-  //real mu[N_resp,N_grammaticality_levels];
-  
-  //for (n in 1:N_resp) {
-  //  for (g in 1:N_grammaticality_levels) {
-  //    mu[n,g] = fixed_predictors[n] * fixed_coefs +
-  //              (g-1) * penalty;
-      
-  //    // integrate subjects out
-  //    for (s in 1:N_subj) {
-  //      mu[n,g] += (by_subj_predictors[n] * by_subj_coefs[s]) / N_subj; 
-  //    }
-      
-  //    // integrate items out
-  //    for (i in 1:N_item) {
-  //      mu[n,g] += (by_item_predictors[n] * by_item_coefs[i]) / N_item;
-  //    }
-  //  }
-  //}
-
-  // declare log-likelihood of responses corresponding to a particular interaction
-  // assuming a particular grammaticality level
-  real theta[N_interactions,N_grammaticality_levels];
-  
-  // initialize log-likelihood of responses corresponding to a particular interaction
-  // to the log-prior on the membership probabilities
-  for (i in 1:N_interactions) {
-    for (g in 1:N_grammaticality_levels) {
-      theta[i,g] = log(gamma[g]);
-    }
-  }
-  
-  // add the log-likelihood of each response corresponding to a particular interaction
-  // assuming a particular grammaticality level 
-  for (n in 1:N_resp) {
-    for (g in 1:N_grammaticality_levels) {
-      theta[interactions[n],g] += ordered_logistic_lpmf(resp[n] | mu[n,g], cutpoints);
-    }
-  }
-  
+generated quantities {  
   // declare log-likelihood of all responses corresponding to a particular interaction
   // by summing over the likelihood assuming a particular grammaticality level
   real log_lik_grouped[N_interactions];
@@ -163,11 +138,11 @@ generated quantities {
   // grammaticality level by the membership probability of that level 
   // for the interaction corresponding to the data point.
   for (n in 1:N_resp) {
-    real log_like_by_level[N_grammaticality_levels];
+    real log_lik_by_level[N_grammaticality_levels];
     for (g in 1:N_grammaticality_levels) {
-      log_like_by_level[g] = log_membership[interactions[n],g] + 
-                             ordered_logistic_lpmf(resp[n] | mu[n,g], cutpoints);
+      log_lik_by_level[g] = log_membership[interactions[n],g] + 
+                            ordered_logistic_lpmf(resp[n] | acc[n,g], cutpoints);
     }
-    log_lik[n] = log_sum_exp(log_like_by_level);
+    log_lik[n] = log_sum_exp(log_lik_by_level);
   }
 }

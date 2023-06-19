@@ -7,36 +7,38 @@ data {
 }
 
 parameters {
-  real mu;                                       // the grand average
-  real<lower=0> subj_std;                        // the standard deviation of the first cutpoint
-  real<lower=0> subj_alpha;                      // the alpha parameter for the jump distribution
-  real<lower=0> subj_beta;                       // the beta parameter for the jump distribution
-  ordered[N_resp_levels-1] cutpoints[N_subj];    // cutpoints for each subject
+  real acc_mean;                                 // mean acceptability
+  real<lower=0> subj_intercept_std;              // subject random intercept standard deviation
+  vector[N_subj] subj_intercept;                 // subject random intercepts
+  vector<lower=0>[N_resp_levels-2] jumps;        // the cutpoint distances
 }
 
 transformed parameters {
-  // compute the jumps by taking a cumulative difference
-  matrix[N_subj,N_resp_levels-2] jumps;
+  // compute the cutpoints by taking a cumulative sum
+  vector[N_resp_levels-1] cutpoints;
 
-  for (s in 1:N_subj) {
-    for (c in 2:(N_resp_levels-1)) {
-      jumps[s,c-1] = cutpoints[s,c] - cutpoints[s,c-1];
+  for (c in 1:(N_resp_levels-1)) {
+    if (c == 1) {
+      cutpoints[c] = 0.0;
+    } else {
+      cutpoints[c] = cutpoints[c-1] + jumps[c-1];
     }
   }
-  
 }
 
-model {  
-  // sample the first cutpoints
-  cutpoints[,1] ~ normal(0, subj_std);
+model {
+  // sample the subject intercepts
+  subj_intercept ~ normal(0, subj_intercept_std);
 
   // sample the cutpoints distances
   for (j in 1:(N_resp_levels-2))
-    jumps[,j] ~ gamma(subj_alpha,subj_beta);
-  
+    jumps[j] ~ gamma(2,1);
+
   // sample the responses
   for (n in 1:N_resp)
-    resp[n] ~ ordered_logistic(mu, cutpoints[subj[n]]);
+    resp[n] ~ ordered_logistic(
+      acc_mean, cutpoints + subj_intercept[subj[n]]
+    );
 }
 
 generated quantities {
@@ -44,17 +46,7 @@ generated quantities {
   real log_lik[N_resp];
   
   for (n in 1:N_resp)
-    log_lik[n] = ordered_logistic_lpmf(resp[n] | mu, cutpoints[subj[n]]);
-
-  // compute the mean for each cutpoint across subjects
-  vector[N_resp_levels-1] cutpoints_mean; 
-
-  for (c in 1:(N_resp_levels-1))
-    cutpoints_mean[c] = mean(cutpoints[,c]);
-
-  // compute the mean for each cutpoint distance across subjects
-  vector[N_resp_levels-2] jumps_mean; 
-
-  for (j in 1:(N_resp_levels-2))
-    jumps_mean[j] = mean(jumps[,j]);
+    log_lik[n] = ordered_logistic_lpmf(
+      resp[n] | acc_mean, cutpoints + subj_intercept[subj[n]]
+    );
 }

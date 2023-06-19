@@ -20,6 +20,7 @@ To build this site, you will need to [install Quarto](https://quarto.org/docs/ge
 
 ```bash
 quarto add quarto-ext/include-code-files
+quarto add shafayetShafee/line-highlight
 ```
 
 This extension is mainly used for including external [STAN](https://mc-stan.org/) files.
