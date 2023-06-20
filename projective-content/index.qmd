@@ -1,0 +1,16 @@
+---
+title: Overview
+bibliography: ../references.bib
+---
+
+::: {.callout-tip}
+## Reading
+
+**Data:** @degen_prior_2021 on how prior beliefs modulate projectivity inferences. We will use the data collected for that paper, which can be found [here](https://github.com/judith-tonhauser/projective-probability), in this module. 
+
+**Theory:** @degen_factive_2022 on whether there is a discrete category of factive predicates. As shown in @kane_intensional_2022, the main conceit of the paper–that there is no such discrete category–does not hold up under empirical scrutiny. We will rather be concerned with their discussion–broadly, but most specifically in Section 4–about the sources of gradience. 
+:::
+
+Like in the first module of the course, in this second module of the course, we are going to focus on minimally extending standard statistical models used in analyzing inference judgments in order to probe how semantic semantic representations and/or reasoning processes interact with world knowledge (or *prior beliefs*) in driving inference judgments. We're going to consider two subtly distinct questions: (i) whether there is evidence for discrete categories that determine certain aspects of predicates' inferential affordances or whether this knowledge is fundamentally continuous; and (ii) how, for aspects of lexical knowledge that are fundamentally continuous, that knowledge is integrated with world knowledge. 
+
+As in Module 1, the basic recipe will be (i) to define two or more (families of) models; (ii) to fit both models to the data from some acceptability judgment data–in this case, to the data collected by @degen_prior_2021; and (iii) to compare how well the two models fit the data, weighed against some measure of how parsimonious (or conversely, complex) each model is.

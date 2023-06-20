@@ -1,0 +1,2207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.321">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Representation Learning for Syntactic and Semantic Theory - Model definition</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../projective-content/model-fitting-and-comparison.html" rel="next">
+<link href="../projective-content/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projective-content/index.html">Module 2: Projective Content</a></li><li class="breadcrumb-item"><a href="../projective-content/model-definition.html">Model definition</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Representation Learning for Syntactic and Semantic Theory</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../motivations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../methodological-approach.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methodological Approach</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-structure-and-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Structure and Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Foundational Concepts in Probability and Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is a probability?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random variables and probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Module 1: Island Effects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Module 2: Projective Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Selection</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#projection-data" id="toc-projection-data" class="nav-link active" data-scroll-target="#projection-data">Projection Data</a>
+  <ul class="collapse">
+  <li><a href="#no-fixed-priors" id="toc-no-fixed-priors" class="nav-link" data-scroll-target="#no-fixed-priors">No fixed priors</a></li>
+  <li><a href="#fixed-context-priors" id="toc-fixed-context-priors" class="nav-link" data-scroll-target="#fixed-context-priors">Fixed context priors</a></li>
+  <li><a href="#fixed-verb-priors" id="toc-fixed-verb-priors" class="nav-link" data-scroll-target="#fixed-verb-priors">Fixed verb priors</a></li>
+  </ul></li>
+  <li><a href="#bleached" id="toc-bleached" class="nav-link" data-scroll-target="#bleached">Bleached</a></li>
+  <li><a href="#templatic" id="toc-templatic" class="nav-link" data-scroll-target="#templatic">Templatic</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Model definition</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!git clone https://github.com/judith-tonhauser/projective-probability.git data/projective-probability/</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">"data/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_norming_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data[<span class="op">~</span>data.item.isin([<span class="st">"F1"</span>, <span class="st">"F2"</span>])]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data.drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_norming <span class="op">=</span> load_norming_data(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/1-prior/data/cd.csv"</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data_norming</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">workerid</th>
+<th data-quarto-table-cell-role="th">rt</th>
+<th data-quarto-table-cell-role="th">prompt</th>
+<th data-quarto-table-cell-role="th">itemType</th>
+<th data-quarto-table-cell-role="th">itemNr</th>
+<th data-quarto-table-cell-role="th">list</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">response</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">american</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">Answer.time_in_minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0</td>
+<td>8398</td>
+<td>How likely is it that Frank got a cat?</td>
+<td>H</td>
+<td>12</td>
+<td>1</td>
+<td>12H</td>
+<td>0.83</td>
+<td>Frank has always wanted a pet.</td>
+<td>2</td>
+<td>Male</td>
+<td>0</td>
+<td>29</td>
+<td>english</td>
+<td>2.08630</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0</td>
+<td>3505</td>
+<td>How likely is it that Isabella ate a steak on ...</td>
+<td>L</td>
+<td>7</td>
+<td>1</td>
+<td>7L</td>
+<td>0.14</td>
+<td>Isabella is a vegetarian.</td>
+<td>3</td>
+<td>Male</td>
+<td>0</td>
+<td>29</td>
+<td>english</td>
+<td>2.08630</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>3526</td>
+<td>How likely is it that Zoe calculated the tip?</td>
+<td>H</td>
+<td>10</td>
+<td>1</td>
+<td>10H</td>
+<td>0.93</td>
+<td>Zoe is a math major.</td>
+<td>4</td>
+<td>Male</td>
+<td>0</td>
+<td>29</td>
+<td>english</td>
+<td>2.08630</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0</td>
+<td>2414</td>
+<td>How likely is it that Emma studied on Saturday...</td>
+<td>L</td>
+<td>3</td>
+<td>1</td>
+<td>3L</td>
+<td>0.64</td>
+<td>Emma is in first grade.</td>
+<td>6</td>
+<td>Male</td>
+<td>0</td>
+<td>29</td>
+<td>english</td>
+<td>2.08630</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0</td>
+<td>2540</td>
+<td>How likely is it that Jackson ran 10 miles?</td>
+<td>L</td>
+<td>13</td>
+<td>1</td>
+<td>13L</td>
+<td>0.25</td>
+<td>Jackson is obese.</td>
+<td>7</td>
+<td>Male</td>
+<td>0</td>
+<td>29</td>
+<td>english</td>
+<td>2.08630</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2086</td>
+<td>94</td>
+<td>2881</td>
+<td>How likely is it that Emma studied on Saturday...</td>
+<td>H</td>
+<td>3</td>
+<td>2</td>
+<td>3H</td>
+<td>0.97</td>
+<td>Emma is in law school.</td>
+<td>19</td>
+<td>Female</td>
+<td>0</td>
+<td>39</td>
+<td>english</td>
+<td>1.78135</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2087</td>
+<td>94</td>
+<td>2744</td>
+<td>How likely is it that Olivia sleeps until noon?</td>
+<td>L</td>
+<td>4</td>
+<td>2</td>
+<td>4L</td>
+<td>0.05</td>
+<td>Olivia has two small children.</td>
+<td>20</td>
+<td>Female</td>
+<td>0</td>
+<td>39</td>
+<td>english</td>
+<td>1.78135</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2088</td>
+<td>94</td>
+<td>2403</td>
+<td>How likely is it that Jon walks to work?</td>
+<td>H</td>
+<td>19</td>
+<td>2</td>
+<td>19H</td>
+<td>0.94</td>
+<td>Jon lives 2 blocks away from work.</td>
+<td>21</td>
+<td>Female</td>
+<td>0</td>
+<td>39</td>
+<td>english</td>
+<td>1.78135</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2089</td>
+<td>94</td>
+<td>2366</td>
+<td>How likely is it that Julian dances salsa?</td>
+<td>L</td>
+<td>18</td>
+<td>2</td>
+<td>18L</td>
+<td>0.18</td>
+<td>Julian is German.</td>
+<td>22</td>
+<td>Female</td>
+<td>0</td>
+<td>39</td>
+<td>english</td>
+<td>1.78135</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2090</td>
+<td>94</td>
+<td>3337</td>
+<td>How likely is it that Jayden rented a car?</td>
+<td>L</td>
+<td>14</td>
+<td>2</td>
+<td>14L</td>
+<td>0.00</td>
+<td>Jayden doesn&amp;quotechart have a driver&amp;quotecha...</td>
+<td>23</td>
+<td>Female</td>
+<td>0</td>
+<td>39</td>
+<td>english</td>
+<td>1.78135</td>
+</tr>
+</tbody>
+</table>
+
+<p>1500 rows × 15 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_norming_sub <span class="op">=</span> data_norming.query(<span class="st">'item.isin(["10H", "10L"])'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="29">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> histplot</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data_norming_sub, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"fact"</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"Zoe is 5 years old."</span>, <span class="st">"Zoe is a math major."</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> p.set_title(<span class="st">"How likely is it that Zoe calculated the tip?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="16">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> boxplot</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(data_norming, y<span class="op">=</span><span class="st">"prompt"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext rpy2.ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>data</code> block</p>
+<div class="sourceCode" id="cb8" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                           <span class="co">// number of responses</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_context;                        <span class="co">// number of contexts</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_subj;                           <span class="co">// number of subjects</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_context&gt; context[N_resp];  <span class="co">// context corresponding to response n</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];        <span class="co">// subject corresponding to response n</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt;[N_resp] resp;          <span class="co">// bounded slider response     </span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>parameters</code> block</p>
+<div class="sourceCode" id="cb9" data-startfrom="21" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 20;"><span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;           <span class="co">// the context random intercept standard deviation</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept;           <span class="co">// the context random intercepts</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_std;              <span class="co">// the subject random intercept standard deviation</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept;                 <span class="co">// the subject random intercepts</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>transformed parameters</code> block</p>
+<div class="sourceCode" id="cb10" data-startfrom="29" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 28;"><span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> mu[N_resp];</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    mu[n] = inv_logit(context_intercept[context[n]] + subj_intercept[subj[n]]);</span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>model</code> block</p>
+<div class="sourceCode" id="cb11" data-startfrom="35" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 34;"><span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  context_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  subj_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>  context_intercept ~ normal(<span class="dv">0</span>, context_intercept_std);</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>  subj_intercept ~ normal(<span class="dv">0</span>, subj_intercept_std);</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    resp[n] ~ normal(mu[n], sigma) <span class="kw">T</span>[<span class="dv">0</span>,<span class="dv">1</span>];</span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>generated quantities</code> block</p>
+<div class="sourceCode" id="cb12" data-startfrom="50" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 49;"><span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob;</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> <span class="dv">1</span>:N_context) {</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    context_prob[c] = inv_logit(</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>      context_intercept[c]</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] resp_pp_rep;</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp){</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    resp_pp_rep[n] = normal_lub_rng(mu[n], sigma, <span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="projection-data" class="level1">
+<h1>Projection Data</h1>
+<div class="cell" data-tags="[]" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_projection_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>).drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data[data.trigger_class <span class="op">!=</span> <span class="st">"control"</span>]</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"itemType"</span>] <span class="op">=</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"item"</span>] <span class="op">=</span> data.contentNr.astype(<span class="bu">str</span>) <span class="op">+</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_projection <span class="op">=</span> load_projection_data(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/3-projectivity/data/cd.csv"</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>data_projection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">workerid</th>
+<th data-quarto-table-cell-role="th">rt</th>
+<th data-quarto-table-cell-role="th">subjectGender</th>
+<th data-quarto-table-cell-role="th">speakerGender</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">verb</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">fact_type</th>
+<th data-quarto-table-cell-role="th">contentNr</th>
+<th data-quarto-table-cell-role="th">trigger_class</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
+<th data-quarto-table-cell-role="th">age</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">assess</th>
+<th data-quarto-table-cell-role="th">american</th>
+<th data-quarto-table-cell-role="th">gender</th>
+<th data-quarto-table-cell-role="th">Answer.time_in_minutes</th>
+<th data-quarto-table-cell-role="th">assignmentid</th>
+<th data-quarto-table-cell-role="th">itemType</th>
+<th data-quarto-table-cell-role="th">item</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0</td>
+<td>3495</td>
+<td>M</td>
+<td>M</td>
+<td>Emily bought a car yesterday</td>
+<td>establish</td>
+<td>Emily has been saving for a year</td>
+<td>factH</td>
+<td>8</td>
+<td>NonProj</td>
+<td>...</td>
+<td>4</td>
+<td>38</td>
+<td>english</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>2.0626</td>
+<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
+<td>H</td>
+<td>8H</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>0</td>
+<td>3866</td>
+<td>F</td>
+<td>M</td>
+<td>Frank got a cat</td>
+<td>prove</td>
+<td>Frank has always wanted a pet</td>
+<td>factH</td>
+<td>12</td>
+<td>C</td>
+<td>...</td>
+<td>5</td>
+<td>38</td>
+<td>english</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>2.0626</td>
+<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
+<td>H</td>
+<td>12H</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>0</td>
+<td>2983</td>
+<td>F</td>
+<td>F</td>
+<td>Charley speaks Spanish</td>
+<td>reveal</td>
+<td>Charley lives in Mexico</td>
+<td>factH</td>
+<td>20</td>
+<td>NonProj</td>
+<td>...</td>
+<td>6</td>
+<td>38</td>
+<td>english</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>2.0626</td>
+<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
+<td>H</td>
+<td>20H</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>0</td>
+<td>4669</td>
+<td>F</td>
+<td>F</td>
+<td>Jon walks to work</td>
+<td>confirm</td>
+<td>Jon lives 10 miles away from work</td>
+<td>factL</td>
+<td>19</td>
+<td>C</td>
+<td>...</td>
+<td>7</td>
+<td>38</td>
+<td>english</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>2.0626</td>
+<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
+<td>L</td>
+<td>19L</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>0</td>
+<td>3847</td>
+<td>M</td>
+<td>F</td>
+<td>Mia drank 2 cocktails last night</td>
+<td>acknowledge</td>
+<td>Mia is a college student</td>
+<td>factH</td>
+<td>6</td>
+<td>C</td>
+<td>...</td>
+<td>8</td>
+<td>38</td>
+<td>english</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>2.0626</td>
+<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
+<td>H</td>
+<td>6H</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7792</td>
+<td>299</td>
+<td>11176</td>
+<td>F</td>
+<td>F</td>
+<td>Jackson ran 10 miles</td>
+<td>see</td>
+<td>Jackson is obese</td>
+<td>factL</td>
+<td>13</td>
+<td>NonProj</td>
+<td>...</td>
+<td>19</td>
+<td>44</td>
+<td>English</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>8.1216</td>
+<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
+<td>L</td>
+<td>13L</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7795</td>
+<td>299</td>
+<td>12196</td>
+<td>F</td>
+<td>F</td>
+<td>Josh learned to ride a bike yesterday</td>
+<td>reveal</td>
+<td>Josh is a 75-year old man</td>
+<td>factL</td>
+<td>16</td>
+<td>NonProj</td>
+<td>...</td>
+<td>22</td>
+<td>44</td>
+<td>English</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>8.1216</td>
+<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
+<td>L</td>
+<td>16L</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7797</td>
+<td>299</td>
+<td>5205</td>
+<td>M</td>
+<td>F</td>
+<td>Isabella ate a steak on Sunday</td>
+<td>confirm</td>
+<td>Isabella is from Argentina</td>
+<td>factH</td>
+<td>7</td>
+<td>C</td>
+<td>...</td>
+<td>24</td>
+<td>44</td>
+<td>English</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>8.1216</td>
+<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
+<td>H</td>
+<td>7H</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7799</td>
+<td>299</td>
+<td>10590</td>
+<td>M</td>
+<td>M</td>
+<td>Grace visited her sister</td>
+<td>annoyed</td>
+<td>Grace loves her sister</td>
+<td>factH</td>
+<td>9</td>
+<td>NonProj</td>
+<td>...</td>
+<td>26</td>
+<td>44</td>
+<td>English</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>8.1216</td>
+<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
+<td>H</td>
+<td>9H</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7800</td>
+<td>299</td>
+<td>11976</td>
+<td>F</td>
+<td>M</td>
+<td>Frank got a cat</td>
+<td>admit</td>
+<td>Frank has always wanted a pet</td>
+<td>factH</td>
+<td>12</td>
+<td>C</td>
+<td>...</td>
+<td>27</td>
+<td>44</td>
+<td>English</td>
+<td>Yes</td>
+<td>m</td>
+<td>m</td>
+<td>8.1216</td>
+<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
+<td>H</td>
+<td>12H</td>
+</tr>
+</tbody>
+</table>
+
+<p>5320 rows × 21 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_projection_pretend <span class="op">=</span> data_projection.query(<span class="st">"verb == 'pretend'"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data_projection_pretend[[<span class="st">"verb"</span>, <span class="st">"itemType"</span>, <span class="st">"content"</span>, <span class="st">"fact"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">verb</th>
+<th data-quarto-table-cell-role="th">itemType</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">21</td>
+<td>pretend</td>
+<td>L</td>
+<td>Owen shoveled snow last winter</td>
+<td>Owen lives in New Orleans</td>
+<td>0.22</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>pretend</td>
+<td>L</td>
+<td>Jackson ran 10 miles</td>
+<td>Jackson is obese</td>
+<td>0.05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">60</td>
+<td>pretend</td>
+<td>H</td>
+<td>Danny ate the last cupcake</td>
+<td>Danny loves cake</td>
+<td>0.03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>pretend</td>
+<td>H</td>
+<td>Josh learned to ride a bike yesterday</td>
+<td>Josh is a 5-year old boy</td>
+<td>0.55</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">118</td>
+<td>pretend</td>
+<td>H</td>
+<td>Tony had a drink last night</td>
+<td>Tony really likes to party with his friends</td>
+<td>0.43</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="38">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data_projection_pretend, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, </span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>]</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_projection_know <span class="op">=</span> data_projection.query(<span class="st">"verb == 'know'"</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data_projection_know[[<span class="st">"verb"</span>, <span class="st">"itemType"</span>, <span class="st">"content"</span>, <span class="st">"fact"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">verb</th>
+<th data-quarto-table-cell-role="th">itemType</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">response</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">15</td>
+<td>know</td>
+<td>L</td>
+<td>Danny ate the last cupcake</td>
+<td>Danny is a diabetic</td>
+<td>0.97</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>know</td>
+<td>H</td>
+<td>Owen shoveled snow last winter</td>
+<td>Owen lives in Chicago</td>
+<td>0.12</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">55</td>
+<td>know</td>
+<td>H</td>
+<td>Sophia got a tattoo</td>
+<td>Sophia is a hipster</td>
+<td>0.04</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>know</td>
+<td>H</td>
+<td>Jackson ran 10 miles</td>
+<td>Jackson is training for a marathon</td>
+<td>0.74</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">121</td>
+<td>know</td>
+<td>L</td>
+<td>Frank got a cat</td>
+<td>Frank is allergic to cats</td>
+<td>0.61</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="43">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data_projection_know, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>]</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="34">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(data_projection, y<span class="op">=</span><span class="st">"verb"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p><span class="math display">\[\begin{align*}
+\rho^\text{(verb)}_v &amp;\sim \mathcal{N}(0, \sigma_\text{verb})\\
+\rho^\text{(context)}_c &amp;\sim \mathcal{N}\left(\mu^\text{(context)}_c, \sigma^\text{(context)}_c\right)\\
+\rho^\text{(subj-verb)}_s &amp;\sim \mathcal{N}(0, \sigma_\text{subj-verb})\\
+\rho^\text{(subj-context)}_s &amp;\sim \mathcal{N}(0, \sigma_\text{subj-context})\\
+\end{align*}\]</span></p>
+<p>where each of the standard deviations are distributed exponential.</p>
+<p><span class="math display">\[\begin{align*}
+\sigma_\text{verb} &amp;\sim \text{Exponential}(1)\\
+\sigma_\text{subj-verb} &amp;\sim \text{Exponential}(1)\\
+\sigma_\text{subj-context} &amp;\sim \text{Exponential}(1)\\
+\end{align*}\]</span></p>
+<p><code>data</code> block</p>
+<div class="sourceCode" id="cb20" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                                <span class="co">// number of responses</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_verb;                                <span class="co">// number of verbs</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_context;                             <span class="co">// number of contexts</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_subj;                                <span class="co">// number of subjects</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_mean;                           <span class="co">// the verb means inferred from a previous model fit</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_std;                            <span class="co">// the verb standard deviations inferred from a previous model fit</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_mean;                     <span class="co">// the context means inferred from the norming data</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_std;                      <span class="co">// the context standard deviations inferred from the norming data</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_verb&gt; verb[N_resp];             <span class="co">// verb corresponding to response n</span></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_context&gt; context[N_resp];       <span class="co">// context corresponding to response n</span></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];             <span class="co">// subject corresponding to response n</span></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt;[N_resp] resp;               <span class="co">// bounded slider response   </span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>parameters_and_model_block_files <span class="op">=</span> {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"no_priors_fixed"</span>: <span class="st">"parameters-and-model-block.stan"</span>,</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"verb_priors_fixed"</span>: <span class="st">"parameters-and-model-block-verb-prior-fixed.stan"</span>,</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"context_priors_fixed"</span>: <span class="st">"parameters-and-model-block-context-prior-fixed.stan"</span>,</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"both_priors_fixed"</span>: <span class="st">"parameters-and-model-block-context-and-verb-priors-fixed.stan"</span>,</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="no-fixed-priors" class="level3">
+<h3 class="anchored" data-anchor-id="no-fixed-priors">No fixed priors</h3>
+<p><code>parameters</code> block</p>
+<div class="sourceCode" id="cb23" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; verb_intercept_std;                   <span class="co">// the verb random intercept standard deviation</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;                <span class="co">// the context random intercept standard deviation</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>transformed parameters</code> block</p>
+<div class="sourceCode" id="cb24" data-startfrom="13" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 12;"><span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_intercept_std * verb_intercept_z;</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_intercept_std * context_intercept_z;</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>model</code> block</p>
+<div class="sourceCode" id="cb25" data-startfrom="42" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 41;"><span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
+<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>  verb_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
+<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
+<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>  context_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
+<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
+<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
+<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
+<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
+<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
+<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fixed-context-priors" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-context-priors">Fixed context priors</h3>
+<p><code>parameters</code> block</p>
+<div class="sourceCode" id="cb26" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; verb_intercept_std;                   <span class="co">// the verb random intercept standard deviation</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>transformed parameters</code> block</p>
+<div class="sourceCode" id="cb27" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_intercept_std * verb_intercept_z;</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_std .* context_intercept_z + context_mean;</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>model</code> block</p>
+<div class="sourceCode" id="cb28" data-startfrom="41" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
+<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>  verb_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
+<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
+<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
+<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
+<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
+<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
+<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
+<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
+<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="fixed-verb-priors" class="level3">
+<h3 class="anchored" data-anchor-id="fixed-verb-priors">Fixed verb priors</h3>
+<p><code>parameters</code> block</p>
+<div class="sourceCode" id="cb29" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;                <span class="co">// the context random intercept standard deviation</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>transformed parameters</code> block</p>
+<div class="sourceCode" id="cb30" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_std .* verb_intercept_z + verb_mean;</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_intercept_std * context_intercept_z;</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
+<span id="cb30-31"><a href="#cb30-31" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb30-32"><a href="#cb30-32" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
+<span id="cb30-33"><a href="#cb30-33" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
+<span id="cb30-34"><a href="#cb30-34" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb30-35"><a href="#cb30-35" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
+<span id="cb30-36"><a href="#cb30-36" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
+<span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>model</code> block</p>
+<div class="sourceCode" id="cb31" data-startfrom="41" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
+<span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
+<span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-45"><a href="#cb31-45" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
+<span id="cb31-46"><a href="#cb31-46" aria-hidden="true" tabindex="-1"></a>  context_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb31-47"><a href="#cb31-47" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
+<span id="cb31-48"><a href="#cb31-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-49"><a href="#cb31-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
+<span id="cb31-50"><a href="#cb31-50" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb31-51"><a href="#cb31-51" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
+<span id="cb31-52"><a href="#cb31-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-53"><a href="#cb31-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
+<span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb31-56"><a href="#cb31-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
+<span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
+<span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>generated quantities</code> block</p>
+<div class="sourceCode" id="cb32" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_prob = inv_logit(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    verb_intercept</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  );</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob = inv_logit(</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    context_intercept</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  );</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="bleached" class="level1">
+<h1>Bleached</h1>
+<div class="cell" data-tags="[]" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data_projection_bleached <span class="op">=</span> load_projection_data(</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability-replication/bleached.csv"</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>data_projection_bleached[<span class="st">"workerid"</span>] <span class="op">=</span> data_projection_bleached.participant</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>data_projection_bleached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
+<th data-quarto-table-cell-role="th">verb</th>
+<th data-quarto-table-cell-role="th">contentNr</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">speakerGender</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">fact_type</th>
+<th data-quarto-table-cell-role="th">utterance</th>
+<th data-quarto-table-cell-role="th">question</th>
+<th data-quarto-table-cell-role="th">subjectGender</th>
+<th data-quarto-table-cell-role="th">speakerName</th>
+<th data-quarto-table-cell-role="th">subjectName</th>
+<th data-quarto-table-cell-role="th">trigger_class</th>
+<th data-quarto-table-cell-role="th">response</th>
+<th data-quarto-table-cell-role="th">rt</th>
+<th data-quarto-table-cell-role="th">participant</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">workerid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2</td>
+<td>inform_Sam</td>
+<td>11</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Danny is a diabetic</td>
+<td>factL</td>
+<td>Did Amanda inform Sam that a particular thing ...</td>
+<td>11</td>
+<td>F</td>
+<td>Donna</td>
+<td>Shirley</td>
+<td>C</td>
+<td>0.00</td>
+<td>15699</td>
+<td>1</td>
+<td>11L</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>5</td>
+<td>confirm</td>
+<td>13</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Jackson is training for a marathon</td>
+<td>factH</td>
+<td>Did Laura confirm that a particular thing happ...</td>
+<td>13</td>
+<td>F</td>
+<td>Nancy</td>
+<td>Janet</td>
+<td>C</td>
+<td>0.00</td>
+<td>6903</td>
+<td>1</td>
+<td>13H</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>6</td>
+<td>be_right_that</td>
+<td>20</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Charley lives in Mexico</td>
+<td>factH</td>
+<td>Is Anna right that a particular thing happened?</td>
+<td>20</td>
+<td>F</td>
+<td>Carol</td>
+<td>Nicole</td>
+<td>C</td>
+<td>0.00</td>
+<td>4640</td>
+<td>1</td>
+<td>20H</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>7</td>
+<td>prove</td>
+<td>3</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Emma is in law school</td>
+<td>factH</td>
+<td>Did Justin prove that a particular thing happe...</td>
+<td>3</td>
+<td>M</td>
+<td>Lisa</td>
+<td>Brandon</td>
+<td>C</td>
+<td>0.00</td>
+<td>5977</td>
+<td>1</td>
+<td>3H</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>8</td>
+<td>admit</td>
+<td>2</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Josie doesn't have a passport</td>
+<td>factL</td>
+<td>Did Scott admit that a particular thing happened?</td>
+<td>2</td>
+<td>M</td>
+<td>Jennifer</td>
+<td>Nicholas</td>
+<td>C</td>
+<td>0.49</td>
+<td>7887</td>
+<td>1</td>
+<td>2L</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">21</td>
+<td>23</td>
+<td>discover</td>
+<td>1</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Mary is taking a prenatal yoga class</td>
+<td>factH</td>
+<td>Did Patrick discover that a particular thing h...</td>
+<td>1</td>
+<td>M</td>
+<td>Carol</td>
+<td>Gregory</td>
+<td>NonProj</td>
+<td>0.82</td>
+<td>2665</td>
+<td>50</td>
+<td>1H</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>24</td>
+<td>suggest</td>
+<td>19</td>
+<td>that thing happened</td>
+<td>M</td>
+<td>Jon lives 2 blocks away from work</td>
+<td>factH</td>
+<td>Did Ruth suggest that a particular thing happe...</td>
+<td>19</td>
+<td>F</td>
+<td>Robert</td>
+<td>Anna</td>
+<td>C</td>
+<td>0.73</td>
+<td>2619</td>
+<td>50</td>
+<td>19H</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23</td>
+<td>25</td>
+<td>confirm</td>
+<td>9</td>
+<td>that thing happened</td>
+<td>M</td>
+<td>Grace loves her sister</td>
+<td>factH</td>
+<td>Did Andrew confirm that a particular thing hap...</td>
+<td>9</td>
+<td>M</td>
+<td>James</td>
+<td>Tyler</td>
+<td>C</td>
+<td>0.68</td>
+<td>1120</td>
+<td>50</td>
+<td>9H</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>26</td>
+<td>hear</td>
+<td>11</td>
+<td>that thing happened</td>
+<td>F</td>
+<td>Danny is a diabetic</td>
+<td>factL</td>
+<td>Did Amanda hear that a particular thing happened?</td>
+<td>11</td>
+<td>F</td>
+<td>Jennifer</td>
+<td>Diane</td>
+<td>C</td>
+<td>0.70</td>
+<td>1824</td>
+<td>50</td>
+<td>11L</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25</td>
+<td>27</td>
+<td>think</td>
+<td>10</td>
+<td>that thing happened</td>
+<td>M</td>
+<td>Zoe is 5 years old</td>
+<td>factL</td>
+<td>Does Tim think that a particular thing happened?</td>
+<td>10</td>
+<td>M</td>
+<td>Richard</td>
+<td>Jacob</td>
+<td>NonProj</td>
+<td>0.79</td>
+<td>1424</td>
+<td>50</td>
+<td>10L</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+<p>1000 rows × 18 columns</p>
+</div>
+</div>
+</div>
+</section>
+<section id="templatic" class="level1">
+<h1>Templatic</h1>
+<div class="cell" data-tags="[]" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data_projection_templatic <span class="op">=</span> load_projection_data(</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability-replication/templatic.csv"</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>data_projection_templatic[<span class="st">"workerid"</span>] <span class="op">=</span> data_projection_templatic.participant</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>data_projection_templatic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="79">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
+<th data-quarto-table-cell-role="th">verb</th>
+<th data-quarto-table-cell-role="th">contentNr</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">speakerGender</th>
+<th data-quarto-table-cell-role="th">fact</th>
+<th data-quarto-table-cell-role="th">fact_type</th>
+<th data-quarto-table-cell-role="th">utterance</th>
+<th data-quarto-table-cell-role="th">question</th>
+<th data-quarto-table-cell-role="th">subjectGender</th>
+<th data-quarto-table-cell-role="th">speakerName</th>
+<th data-quarto-table-cell-role="th">subjectName</th>
+<th data-quarto-table-cell-role="th">trigger_class</th>
+<th data-quarto-table-cell-role="th">response</th>
+<th data-quarto-table-cell-role="th">rt</th>
+<th data-quarto-table-cell-role="th">participant</th>
+<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">workerid</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>2</td>
+<td>prove</td>
+<td>11</td>
+<td>X happened</td>
+<td>M</td>
+<td>Danny loves cake</td>
+<td>factH</td>
+<td>Did Amanda prove that X happened?</td>
+<td>11</td>
+<td>F</td>
+<td>William</td>
+<td>Nicole</td>
+<td>C</td>
+<td>0.58</td>
+<td>2892</td>
+<td>1</td>
+<td>11H</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3</td>
+<td>annoyed</td>
+<td>7</td>
+<td>X happened</td>
+<td>F</td>
+<td>Isabella is a vegetarian</td>
+<td>factL</td>
+<td>Is Kevin annoyed that X happened?</td>
+<td>7</td>
+<td>M</td>
+<td>Margaret</td>
+<td>Jeffrey</td>
+<td>NonProj</td>
+<td>0.47</td>
+<td>1876</td>
+<td>1</td>
+<td>7L</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4</td>
+<td>discover</td>
+<td>14</td>
+<td>X happened</td>
+<td>F</td>
+<td>Jayden's car is in the shop</td>
+<td>factH</td>
+<td>Did Stephanie discover that X happened?</td>
+<td>14</td>
+<td>F</td>
+<td>Karen</td>
+<td>Amanda</td>
+<td>NonProj</td>
+<td>0.67</td>
+<td>1854</td>
+<td>1</td>
+<td>14H</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>5</td>
+<td>acknowledge</td>
+<td>3</td>
+<td>X happened</td>
+<td>M</td>
+<td>Emma is in law school</td>
+<td>factH</td>
+<td>Did Justin acknowledge that X happened?</td>
+<td>3</td>
+<td>M</td>
+<td>Mark</td>
+<td>Gary</td>
+<td>C</td>
+<td>0.72</td>
+<td>2423</td>
+<td>1</td>
+<td>3H</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>6</td>
+<td>pretend</td>
+<td>9</td>
+<td>X happened</td>
+<td>M</td>
+<td>Grace loves her sister</td>
+<td>factH</td>
+<td>Did Andrew pretend that X happened?</td>
+<td>9</td>
+<td>M</td>
+<td>Christopher</td>
+<td>Justin</td>
+<td>NonProj</td>
+<td>0.67</td>
+<td>9479</td>
+<td>1</td>
+<td>9H</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>22</td>
+<td>reveal</td>
+<td>20</td>
+<td>X happened</td>
+<td>F</td>
+<td>Charley lives in Korea</td>
+<td>factL</td>
+<td>Did Anna reveal that X happened?</td>
+<td>20</td>
+<td>F</td>
+<td>Kimberly</td>
+<td>Rebecca</td>
+<td>NonProj</td>
+<td>0.82</td>
+<td>1877</td>
+<td>50</td>
+<td>20L</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">22</td>
+<td>24</td>
+<td>discover</td>
+<td>12</td>
+<td>X happened</td>
+<td>M</td>
+<td>Frank has always wanted a pet</td>
+<td>factH</td>
+<td>Did Melissa discover that X happened?</td>
+<td>12</td>
+<td>F</td>
+<td>Robert</td>
+<td>Rachel</td>
+<td>NonProj</td>
+<td>0.84</td>
+<td>1783</td>
+<td>50</td>
+<td>12H</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">23</td>
+<td>25</td>
+<td>admit</td>
+<td>16</td>
+<td>X happened</td>
+<td>M</td>
+<td>Josh is a 5-year old boy</td>
+<td>factH</td>
+<td>Did Sharon admit that X happened?</td>
+<td>16</td>
+<td>F</td>
+<td>William</td>
+<td>Anna</td>
+<td>C</td>
+<td>0.56</td>
+<td>2008</td>
+<td>50</td>
+<td>16H</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">24</td>
+<td>26</td>
+<td>confirm</td>
+<td>4</td>
+<td>X happened</td>
+<td>M</td>
+<td>Olivia has two small children</td>
+<td>factL</td>
+<td>Did Jerry confirm that X happened?</td>
+<td>4</td>
+<td>M</td>
+<td>George</td>
+<td>Nicholas</td>
+<td>C</td>
+<td>0.78</td>
+<td>2149</td>
+<td>50</td>
+<td>4L</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">25</td>
+<td>27</td>
+<td>acknowledge</td>
+<td>15</td>
+<td>X happened</td>
+<td>M</td>
+<td>Tony really likes to party with his friends</td>
+<td>factH</td>
+<td>Did Rebecca acknowledge that X happened?</td>
+<td>15</td>
+<td>F</td>
+<td>Christopher</td>
+<td>Julie</td>
+<td>C</td>
+<td>0.46</td>
+<td>2500</td>
+<td>50</td>
+<td>15H</td>
+<td>50</td>
+</tr>
+</tbody>
+</table>
+
+<p>1000 rows × 18 columns</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../projective-content/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../projective-content/model-fitting-and-comparison.html" class="pagination-link">
+        <span class="nav-page-text">Model fitting and comparison</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>

@@ -13,7 +13,9 @@ project:
     - island-effects/index.qmd
     - island-effects/model-definition.ipynb
     - island-effects/model-fitting-and-comparison.ipynb
-    - projective-content/index.ipynb
+    - projective-content/index.qmd
+    - projective-content/model-definition.ipynb
+    - projective-content/model-fitting-and-comparison.ipynb
     - selection/index.qmd
     - thematic-roles/index.qmd
 
@@ -40,6 +42,11 @@ website:
           - island-effects/index.qmd
           - island-effects/model-definition.ipynb
           - island-effects/model-fitting-and-comparison.ipynb
+      - section: "Module 2: Projective Content"
+        contents:
+          - projective-content/index.qmd
+          - projective-content/model-definition.ipynb
+          - projective-content/model-fitting-and-comparison.ipynb
       - projective-content/index.qmd
       - selection/index.qmd
       - thematic-roles/index.qmd
