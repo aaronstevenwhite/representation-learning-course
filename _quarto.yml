@@ -49,7 +49,6 @@ website:
           - projective-content/inferentially-defined-classes-of-predicates.qmd
           - projective-content/model-definition.ipynb
           - projective-content/model-fitting-and-comparison.ipynb
-      - projective-content/index.qmd
       - selection/index.qmd
       - thematic-roles/index.qmd
 
