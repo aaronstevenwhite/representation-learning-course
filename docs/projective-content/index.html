@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../projective-content/model-definition.html" rel="next">
+<link href="../projective-content/inferentially-defined-classes-of-predicates.html" rel="next">
 <link href="../island-effects/model-fitting-and-comparison.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -224,6 +224,12 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferentially defined classes of predicates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model definition</span></a>
   </div>
@@ -293,9 +299,12 @@ Reading
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>Data:</strong> <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> on how prior beliefs modulate projectivity inferences. We will use the data collected for that paper, which can be found <a href="https://github.com/judith-tonhauser/projective-probability">here</a>, in this module.</p>
-<p><strong>Theory:</strong> <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span> on whether there is a discrete category of factive predicates. As shown in <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span>, the main conceit of the paper–that there is no such discrete category–does not hold up under empirical scrutiny. We will rather be concerned with their discussion–broadly, but most specifically in Section 4–about the sources of gradience.</p>
+<p><strong>Theory:</strong> <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span> and <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> on whether there is a discrete category of factive predicates. We will specifically be concerned with Degen and Tonhauser’s discussion–broadly, but most specifically in Section 4–about the sources of gradience.</p>
 </div>
 </div>
+<p>Like in the first module of the course, in this second module of the course, we are going to focus on minimally extending standard statistical models used in analyzing inference judgments in order to probe how semantic semantic representations and/or reasoning processes interact with world knowledge (or <em>prior beliefs</em>) in driving inference judgments. We’re going to consider two subtly distinct questions: (i) whether there is evidence for discrete classes of lexical representations that determine inferences commonly associated with factive predicates or whether this knowledge is fundamentally continuous; and (ii) how, for aspects of lexical knowledge that are fundamentally continuous, that knowledge is integrated with world knowledge.</p>
+<p>The first question is the main focus of the paper by <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span>, who argue (p.&nbsp;553) “…that there is little empirical support from [their six] experiments for the assumed categorical distinction between factive and nonfactive predicates.” We’ll first discuss some modeling evidence presented by <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> that countervails this argument. We won’t implement Kane et al.’s model, though all of the data is available <a href="http://megaattitude.io/">here</a>, and their code is documented and publicly available <a href="https://github.com/MegaAttitude/intensional-gaps">here</a>. The gist is that, when we appropriately account for various sources of gradience in inference judgments, we observe a small number of clear cluster of predicates, all of which correspond cleanly to the predicate classes one might expect from the literature of clause-embedding predicates and a subset of which correspond to traditional subclassifications of factives.</p>
+<p>Our main reason for looking the finding by <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> is to sharpen the second question, which we will address by modeling data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> for a slightly different purpose. As in Module 1, the basic recipe will be (i) to define two or more (families of) models; (ii) to fit both models to the data from some acceptability judgment data–in this case, to the data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span>; and (iii) to compare how well the two models fit the data, weighed against some measure of how parsimonious (or conversely, complex) each model is.</p>
 
 
 
@@ -553,8 +562,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projective-content/model-definition.html" class="pagination-link">
-        <span class="nav-page-text">Model definition</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="pagination-link">
+        <span class="nav-page-text">Inferentially defined classes of predicates</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

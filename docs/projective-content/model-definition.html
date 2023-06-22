@@ -54,7 +54,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,7 +84,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../projective-content/model-fitting-and-comparison.html" rel="next">
-<link href="../projective-content/index.html" rel="prev">
+<link href="../projective-content/inferentially-defined-classes-of-predicates.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -244,6 +263,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferentially defined classes of predicates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Model definition</span></a>
   </div>
@@ -284,14 +309,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#projection-data" id="toc-projection-data" class="nav-link active" data-scroll-target="#projection-data">Projection Data</a>
+  <li><a href="#laying-out-the-possibilities" id="toc-laying-out-the-possibilities" class="nav-link active" data-scroll-target="#laying-out-the-possibilities">Laying out the possibilities</a>
   <ul class="collapse">
-  <li><a href="#no-fixed-priors" id="toc-no-fixed-priors" class="nav-link" data-scroll-target="#no-fixed-priors">No fixed priors</a></li>
-  <li><a href="#fixed-context-priors" id="toc-fixed-context-priors" class="nav-link" data-scroll-target="#fixed-context-priors">Fixed context priors</a></li>
-  <li><a href="#fixed-verb-priors" id="toc-fixed-verb-priors" class="nav-link" data-scroll-target="#fixed-verb-priors">Fixed verb priors</a></li>
+  <li><a href="#two-versions-of-the-indeterminacy-hypothesis" id="toc-two-versions-of-the-indeterminacy-hypothesis" class="nav-link" data-scroll-target="#two-versions-of-the-indeterminacy-hypothesis">Two versions of the indeterminacy hypothesis</a></li>
+  <li><a href="#two-versions-of-the-fundamental-gradience-hypothesis" id="toc-two-versions-of-the-fundamental-gradience-hypothesis" class="nav-link" data-scroll-target="#two-versions-of-the-fundamental-gradience-hypothesis">Two versions of the fundamental gradience hypothesis</a></li>
   </ul></li>
-  <li><a href="#bleached" id="toc-bleached" class="nav-link" data-scroll-target="#bleached">Bleached</a></li>
-  <li><a href="#templatic" id="toc-templatic" class="nav-link" data-scroll-target="#templatic">Templatic</a></li>
+  <li><a href="#prior-beliefs" id="toc-prior-beliefs" class="nav-link" data-scroll-target="#prior-beliefs">Prior beliefs</a>
+  <ul class="collapse">
+  <li><a href="#modeling-bounded-scale-responses" id="toc-modeling-bounded-scale-responses" class="nav-link" data-scroll-target="#modeling-bounded-scale-responses">Modeling bounded scale responses</a></li>
+  <li><a href="#the-prior-belief-model" id="toc-the-prior-belief-model" class="nav-link" data-scroll-target="#the-prior-belief-model">The prior belief model</a></li>
+  </ul></li>
+  <li><a href="#projection-data" id="toc-projection-data" class="nav-link" data-scroll-target="#projection-data">Projection Data</a>
+  <ul class="collapse">
+  <li><a href="#sparsity-in-the-projection-data" id="toc-sparsity-in-the-projection-data" class="nav-link" data-scroll-target="#sparsity-in-the-projection-data">Sparsity in the projection data</a></li>
+  <li><a href="#implementing-the-models" id="toc-implementing-the-models" class="nav-link" data-scroll-target="#implementing-the-models">Implementing the models</a></li>
+  </ul></li>
+  <li><a href="#additional-experiments" id="toc-additional-experiments" class="nav-link" data-scroll-target="#additional-experiments">Additional experiments</a>
+  <ul class="collapse">
+  <li><a href="#bleached-contexts" id="toc-bleached-contexts" class="nav-link" data-scroll-target="#bleached-contexts">Bleached contexts</a></li>
+  <li><a href="#templatic-contexts" id="toc-templatic-contexts" class="nav-link" data-scroll-target="#templatic-contexts">Templatic contexts</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -315,31 +352,64 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!git clone https://github.com/judith-tonhauser/projective-probability.git data/projective-probability/</span></span>
+<p>We’ll address the question of what it means for the projective inferences associated with some class of predicates to be “weaker” by considering two possibilities. The first is that variability in the likelihoods of projective inferences associated with each class indicates that elements of each class share a representation that is fundamentally gradient in nature. For instance, one way to implement this idea is to model projective inferences as analogous to the sort of vagueness one sees in predicates like <em>tall</em>–e.g.&nbsp;assuming that each class has a different <em>projectivity threshold</em>. I’ll refer to this hypothesis as the <em>fundamental gradience hypothesis</em>.</p>
+<p>An alternative idea, following the discussion of <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span>, is to assume that these likelihoods indicate the probability with which one chooses a factive v. non-factive variant of a predicate.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> I’ll refer to this hypothesis as the <em>indeterminacy hypothesis</em>.</p>
+<p>We investigate this question by looking at the data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span>. This dataset is useful for us because–not only does it contain judgments relevant to projectivity–it also explicitly measures how likely the content of the complement of a particular verb is. <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> use these data to demonstrate that inference judgments in projectivity experiments using the paradigm discussed by <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span> are modulated by this likelihood–which <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> discuss as a measure of subjects’ prior beliefs.</p>
+<div class="cell">
+<details>
+<summary>Download the data</summary>
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>git clone https:<span class="op">//</span>github.com<span class="op">/</span>judith<span class="op">-</span>tonhauser<span class="op">/</span>projective<span class="op">-</span>probability.git data<span class="op">/</span>projective<span class="op">-</span>probability<span class="op">/</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">"data/"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="5">
+<section id="laying-out-the-possibilities" class="level2">
+<h2 class="anchored" data-anchor-id="laying-out-the-possibilities">Laying out the possibilities</h2>
+<p>Our question will be: how does this modulation of inference judgments in the projectivity experiments occur? The first thing to ask is how knowledge about a predicate’s projectivity <span class="math inline">\(\pi^\text{verb}_v\)</span> might be combined with prior knowledge about likelihood of some propositional contents in some context <span class="math inline">\(\pi^\text{context}_c\)</span>. We will consider a very simple general form for this combination: probabilistic fuzzy logic disjunction.</p>
+<p>To see why this form is useful for our purposes, let’s consider an informal description of how a proponent of the indeterminacy theory might describe what happens when someone makes an inference judgment in the projectivity experiments: decide, on the basis of prior knowledge about how frequently the factive variant of a predicate occurs, whether to select a factive or non-factive variant of the predicate; if you selected a factive variant, respond <em>yes</em>; otherwise, respond based on your prior beliefs about the contents.</p>
+<section id="two-versions-of-the-indeterminacy-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="two-versions-of-the-indeterminacy-hypothesis">Two versions of the indeterminacy hypothesis</h3>
+<p>In the case where the response is based on prior beliefs, there are two ways one might go. The first is to decide whether the content is true and, if it is responde <em>yes</em>; and if it isn’t, respond <em>no</em>. I will refer to this as the <em>wholly discrete hypothesis</em> because all responses are at least intended to be <em>no</em> or <em>yes</em> (though they may be obcured by noise, response biases, etc.). If <span class="math inline">\(\tau^\text{verb}_n \sim \text{Bernoulli}\left(\pi^\text{verb}_{\text{verb}(n)}\right)\)</span> is the decision about whether or not the verb is factive and <span class="math inline">\(\tau^\text{context}_n \sim \text{Bernoulli}\left(\pi^\text{context}_{\text{context}(n)}\right)\)</span> is the decision about whether the content is true in the relevant context, then we can describe the intended response <span class="math inline">\(n\)</span> (again, up to noise) as <span class="math inline">\(\tau^\text{verb}_n \lor (\tau^\text{verb}_n \rightarrow \tau^\text{context}_n) = \tau^\text{verb}_n \lor \tau^\text{context}_n\)</span>. I will refer to this first hypothesis as the <em>wholly discrete model</em>.</p>
+<p>The second option is to assume that one decides whether or not the verb is factive <span class="math inline">\(\tau^\text{verb}_n \sim \text{Bernoulli}\left(\pi^\text{verb}_{\text{verb}(n)}\right)\)</span>, but that if it’s not we respond with the raw likelihood <span class="math inline">\(\pi^\text{context}_c\)</span> (again, potentially subject to noise). We can describe this as <span class="math inline">\(\tau^\text{verb}_n \lor \pi^\text{context}_n\)</span>, assuming that <span class="math inline">\(\lor\)</span> is interpreted as probabilistic fuzzy logic disjunction: <span class="math inline">\(p \lor p' \equiv = p + (1-p)p' = 1 - (1-p)(1-p')\)</span>, where classical disjunction is a special case with <span class="math inline">\(p, p' \in \{0, 1\}\)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> So then:</p>
+<p><span class="math display">\[\tau^\text{verb}_n \lor \pi^\text{context}_n = \begin{cases}
+1 &amp; \text{if } \tau^\text{verb}_n = 1\\
+\pi^\text{context}_n &amp; \text{otherwise}
+\end{cases}\]</span></p>
+<p>I will refer to this second hypothesis as the <em>verb discrete model</em>.</p>
+</section>
+<section id="two-versions-of-the-fundamental-gradience-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="two-versions-of-the-fundamental-gradience-hypothesis">Two versions of the fundamental gradience hypothesis</h3>
+<p>The setup above suggests two additional possibilities: responding based on <span class="math inline">\(\pi^\text{verb}_n \lor \tau^\text{context}_n\)</span> or responding based on <span class="math inline">\(\pi^\text{verb}_n \lor \pi^\text{context}_n\)</span>. The first of these options–which I will refer to as the <em>context discrete model</em> is a logical possibility, but it is not clear what kind of theory it might be associated with. Nonetheless, it assumes that responses are based directly on gradient knowledge about the verb. The second of these options–which I will refer to as the <em>wholly gradient model</em>–is a more natural fit for an implementation of the fundamental gradience hypothesis: it seems that at least the use of prior knowledge would be gradient; the question is whether is use of the lexical knowledge is as well.</p>
+</section>
+</section>
+<section id="prior-beliefs" class="level2">
+<h2 class="anchored" data-anchor-id="prior-beliefs">Prior beliefs</h2>
+<p>The use we are going to put the norming data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> is the estimation of distributions representing prior beliefs about particular contexts. That is, we will use it to estimate a distribution on <span class="math inline">\(\pi^\text{context}_c\)</span>.</p>
+<div class="cell" data-tags="[]" data-execution_count="62">
+<details>
+<summary>Load the norming data</summary>
 <div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame, read_csv</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_norming_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_norming_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data[<span class="op">~</span>data.item.isin([<span class="st">"F1"</span>, <span class="st">"F2"</span>])]</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data.drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data.drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>data_norming <span class="op">=</span> load_norming_data(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/1-prior/data/cd.csv"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_norming <span class="op">=</span> load_norming_data(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/1-prior/data/cd.csv"</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>data_norming</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<p>Our main focus in this dataset will be modeling the distribution of respones to each <code>itemType</code> + <code>itemNr</code>, which corresponds to a particular pairing of <code>fact</code> and <code>prompt</code>. I’ll refer to these together as the <em>context</em>.</p>
+<div class="cell" data-tags="[]" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>data_norming[[<span class="st">"workerid"</span>, <span class="st">"itemType"</span>, <span class="st">"itemNr"</span>, <span class="st">"prompt"</span>, <span class="st">"fact"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
 <div>
 
 
@@ -348,234 +418,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">workerid</th>
-<th data-quarto-table-cell-role="th">rt</th>
-<th data-quarto-table-cell-role="th">prompt</th>
 <th data-quarto-table-cell-role="th">itemType</th>
 <th data-quarto-table-cell-role="th">itemNr</th>
-<th data-quarto-table-cell-role="th">list</th>
-<th data-quarto-table-cell-role="th">item</th>
-<th data-quarto-table-cell-role="th">response</th>
+<th data-quarto-table-cell-role="th">prompt</th>
 <th data-quarto-table-cell-role="th">fact</th>
-<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
-<th data-quarto-table-cell-role="th">gender</th>
-<th data-quarto-table-cell-role="th">american</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">language</th>
-<th data-quarto-table-cell-role="th">Answer.time_in_minutes</th>
+<th data-quarto-table-cell-role="th">response</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">1</td>
 <td>0</td>
-<td>8398</td>
-<td>How likely is it that Frank got a cat?</td>
 <td>H</td>
 <td>12</td>
-<td>1</td>
-<td>12H</td>
-<td>0.83</td>
+<td>How likely is it that Frank got a cat?</td>
 <td>Frank has always wanted a pet.</td>
-<td>2</td>
-<td>Male</td>
-<td>0</td>
-<td>29</td>
-<td>english</td>
-<td>2.08630</td>
+<td>0.83</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">2</td>
 <td>0</td>
-<td>3505</td>
-<td>How likely is it that Isabella ate a steak on ...</td>
 <td>L</td>
 <td>7</td>
-<td>1</td>
-<td>7L</td>
-<td>0.14</td>
+<td>How likely is it that Isabella ate a steak on ...</td>
 <td>Isabella is a vegetarian.</td>
-<td>3</td>
-<td>Male</td>
-<td>0</td>
-<td>29</td>
-<td>english</td>
-<td>2.08630</td>
+<td>0.14</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">3</td>
 <td>0</td>
-<td>3526</td>
-<td>How likely is it that Zoe calculated the tip?</td>
 <td>H</td>
 <td>10</td>
-<td>1</td>
-<td>10H</td>
-<td>0.93</td>
+<td>How likely is it that Zoe calculated the tip?</td>
 <td>Zoe is a math major.</td>
-<td>4</td>
-<td>Male</td>
-<td>0</td>
-<td>29</td>
-<td>english</td>
-<td>2.08630</td>
+<td>0.93</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
 <td>0</td>
-<td>2414</td>
-<td>How likely is it that Emma studied on Saturday...</td>
 <td>L</td>
 <td>3</td>
-<td>1</td>
-<td>3L</td>
-<td>0.64</td>
+<td>How likely is it that Emma studied on Saturday...</td>
 <td>Emma is in first grade.</td>
-<td>6</td>
-<td>Male</td>
-<td>0</td>
-<td>29</td>
-<td>english</td>
-<td>2.08630</td>
+<td>0.64</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
 <td>0</td>
-<td>2540</td>
-<td>How likely is it that Jackson ran 10 miles?</td>
 <td>L</td>
 <td>13</td>
-<td>1</td>
-<td>13L</td>
-<td>0.25</td>
+<td>How likely is it that Jackson ran 10 miles?</td>
 <td>Jackson is obese.</td>
-<td>7</td>
-<td>Male</td>
-<td>0</td>
-<td>29</td>
-<td>english</td>
-<td>2.08630</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2086</td>
-<td>94</td>
-<td>2881</td>
-<td>How likely is it that Emma studied on Saturday...</td>
-<td>H</td>
-<td>3</td>
-<td>2</td>
-<td>3H</td>
-<td>0.97</td>
-<td>Emma is in law school.</td>
-<td>19</td>
-<td>Female</td>
-<td>0</td>
-<td>39</td>
-<td>english</td>
-<td>1.78135</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2087</td>
-<td>94</td>
-<td>2744</td>
-<td>How likely is it that Olivia sleeps until noon?</td>
-<td>L</td>
-<td>4</td>
-<td>2</td>
-<td>4L</td>
-<td>0.05</td>
-<td>Olivia has two small children.</td>
-<td>20</td>
-<td>Female</td>
-<td>0</td>
-<td>39</td>
-<td>english</td>
-<td>1.78135</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2088</td>
-<td>94</td>
-<td>2403</td>
-<td>How likely is it that Jon walks to work?</td>
-<td>H</td>
-<td>19</td>
-<td>2</td>
-<td>19H</td>
-<td>0.94</td>
-<td>Jon lives 2 blocks away from work.</td>
-<td>21</td>
-<td>Female</td>
-<td>0</td>
-<td>39</td>
-<td>english</td>
-<td>1.78135</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2089</td>
-<td>94</td>
-<td>2366</td>
-<td>How likely is it that Julian dances salsa?</td>
-<td>L</td>
-<td>18</td>
-<td>2</td>
-<td>18L</td>
-<td>0.18</td>
-<td>Julian is German.</td>
-<td>22</td>
-<td>Female</td>
-<td>0</td>
-<td>39</td>
-<td>english</td>
-<td>1.78135</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2090</td>
-<td>94</td>
-<td>3337</td>
-<td>How likely is it that Jayden rented a car?</td>
-<td>L</td>
-<td>14</td>
-<td>2</td>
-<td>14L</td>
-<td>0.00</td>
-<td>Jayden doesn&amp;quotechart have a driver&amp;quotecha...</td>
-<td>23</td>
-<td>Female</td>
-<td>0</td>
-<td>39</td>
-<td>english</td>
-<td>1.78135</td>
+<td>0.25</td>
 </tr>
 </tbody>
 </table>
 
-<p>1500 rows × 15 columns</p>
 </div>
 </div>
 </div>
+<p>Each <code>prompt</code> is paired with two different facts: one for which the prompt should elicit higher likelihood responses (<code>itemType</code>=<code>H</code>) and another for which the prompt should elicit lower likelihood responses (<code>itemType</code>=<code>L</code>). One example can be seen below.</p>
 <div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>data_norming_sub <span class="op">=</span> data_norming.query(<span class="st">'item.isin(["10H", "10L"])'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="29">
+<div class="cell" data-tags="[]" data-execution_count="29">
 <details>
-<summary>Code</summary>
+<summary>Plotting code</summary>
 <div class="sourceCode cell-code" id="cb5" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> histplot</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
@@ -589,22 +497,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="model-definition_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="16">
+<p>In general, the intended likelihood corresponds quite well to the distribution of responses.</p>
+<div class="cell" data-tags="[]" data-execution_count="84">
 <details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> boxplot</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(data_norming, y<span class="op">=</span><span class="st">"prompt"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplots</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> boxplot</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="dv">7</span>))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>prompt_order <span class="op">=</span> data_norming.groupby(<span class="st">"prompt"</span>).response.<span class="bu">max</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(data_norming, y<span class="op">=</span><span class="st">"prompt"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>], order<span class="op">=</span>prompt_order.index)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
 <p><img src="model-definition_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rpy2</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>load_ext rpy2.ipython</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Before discussing the prior belief model, we need to consider how exactly to model these sorts of bounded scale responses.</p>
+<section id="modeling-bounded-scale-responses" class="level3">
+<h3 class="anchored" data-anchor-id="modeling-bounded-scale-responses">Modeling bounded scale responses</h3>
+<p>A common way to model bounded scale responses is to assume that responses <span class="math inline">\(Y_n\)</span> are distributed beta with mean <span class="math inline">\(\mu_{\text{item}(n)} \in (0, 1)\)</span> and <em>sample size</em> <span class="math inline">\(\nu \in \mathbb{R}_+\)</span>:</p>
+<p><span class="math display">\[Y_n \sim \text{Beta}(\nu\mu_{\text{item}(n)}, \nu(1-\mu_{\text{item}(n)}))\]</span></p>
+<p><a href="https://en.wikipedia.org/wiki/Beta_distribution#Mean_and_sample_size">This parameterization</a>–in contrast to the parameterization directly in terms of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> that we discussed <a href="../foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions#beta-distribution">here</a>–allows us to more directly model the expected value of <span class="math inline">\(Y_n\)</span>, since:</p>
+<p><span class="math display">\[\mathbb{E}[Y_n] = \frac{\nu\mu_{\text{item}(n)}}{\nu\mu_{\text{item}(n)} + \nu(1-\mu_{\text{item}(n)})} = \mu_{\text{item}(n)}\]</span></p>
+<p>This ability to more directly model the expected value–rather than having to model the two parameters <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> directly–is useful for interpretability.</p>
+<p>One challenge that arises with making this assumption is that the beta distribution does not have support on 0 or 1. This challenge is a real one, since there are a small (but nontrivial) number of 0 and 1 responses in the norming data (as well as the projection data).</p>
+<div class="cell" data-tags="[]" data-execution_count="50">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> countplot</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bin_responses(response):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> response <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"one"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> response <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"zero"</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">"neither"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>data_norming[<span class="st">"responsetype"</span>] <span class="op">=</span> data_norming.response.<span class="bu">map</span>(bin_responses)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> countplot(x <span class="op">=</span> <span class="st">"responsetype"</span>, data <span class="op">=</span> data_norming, order <span class="op">=</span> [<span class="st">"zero"</span>, <span class="st">"neither"</span>, <span class="st">"one"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
-<p><code>data</code> block</p>
+</div>
+<p>One way that researchers deal with this issue–especially when the number of 0 and 1 responses is small is to nudge those responses toward 0.5 slightly. The issue with this approach is that this nudging requires one to specify the amount that the value should be nudged, and that amount can matter a lot for models fit to the data–depending on what sort of model it is.</p>
+<p>There are at least two ways one might try to avoid this issue. The first is to use what is known as a zero-one-inflated beta model. This sort of model assumes that the responses come from some mixture of a continuous random variable <span class="math inline">\(\gamma_n \sim \text{Beta}\left(\nu\mu_n, \nu\left(1-\mu_n\right)\right)\)</span> and two Bernoulli distributions <span class="math inline">\(\zeta_n \sim \text{Bernoulli}\left(\pi^\text{zero}_n\right)\)</span> and <span class="math inline">\(\omega_n \sim \text{Bernoulli}\left(\pi^\text{one}_n\right)\)</span>. The mixture itself is defined in terms of a selection <span class="math inline">\(d_n \sim \text{Cat}(\boldsymbol\theta_n)\)</span> of which random variable to sample from:</p>
+<p><span class="math display">\[Y_n = \begin{cases}
+\zeta_n &amp; \text{if } d_n = 0\\
+\omega_n &amp; \text{if } d_n = 1\\
+\gamma_{\text{item}(n)} &amp; \text{otherwise}\\
+\end{cases}\]</span></p>
+<p>This approach is useful because it provides an intrepretable way of assessing how likely it is that the model believes the likelihood to be exactly 0 or exactly 1 is. But besides requiring a substantial number of additional parameters that one would need to design definitions for–<span class="math inline">\(\pi^\text{zero}_n\)</span>, <span class="math inline">\(\pi^\text{one}_n\)</span>, and <span class="math inline">\(\boldsymbol\theta_n\)</span>–this model makes some assumptions that we just don’t want to make. For instance, it assumes that if you as a responder are targeting 0 or 1 (as indicated by <span class="math inline">\(d_n\)</span>), you always hit it exactly. But no one is that accurate; there is always noise in response scale use–especially when you get subjects who are responding very quickly, as crowd-sourced workers tend to.</p>
+<p>An alternative model that both reduce this complexity and provides support on <span class="math inline">\(\{0, 1\}\)</span> in addition to <span class="math inline">\((0, 1)\)</span> uses the <a href="https://en.wikipedia.org/wiki/Truncated_normal_distribution">truncated normal distribution</a> to model the slider responses.</p>
+<p><span class="math display">\[p(y_n; \mu_n, \sigma, a, b) = \begin{cases}
+\frac{\mathcal{N}(y_n; \mu_n, \sigma_n^2)}{\Phi(b; \mu_n, \sigma_n^2) - \Phi(a; \mu_n, \sigma_n^2)} &amp; \text{if } y_n \in [a, b]\\
+0 &amp; \text{otherwise}
+\end{cases}\]</span></p>
+<p>where <span class="math inline">\(\Phi\)</span> is the CDF of the normal distribution. So this distribution basically constrains the support of a <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> to <span class="math inline">\([a, b]\)</span> and then renormalizes the distribution to ensure that it satisfies <a href="../foundational-concepts-in-probability-and-statistics/#what-it-means-to-measure-a-possibility">the assumption of unit measure</a>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> One way to think of what this distribution assumes is that subjects target some value <span class="math inline">\(\mu_n\)</span> when they respond, but they miss that exact value–e.g.&nbsp;because of uninteresting motor planning factors (and any other potential source of uncorrelated noise).</p>
+</section>
+<section id="the-prior-belief-model" class="level3">
+<h3 class="anchored" data-anchor-id="the-prior-belief-model">The prior belief model</h3>
+<p>To estimate the distributions over prior knowledge from the data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span>, we use a random effects model with by-subject and by-item random intercepts. I will refer to the latter as by-context random intercepts, since we will need to distinguish by-context intercepts from by-verb intercepts when we begin modeling the projection data, and verbs are also constitutive of the items.</p>
+<p>The <code>data</code> block needs to specify both the number of subjects and their identity as well as the number of contexts and their identity.</p>
 <div class="sourceCode" id="cb8" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                           <span class="co">// number of responses</span></span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_context;                        <span class="co">// number of contexts</span></span>
@@ -613,7 +571,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];        <span class="co">// subject corresponding to response n</span></span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt;[N_resp] resp;          <span class="co">// bounded slider response     </span></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>parameters</code> block</p>
+<p>We use a standard parameterization of the random intercepts <span class="math inline">\(\rho_s^\text{subj} \sim \mathcal{N}(0, \sigma_\text{subj}^2)\)</span> and <span class="math inline">\(\rho_c^\text{context} \sim \mathcal{N}(0, \sigma_\text{context}^2)\)</span>, specified in the <code>parameters</code> block.</p>
 <div class="sourceCode" id="cb9" data-startfrom="21" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 20;"><span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;           <span class="co">// the context random intercept standard deviation</span></span>
 <span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept;           <span class="co">// the context random intercepts</span></span>
@@ -621,13 +579,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept;                 <span class="co">// the subject random intercepts</span></span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;</span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>transformed parameters</code> block</p>
+<p>To model how by-subject and by-context random intercepts combine, we will view them representations in log-odds space and define <span class="math inline">\(\mu_n \equiv \text{logit}^{-1}\left(\rho_{\text{subj}(n)}^\text{subj} + \rho_{\text{context}(n)}^\text{context}\right)\)</span> in the <code>transformed parameters</code> block.</p>
 <div class="sourceCode" id="cb10" data-startfrom="29" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 28;"><span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> mu[N_resp];</span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    mu[n] = inv_logit(context_intercept[context[n]] + subj_intercept[subj[n]]);</span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>model</code> block</p>
+<p>We could technically define <span class="math inline">\(\mu_n \equiv \rho_{\text{subj}(n)}^\text{subj} + \rho_{\text{context}(n)}^\text{context}\)</span>. This definition is possible because the mean of a truncated normal need not itself be in <span class="math inline">\([a, b]\)</span>. The issue with this definition is that it’s not really clear what the random intercepts represent.</p>
+<p>Another possibility is to define <span class="math inline">\(\mu_n \equiv \text{logit}^{-1}\left(\rho_{\text{subj}(n)}^\text{subj}\right) + \rho_{\text{context}(n)}^\text{context}\)</span>, where <span class="math inline">\(\text{logit}^{-1}\left(\rho_{\text{subj}(n)}^\text{subj}\right) \in (0, 1)\)</span> is interpretable as an average measure (though not technically the mean) for the context and the subject intercepts operate in scale space rather than log-odds space. This definition is a bit odd, however, because it would suggest that subjects can target values below 0 or above 1, and it’s not clear what it would mean to intend to respond with a likelihood below 0 or above 1.</p>
+<p>In the <code>model</code> block, we specify the distributional assumptions for the random effects as well as the truncated normal assumption for the responses.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div class="sourceCode" id="cb11" data-startfrom="35" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 34;"><span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
 <span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>  context_intercept_std ~ exponential(<span class="dv">1</span>);</span>
 <span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>  subj_intercept_std ~ exponential(<span class="dv">1</span>);</span>
@@ -642,45 +602,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
 <span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a>    resp[n] ~ normal(mu[n], sigma) <span class="kw">T</span>[<span class="dv">0</span>,<span class="dv">1</span>];</span>
 <span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>generated quantities</code> block</p>
+<p>Finally, it will be useful to define an additional quantity in the <code>generated quantities</code> block: the average likelihood associated with the context when zeroing out the subject intercept. This quantity corresponds to <span class="math inline">\(\pi^\text{context}_c\)</span>.</p>
 <div class="sourceCode" id="cb12" data-startfrom="50" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 49;"><span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob;</span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> <span class="dv">1</span>:N_context) {</span>
-<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>    context_prob[c] = inv_logit(</span>
-<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>      context_intercept[c]</span>
-<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] resp_pp_rep;</span>
-<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp){</span>
-<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>    resp_pp_rep[n] = normal_lub_rng(mu[n], sigma, <span class="dv">0</span>, <span class="dv">1</span>);</span>
-<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="projection-data" class="level1">
-<h1>Projection Data</h1>
-<div class="cell" data-tags="[]" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_projection_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> pd.read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>).drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data[data.trigger_class <span class="op">!=</span> <span class="st">"control"</span>]</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"itemType"</span>] <span class="op">=</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"item"</span>] <span class="op">=</span> data.contentNr.astype(<span class="bu">str</span>) <span class="op">+</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>  <span class="co">// compute the average context probabilities for the average subject</span></span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob;</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (c <span class="cf">in</span> <span class="dv">1</span>:N_context) {</span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>    context_prob[c] = inv_logit(</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>      context_intercept[c]</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>With the aim of incorporating prior knowledge into our models of projection, what we’re going to do with this model is to use it’s posterior distribution over each by-context intercept as the prior for our models of the projection data. As we will see, these posterior distributions are very close to normal in log-odds space, so what we will do is to estimate, for each context <span class="math inline">\(c\)</span>, a <span class="math inline">\(\mu^\text{context}_c\)</span> and a <span class="math inline">\(\sigma^\text{context}_c\)</span> from the distribution we obtain and place <span class="math inline">\(\rho^\text{context}_c \sim \mathcal{N}\left(\mu^\text{context}_c, \sigma^\text{context}_c\right)\)</span> on the by-context random intercepts <span class="math inline">\(\rho^\text{context}_c\)</span>.</p>
+</section>
+</section>
+<section id="projection-data" class="level2">
+<h2 class="anchored" data-anchor-id="projection-data">Projection Data</h2>
+<p>The projection data uses the same set of contexts but embeds the <code>content</code> of the prompt under a particular <code>verb</code>. The prompt itself also differs: rather than being about the likelihood of the content, it is about whether a speaker is certainty about that content on a bounded slider from <em>no</em> to <em>yes</em>.</p>
+<div class="cell" data-tags="[]" data-execution_count="63">
+<details>
+<summary>Load the norming data</summary>
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_projection_data(fname: <span class="bu">str</span>) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_csv(fname, index_col<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"comments"</span> <span class="kw">in</span> data.columns:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> data.drop(columns<span class="op">=</span><span class="st">"comments"</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data[data.trigger_class <span class="op">!=</span> <span class="st">"control"</span>]</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"itemType"</span>] <span class="op">=</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    data[<span class="st">"item"</span>] <span class="op">=</span> data.contentNr.astype(<span class="bu">str</span>) <span class="op">+</span> data.fact_type.<span class="bu">str</span>.replace(<span class="st">"fact"</span>, <span class="st">""</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>data_projection <span class="op">=</span> load_projection_data(</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/3-projectivity/data/cd.csv"</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_projection <span class="op">=</span> load_projection_data(</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability/results/3-projectivity/data/cd.csv"</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>data_projection</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="33">
+<div class="cell" data-tags="[]" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_projection[[<span class="st">"workerid"</span>, <span class="st">"itemType"</span>, <span class="st">"verb"</span>, <span class="st">"fact"</span>, <span class="st">"content"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
 <div>
 
 
@@ -689,304 +654,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">workerid</th>
-<th data-quarto-table-cell-role="th">rt</th>
-<th data-quarto-table-cell-role="th">subjectGender</th>
-<th data-quarto-table-cell-role="th">speakerGender</th>
-<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">item</th>
 <th data-quarto-table-cell-role="th">verb</th>
 <th data-quarto-table-cell-role="th">fact</th>
-<th data-quarto-table-cell-role="th">fact_type</th>
-<th data-quarto-table-cell-role="th">contentNr</th>
-<th data-quarto-table-cell-role="th">trigger_class</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
-<th data-quarto-table-cell-role="th">age</th>
-<th data-quarto-table-cell-role="th">language</th>
-<th data-quarto-table-cell-role="th">assess</th>
-<th data-quarto-table-cell-role="th">american</th>
-<th data-quarto-table-cell-role="th">gender</th>
-<th data-quarto-table-cell-role="th">Answer.time_in_minutes</th>
-<th data-quarto-table-cell-role="th">assignmentid</th>
-<th data-quarto-table-cell-role="th">itemType</th>
-<th data-quarto-table-cell-role="th">item</th>
+<th data-quarto-table-cell-role="th">content</th>
+<th data-quarto-table-cell-role="th">response</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">3</td>
 <td>0</td>
-<td>3495</td>
-<td>M</td>
-<td>M</td>
-<td>Emily bought a car yesterday</td>
+<td>8H</td>
 <td>establish</td>
 <td>Emily has been saving for a year</td>
-<td>factH</td>
-<td>8</td>
-<td>NonProj</td>
-<td>...</td>
-<td>4</td>
-<td>38</td>
-<td>english</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>2.0626</td>
-<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
-<td>H</td>
-<td>8H</td>
+<td>Emily bought a car yesterday</td>
+<td>0.61</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">4</td>
 <td>0</td>
-<td>3866</td>
-<td>F</td>
-<td>M</td>
-<td>Frank got a cat</td>
+<td>12H</td>
 <td>prove</td>
 <td>Frank has always wanted a pet</td>
-<td>factH</td>
-<td>12</td>
-<td>C</td>
-<td>...</td>
-<td>5</td>
-<td>38</td>
-<td>english</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>2.0626</td>
-<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
-<td>H</td>
-<td>12H</td>
+<td>Frank got a cat</td>
+<td>0.72</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">5</td>
 <td>0</td>
-<td>2983</td>
-<td>F</td>
-<td>F</td>
-<td>Charley speaks Spanish</td>
+<td>20H</td>
 <td>reveal</td>
 <td>Charley lives in Mexico</td>
-<td>factH</td>
-<td>20</td>
-<td>NonProj</td>
-<td>...</td>
-<td>6</td>
-<td>38</td>
-<td>english</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>2.0626</td>
-<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
-<td>H</td>
-<td>20H</td>
+<td>Charley speaks Spanish</td>
+<td>0.92</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">6</td>
 <td>0</td>
-<td>4669</td>
-<td>F</td>
-<td>F</td>
-<td>Jon walks to work</td>
+<td>19L</td>
 <td>confirm</td>
 <td>Jon lives 10 miles away from work</td>
-<td>factL</td>
-<td>19</td>
-<td>C</td>
-<td>...</td>
-<td>7</td>
-<td>38</td>
-<td>english</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>2.0626</td>
-<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
-<td>L</td>
-<td>19L</td>
+<td>Jon walks to work</td>
+<td>0.42</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">7</td>
 <td>0</td>
-<td>3847</td>
-<td>M</td>
-<td>F</td>
-<td>Mia drank 2 cocktails last night</td>
+<td>6H</td>
 <td>acknowledge</td>
 <td>Mia is a college student</td>
-<td>factH</td>
-<td>6</td>
-<td>C</td>
-<td>...</td>
-<td>8</td>
-<td>38</td>
-<td>english</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>2.0626</td>
-<td>3PIWWX1FJJ78V5N7WBELSYK9QJBJJ3</td>
-<td>H</td>
-<td>6H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7792</td>
-<td>299</td>
-<td>11176</td>
-<td>F</td>
-<td>F</td>
-<td>Jackson ran 10 miles</td>
-<td>see</td>
-<td>Jackson is obese</td>
-<td>factL</td>
-<td>13</td>
-<td>NonProj</td>
-<td>...</td>
-<td>19</td>
-<td>44</td>
-<td>English</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>8.1216</td>
-<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
-<td>L</td>
-<td>13L</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7795</td>
-<td>299</td>
-<td>12196</td>
-<td>F</td>
-<td>F</td>
-<td>Josh learned to ride a bike yesterday</td>
-<td>reveal</td>
-<td>Josh is a 75-year old man</td>
-<td>factL</td>
-<td>16</td>
-<td>NonProj</td>
-<td>...</td>
-<td>22</td>
-<td>44</td>
-<td>English</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>8.1216</td>
-<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
-<td>L</td>
-<td>16L</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7797</td>
-<td>299</td>
-<td>5205</td>
-<td>M</td>
-<td>F</td>
-<td>Isabella ate a steak on Sunday</td>
-<td>confirm</td>
-<td>Isabella is from Argentina</td>
-<td>factH</td>
-<td>7</td>
-<td>C</td>
-<td>...</td>
-<td>24</td>
-<td>44</td>
-<td>English</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>8.1216</td>
-<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
-<td>H</td>
-<td>7H</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7799</td>
-<td>299</td>
-<td>10590</td>
-<td>M</td>
-<td>M</td>
-<td>Grace visited her sister</td>
-<td>annoyed</td>
-<td>Grace loves her sister</td>
-<td>factH</td>
-<td>9</td>
-<td>NonProj</td>
-<td>...</td>
-<td>26</td>
-<td>44</td>
-<td>English</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>8.1216</td>
-<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
-<td>H</td>
-<td>9H</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">7800</td>
-<td>299</td>
-<td>11976</td>
-<td>F</td>
-<td>M</td>
-<td>Frank got a cat</td>
-<td>admit</td>
-<td>Frank has always wanted a pet</td>
-<td>factH</td>
-<td>12</td>
-<td>C</td>
-<td>...</td>
-<td>27</td>
-<td>44</td>
-<td>English</td>
-<td>Yes</td>
-<td>m</td>
-<td>m</td>
-<td>8.1216</td>
-<td>3GA6AFUKOOP1JLQS5QJD0EN5HUOH3N</td>
-<td>H</td>
-<td>12H</td>
+<td>Mia drank 2 cocktails last night</td>
+<td>0.81</td>
 </tr>
 </tbody>
 </table>
 
-<p>5320 rows × 21 columns</p>
 </div>
 </div>
 </div>
+<p>Considering the responses for a verb like <code>pretend</code>, we see that, consistent with intuition, they tend to fairly heavily bias toward <em>no</em>, with responses for the higher likelihood contexts pushing the distribution slightly toward <em>yes</em>.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 <div class="cell" data-tags="[]" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_projection_pretend <span class="op">=</span> data_projection.query(<span class="st">"verb == 'pretend'"</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data_projection_pretend[[<span class="st">"verb"</span>, <span class="st">"itemType"</span>, <span class="st">"content"</span>, <span class="st">"fact"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>data_projection_pretend <span class="op">=</span> data_projection.query(<span class="st">"verb == 'pretend'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="42">
 <div>
 
@@ -1049,22 +778,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="38">
+<div class="cell" data-tags="[]" data-execution_count="38">
 <details>
-<summary>Code</summary>
+<summary>Plotting code</summary>
 <div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data_projection_pretend, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, </span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
-<p><img src="model-definition_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
+<p><img src="model-definition_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>In contrast, for <em>know</em>, we see that, consistent with intuition, responses tend to fairly heavily bias toward <em>yes</em>, with responses for the higher likelihood contexts pushing the distribution slightly more toward <em>yes</em> and the distribution for the lower likelihood responses pushing the distribution slightly more toward <em>no</em>.</p>
 <div class="cell" data-tags="[]" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_projection_know <span class="op">=</span> data_projection.query(<span class="st">"verb == 'know'"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data_projection_know[[<span class="st">"verb"</span>, <span class="st">"itemType"</span>, <span class="st">"content"</span>, <span class="st">"fact"</span>, <span class="st">"response"</span>]].head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>data_projection_know <span class="op">=</span> data_projection.query(<span class="st">"verb == 'know'"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
@@ -1127,194 +855,201 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="43">
+<div class="cell" data-tags="[]" data-execution_count="43">
 <details>
-<summary>Code</summary>
+<summary>Plotting code</summary>
 <div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> histplot(</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">=</span>data_projection_know, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, </span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>]</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-14-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This qualitatively observed modulation by <code>itemType</code> is indicative of the finding by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span> that prior knowledge modulates projection. More broadly, we observe this modulation qualitatively when plotting the distributions for all of the predicates.</p>
+<div class="cell" data-tags="[]" data-execution_count="88">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="dv">7</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>verb_order <span class="op">=</span> data_projection.groupby(<span class="st">"verb"</span>).response.mean().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    data_projection, </span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"verb"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, </span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>], order<span class="op">=</span>verb_order.index, </span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    ax<span class="op">=</span>ax, fliersize<span class="op">=</span><span class="fl">0.</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
 <p><img src="model-definition_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-code-description="Plotting code" data-execution_count="34">
-<details>
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> boxplot(data_projection, y<span class="op">=</span><span class="st">"verb"</span>, x<span class="op">=</span><span class="st">"response"</span>, hue<span class="op">=</span><span class="st">"itemType"</span>, hue_order<span class="op">=</span>[<span class="st">"L"</span>, <span class="st">"H"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display">
-<p><img src="model-definition_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p><span class="math display">\[\begin{align*}
-\rho^\text{(verb)}_v &amp;\sim \mathcal{N}(0, \sigma_\text{verb})\\
-\rho^\text{(context)}_c &amp;\sim \mathcal{N}\left(\mu^\text{(context)}_c, \sigma^\text{(context)}_c\right)\\
-\rho^\text{(subj-verb)}_s &amp;\sim \mathcal{N}(0, \sigma_\text{subj-verb})\\
-\rho^\text{(subj-context)}_s &amp;\sim \mathcal{N}(0, \sigma_\text{subj-context})\\
-\end{align*}\]</span></p>
-<p>where each of the standard deviations are distributed exponential.</p>
-<p><span class="math display">\[\begin{align*}
-\sigma_\text{verb} &amp;\sim \text{Exponential}(1)\\
-\sigma_\text{subj-verb} &amp;\sim \text{Exponential}(1)\\
-\sigma_\text{subj-context} &amp;\sim \text{Exponential}(1)\\
-\end{align*}\]</span></p>
-<p><code>data</code> block</p>
-<div class="sourceCode" id="cb20" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                                <span class="co">// number of responses</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_verb;                                <span class="co">// number of verbs</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_context;                             <span class="co">// number of contexts</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_subj;                                <span class="co">// number of subjects</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_mean;                           <span class="co">// the verb means inferred from a previous model fit</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_std;                            <span class="co">// the verb standard deviations inferred from a previous model fit</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_mean;                     <span class="co">// the context means inferred from the norming data</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_std;                      <span class="co">// the context standard deviations inferred from the norming data</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_verb&gt; verb[N_resp];             <span class="co">// verb corresponding to response n</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_context&gt; context[N_resp];       <span class="co">// context corresponding to response n</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];             <span class="co">// subject corresponding to response n</span></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt;[N_resp] resp;               <span class="co">// bounded slider response   </span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb21" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>parameters_and_model_block_files <span class="op">=</span> {</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"no_priors_fixed"</span>: <span class="st">"parameters-and-model-block.stan"</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"verb_priors_fixed"</span>: <span class="st">"parameters-and-model-block-verb-prior-fixed.stan"</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"context_priors_fixed"</span>: <span class="st">"parameters-and-model-block-context-prior-fixed.stan"</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"both_priors_fixed"</span>: <span class="st">"parameters-and-model-block-context-and-verb-priors-fixed.stan"</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="no-fixed-priors" class="level3">
-<h3 class="anchored" data-anchor-id="no-fixed-priors">No fixed priors</h3>
-<p><code>parameters</code> block</p>
-<div class="sourceCode" id="cb23" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; verb_intercept_std;                   <span class="co">// the verb random intercept standard deviation</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;                <span class="co">// the context random intercept standard deviation</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>transformed parameters</code> block</p>
-<div class="sourceCode" id="cb24" data-startfrom="13" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 12;"><span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_intercept_std * verb_intercept_z;</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
-<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_intercept_std * context_intercept_z;</span>
-<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
-<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
-<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
-<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
-<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
-<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
-<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
-<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
-<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
-<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
-<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
-<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
-<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
-<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>model</code> block</p>
-<div class="sourceCode" id="cb25" data-startfrom="42" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 41;"><span id="cb25-42"><a href="#cb25-42" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
-<span id="cb25-43"><a href="#cb25-43" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
-<span id="cb25-44"><a href="#cb25-44" aria-hidden="true" tabindex="-1"></a>  verb_intercept_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb25-45"><a href="#cb25-45" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
-<span id="cb25-46"><a href="#cb25-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-47"><a href="#cb25-47" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
-<span id="cb25-48"><a href="#cb25-48" aria-hidden="true" tabindex="-1"></a>  context_intercept_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb25-49"><a href="#cb25-49" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
-<span id="cb25-50"><a href="#cb25-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-51"><a href="#cb25-51" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
-<span id="cb25-52"><a href="#cb25-52" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb25-53"><a href="#cb25-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
-<span id="cb25-54"><a href="#cb25-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-55"><a href="#cb25-55" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb25-56"><a href="#cb25-56" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
-<span id="cb25-57"><a href="#cb25-57" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb25-58"><a href="#cb25-58" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
-<span id="cb25-59"><a href="#cb25-59" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
-<span id="cb25-60"><a href="#cb25-60" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
-<span id="cb25-61"><a href="#cb25-61" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="sparsity-in-the-projection-data" class="level3">
+<h3 class="anchored" data-anchor-id="sparsity-in-the-projection-data">Sparsity in the projection data</h3>
+<p>In both cases, an important thing to note is how sparse these distributions are: the modulation of the projection repsonses by prior beliefs tends to reveal itself in shifts of the probability mass from one extreme of the scale to the other, which is particularly apparent in the case of <em>know</em>. That is, it doesn’t appear as though the effect simply shifts the entire down linearly (or as linearly as possible while retaining the bounding on the scale).</p>
+<p>This pattern only really becomes apparent when plotting the full distribution. When plotting using–e.g.&nbsp;boxplots–it gets obscured. It is this sparsity that makes the models assuming some discreteness a live possibility.</p>
 </section>
-<section id="fixed-context-priors" class="level3">
-<h3 class="anchored" data-anchor-id="fixed-context-priors">Fixed context priors</h3>
-<p><code>parameters</code> block</p>
-<div class="sourceCode" id="cb26" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; verb_intercept_std;                   <span class="co">// the verb random intercept standard deviation</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>transformed parameters</code> block</p>
-<div class="sourceCode" id="cb27" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_intercept_std * verb_intercept_z;</span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_std .* context_intercept_z + context_mean;</span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    );</span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>model</code> block</p>
-<div class="sourceCode" id="cb28" data-startfrom="41" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
-<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
-<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>  verb_intercept_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
-<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
-<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
-<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
-<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
-<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
-<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
-<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
-<span id="cb28-57"><a href="#cb28-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
-<span id="cb28-58"><a href="#cb28-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
-<span id="cb28-59"><a href="#cb28-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="implementing-the-models" class="level3">
+<h3 class="anchored" data-anchor-id="implementing-the-models">Implementing the models</h3>
+<p>Each model of this data will differ only in the likelihood function it defines. All such likelihoods are defined either directly as a truncated normal (the fully gradient model) or as a discrete mixture of truncated normals (the three other models). In each case where we need a mixture, we will use the <a href="https://mc-stan.org/docs/stan-users-guide/vectorizing-mixtures.html"><code>log_mix</code></a>.</p>
+<p>We’ll define these likelihoods in a <a href="https://mc-stan.org/docs/2_18/stan-users-guide/basic-functions-section.html"><code>functions</code> block</a>, so that the other pieces of model code can remain the same across models.</p>
+<p><em>Fully discrete likelihood</em></p>
+<div class="sourceCode" id="cb20" data-source-line-numbers="7-15" data-code-line-numbers="7-15"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">functions</span> {</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> truncated_normal_lpdf(<span class="dt">real</span> x, <span class="dt">real</span> mu, <span class="dt">real</span> sigma, <span class="dt">real</span> a, <span class="dt">real</span> b) {</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normal_lpdf(x | mu, sigma) - </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>           log_diff_exp(normal_lcdf(b | mu, sigma), </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                        normal_lcdf(a | mu, sigma));</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> log_lik_lpdf(<span class="dt">real</span> resp, <span class="dt">real</span> verb_prob, <span class="dt">real</span> context_prob, <span class="dt">real</span> sigma) {</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">real</span> prob_or = <span class="fl">1.0</span> - (<span class="fl">1.0</span> - verb_prob) * (<span class="fl">1.0</span> - context_prob);</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> log_mix(</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>      prob_or,</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | <span class="dv">1</span>, sigma, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | <span class="dv">0</span>, sigma, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Verb discrete likelihood</em></p>
+<div class="sourceCode" id="cb21" data-source-line-numbers="7-15" data-code-line-numbers="7-15"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="kw">functions</span> {</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> truncated_normal_lpdf(<span class="dt">real</span> x, <span class="dt">real</span> mu, <span class="dt">real</span> sigma, <span class="dt">real</span> a, <span class="dt">real</span> b) {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normal_lpdf(x | mu, sigma) - </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>           log_diff_exp(normal_lcdf(b | mu, sigma), </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                        normal_lcdf(a | mu, sigma));</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> log_lik_lpdf(<span class="dt">real</span> resp, <span class="dt">real</span> verb_prob, <span class="dt">real</span> context_prob, <span class="dt">real</span> sigma) {</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> log_mix(</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>      verb_prob,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | <span class="dv">1</span>, sigma, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | context_prob, sigma, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Context discrete likelihood</em></p>
+<div class="sourceCode" id="cb22" data-source-line-numbers="7-15" data-code-line-numbers="7-15"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">functions</span> {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> truncated_normal_lpdf(<span class="dt">real</span> x, <span class="dt">real</span> mu, <span class="dt">real</span> sigma, <span class="dt">real</span> a, <span class="dt">real</span> b) {</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normal_lpdf(x | mu, sigma) - </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>           log_diff_exp(normal_lcdf(b | mu, sigma), </span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                        normal_lcdf(a | mu, sigma));</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> log_lik_lpdf(<span class="dt">real</span> resp, <span class="dt">real</span> verb_prob, <span class="dt">real</span> context_prob, <span class="dt">real</span> sigma) {</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> log_mix(</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>      context_prob,</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | <span class="dv">1</span>, sigma, <span class="dv">0</span>, <span class="dv">1</span>),</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>      truncated_normal_lpdf(resp | verb_prob, sigma, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>Fully gradient likelihood</em></p>
+<div class="sourceCode" id="cb23" data-source-line-numbers="7-11" data-code-line-numbers="7-11"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="kw">functions</span> {</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> truncated_normal_lpdf(<span class="dt">real</span> x, <span class="dt">real</span> mu, <span class="dt">real</span> sigma, <span class="dt">real</span> a, <span class="dt">real</span> b) {</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> normal_lpdf(x | mu, sigma) - </span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>           log_diff_exp(normal_lcdf(b | mu, sigma), </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>                        normal_lcdf(a | mu, sigma));</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> log_lik_lpdf(<span class="dt">real</span> resp, <span class="dt">real</span> verb_prob, <span class="dt">real</span> context_prob, <span class="dt">real</span> sigma) {</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">real</span> prob_or = <span class="fl">1.0</span> - (<span class="fl">1.0</span> - verb_prob) * (<span class="fl">1.0</span> - context_prob);</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> truncated_normal_lpdf(resp | prob_or, sigma, <span class="dv">0</span>, <span class="dv">1</span>);</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>data</code> block across all models will remain the same.</p>
+<div class="sourceCode" id="cb24" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                                <span class="co">// number of responses</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_verb;                                <span class="co">// number of verbs</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_context;                             <span class="co">// number of contexts</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_subj;                                <span class="co">// number of subjects</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_mean;                           <span class="co">// the verb means inferred from a previous model fit</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_std;                            <span class="co">// the verb standard deviations inferred from a previous model fit</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_mean;                     <span class="co">// the context means inferred from the norming data</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_std;                      <span class="co">// the context standard deviations inferred from the norming data</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_verb&gt; verb[N_resp];             <span class="co">// verb corresponding to response n</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_context&gt; context[N_resp];       <span class="co">// context corresponding to response n</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];             <span class="co">// subject corresponding to response n</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt;[N_resp] resp;               <span class="co">// bounded slider response   </span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The main thing to note here is that we can specify the estimated parameters <span class="math inline">\(\mu^\text{context}_c\)</span> and <span class="math inline">\(\sigma^\text{context}_c\)</span> of the posterior over the by-context intercepts.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p>The parameters and model themselves are defined using what’s known as a <a href="https://mc-stan.org/docs/stan-users-guide/reparameterization.html">non-centered parameterization</a> <span class="citation" data-cites="papaspiliopoulos_general_2007">(<a href="#ref-papaspiliopoulos_general_2007" role="doc-biblioref">Papaspiliopoulos, Roberts, and Sköld 2007</a>)</span>. In this sort of parameterization, which is used mainly for practical reasons, we define distributions like <span class="math inline">\(\rho \sim \mathcal{N}(\mu, \sigma^2)\)</span> in terms of draws from a standard normal <span class="math inline">\(Z \sim \mathcal{N}(0, 1)\)</span> along with a shift and scale by <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, respectively: <span class="math inline">\(\rho \equiv \sigma Z + \mu\)</span>. This reparameterization works–i.e.&nbsp;when defined in terms of <span class="math inline">\(Z\)</span> in this way, <span class="math inline">\(\rho \sim \mathcal{N}(\mu, \sigma^2)\)</span> for reasons mentioned <a href="https://en.wikipedia.org/wiki/Normal_distribution#General_normal_distribution">here</a>.</p>
+<p>This reparameterization is the reason for the <code>_z</code> variables in the <code>parameters</code> block.</p>
+<div class="sourceCode" id="cb25" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; verb_intercept_std;                   <span class="co">// the verb random intercept standard deviation</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept_z;              <span class="co">// the context random intercepts z-score</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_verb_std;              <span class="co">// the subject random verb intercept standard deviation</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb_z;               <span class="co">// the subject random verb intercepts z-score</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; subj_intercept_context_std;           <span class="co">// the subject random context intercept standard deviation</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And it’s why the <code>transformed parameters</code> block defines the intercept terms in the way it does.</p>
+<div class="sourceCode" id="cb26" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_intercept_std * verb_intercept_z;</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">// context parameters</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_intercept = context_std .* context_intercept_z + context_mean;</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">// subject parameters</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_verb = subj_intercept_verb_std * subj_intercept_verb_z;</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context = subj_intercept_context_std * subj_intercept_context_z;</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>  <span class="co">// log-likelihood</span></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] log_lik;</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] verb_prob_by_resp;</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_resp] context_prob_by_resp;</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp) {</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>    verb_prob_by_resp[n] = inv_logit(</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>      verb_intercept[verb[n]] + subj_intercept_verb[subj[n]]</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>    context_prob_by_resp[n] = inv_logit(</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>      context_intercept[context[n]] + subj_intercept_context[subj[n]]</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    log_lik[n] = log_lik_lpdf(</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>      resp[n] | verb_prob_by_resp[n], context_prob_by_resp[n], sigma</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>    );</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>One thing to note about both of these blocks is that we assume by-subject intercepts shifting both the by-context intercepts and the by-verb intercepts. The reasoning here is that particular subjects may tend upweight or downweight the projectivity of verbs in general or they may upweight or downweight the likelihood of the content; and there need not be a correlation between the two.</p>
+<p>Note also that the <code>transformed parameters</code> block is where we compute our (log-)likelihood using the model-specific likelihood specified in the <code>functions</code> block.</p>
+<p>The <code>model</code> block then simply specifies the random effects assumptions and adds the likelihood for each response to <code>target</code>.</p>
+<div class="sourceCode" id="cb27" data-startfrom="41" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>  verb_intercept_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the context intercepts</span></span>
+<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a>  context_intercept_z ~ std_normal();</span>
+<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the subject intercepts</span></span>
+<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>  subj_intercept_verb_z ~ std_normal();</span>
+<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_std ~ exponential(<span class="dv">1</span>);</span>
+<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>  subj_intercept_context_z ~ std_normal();</span>
+<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the responses</span></span>
+<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
+<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
+<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The <code>generated quantities</code> block does something similar to our model for the norming data by computing <span class="math inline">\(\pi^\text{context}_c\)</span>–additionally computing <span class="math inline">\(\pi^\text{verb}_v\)</span>.</p>
+<div class="sourceCode" id="cb28" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_prob = inv_logit(</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>    verb_intercept</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  );</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob = inv_logit(</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    context_intercept</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  );</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="fixed-verb-priors" class="level3">
-<h3 class="anchored" data-anchor-id="fixed-verb-priors">Fixed verb priors</h3>
-<p><code>parameters</code> block</p>
+</section>
+<section id="additional-experiments" class="level2">
+<h2 class="anchored" data-anchor-id="additional-experiments">Additional experiments</h2>
+<p>To further evaluate our models of the data collected by <span class="citation" data-cites="degen_prior_2021">Degen and Tonhauser (<a href="#ref-degen_prior_2021" role="doc-biblioref">2021</a>)</span>, we’ll look at a couple of additional (unpublished) datasets–collected by <span class="citation" data-cites="grove_presupposition_inprep">Grove and White (<a href="#ref-grove_presupposition_inprep" role="doc-biblioref">in prep</a>)</span>–that combine the prompt used by Degen and Tonhauser with the item construction method used for the MegaVeridicality and MegaIntentionsality datasets. In both cases, we attempt to remove all information that one might use for forming prior beliefs about the contents of the complement in order to assess how well the models fit to Degen and Tonhauser’s capture information about the verb.</p>
+<p>The main difference between the model we’ll use for these datasets and the one we developed for Degen and Tonhauser’s data is that, rather than specifying context-specific priors on the context intercepts, we will specify verb-specific priors on the verb intercepts. We’ll derive the estimates for these priors from our fits to Degen and Tonhauser’s projection data in the same way we estimated the context-specific priors from the our fits to their norming data.</p>
+<p>Implementing this idea requires two small changes to the <code>parameters</code> block: (a) adding a <code>context_intercept_std</code> for the prior over context intercepts and (b) removing the <code>verb_intercept_std</code>, since it is specified.</p>
 <div class="sourceCode" id="cb29" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept_z;                    <span class="co">// the verb random intercepts z-score</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; context_intercept_std;                <span class="co">// the context random intercept standard deviation</span></span>
@@ -1325,8 +1060,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_subj] subj_intercept_context_z;            <span class="co">// the subject random context intercepts z-score</span></span>
 <span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; sigma;                        <span class="co">// the standard deviation of the likelihood</span></span>
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>transformed parameters</code> block</p>
-<div class="sourceCode" id="cb30" data-startfrom="12" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
+<p>In the <code>transformed parameters</code> block, we similarly need to flip how we deal with by-verb and by-context intercepts. The rest remains the same.</p>
+<div class="sourceCode" id="cb30" data-source-line-numbers="2-6" data-startfrom="12" data-code-line-numbers="2-6"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 11;"><span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="kw">transformed parameters</span> {</span>
 <span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  <span class="co">// verb parameters</span></span>
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_intercept = verb_std .* verb_intercept_z + verb_mean;</span>
 <span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a></span>
@@ -1354,8 +1089,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb30-37"><a href="#cb30-37" aria-hidden="true" tabindex="-1"></a>    );</span>
 <span id="cb30-38"><a href="#cb30-38" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb30-39"><a href="#cb30-39" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>model</code> block</p>
-<div class="sourceCode" id="cb31" data-startfrom="41" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<p>Finally, we need to do something similar in the <code>model</code> block.</p>
+<div class="sourceCode" id="cb31" data-source-line-numbers="2-7" data-startfrom="41" data-code-line-numbers="2-7"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan" style="counter-reset: source-line 40;"><span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
 <span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a>  <span class="co">// sample the verb intercepts</span></span>
 <span id="cb31-43"><a href="#cb31-43" aria-hidden="true" tabindex="-1"></a>  verb_intercept_z ~ std_normal();</span>
 <span id="cb31-44"><a href="#cb31-44" aria-hidden="true" tabindex="-1"></a></span>
@@ -1374,584 +1109,155 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb31-57"><a href="#cb31-57" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (n <span class="cf">in</span> <span class="dv">1</span>:N_resp)</span>
 <span id="cb31-58"><a href="#cb31-58" aria-hidden="true" tabindex="-1"></a>    <span class="kw">target +=</span> log_lik[n];</span>
 <span id="cb31-59"><a href="#cb31-59" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>generated quantities</code> block</p>
-<div class="sourceCode" id="cb32" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_verb] verb_prob = inv_logit(</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    verb_intercept</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  );</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">vector</span>[N_context] context_prob = inv_logit(</span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    context_intercept</span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>  );</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="bleached" class="level1">
-<h1>Bleached</h1>
-<div class="cell" data-tags="[]" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>data_projection_bleached <span class="op">=</span> load_projection_data(</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability-replication/bleached.csv"</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>data_projection_bleached[<span class="st">"workerid"</span>] <span class="op">=</span> data_projection_bleached.participant</span>
+<section id="bleached-contexts" class="level3">
+<h3 class="anchored" data-anchor-id="bleached-contexts">Bleached contexts</h3>
+<p>In our bleached context experiments–which use an item construction method analogous to the one used for MegaVeridicality by <span class="citation" data-cites="white_role_2018">White and Rawlins (<a href="#ref-white_role_2018" role="doc-biblioref">2018</a>)</span>–we use an analogous prompt to the one that Degen and Tonhauser use, where <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span> are replaced with randomly selected names and <span class="math inline">\(V\)</span> is replaced with one of the verbs from the original experiment.</p>
+<blockquote class="blockquote">
+<p>You are at a party. You walk into the kitchen and overhear <span class="math inline">\(P_1\)</span> ask somebody else a question. <span class="math inline">\(P_1\)</span> doesn’t know you and wants to be secretive, so speaks in somewhat coded language.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong><span class="math inline">\(P_1\)</span> asks:</strong> “Did <span class="math inline">\(P_2\)</span> <span class="math inline">\(V\)</span> that a particular thing happened?”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Is <span class="math inline">\(P_1\)</span> certain that that thing happened?</p>
+</blockquote>
+<div class="cell" data-tags="[]" data-execution_count="64">
+<details>
+<summary>Load the bleached data</summary>
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>data_projection_bleached <span class="op">=</span> load_projection_data(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability-replication/bleached.csv"</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>The correlation between the mean response in this experiment and the one in Degen and Tonhauser’s experiment is extremely high.</p>
+<div class="cell" data-tags="[]" data-execution_count="78">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> merge</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> scatterplot</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>bleached_verb_mean <span class="op">=</span> data_projection_bleached.groupby(<span class="st">"verb"</span>).response.mean()</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>contentful_verb_mean <span class="op">=</span> data_projection.groupby(<span class="st">"verb"</span>).response.mean()</span>
 <span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>data_projection_bleached</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="68">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
-<th data-quarto-table-cell-role="th">verb</th>
-<th data-quarto-table-cell-role="th">contentNr</th>
-<th data-quarto-table-cell-role="th">content</th>
-<th data-quarto-table-cell-role="th">speakerGender</th>
-<th data-quarto-table-cell-role="th">fact</th>
-<th data-quarto-table-cell-role="th">fact_type</th>
-<th data-quarto-table-cell-role="th">utterance</th>
-<th data-quarto-table-cell-role="th">question</th>
-<th data-quarto-table-cell-role="th">subjectGender</th>
-<th data-quarto-table-cell-role="th">speakerName</th>
-<th data-quarto-table-cell-role="th">subjectName</th>
-<th data-quarto-table-cell-role="th">trigger_class</th>
-<th data-quarto-table-cell-role="th">response</th>
-<th data-quarto-table-cell-role="th">rt</th>
-<th data-quarto-table-cell-role="th">participant</th>
-<th data-quarto-table-cell-role="th">item</th>
-<th data-quarto-table-cell-role="th">workerid</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2</td>
-<td>inform_Sam</td>
-<td>11</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Danny is a diabetic</td>
-<td>factL</td>
-<td>Did Amanda inform Sam that a particular thing ...</td>
-<td>11</td>
-<td>F</td>
-<td>Donna</td>
-<td>Shirley</td>
-<td>C</td>
-<td>0.00</td>
-<td>15699</td>
-<td>1</td>
-<td>11L</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>5</td>
-<td>confirm</td>
-<td>13</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Jackson is training for a marathon</td>
-<td>factH</td>
-<td>Did Laura confirm that a particular thing happ...</td>
-<td>13</td>
-<td>F</td>
-<td>Nancy</td>
-<td>Janet</td>
-<td>C</td>
-<td>0.00</td>
-<td>6903</td>
-<td>1</td>
-<td>13H</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>6</td>
-<td>be_right_that</td>
-<td>20</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Charley lives in Mexico</td>
-<td>factH</td>
-<td>Is Anna right that a particular thing happened?</td>
-<td>20</td>
-<td>F</td>
-<td>Carol</td>
-<td>Nicole</td>
-<td>C</td>
-<td>0.00</td>
-<td>4640</td>
-<td>1</td>
-<td>20H</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>7</td>
-<td>prove</td>
-<td>3</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Emma is in law school</td>
-<td>factH</td>
-<td>Did Justin prove that a particular thing happe...</td>
-<td>3</td>
-<td>M</td>
-<td>Lisa</td>
-<td>Brandon</td>
-<td>C</td>
-<td>0.00</td>
-<td>5977</td>
-<td>1</td>
-<td>3H</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>8</td>
-<td>admit</td>
-<td>2</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Josie doesn't have a passport</td>
-<td>factL</td>
-<td>Did Scott admit that a particular thing happened?</td>
-<td>2</td>
-<td>M</td>
-<td>Jennifer</td>
-<td>Nicholas</td>
-<td>C</td>
-<td>0.49</td>
-<td>7887</td>
-<td>1</td>
-<td>2L</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">21</td>
-<td>23</td>
-<td>discover</td>
-<td>1</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Mary is taking a prenatal yoga class</td>
-<td>factH</td>
-<td>Did Patrick discover that a particular thing h...</td>
-<td>1</td>
-<td>M</td>
-<td>Carol</td>
-<td>Gregory</td>
-<td>NonProj</td>
-<td>0.82</td>
-<td>2665</td>
-<td>50</td>
-<td>1H</td>
-<td>50</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">22</td>
-<td>24</td>
-<td>suggest</td>
-<td>19</td>
-<td>that thing happened</td>
-<td>M</td>
-<td>Jon lives 2 blocks away from work</td>
-<td>factH</td>
-<td>Did Ruth suggest that a particular thing happe...</td>
-<td>19</td>
-<td>F</td>
-<td>Robert</td>
-<td>Anna</td>
-<td>C</td>
-<td>0.73</td>
-<td>2619</td>
-<td>50</td>
-<td>19H</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">23</td>
-<td>25</td>
-<td>confirm</td>
-<td>9</td>
-<td>that thing happened</td>
-<td>M</td>
-<td>Grace loves her sister</td>
-<td>factH</td>
-<td>Did Andrew confirm that a particular thing hap...</td>
-<td>9</td>
-<td>M</td>
-<td>James</td>
-<td>Tyler</td>
-<td>C</td>
-<td>0.68</td>
-<td>1120</td>
-<td>50</td>
-<td>9H</td>
-<td>50</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">24</td>
-<td>26</td>
-<td>hear</td>
-<td>11</td>
-<td>that thing happened</td>
-<td>F</td>
-<td>Danny is a diabetic</td>
-<td>factL</td>
-<td>Did Amanda hear that a particular thing happened?</td>
-<td>11</td>
-<td>F</td>
-<td>Jennifer</td>
-<td>Diane</td>
-<td>C</td>
-<td>0.70</td>
-<td>1824</td>
-<td>50</td>
-<td>11L</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25</td>
-<td>27</td>
-<td>think</td>
-<td>10</td>
-<td>that thing happened</td>
-<td>M</td>
-<td>Zoe is 5 years old</td>
-<td>factL</td>
-<td>Does Tim think that a particular thing happened?</td>
-<td>10</td>
-<td>M</td>
-<td>Richard</td>
-<td>Jacob</td>
-<td>NonProj</td>
-<td>0.79</td>
-<td>1424</td>
-<td>50</td>
-<td>10L</td>
-<td>50</td>
-</tr>
-</tbody>
-</table>
-
-<p>1000 rows × 18 columns</p>
-</div>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>verb_means_bleached <span class="op">=</span> merge(</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    bleached_verb_mean, contentful_verb_mean, </span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>    left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>).rename(columns<span class="op">=</span>{</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"response_x"</span>: <span class="st">"Mean bleached response"</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"response_y"</span>: <span class="st">"Mean contentful response"</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>scatterplot(verb_means_bleached, x<span class="op">=</span><span class="st">"Mean contentful response"</span>, y<span class="op">=</span><span class="st">"Mean bleached response"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>r, p <span class="op">=</span> pearsonr(x<span class="op">=</span>verb_means_bleached[<span class="st">"Mean contentful response"</span>], y<span class="op">=</span>verb_means_bleached[<span class="st">"Mean bleached response"</span>])</span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.text(<span class="fl">.5</span>, <span class="fl">.05</span>, <span class="st">"Pearson's r = </span><span class="sc">{:.2f}</span><span class="st">"</span>.<span class="bu">format</span>(r), fontdict<span class="op">=</span>{<span class="st">"fontsize"</span>: <span class="dv">16</span>}, transform<span class="op">=</span>ax.transAxes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="templatic" class="level1">
-<h1>Templatic</h1>
-<div class="cell" data-tags="[]" data-execution_count="79">
+<section id="templatic-contexts" class="level3">
+<h3 class="anchored" data-anchor-id="templatic-contexts">Templatic contexts</h3>
+<p>In our templatic context experiments–which use an item construction method analogous to the one used for MegaVeridicality by <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span>–we also use an analogous prompt to the one that Degen and Tonhauser use, where <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span> are replaced with randomly selected names and <span class="math inline">\(V\)</span> is replaced with one of the verbs from the original experiment.</p>
+<blockquote class="blockquote">
+<p>You are at a party. You walk into the kitchen and overhear <span class="math inline">\(P_1\)</span> ask somebody else a question. The party is very noisy, and you only hear part of what is said. The part you don’t hear is represented by the ‘X’.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p><strong><span class="math inline">\(P_1\)</span> asks:</strong> “Did <span class="math inline">\(P_2\)</span> <span class="math inline">\(V\)</span> that X happened?”</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Is <span class="math inline">\(P_1\)</span> certain that X happened?</p>
+</blockquote>
+<div class="cell" data-tags="[]" data-execution_count="80">
+<details>
+<summary>Load the templatic data</summary>
 <div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>data_projection_templatic <span class="op">=</span> load_projection_data(</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    os.path.join(</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>        data_dir, </span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"projective-probability-replication/templatic.csv"</span></span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>data_projection_templatic[<span class="st">"workerid"</span>] <span class="op">=</span> data_projection_templatic.participant</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>data_projection_templatic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="79">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">slide_number_in_experiment</th>
-<th data-quarto-table-cell-role="th">verb</th>
-<th data-quarto-table-cell-role="th">contentNr</th>
-<th data-quarto-table-cell-role="th">content</th>
-<th data-quarto-table-cell-role="th">speakerGender</th>
-<th data-quarto-table-cell-role="th">fact</th>
-<th data-quarto-table-cell-role="th">fact_type</th>
-<th data-quarto-table-cell-role="th">utterance</th>
-<th data-quarto-table-cell-role="th">question</th>
-<th data-quarto-table-cell-role="th">subjectGender</th>
-<th data-quarto-table-cell-role="th">speakerName</th>
-<th data-quarto-table-cell-role="th">subjectName</th>
-<th data-quarto-table-cell-role="th">trigger_class</th>
-<th data-quarto-table-cell-role="th">response</th>
-<th data-quarto-table-cell-role="th">rt</th>
-<th data-quarto-table-cell-role="th">participant</th>
-<th data-quarto-table-cell-role="th">item</th>
-<th data-quarto-table-cell-role="th">workerid</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>2</td>
-<td>prove</td>
-<td>11</td>
-<td>X happened</td>
-<td>M</td>
-<td>Danny loves cake</td>
-<td>factH</td>
-<td>Did Amanda prove that X happened?</td>
-<td>11</td>
-<td>F</td>
-<td>William</td>
-<td>Nicole</td>
-<td>C</td>
-<td>0.58</td>
-<td>2892</td>
-<td>1</td>
-<td>11H</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>3</td>
-<td>annoyed</td>
-<td>7</td>
-<td>X happened</td>
-<td>F</td>
-<td>Isabella is a vegetarian</td>
-<td>factL</td>
-<td>Is Kevin annoyed that X happened?</td>
-<td>7</td>
-<td>M</td>
-<td>Margaret</td>
-<td>Jeffrey</td>
-<td>NonProj</td>
-<td>0.47</td>
-<td>1876</td>
-<td>1</td>
-<td>7L</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>4</td>
-<td>discover</td>
-<td>14</td>
-<td>X happened</td>
-<td>F</td>
-<td>Jayden's car is in the shop</td>
-<td>factH</td>
-<td>Did Stephanie discover that X happened?</td>
-<td>14</td>
-<td>F</td>
-<td>Karen</td>
-<td>Amanda</td>
-<td>NonProj</td>
-<td>0.67</td>
-<td>1854</td>
-<td>1</td>
-<td>14H</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>5</td>
-<td>acknowledge</td>
-<td>3</td>
-<td>X happened</td>
-<td>M</td>
-<td>Emma is in law school</td>
-<td>factH</td>
-<td>Did Justin acknowledge that X happened?</td>
-<td>3</td>
-<td>M</td>
-<td>Mark</td>
-<td>Gary</td>
-<td>C</td>
-<td>0.72</td>
-<td>2423</td>
-<td>1</td>
-<td>3H</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>6</td>
-<td>pretend</td>
-<td>9</td>
-<td>X happened</td>
-<td>M</td>
-<td>Grace loves her sister</td>
-<td>factH</td>
-<td>Did Andrew pretend that X happened?</td>
-<td>9</td>
-<td>M</td>
-<td>Christopher</td>
-<td>Justin</td>
-<td>NonProj</td>
-<td>0.67</td>
-<td>9479</td>
-<td>1</td>
-<td>9H</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>22</td>
-<td>reveal</td>
-<td>20</td>
-<td>X happened</td>
-<td>F</td>
-<td>Charley lives in Korea</td>
-<td>factL</td>
-<td>Did Anna reveal that X happened?</td>
-<td>20</td>
-<td>F</td>
-<td>Kimberly</td>
-<td>Rebecca</td>
-<td>NonProj</td>
-<td>0.82</td>
-<td>1877</td>
-<td>50</td>
-<td>20L</td>
-<td>50</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">22</td>
-<td>24</td>
-<td>discover</td>
-<td>12</td>
-<td>X happened</td>
-<td>M</td>
-<td>Frank has always wanted a pet</td>
-<td>factH</td>
-<td>Did Melissa discover that X happened?</td>
-<td>12</td>
-<td>F</td>
-<td>Robert</td>
-<td>Rachel</td>
-<td>NonProj</td>
-<td>0.84</td>
-<td>1783</td>
-<td>50</td>
-<td>12H</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">23</td>
-<td>25</td>
-<td>admit</td>
-<td>16</td>
-<td>X happened</td>
-<td>M</td>
-<td>Josh is a 5-year old boy</td>
-<td>factH</td>
-<td>Did Sharon admit that X happened?</td>
-<td>16</td>
-<td>F</td>
-<td>William</td>
-<td>Anna</td>
-<td>C</td>
-<td>0.56</td>
-<td>2008</td>
-<td>50</td>
-<td>16H</td>
-<td>50</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">24</td>
-<td>26</td>
-<td>confirm</td>
-<td>4</td>
-<td>X happened</td>
-<td>M</td>
-<td>Olivia has two small children</td>
-<td>factL</td>
-<td>Did Jerry confirm that X happened?</td>
-<td>4</td>
-<td>M</td>
-<td>George</td>
-<td>Nicholas</td>
-<td>C</td>
-<td>0.78</td>
-<td>2149</td>
-<td>50</td>
-<td>4L</td>
-<td>50</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">25</td>
-<td>27</td>
-<td>acknowledge</td>
-<td>15</td>
-<td>X happened</td>
-<td>M</td>
-<td>Tony really likes to party with his friends</td>
-<td>factH</td>
-<td>Did Rebecca acknowledge that X happened?</td>
-<td>15</td>
-<td>F</td>
-<td>Christopher</td>
-<td>Julie</td>
-<td>C</td>
-<td>0.46</td>
-<td>2500</td>
-<td>50</td>
-<td>15H</td>
-<td>50</td>
-</tr>
-</tbody>
-</table>
-
-<p>1000 rows × 18 columns</p>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We again see an extremely high correlation between the mean response in this experiment and the one in Degen and Tonhauser’s experiment.</p>
+<div class="cell" data-tags="[]" data-execution_count="82">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> pearsonr</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> merge</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> scatterplot</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>templatic_verb_mean <span class="op">=</span> data_projection_templatic.groupby(<span class="st">"verb"</span>).response.mean()</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>verb_means_templatic <span class="op">=</span> merge(</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>    templatic_verb_mean, contentful_verb_mean, </span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>).rename(columns<span class="op">=</span>{</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"response_x"</span>: <span class="st">"Mean templatic response"</span>,</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"response_y"</span>: <span class="st">"Mean contentful response"</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>scatterplot(verb_means_templatic, x<span class="op">=</span><span class="st">"Mean contentful response"</span>, y<span class="op">=</span><span class="st">"Mean templatic response"</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>r, p <span class="op">=</span> pearsonr(x<span class="op">=</span>verb_means_templatic[<span class="st">"Mean contentful response"</span>], y<span class="op">=</span>verb_means_templatic[<span class="st">"Mean templatic response"</span>])</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.text(<span class="fl">.5</span>, <span class="fl">.05</span>, <span class="st">"Pearson's r = </span><span class="sc">{:.2f}</span><span class="st">"</span>.<span class="bu">format</span>(r), fontdict<span class="op">=</span>{<span class="st">"fontsize"</span>: <span class="dv">16</span>}, transform<span class="op">=</span>ax.transAxes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-definition_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-</div>
+
 
 
 </section>
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-degen_prior_2021" class="csl-entry" role="listitem">
+Degen, Judith, and Judith Tonhauser. 2021. <span>“<span>Prior Beliefs Modulate Projection</span>.”</span> <em>Open Mind</em> 5 (September): 59–70. <a href="https://doi.org/10.1162/opmi_a_00042">https://doi.org/10.1162/opmi_a_00042</a>.
+</div>
+<div id="ref-degen_factive_2022" class="csl-entry" role="listitem">
+———. 2022. <span>“Are There Factive Predicates? An Empirical Investigation.”</span> <em>Language</em> 98 (3): 552–91. <a href="https://doi.org/10.1353/lan.0.0271">https://doi.org/10.1353/lan.0.0271</a>.
+</div>
+<div id="ref-grove_presupposition_inprep" class="csl-entry" role="listitem">
+Grove, Julian, and Aaron Steven White. in prep. <span>“Presupposition Projection and the Role of Discrete Knowledge in Gradient Inference Judgments.”</span>
+</div>
+<div id="ref-kane_intensional_2022" class="csl-entry" role="listitem">
+Kane, Benjamin, Will Gantt, and Aaron Steven White. 2022. <span>“Intensional <span>Gaps</span>: <span>Relating</span> Veridicality, Factivity, Doxasticity, Bouleticity, and Neg-Raising.”</span> <em>Semantics and Linguistic Theory</em> 31 (January): 570–605. <a href="https://doi.org/10.3765/salt.v31i0.5137">https://doi.org/10.3765/salt.v31i0.5137</a>.
+</div>
+<div id="ref-karttunen_chameleon-like_2014" class="csl-entry" role="listitem">
+Karttunen, Lauri, Stanley Peters, Annie Zaenen, and Cleo Condoravdi. 2014. <span>“The <span>Chameleon</span>-Like <span>Nature</span> of <span>Evaluative</span> <span>Adjectives</span>.”</span> In <em>Empirical <span>Issues</span> in <span>Syntax</span> and <span>Semantics</span></em>, edited by Christopher Piñón, 10:233–50. Paris: CSSP-CNRS.
+</div>
+<div id="ref-papaspiliopoulos_general_2007" class="csl-entry" role="listitem">
+Papaspiliopoulos, Omiros, Gareth O. Roberts, and Martin Sköld. 2007. <span>“A <span>General</span> <span>Framework</span> for the <span>Parametrization</span> of <span>Hierarchical</span> <span>Models</span>.”</span> <em>Statistical Science</em> 22 (1): 59–73. <a href="https://doi.org/10.1214/088342307000000014">https://doi.org/10.1214/088342307000000014</a>.
+</div>
+<div id="ref-spector_uniform_2015" class="csl-entry" role="listitem">
+Spector, Benjamin, and Paul Egré. 2015. <span>“A Uniform Semantics for Embedded Interrogatives: <span>An</span> Answer, Not Necessarily the Answer.”</span> <em>Synthese</em> 192 (6): 1729–84. <a href="https://doi.org/10.1007/s11229-015-0722-4">https://doi.org/10.1007/s11229-015-0722-4</a>.
+</div>
+<div id="ref-white_role_2018" class="csl-entry" role="listitem">
+White, Aaron Steven, and Kyle Rawlins. 2018. <span>“The Role of Veridicality and Factivity in Clause Selection.”</span> In <em>Proceedings of the 48th <span>Annual</span> <span>Meeting</span> of the <span>North</span> <span>East</span> <span>Linguistic</span> <span>Society</span></em>, edited by Sherry Hucklebridge and Max Nelson, 221–34. Amherst, MA: GLSA Publications.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>As <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022, 583</a>)</span> note this assumption seems to be the default, and it is made explicitly in work by, at least, <span class="citation" data-cites="karttunen_chameleon-like_2014">Karttunen et al. (<a href="#ref-karttunen_chameleon-like_2014" role="doc-biblioref">2014</a>)</span> and <span class="citation" data-cites="spector_uniform_2015">Spector and Egré (<a href="#ref-spector_uniform_2015" role="doc-biblioref">2015</a>)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>These forms can be derived from an application of de Morgan’s laws <span class="math inline">\(p \lor p' = \lnot\lnot(p \lor p') = \lnot(\lnot p \land \lnot p')\)</span> plus an assumption that <span class="math inline">\(p\)</span> and <span class="math inline">\(p'\)</span> parameterize independent Bernoulli distributions.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Importantly, the truncated normal does not behave like the logit-normal distribution, we saw <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference#beyond-conjugacy">here</a> in the course notes on <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference">statistical inference</a>. As the variance of a truncated normal increases, it tends toward a <span class="math inline">\(\mathcal{U}(a, b)\)</span> distribution. In contrast, when the variance of a logit-normal increases, it tends toward a <span class="math inline">\(\text{Bernoulli}(\text{logit}^{-1}(\mu_n))\)</span> distribution. Further, the logit-normal technically only has support on <span class="math inline">\((0, 1)\)</span>, making it a similarly bad candidate for our linking model.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>We additionally specify fairly strong <span class="math inline">\(\text{Exponential}(1)\)</span> priors on the random effect standard deviations that are necessary for practical reasons having to do with model fitting.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>I’m following the terminology used by the data in calling this column the <code>verb</code> column. This terminology isn’t quite right, since there are non-verbal predicates–e.g.&nbsp;<em>be right</em>–in the data.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>We can specify similar parameters <span class="math inline">\(\mu^\text{verb}_v\)</span> and <span class="math inline">\(\sigma^\text{verb}_v\)</span>. We’ll return to this possibility in a second.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -2189,8 +1495,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../projective-content/index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Inferentially defined classes of predicates</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

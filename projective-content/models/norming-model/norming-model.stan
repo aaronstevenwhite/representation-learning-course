@@ -48,17 +48,12 @@ model {
 }
 
 generated quantities {
+  // compute the average context probabilities for the average subject
   vector[N_context] context_prob;
 
   for (c in 1:N_context) {
     context_prob[c] = inv_logit(
       context_intercept[c]
     );
-  }
-
-  vector[N_resp] resp_pp_rep;
-
-  for (n in 1:N_resp){
-    resp_pp_rep[n] = normal_lub_rng(mu[n], sigma, 0, 1);
   }
 }

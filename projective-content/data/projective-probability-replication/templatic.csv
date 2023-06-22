@@ -1,0 +1,1301 @@
+,slide_number_in_experiment,verb,contentNr,content,speakerGender,fact,fact_type,utterance,question,subjectGender,speakerName,subjectName,trigger_class,response,rt,participant
+0,2,prove,11,X happened,M,Danny loves cake,factH,Did Amanda prove that X happened?,11,F,William,Nicole,C,0.58,2892,1
+1,3,annoyed,7,X happened,F,Isabella is a vegetarian,factL,Is Kevin annoyed that X happened?,7,M,Margaret,Jeffrey,NonProj,0.47,1876,1
+2,4,discover,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie discover that X happened?,14,F,Karen,Amanda,NonProj,0.67,1854,1
+3,5,acknowledge,3,X happened,M,Emma is in law school,factH,Did Justin acknowledge that X happened?,3,M,Mark,Gary,C,0.72,2423,1
+4,6,pretend,9,X happened,M,Grace loves her sister,factH,Did Andrew pretend that X happened?,9,M,Christopher,Justin,NonProj,0.67,9479,1
+5,7,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,David,NA,control,0.66,3111,1
+6,8,know,5,X happened,F,Sophia is a high end fashion model,factL,Does Ben know that X happened?,5,M,Michelle,Ryan,NonProj,0.68,2121,1
+7,9,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Paul,NA,control,0.67,2559,1
+8,10,hear,6,X happened,M,Mia is a nun,factL,Did Ray hear that X happened?,6,M,Matthew,Andrew,C,0.76,2064,1
+9,11,suggest,10,X happened,F,Zoe is 5 years old,factL,Did Tim suggest that X happened?,10,M,Donna,Brandon,C,0.7,2000,1
+10,12,announce,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon announce that X happened?,16,F,Richard,Sharon,C,0.78,1919,1
+11,13,confirm,18,X happened,F,Julian is Cuban,factH,Did Kathleen confirm that X happened?,18,F,Dorothy,Carolyn,C,0.69,1790,1
+12,14,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Donna,NA,control,0.77,1844,1
+13,15,think,12,X happened,F,Frank is allergic to cats,factL,Does Melissa think that X happened?,12,F,Linda,Amy,NonProj,0.77,2173,1
+14,16,establish,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca establish that X happened?,15,F,Sandra,Ruth,NonProj,0.82,2415,1
+15,17,inform_Sam,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth inform Sam that X happened?,19,F,Elizabeth,Cynthia,C,0.74,2383,1
+16,18,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Linda,NA,control,0.76,1986,1
+17,19,be_right_that,4,X happened,F,Olivia works the third shift,factH,Is Jerry right that X happened?,4,M,Jessica,Edward,C,0.7,2007,1
+18,20,demonstrate,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia demonstrate that X happened?,17,F,Sarah,Diane,C,0.81,2721,1
+19,21,admit,20,X happened,M,Charley lives in Korea,factL,Did Anna admit that X happened?,20,F,David,Melissa,C,0.76,2784,1
+20,22,say,1,X happened,F,Mary is a middle school student,factL,Did Patrick say that X happened?,1,M,Susan,Alexander,C,0.69,1831,1
+21,23,reveal,2,X happened,M,Josie doesn't have a passport,factL,Did Scott reveal that X happened?,2,M,Paul,Benjamin,NonProj,0.75,1799,1
+22,24,see,13,X happened,F,Jackson is obese,factL,Did Laura see that X happened?,13,F,Betty,Shirley,NonProj,0.8,1940,1
+23,25,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Matthew,NA,control,0.67,4542,1
+24,26,confess,8,X happened,M,Emily has been saving for a year,factH,Did Brian confess that X happened?,8,M,Kenneth,Jacob,C,0.73,2287,1
+25,27,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Michelle,NA,control,0.72,2072,1
+0,2,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Jennifer,NA,control,0.62,2920,2
+1,3,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Linda,NA,control,0.72,1759,2
+2,4,see,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon see that X happened?,16,F,Christopher,Melissa,NonProj,0.56,2202,2
+3,5,hear,8,X happened,M,Emily has been saving for a year,factH,Did Brian hear that X happened?,8,M,Richard,Justin,C,0.75,2411,2
+4,6,establish,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia establish that X happened?,17,F,Margaret,Sharon,NonProj,0.53,1717,2
+5,7,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Kimberly,NA,control,0.86,1463,2
+6,8,discover,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca discover that X happened?,15,F,Kimberly,Rebecca,NonProj,0.68,1480,2
+7,9,be_right_that,10,X happened,F,Zoe is 5 years old,factL,Is Tim right that X happened?,10,M,Linda,Gary,C,0.46,1294,2
+8,10,confess,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben confess that X happened?,5,M,Dorothy,Jerry,C,0.79,1267,2
+9,11,acknowledge,18,X happened,F,Julian is German,factL,Did Kathleen acknowledge that X happened?,18,F,Sandra,Amanda,C,0.62,1378,2
+10,12,demonstrate,4,X happened,M,Olivia works the third shift,factH,Did Jerry demonstrate that X happened?,4,M,Kenneth,Jacob,C,0.75,1597,2
+11,13,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Sandra,NA,control,0.62,1270,2
+12,14,confirm,9,X happened,M,Grace hates her sister,factL,Did Andrew confirm that X happened?,9,M,James,Jeffrey,C,0.77,1708,2
+13,15,inform_Sam,2,X happened,F,Josie loves France,factH,Did Scott inform Sam that X happened?,2,M,Nancy,Larry,C,0.56,1484,2
+14,16,announce,11,X happened,F,Danny loves cake,factH,Did Amanda announce that X happened?,11,F,Jessica,Ruth,C,0.77,1830,2
+15,17,know,3,X happened,M,Emma is in first grade,factL,Does Justin know that X happened?,3,M,Mark,Kevin,NonProj,0.6,1667,2
+16,18,suggest,20,X happened,F,Charley lives in Mexico,factH,Did Anna suggest that X happened?,20,F,Michelle,Brenda,C,0.85,1340,2
+17,19,admit,1,X happened,F,Mary is a middle school student,factL,Did Patrick admit that X happened?,1,M,Jennifer,Ronald,C,0.65,1241,2
+18,20,prove,13,X happened,F,Jackson is training for a marathon,factH,Did Laura prove that X happened?,13,F,Donna,Rachel,C,0.9,1395,2
+19,21,pretend,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie pretend that X happened?,14,F,David,Diane,NonProj,0.64,1298,2
+20,22,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Ashley,NA,control,0.82,2500,2
+21,23,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Dorothy,NA,control,0.59,2055,2
+22,24,reveal,6,X happened,F,Mia is a nun,factL,Did Ray reveal that X happened?,6,M,Ashley,Benjamin,NonProj,0.82,1050,2
+23,25,annoyed,12,X happened,F,Frank has always wanted a pet,factH,Is Melissa annoyed that X happened?,12,F,Helen,Carolyn,NonProj,0.72,3702,2
+24,26,think,19,X happened,F,Jon lives 2 blocks away from work,factH,Does Ruth think that X happened?,19,F,Elizabeth,Angela,NonProj,0.76,2156,2
+25,27,say,7,X happened,M,Isabella is from Argentina,factH,Did Kevin say that X happened?,7,M,Robert,Edward,C,0.55,1168,2
+0,2,see,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon see that X happened?,16,F,Robert,Janet,NonProj,0.88,10195,3
+1,3,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Elizabeth,NA,control,0.99,5016,3
+2,4,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jennifer,NA,control,0.94,4842,3
+3,5,acknowledge,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca acknowledge that X happened?,15,F,Sandra,Sharon,C,0.98,5612,3
+4,6,say,10,X happened,F,Zoe is a math major,factH,Did Tim say that X happened?,10,M,Nancy,Jacob,C,0.28,4866,3
+5,7,reveal,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth reveal that X happened?,19,F,Ashley,Carolyn,NonProj,0.63,8090,3
+6,8,know,8,X happened,F,Emily has been saving for a year,factH,Does Brian know that X happened?,8,M,Carol,Nicholas,NonProj,0.78,2677,3
+7,9,think,4,X happened,F,Olivia works the third shift,factH,Does Jerry think that X happened?,4,M,Jessica,Brandon,NonProj,0.14,4202,3
+8,10,prove,6,X happened,F,Mia is a nun,factL,Did Ray prove that X happened?,6,M,Jennifer,Jeffrey,C,0.33,4324,3
+9,11,admit,5,X happened,F,Sophia is a hipster,factH,Did Ben admit that X happened?,5,M,Kimberly,Edward,C,0.84,2723,3
+10,12,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Lisa,NA,control,0.98,5766,3
+11,13,be_right_that,9,X happened,M,Grace hates her sister,factL,Is Andrew right that X happened?,9,M,Paul,Timothy,C,0.08,4530,3
+12,14,hear,18,X happened,M,Julian is German,factL,Did Kathleen hear that X happened?,18,F,Matthew,Anna,C,0.64,3635,3
+13,15,announce,3,X happened,F,Emma is in first grade,factL,Did Justin announce that X happened?,3,M,Elizabeth,Alexander,C,0.49,3245,3
+14,16,confess,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick confess that X happened?,1,M,Sarah,Brian,C,0.35,4501,3
+15,17,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,James,NA,control,0.79,8020,3
+16,18,discover,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia discover that X happened?,17,F,Richard,Virginia,NonProj,0.79,3997,3
+17,19,annoyed,13,X happened,M,Jackson is training for a marathon,factH,Is Laura annoyed that X happened?,13,F,Steven,Julie,NonProj,0.88,2804,3
+18,20,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Richard,NA,control,0.85,6764,3
+19,21,confirm,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa confirm that X happened?,12,F,Thomas,Catherine,C,0.57,4127,3
+20,22,pretend,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin pretend that X happened?,7,M,Lisa,Eric,NonProj,0.3,5518,3
+21,23,inform_Sam,20,X happened,F,Charley lives in Korea,factL,Did Anna inform Sam that X happened?,20,F,Michelle,Melissa,C,0.82,9521,3
+22,24,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Paul,NA,control,0.82,7480,3
+23,25,suggest,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie suggest that X happened?,14,F,James,Kathleen,C,0.35,2630,3
+24,26,establish,2,X happened,F,Josie loves France,factH,Did Scott establish that X happened?,2,M,Helen,Ryan,NonProj,0.55,3697,3
+25,27,demonstrate,11,X happened,F,Danny is a diabetic,factL,Did Amanda demonstrate that X happened?,11,F,Margaret,Brenda,C,0.3,6103,3
+0,2,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Steven,NA,control,0.22,18963,4
+1,3,admit,20,X happened,F,Charley lives in Korea,factL,Did Anna admit that X happened?,20,F,Donna,Joyce,C,0.57,67923,4
+2,4,discover,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth discover that X happened?,19,F,Carol,Ruth,NonProj,0.4,4959,4
+3,5,annoyed,7,X happened,F,Isabella is from Argentina,factH,Is Kevin annoyed that X happened?,7,M,Karen,Justin,NonProj,0.77,6496,4
+4,6,say,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon say that X happened?,16,F,George,Virginia,C,0.41,2221,4
+5,7,prove,8,X happened,F,Emily has been saving for a year,factH,Did Brian prove that X happened?,8,M,Betty,Jacob,C,0.27,3474,4
+6,8,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Donna,NA,control,0.69,3490,4
+7,9,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,James,NA,control,0.49,3806,4
+8,10,know,11,X happened,F,Danny loves cake,factH,Does Amanda know that X happened?,11,F,Sarah,Angela,NonProj,0.33,2537,4
+9,11,see,1,X happened,M,Mary is a middle school student,factL,Did Patrick see that X happened?,1,M,James,Raymond,NonProj,0.27,2406,4
+10,12,confirm,3,X happened,F,Emma is in law school,factH,Did Justin confirm that X happened?,3,M,Margaret,Andrew,C,0.57,3296,4
+11,13,demonstrate,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben demonstrate that X happened?,5,M,Jennifer,Jerry,C,0.35,2260,4
+12,14,be_right_that,17,X happened,M,Owen lives in New Orleans,factL,Is Cynthia right that X happened?,17,F,Richard,Carolyn,C,0.36,5014,4
+13,15,hear,12,X happened,M,Frank is allergic to cats,factL,Did Melissa hear that X happened?,12,F,David,Brenda,C,0.66,8800,4
+14,16,think,10,X happened,F,Zoe is 5 years old,factL,Does Tim think that X happened?,10,M,Kimberly,Gregory,NonProj,0.25,2978,4
+15,17,acknowledge,18,X happened,F,Julian is Cuban,factH,Did Kathleen acknowledge that X happened?,18,F,Helen,Heather,C,0.28,2361,4
+16,18,pretend,4,X happened,M,Olivia has two small children,factL,Did Jerry pretend that X happened?,4,M,Steven,Benjamin,NonProj,0.29,2417,4
+17,19,announce,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie announce that X happened?,14,F,Linda,Kathleen,C,0.13,1264,4
+18,20,suggest,13,X happened,F,Jackson is training for a marathon,factH,Did Laura suggest that X happened?,13,F,Nancy,Rachel,C,0.4,1785,4
+19,21,reveal,6,X happened,M,Mia is a college student,factH,Did Ray reveal that X happened?,6,M,Matthew,Scott,NonProj,0.65,2181,4
+20,22,establish,9,X happened,F,Grace hates her sister,factL,Did Andrew establish that X happened?,9,M,Susan,Larry,NonProj,0.4,3205,4
+21,23,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Susan,NA,control,0.32,3203,4
+22,24,inform_Sam,2,X happened,F,Josie doesn't have a passport,factL,Did Scott inform Sam that X happened?,2,M,Lisa,Jeffrey,C,0.31,2654,4
+23,25,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Dorothy,NA,control,0.21,1547,4
+24,26,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,David,NA,control,0.38,2234,4
+25,27,confess,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca confess that X happened?,15,F,Dorothy,Amanda,C,0.43,1495,4
+0,2,admit,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa admit that X happened?,12,F,Matthew,Amanda,C,0.7,13911,5
+1,3,see,9,X happened,M,Grace hates her sister,factL,Did Andrew see that X happened?,9,M,James,Patrick,NonProj,0.06,6368,5
+2,4,acknowledge,18,X happened,M,Julian is German,factL,Did Kathleen acknowledge that X happened?,18,F,William,Stephanie,C,1.0,5831,5
+3,5,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Robert,NA,control,1.0,7841,5
+4,6,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Richard,NA,control,1.0,4959,5
+5,7,suggest,13,X happened,F,Jackson is training for a marathon,factH,Did Laura suggest that X happened?,13,F,Dorothy,Brenda,C,0.46,4936,5
+6,8,discover,4,X happened,F,Olivia works the third shift,factH,Did Jerry discover that X happened?,4,M,Helen,Raymond,NonProj,0.83,4744,5
+7,9,annoyed,8,X happened,M,Emily never has any money,factL,Is Brian annoyed that X happened?,8,M,Paul,Timothy,NonProj,0.98,9096,5
+8,10,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,William,NA,control,1.0,5536,5
+9,11,confess,2,X happened,F,Josie doesn't have a passport,factL,Did Scott confess that X happened?,2,M,Lisa,Scott,C,0.35,4224,5
+10,12,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,1.0,4512,5
+11,13,hear,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca hear that X happened?,15,F,Michelle,Nicole,C,0.62,4472,5
+12,14,know,17,X happened,M,Owen lives in Chicago,factH,Does Cynthia know that X happened?,17,F,Christopher,Diane,NonProj,0.85,6000,5
+13,15,establish,20,X happened,M,Charley lives in Korea,factL,Did Anna establish that X happened?,20,F,Steven,Carolyn,NonProj,0.05,3336,5
+14,16,think,1,X happened,M,Mary is taking a prenatal yoga class,factH,Does Patrick think that X happened?,1,M,Thomas,Edward,NonProj,0.0,11248,5
+15,17,say,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon say that X happened?,16,F,George,Rachel,C,0.0,4512,5
+16,18,reveal,10,X happened,F,Zoe is a math major,factH,Did Tim reveal that X happened?,10,M,Karen,Kevin,NonProj,0.49,5640,5
+17,19,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Lisa,NA,control,1.0,4288,5
+18,20,be_right_that,11,X happened,M,Danny is a diabetic,factL,Is Amanda right that X happened?,11,F,Robert,Joyce,C,0.0,3448,5
+19,21,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Donna,NA,control,1.0,3960,5
+20,22,inform_Sam,6,X happened,F,Mia is a nun,factL,Did Ray inform Sam that X happened?,6,M,Donna,Jeffrey,C,0.92,5264,5
+21,23,prove,5,X happened,F,Sophia is a hipster,factH,Did Ben prove that X happened?,5,M,Margaret,Larry,C,0.0,3960,5
+22,24,announce,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie announce that X happened?,14,F,Betty,Kathleen,C,0.06,3408,5
+23,25,confirm,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth confirm that X happened?,19,F,Linda,Anna,C,0.0,2856,5
+24,26,pretend,3,X happened,M,Emma is in first grade,factL,Did Justin pretend that X happened?,3,M,Richard,Ronald,NonProj,0.2,4600,5
+25,27,demonstrate,7,X happened,M,Isabella is from Argentina,factH,Did Kevin demonstrate that X happened?,7,M,Mark,Justin,C,0.0,4368,5
+0,2,confirm,5,X happened,M,Sophia is a hipster,factH,Did Ben confirm that X happened?,5,M,Richard,Justin,C,0.72,8121,6
+1,3,demonstrate,18,X happened,F,Julian is Cuban,factH,Did Kathleen demonstrate that X happened?,18,F,Karen,Angela,C,0.93,168862,6
+2,4,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,William,NA,control,1.0,5425,6
+3,5,announce,11,X happened,M,Danny loves cake,factH,Did Amanda announce that X happened?,11,F,James,Brenda,C,0.25,3818,6
+4,6,confess,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon confess that X happened?,16,F,Donna,Diane,C,0.28,3889,6
+5,7,reveal,10,X happened,M,Zoe is a math major,factH,Did Tim reveal that X happened?,10,M,Robert,Scott,NonProj,0.62,6318,6
+6,8,say,12,X happened,M,Frank is allergic to cats,factL,Did Melissa say that X happened?,12,F,Kenneth,Nicole,C,0.36,103872,6
+7,9,admit,3,X happened,F,Emma is in law school,factH,Did Justin admit that X happened?,3,M,Margaret,Gary,C,0.77,4658,6
+8,10,hear,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia hear that X happened?,17,F,Lisa,Cynthia,C,0.63,5212,6
+9,11,discover,4,X happened,M,Olivia works the third shift,factH,Did Jerry discover that X happened?,4,M,Paul,Timothy,NonProj,0.35,3298,6
+10,12,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Michelle,NA,control,1.0,5791,6
+11,13,be_right_that,2,X happened,F,Josie loves France,factH,Is Scott right that X happened?,2,M,Jessica,Larry,C,0.11,2955,6
+12,14,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Elizabeth,NA,control,0.93,3372,6
+13,15,establish,8,X happened,F,Emily never has any money,factL,Did Brian establish that X happened?,8,M,Kimberly,Ronald,NonProj,0.31,5044,6
+14,16,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Donna,NA,control,0.92,3398,6
+15,17,prove,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca prove that X happened?,15,F,Elizabeth,Heather,C,0.26,7800,6
+16,18,suggest,1,X happened,F,Mary is a middle school student,factL,Did Patrick suggest that X happened?,1,M,Sarah,Raymond,C,0.11,1991,6
+17,19,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.9,3606,6
+18,20,pretend,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie pretend that X happened?,14,F,Steven,Virginia,NonProj,0.22,5137,6
+19,21,know,9,X happened,F,Grace hates her sister,factL,Does Andrew know that X happened?,9,M,Michelle,Jeffrey,NonProj,0.34,2581,6
+20,22,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Kimberly,NA,control,0.92,3707,6
+21,23,annoyed,19,X happened,M,Jon lives 10 miles away from work,factL,Is Ruth annoyed that X happened?,19,F,Thomas,Kathleen,NonProj,0.67,2623,6
+22,24,acknowledge,6,X happened,F,Mia is a college student,factH,Did Ray acknowledge that X happened?,6,M,Nancy,Nicholas,C,0.34,4173,6
+23,25,think,13,X happened,M,Jackson is obese,factL,Does Laura think that X happened?,13,F,William,Stephanie,NonProj,0.18,2440,6
+24,26,see,20,X happened,M,Charley lives in Mexico,factH,Did Anna see that X happened?,20,F,Mark,Laura,NonProj,0.32,2783,6
+25,27,inform_Sam,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin inform Sam that X happened?,7,M,Carol,Brian,C,0.65,2546,6
+0,2,hear,6,X happened,M,Mia is a nun,factL,Did Ray hear that X happened?,6,M,James,Timothy,C,0.87,27474,7
+1,3,acknowledge,8,X happened,M,Emily never has any money,factL,Did Brian acknowledge that X happened?,8,M,William,Gregory,C,0.95,19627,7
+2,4,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jessica,NA,control,0.94,23165,7
+3,5,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Thomas,NA,control,0.97,19718,7
+4,6,prove,2,X happened,M,Josie loves France,factH,Did Scott prove that X happened?,2,M,Matthew,Andrew,C,0.2,11869,7
+5,7,think,9,X happened,F,Grace loves her sister,factH,Does Andrew think that X happened?,9,M,Margaret,Justin,NonProj,0.15,7972,7
+6,8,establish,3,X happened,M,Emma is in first grade,factL,Did Justin establish that X happened?,3,M,Thomas,Ryan,NonProj,0.33,12372,7
+7,9,announce,5,X happened,M,Sophia is a hipster,factH,Did Ben announce that X happened?,5,M,Christopher,Edward,C,0.58,17694,7
+8,10,annoyed,20,X happened,F,Charley lives in Korea,factL,Is Anna annoyed that X happened?,20,F,Betty,Diane,NonProj,0.89,11312,7
+9,11,see,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca see that X happened?,15,F,Kenneth,Joyce,NonProj,0.77,10018,7
+10,12,confirm,13,X happened,F,Jackson is training for a marathon,factH,Did Laura confirm that X happened?,13,F,Carol,Amy,C,0.24,6727,7
+11,13,be_right_that,4,X happened,F,Olivia has two small children,factL,Is Jerry right that X happened?,4,M,Jennifer,Gary,C,0.22,5733,7
+12,14,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,James,NA,control,0.98,11701,7
+13,15,pretend,11,X happened,M,Danny loves cake,factH,Did Amanda pretend that X happened?,11,F,Paul,Rachel,NonProj,0.19,13531,7
+14,16,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Jennifer,NA,control,0.94,16411,7
+15,17,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Betty,NA,control,1.0,11683,7
+16,18,say,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth say that X happened?,19,F,Ashley,Shirley,C,0.18,6961,7
+17,19,confess,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin confess that X happened?,7,M,Richard,Alexander,C,0.59,8752,7
+18,20,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Steven,NA,control,0.98,9244,7
+19,21,reveal,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon reveal that X happened?,16,F,Elizabeth,Carolyn,NonProj,0.85,11770,7
+20,22,inform_Sam,18,X happened,F,Julian is Cuban,factH,Did Kathleen inform Sam that X happened?,18,F,Michelle,Angela,C,0.92,9023,7
+21,23,suggest,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia suggest that X happened?,17,F,Steven,Nicole,C,0.39,6255,7
+22,24,discover,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa discover that X happened?,12,F,Lisa,Janet,NonProj,0.58,6409,7
+23,25,know,10,X happened,F,Zoe is a math major,factH,Does Tim know that X happened?,10,M,Linda,Eric,NonProj,0.91,18469,7
+24,26,admit,1,X happened,F,Mary is a middle school student,factL,Did Patrick admit that X happened?,1,M,Helen,Scott,C,0.99,11059,7
+25,27,demonstrate,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie demonstrate that X happened?,14,F,Jessica,Kathleen,C,0.78,9615,7
+0,2,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,David,NA,control,0.94,19476,8
+1,3,prove,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon prove that X happened?,16,F,Michelle,Catherine,C,0.04,10174,8
+2,4,acknowledge,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia acknowledge that X happened?,17,F,Jessica,Shirley,C,0.95,6450,8
+3,5,establish,18,X happened,F,Julian is German,factL,Did Kathleen establish that X happened?,18,F,Ashley,Brenda,NonProj,0.9,5752,8
+4,6,think,3,X happened,M,Emma is in first grade,factL,Does Justin think that X happened?,3,M,Richard,Patrick,NonProj,0.07,8474,8
+5,7,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Richard,NA,control,0.0,9229,8
+6,8,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Ashley,NA,control,0.0,6602,8
+7,9,say,8,X happened,M,Emily never has any money,factL,Did Brian say that X happened?,8,M,Steven,Jerry,C,0.0,9885,8
+8,10,see,10,X happened,M,Zoe is 5 years old,factL,Did Tim see that X happened?,10,M,Kenneth,Gary,NonProj,0.0,7833,8
+9,11,discover,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth discover that X happened?,19,F,Kimberly,Joyce,NonProj,0.0,4858,8
+10,12,admit,20,X happened,M,Charley lives in Mexico,factH,Did Anna admit that X happened?,20,F,Robert,Julie,C,1.0,5729,8
+11,13,suggest,11,X happened,M,Danny loves cake,factH,Did Amanda suggest that X happened?,11,F,George,Christina,C,1.0,2633,8
+12,14,annoyed,9,X happened,F,Grace loves her sister,factH,Is Andrew annoyed that X happened?,9,M,Sarah,Tyler,NonProj,0.0,5558,8
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Donna,NA,control,0.0,4463,8
+14,16,inform_Sam,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca inform Sam that X happened?,15,F,Margaret,Rachel,C,1.0,5805,8
+15,17,reveal,1,X happened,M,Mary is a middle school student,factL,Did Patrick reveal that X happened?,1,M,Thomas,Ronald,NonProj,0.0,2037,8
+16,18,know,13,X happened,F,Jackson is training for a marathon,factH,Does Laura know that X happened?,13,F,Sandra,Diane,NonProj,0.0,2028,8
+17,19,hear,2,X happened,F,Josie loves France,factH,Did Scott hear that X happened?,2,M,Nancy,Gregory,C,1.0,4068,8
+18,20,be_right_that,12,X happened,M,Frank is allergic to cats,factL,Is Melissa right that X happened?,12,F,James,Anna,C,0.0,3611,8
+19,21,confirm,4,X happened,F,Olivia has two small children,factL,Did Jerry confirm that X happened?,4,M,Helen,Eric,C,1.0,3593,8
+20,22,pretend,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben pretend that X happened?,5,M,David,Kevin,NonProj,1.0,16914,8
+21,23,confess,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie confess that X happened?,14,F,Betty,Nicole,C,0.0,3443,8
+22,24,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Kenneth,NA,control,1.0,4371,8
+23,25,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Michelle,NA,control,0.0,2257,8
+24,26,demonstrate,6,X happened,F,Mia is a nun,factL,Did Ray demonstrate that X happened?,6,M,Donna,Larry,C,0.0,7169,8
+25,27,announce,7,X happened,F,Isabella is from Argentina,factH,Did Kevin announce that X happened?,7,M,Jennifer,Jeffrey,C,0.0,6585,8
+0,2,reveal,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia reveal that X happened?,17,F,David,Nicole,NonProj,0.0,20314,9
+1,3,admit,11,X happened,M,Danny is a diabetic,factL,Did Amanda admit that X happened?,11,F,Steven,Ruth,C,0.22,23872,9
+2,4,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Steven,NA,control,1.0,16689,9
+3,5,confess,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie confess that X happened?,14,F,Thomas,Sharon,C,0.56,20231,9
+4,6,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Richard,NA,control,1.0,12846,9
+5,7,think,8,X happened,F,Emily has been saving for a year,factH,Does Brian think that X happened?,8,M,Susan,Patrick,NonProj,0.0,17530,9
+6,8,prove,13,X happened,M,Jackson is training for a marathon,factH,Did Laura prove that X happened?,13,F,Paul,Virginia,C,0.0,10244,9
+7,9,see,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca see that X happened?,15,F,Betty,Shirley,NonProj,0.88,14327,9
+8,10,be_right_that,20,X happened,F,Charley lives in Korea,factL,Is Anna right that X happened?,20,F,Ashley,Rachel,C,1.0,9893,9
+9,11,hear,3,X happened,M,Emma is in first grade,factL,Did Justin hear that X happened?,3,M,Richard,Jacob,C,1.0,8976,9
+10,12,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Jennifer,NA,control,1.0,10606,9
+11,13,inform_Sam,10,X happened,F,Zoe is a math major,factH,Did Tim inform Sam that X happened?,10,M,Karen,Larry,C,1.0,11483,9
+12,14,establish,2,X happened,F,Josie doesn't have a passport,factL,Did Scott establish that X happened?,2,M,Margaret,Alexander,NonProj,1.0,10809,9
+13,15,suggest,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon suggest that X happened?,16,F,Dorothy,Amy,C,0.3,18701,9
+14,16,discover,4,X happened,M,Olivia works the third shift,factH,Did Jerry discover that X happened?,4,M,William,Scott,NonProj,1.0,16923,9
+15,17,announce,9,X happened,F,Grace loves her sister,factH,Did Andrew announce that X happened?,9,M,Elizabeth,Timothy,C,1.0,7994,9
+16,18,say,5,X happened,F,Sophia is a hipster,factH,Did Ben say that X happened?,5,M,Helen,Gary,C,0.15,19546,9
+17,19,confirm,18,X happened,F,Julian is German,factL,Did Kathleen confirm that X happened?,18,F,Jennifer,Julie,C,0.0,8773,9
+18,20,annoyed,6,X happened,M,Mia is a nun,factL,Is Ray annoyed that X happened?,6,M,Kenneth,Raymond,NonProj,1.0,8055,9
+19,21,know,19,X happened,F,Jon lives 10 miles away from work,factL,Does Ruth know that X happened?,19,F,Carol,Rebecca,NonProj,1.0,7786,9
+20,22,demonstrate,1,X happened,F,Mary is a middle school student,factL,Did Patrick demonstrate that X happened?,1,M,Lisa,Brian,C,0.51,21984,9
+21,23,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Margaret,NA,control,1.0,10498,9
+22,24,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Kenneth,NA,control,1.0,9009,9
+23,25,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Carol,NA,control,1.0,7148,9
+24,26,pretend,12,X happened,F,Frank is allergic to cats,factL,Did Melissa pretend that X happened?,12,F,Sarah,Diane,NonProj,0.04,17585,9
+25,27,acknowledge,7,X happened,M,Isabella is from Argentina,factH,Did Kevin acknowledge that X happened?,7,M,Matthew,Brandon,C,0.94,10523,9
+0,2,know,1,X happened,F,Mary is a middle school student,factL,Does Patrick know that X happened?,1,M,Sandra,Scott,NonProj,0.95,15064,10
+1,3,say,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin say that X happened?,7,M,Christopher,Jeffrey,C,0.1,5129,10
+2,4,admit,5,X happened,M,Sophia is a hipster,factH,Did Ben admit that X happened?,5,M,George,Nicholas,C,0.95,5102,10
+3,5,demonstrate,19,X happened,M,Jon lives 2 blocks away from work,factH,Did Ruth demonstrate that X happened?,19,F,Paul,Amanda,C,0.3,5832,10
+4,6,announce,18,X happened,F,Julian is Cuban,factH,Did Kathleen announce that X happened?,18,F,Jennifer,Kathleen,C,0.68,7719,10
+5,7,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Donna,NA,control,0.34,8845,10
+6,8,confirm,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia confirm that X happened?,17,F,Mark,Rebecca,C,0.15,11157,10
+7,9,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Steven,NA,control,0.5,9287,10
+8,10,think,16,X happened,F,Josh is a 5-year old boy,factH,Does Sharon think that X happened?,16,F,Elizabeth,Brenda,NonProj,0.12,8844,10
+9,11,annoyed,10,X happened,F,Zoe is 5 years old,factL,Is Tim annoyed that X happened?,10,M,Lisa,Patrick,NonProj,0.81,31488,10
+10,12,pretend,4,X happened,F,Olivia has two small children,factL,Did Jerry pretend that X happened?,4,M,Donna,Andrew,NonProj,0.61,10163,10
+11,13,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,David,NA,control,0.8,21383,10
+12,14,inform_Sam,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie inform Sam that X happened?,14,F,Helen,Anna,C,0.91,14789,10
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Helen,NA,control,0.93,6449,10
+14,16,discover,3,X happened,M,Emma is in first grade,factL,Did Justin discover that X happened?,3,M,Steven,Justin,NonProj,0.99,12142,10
+15,17,prove,6,X happened,M,Mia is a nun,factL,Did Ray prove that X happened?,6,M,David,Gregory,C,0.23,10813,10
+16,18,reveal,9,X happened,F,Grace hates her sister,factL,Did Andrew reveal that X happened?,9,M,Michelle,Ronald,NonProj,0.73,6708,10
+17,19,establish,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa establish that X happened?,12,F,Richard,Sharon,NonProj,0.49,6234,10
+18,20,acknowledge,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca acknowledge that X happened?,15,F,William,Heather,C,0.72,4235,10
+19,21,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.23,4496,10
+20,22,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Sandra,NA,control,0.96,13593,10
+21,23,see,13,X happened,F,Jackson is training for a marathon,factH,Did Laura see that X happened?,13,F,Betty,Angela,NonProj,0.93,9492,10
+22,24,hear,11,X happened,F,Danny loves cake,factH,Did Amanda hear that X happened?,11,F,Kimberly,Cynthia,C,0.7,6474,10
+23,25,be_right_that,20,X happened,M,Charley lives in Mexico,factH,Is Anna right that X happened?,20,F,Kenneth,Janet,C,0.18,4226,10
+24,26,confess,2,X happened,F,Josie loves France,factH,Did Scott confess that X happened?,2,M,Sarah,Tyler,C,0.95,17051,10
+25,27,suggest,8,X happened,F,Emily never has any money,factL,Did Brian suggest that X happened?,8,M,Carol,Gary,C,0.2,15460,10
+0,2,confess,6,X happened,M,Mia is a nun,factL,Did Ray confess that X happened?,6,M,Matthew,Scott,C,0.91,11196,11
+1,3,know,15,X happened,M,Tony has been sober for 20 years,factL,Does Rebecca know that X happened?,15,F,George,Diane,NonProj,0.58,2776,11
+2,4,think,3,X happened,F,Emma is in law school,factH,Does Justin think that X happened?,3,M,Susan,Tyler,NonProj,0.81,2296,11
+3,5,pretend,5,X happened,M,Sophia is a hipster,factH,Did Ben pretend that X happened?,5,M,Robert,Larry,NonProj,0.67,2927,11
+4,6,hear,10,X happened,M,Zoe is a math major,factH,Did Tim hear that X happened?,10,M,Thomas,Timothy,C,0.82,1999,11
+5,7,announce,2,X happened,F,Josie loves France,factH,Did Scott announce that X happened?,2,M,Karen,Kevin,C,0.92,2307,11
+6,8,acknowledge,9,X happened,F,Grace hates her sister,factL,Did Andrew acknowledge that X happened?,9,M,Lisa,Jeffrey,C,0.33,2044,11
+7,9,confirm,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon confirm that X happened?,16,F,Richard,Joyce,C,0.75,2327,11
+8,10,reveal,7,X happened,F,Isabella is from Argentina,factH,Did Kevin reveal that X happened?,7,M,Sarah,Eric,NonProj,0.84,2199,11
+9,11,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,William,NA,control,0.62,2432,11
+10,12,admit,11,X happened,F,Danny is a diabetic,factL,Did Amanda admit that X happened?,11,F,Michelle,Shirley,C,0.84,5213,11
+11,13,inform_Sam,12,X happened,F,Frank is allergic to cats,factL,Did Melissa inform Sam that X happened?,12,F,Carol,Carolyn,C,0.73,2476,11
+12,14,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Michelle,NA,control,0.87,2565,11
+13,15,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,James,NA,control,0.63,1756,11
+14,16,establish,20,X happened,M,Charley lives in Korea,factL,Did Anna establish that X happened?,20,F,William,Rebecca,NonProj,0.75,2145,11
+15,17,prove,13,X happened,F,Jackson is training for a marathon,factH,Did Laura prove that X happened?,13,F,Ashley,Virginia,C,0.67,2411,11
+16,18,discover,1,X happened,F,Mary is a middle school student,factL,Did Patrick discover that X happened?,1,M,Margaret,Jerry,NonProj,0.79,1877,11
+17,19,be_right_that,8,X happened,F,Emily has been saving for a year,factH,Is Brian right that X happened?,8,M,Sandra,Edward,C,0.69,1940,11
+18,20,demonstrate,4,X happened,F,Olivia works the third shift,factH,Did Jerry demonstrate that X happened?,4,M,Nancy,Patrick,C,0.83,1767,11
+19,21,suggest,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie suggest that X happened?,14,F,Betty,Stephanie,C,0.73,2362,11
+20,22,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Richard,NA,control,0.69,2149,11
+21,23,say,18,X happened,M,Julian is Cuban,factH,Did Kathleen say that X happened?,18,F,Paul,Rachel,C,0.73,2451,11
+22,24,see,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia see that X happened?,17,F,James,Anna,NonProj,0.55,1697,11
+23,25,annoyed,19,X happened,M,Jon lives 10 miles away from work,factL,Is Ruth annoyed that X happened?,19,F,Kenneth,Sharon,NonProj,0.77,1705,11
+24,26,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Margaret,NA,control,0.66,3297,11
+25,27,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Matthew,NA,control,0.81,2285,11
+0,2,inform_Sam,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia inform Sam that X happened?,17,F,Linda,Diane,C,0.98,14874,12
+1,3,announce,9,X happened,F,Grace loves her sister,factH,Did Andrew announce that X happened?,9,M,Sandra,Andrew,C,0.13,73627,12
+2,4,know,16,X happened,M,Josh is a 75-year old man,factL,Does Sharon know that X happened?,16,F,James,Cynthia,NonProj,0.9,13586,12
+3,5,think,19,X happened,F,Jon lives 10 miles away from work,factL,Does Ruth think that X happened?,19,F,Jennifer,Ruth,NonProj,0.01,30837,12
+4,6,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Jennifer,NA,control,0.82,2534,12
+5,7,reveal,8,X happened,F,Emily has been saving for a year,factH,Did Brian reveal that X happened?,8,M,Kimberly,Ryan,NonProj,0.55,2325,12
+6,8,discover,2,X happened,F,Josie loves France,factH,Did Scott discover that X happened?,2,M,Nancy,Brandon,NonProj,0.04,4814,12
+7,9,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,0.9,2337,12
+8,10,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Susan,NA,control,0.51,2084,12
+9,11,confess,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin confess that X happened?,7,M,Susan,Scott,C,0.77,2934,12
+10,12,admit,4,X happened,F,Olivia has two small children,factL,Did Jerry admit that X happened?,4,M,Michelle,Tyler,C,0.09,2245,12
+11,13,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Donna,NA,control,0.94,2926,12
+12,14,suggest,18,X happened,F,Julian is Cuban,factH,Did Kathleen suggest that X happened?,18,F,Betty,Shirley,C,0.74,2306,12
+13,15,be_right_that,11,X happened,F,Danny is a diabetic,factL,Is Amanda right that X happened?,11,F,Dorothy,Nicole,C,0.88,404631,12
+14,16,demonstrate,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca demonstrate that X happened?,15,F,Carol,Janet,C,0.25,1417,12
+15,17,confirm,6,X happened,M,Mia is a college student,factH,Did Ray confirm that X happened?,6,M,George,Raymond,C,0.39,2426,12
+16,18,establish,13,X happened,F,Jackson is obese,factL,Did Laura establish that X happened?,13,F,Donna,Christina,NonProj,0.92,2388,12
+17,19,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Helen,NA,control,0.07,2006,12
+18,20,acknowledge,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa acknowledge that X happened?,12,F,Matthew,Rebecca,C,0.87,1254,12
+19,21,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Dorothy,NA,control,0.59,1286,12
+20,22,prove,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben prove that X happened?,5,M,Sarah,Brian,C,0.95,1414,12
+21,23,hear,10,X happened,F,Zoe is 5 years old,factL,Did Tim hear that X happened?,10,M,Helen,Gary,C,0.21,1244,12
+22,24,see,20,X happened,M,Charley lives in Mexico,factH,Did Anna see that X happened?,20,F,William,Julie,NonProj,0.53,1194,12
+23,25,annoyed,1,X happened,M,Mary is taking a prenatal yoga class,factH,Is Patrick annoyed that X happened?,1,M,Paul,Kevin,NonProj,0.98,1494,12
+24,26,say,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie say that X happened?,14,F,Steven,Brenda,C,0.61,1874,12
+25,27,pretend,3,X happened,F,Emma is in law school,factH,Did Justin pretend that X happened?,3,M,Jessica,Ronald,NonProj,0.16,1025,12
+0,2,know,19,X happened,M,Jon lives 2 blocks away from work,factH,Does Ruth know that X happened?,19,F,Thomas,Joyce,NonProj,0.77,54834,13
+1,3,confirm,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben confirm that X happened?,5,M,Christopher,Ryan,C,0.39,129335,13
+2,4,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Lisa,NA,control,0.74,22939,13
+3,5,hear,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia hear that X happened?,17,F,Lisa,Heather,C,0.73,9781,13
+4,6,pretend,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick pretend that X happened?,1,M,Helen,Jeffrey,NonProj,0.25,196810,13
+5,7,discover,9,X happened,M,Grace hates her sister,factL,Did Andrew discover that X happened?,9,M,Richard,Eric,NonProj,0.43,7272,13
+6,8,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Matthew,NA,control,0.74,14185,13
+7,9,prove,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa prove that X happened?,12,F,Paul,Rebecca,C,0.25,11638,13
+8,10,reveal,4,X happened,F,Olivia has two small children,factL,Did Jerry reveal that X happened?,4,M,Susan,Scott,NonProj,0.71,19553,13
+9,11,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Mark,NA,control,0.21,11174,13
+10,12,see,20,X happened,F,Charley lives in Mexico,factH,Did Anna see that X happened?,20,F,Carol,Catherine,NonProj,0.76,40075,13
+11,13,suggest,3,X happened,F,Emma is in law school,factH,Did Justin suggest that X happened?,3,M,Michelle,Jacob,C,0.78,19398,13
+12,14,demonstrate,11,X happened,F,Danny is a diabetic,factL,Did Amanda demonstrate that X happened?,11,F,Elizabeth,Amy,C,0.49,30738,13
+13,15,say,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie say that X happened?,14,F,Sandra,Anna,C,0.48,20317,13
+14,16,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Christopher,NA,control,0.61,30652,13
+15,17,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Elizabeth,NA,control,0.28,39389,13
+16,18,confess,10,X happened,F,Zoe is 5 years old,factL,Did Tim confess that X happened?,10,M,Donna,Edward,C,0.71,6154,13
+17,19,announce,8,X happened,M,Emily never has any money,factL,Did Brian announce that X happened?,8,M,Mark,Jerry,C,0.53,12393,13
+18,20,be_right_that,13,X happened,F,Jackson is training for a marathon,factH,Is Laura right that X happened?,13,F,Margaret,Melissa,C,0.23,8420,13
+19,21,establish,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca establish that X happened?,15,F,Kimberly,Janet,NonProj,0.47,9914,13
+20,22,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Susan,NA,control,0.2,17678,13
+21,23,admit,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin admit that X happened?,7,M,Matthew,Patrick,C,0.35,38185,13
+22,24,inform_Sam,18,X happened,F,Julian is German,factL,Did Kathleen inform Sam that X happened?,18,F,Karen,Stephanie,C,0.2,42625,13
+23,25,think,16,X happened,F,Josh is a 5-year old boy,factH,Does Sharon think that X happened?,16,F,Dorothy,Julie,NonProj,0.57,14985,13
+24,26,annoyed,6,X happened,M,Mia is a college student,factH,Is Ray annoyed that X happened?,6,M,Robert,Nicholas,NonProj,0.47,24812,13
+25,27,acknowledge,2,X happened,F,Josie loves France,factH,Did Scott acknowledge that X happened?,2,M,Nancy,Gary,C,0.38,4888,13
+0,2,demonstrate,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth demonstrate that X happened?,19,F,Thomas,Melissa,C,0.56,36986,14
+1,3,hear,6,X happened,F,Mia is a college student,factH,Did Ray hear that X happened?,6,M,Betty,Timothy,C,0.34,43122,14
+2,4,establish,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon establish that X happened?,16,F,Kenneth,Cynthia,NonProj,0.82,22669,14
+3,5,confess,4,X happened,M,Olivia has two small children,factL,Did Jerry confess that X happened?,4,M,David,Benjamin,C,0.29,20379,14
+4,6,pretend,1,X happened,F,Mary is a middle school student,factL,Did Patrick pretend that X happened?,1,M,Carol,Andrew,NonProj,0.7,13411,14
+5,7,inform_Sam,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin inform Sam that X happened?,7,M,Dorothy,Gregory,C,0.79,14723,14
+6,8,prove,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca prove that X happened?,15,F,Mark,Janet,C,0.29,21585,14
+7,9,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Mark,NA,control,0.68,13291,14
+8,10,be_right_that,2,X happened,M,Josie doesn't have a passport,factL,Is Scott right that X happened?,2,M,William,Nicholas,C,0.76,7928,14
+9,11,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Jennifer,NA,control,0.66,11732,14
+10,12,admit,5,X happened,F,Sophia is a hipster,factH,Did Ben admit that X happened?,5,M,Helen,Tyler,C,0.6,15626,14
+11,13,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,William,NA,control,0.69,4376,14
+12,14,suggest,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie suggest that X happened?,14,F,Matthew,Kathleen,C,0.4,16401,14
+13,15,announce,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa announce that X happened?,12,F,Jessica,Amanda,C,0.64,7314,14
+14,16,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Thomas,NA,control,0.64,10384,14
+15,17,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Donna,NA,control,0.62,5444,14
+16,18,think,20,X happened,M,Charley lives in Mexico,factH,Does Anna think that X happened?,20,F,James,Christina,NonProj,0.79,5568,14
+17,19,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,David,NA,control,0.3,4264,14
+18,20,know,3,X happened,F,Emma is in first grade,factL,Does Justin know that X happened?,3,M,Jennifer,Edward,NonProj,0.69,9585,14
+19,21,say,18,X happened,F,Julian is German,factL,Did Kathleen say that X happened?,18,F,Donna,Heather,C,0.61,5209,14
+20,22,annoyed,9,X happened,M,Grace loves her sister,factH,Is Andrew annoyed that X happened?,9,M,Christopher,Gary,NonProj,0.61,9849,14
+21,23,confirm,8,X happened,F,Emily never has any money,factL,Did Brian confirm that X happened?,8,M,Lisa,Ronald,C,0.32,7409,14
+22,24,see,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia see that X happened?,17,F,Nancy,Joyce,NonProj,0.31,19070,14
+23,25,discover,10,X happened,F,Zoe is a math major,factH,Did Tim discover that X happened?,10,M,Linda,Ryan,NonProj,0.71,4456,14
+24,26,acknowledge,11,X happened,F,Danny loves cake,factH,Did Amanda acknowledge that X happened?,11,F,Karen,Shirley,C,0.55,4305,14
+25,27,reveal,13,X happened,M,Jackson is training for a marathon,factH,Did Laura reveal that X happened?,13,F,George,Amy,NonProj,0.6,9711,14
+0,2,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Jessica,NA,control,0.83,3653,15
+1,3,demonstrate,1,X happened,F,Mary is a middle school student,factL,Did Patrick demonstrate that X happened?,1,M,Margaret,Justin,C,0.72,1847,15
+2,4,confirm,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa confirm that X happened?,12,F,Elizabeth,Diane,C,0.87,1417,15
+3,5,know,15,X happened,F,Tony has been sober for 20 years,factL,Does Rebecca know that X happened?,15,F,Susan,Amanda,NonProj,0.64,1526,15
+4,6,say,8,X happened,F,Emily has been saving for a year,factH,Did Brian say that X happened?,8,M,Nancy,Andrew,C,0.82,1461,15
+5,7,think,17,X happened,F,Owen lives in New Orleans,factL,Does Cynthia think that X happened?,17,F,Donna,Rachel,NonProj,0.63,1578,15
+6,8,acknowledge,4,X happened,F,Olivia has two small children,factL,Did Jerry acknowledge that X happened?,4,M,Michelle,Timothy,C,0.86,1458,15
+7,9,be_right_that,18,X happened,F,Julian is German,factL,Is Kathleen right that X happened?,18,F,Dorothy,Christina,C,0.42,1480,15
+8,10,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Mark,NA,control,0.79,1359,15
+9,11,annoyed,10,X happened,F,Zoe is 5 years old,factL,Is Tim annoyed that X happened?,10,M,Karen,Ronald,NonProj,0.69,2424,15
+10,12,inform_Sam,3,X happened,M,Emma is in law school,factH,Did Justin inform Sam that X happened?,3,M,David,Jerry,C,0.83,1327,15
+11,13,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Donna,NA,control,0.7,1308,15
+12,14,suggest,13,X happened,F,Jackson is obese,factL,Did Laura suggest that X happened?,13,F,Linda,Anna,C,0.51,1339,15
+13,15,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Michelle,NA,control,0.8,1456,15
+14,16,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Susan,NA,control,0.65,1422,15
+15,17,discover,9,X happened,M,Grace hates her sister,factL,Did Andrew discover that X happened?,9,M,George,Gregory,NonProj,0.8,1479,15
+16,18,hear,20,X happened,M,Charley lives in Mexico,factH,Did Anna hear that X happened?,20,F,James,Rebecca,C,0.77,1602,15
+17,19,reveal,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin reveal that X happened?,7,M,Jessica,Jacob,NonProj,0.79,3548,15
+18,20,prove,6,X happened,F,Mia is a college student,factH,Did Ray prove that X happened?,6,M,Helen,Edward,C,0.79,3494,15
+19,21,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Linda,NA,control,0.74,2155,15
+20,22,see,2,X happened,M,Josie loves France,factH,Did Scott see that X happened?,2,M,Paul,Kevin,NonProj,0.79,1640,15
+21,23,pretend,11,X happened,F,Danny loves cake,factH,Did Amanda pretend that X happened?,11,F,Sarah,Melissa,NonProj,0.72,1936,15
+22,24,confess,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon confess that X happened?,16,F,Mark,Carolyn,C,0.8,4578,15
+23,25,admit,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie admit that X happened?,14,F,Kimberly,Amy,C,0.79,2327,15
+24,26,announce,5,X happened,M,Sophia is a hipster,factH,Did Ben announce that X happened?,5,M,Thomas,Benjamin,C,0.7,1970,15
+25,27,establish,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth establish that X happened?,19,F,Sandra,Sharon,NonProj,0.84,1929,15
+0,2,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Sarah,NA,control,0.98,13159,16
+1,3,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Robert,NA,control,0.95,12786,16
+2,4,hear,8,X happened,M,Emily never has any money,factL,Did Brian hear that X happened?,8,M,William,Scott,C,0.99,3259,16
+3,5,know,5,X happened,M,Sophia is a high end fashion model,factL,Does Ben know that X happened?,5,M,Steven,Benjamin,NonProj,0.95,3438,16
+4,6,establish,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin establish that X happened?,7,M,Robert,Tyler,NonProj,0.98,9728,16
+5,7,discover,9,X happened,F,Grace loves her sister,factH,Did Andrew discover that X happened?,9,M,Carol,Brandon,NonProj,1.0,2609,16
+6,8,confess,15,X happened,M,Tony really likes to party with his friends,factH,Did Rebecca confess that X happened?,15,F,Mark,Shirley,C,0.98,3510,16
+7,9,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,William,NA,control,0.97,3568,16
+8,10,prove,1,X happened,F,Mary is a middle school student,factL,Did Patrick prove that X happened?,1,M,Sandra,Timothy,C,0.97,2434,16
+9,11,pretend,20,X happened,F,Charley lives in Mexico,factH,Did Anna pretend that X happened?,20,F,Karen,Laura,NonProj,0.99,16336,16
+10,12,confirm,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia confirm that X happened?,17,F,Ashley,Diane,C,0.97,15033,16
+11,13,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Kenneth,NA,control,0.98,2536,16
+12,14,think,10,X happened,F,Zoe is a math major,factH,Does Tim think that X happened?,10,M,Susan,Raymond,NonProj,0.96,2688,16
+13,15,say,11,X happened,M,Danny loves cake,factH,Did Amanda say that X happened?,11,F,James,Rachel,C,0.97,3689,16
+14,16,see,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie see that X happened?,14,F,David,Heather,NonProj,0.96,2409,16
+15,17,announce,3,X happened,F,Emma is in first grade,factL,Did Justin announce that X happened?,3,M,Linda,Patrick,C,0.98,2059,16
+16,18,annoyed,4,X happened,F,Olivia works the third shift,factH,Is Jerry annoyed that X happened?,4,M,Dorothy,Edward,NonProj,0.96,1929,16
+17,19,demonstrate,6,X happened,F,Mia is a nun,factL,Did Ray demonstrate that X happened?,6,M,Kimberly,Andrew,C,0.97,1306,16
+18,20,suggest,18,X happened,M,Julian is German,factL,Did Kathleen suggest that X happened?,18,F,Kenneth,Catherine,C,0.99,1952,16
+19,21,admit,12,X happened,F,Frank is allergic to cats,factL,Did Melissa admit that X happened?,12,F,Sarah,Amanda,C,0.98,1491,16
+20,22,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Elizabeth,NA,control,0.98,2119,16
+21,23,inform_Sam,13,X happened,F,Jackson is training for a marathon,factH,Did Laura inform Sam that X happened?,13,F,Betty,Stephanie,C,0.97,2128,16
+22,24,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Sandra,NA,control,0.97,1491,16
+23,25,acknowledge,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth acknowledge that X happened?,19,F,Michelle,Julie,C,0.98,1470,16
+24,26,reveal,2,X happened,M,Josie loves France,factH,Did Scott reveal that X happened?,2,M,Richard,Kevin,NonProj,0.98,1342,16
+25,27,be_right_that,16,X happened,F,Josh is a 75-year old man,factL,Is Sharon right that X happened?,16,F,Elizabeth,Christina,C,0.93,1323,16
+0,2,demonstrate,2,X happened,M,Josie loves France,factH,Did Scott demonstrate that X happened?,2,M,Kenneth,Andrew,C,0.9,2462,17
+1,3,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Mark,NA,control,0.21,1672,17
+2,4,inform_Sam,11,X happened,F,Danny loves cake,factH,Did Amanda inform Sam that X happened?,11,F,Betty,Cynthia,C,0.86,1463,17
+3,5,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Michelle,NA,control,0.75,1464,17
+4,6,hear,18,X happened,M,Julian is German,factL,Did Kathleen hear that X happened?,18,F,Steven,Anna,C,0.79,1240,17
+5,7,say,10,X happened,F,Zoe is a math major,factH,Did Tim say that X happened?,10,M,Lisa,Larry,C,0.5,1152,17
+6,8,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Steven,NA,control,0.72,1232,17
+7,9,see,12,X happened,M,Frank is allergic to cats,factL,Did Melissa see that X happened?,12,F,Robert,Nicole,NonProj,0.81,1511,17
+8,10,acknowledge,4,X happened,F,Olivia has two small children,factL,Did Jerry acknowledge that X happened?,4,M,Michelle,Gregory,C,0.51,1160,17
+9,11,prove,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie prove that X happened?,14,F,Carol,Laura,C,0.74,1280,17
+10,12,pretend,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth pretend that X happened?,19,F,Donna,Rachel,NonProj,0.84,1176,17
+11,13,announce,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia announce that X happened?,17,F,Mark,Virginia,C,0.51,1120,17
+12,14,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,David,NA,control,0.85,1160,17
+13,15,confirm,20,X happened,M,Charley lives in Korea,factL,Did Anna confirm that X happened?,20,F,Christopher,Angela,C,0.54,1296,17
+14,16,admit,9,X happened,F,Grace loves her sister,factH,Did Andrew admit that X happened?,9,M,Jessica,Brandon,C,0.79,1304,17
+15,17,suggest,6,X happened,F,Mia is a college student,factH,Did Ray suggest that X happened?,6,M,Jennifer,Scott,C,0.22,1304,17
+16,18,be_right_that,1,X happened,M,Mary is taking a prenatal yoga class,factH,Is Patrick right that X happened?,1,M,James,Justin,C,0.76,1304,17
+17,19,discover,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin discover that X happened?,7,M,Matthew,Patrick,NonProj,0.44,1135,17
+18,20,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Matthew,NA,control,0.89,1200,17
+19,21,establish,8,X happened,M,Emily never has any money,factL,Did Brian establish that X happened?,8,M,George,Brian,NonProj,0.25,1169,17
+20,22,know,15,X happened,M,Tony has been sober for 20 years,factL,Does Rebecca know that X happened?,15,F,David,Amanda,NonProj,0.82,1071,17
+21,23,confess,3,X happened,F,Emma is in law school,factH,Did Justin confess that X happened?,3,M,Margaret,Jerry,C,0.48,1065,17
+22,24,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Carol,NA,control,0.74,967,17
+23,25,reveal,13,X happened,F,Jackson is training for a marathon,factH,Did Laura reveal that X happened?,13,F,Nancy,Amy,NonProj,0.52,1017,17
+24,26,annoyed,5,X happened,F,Sophia is a hipster,factH,Is Ben annoyed that X happened?,5,M,Linda,Tyler,NonProj,0.84,951,17
+25,27,think,16,X happened,F,Josh is a 75-year old man,factL,Does Sharon think that X happened?,16,F,Karen,Kathleen,NonProj,0.45,1056,17
+0,2,acknowledge,2,X happened,F,Josie loves France,factH,Did Scott acknowledge that X happened?,2,M,Kimberly,Gregory,C,0.12,170162,18
+1,3,pretend,13,X happened,F,Jackson is obese,factL,Did Laura pretend that X happened?,13,F,Lisa,Janet,NonProj,0.6,10049,18
+2,4,see,20,X happened,M,Charley lives in Korea,factL,Did Anna see that X happened?,20,F,Richard,Sharon,NonProj,0.11,22376,18
+3,5,annoyed,5,X happened,F,Sophia is a hipster,factH,Is Ben annoyed that X happened?,5,M,Elizabeth,Ryan,NonProj,1.0,7156,18
+4,6,know,15,X happened,M,Tony really likes to party with his friends,factH,Does Rebecca know that X happened?,15,F,Thomas,Joyce,NonProj,0.99,3988,18
+5,7,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Kenneth,NA,control,0.99,5813,18
+6,8,announce,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth announce that X happened?,19,F,Carol,Catherine,C,1.0,3529,18
+7,9,confirm,12,X happened,F,Frank is allergic to cats,factL,Did Melissa confirm that X happened?,12,F,Sarah,Anna,C,0.25,6250,18
+8,10,hear,1,X happened,F,Mary is a middle school student,factL,Did Patrick hear that X happened?,1,M,Jennifer,Kevin,C,1.0,3084,18
+9,11,prove,9,X happened,M,Grace loves her sister,factH,Did Andrew prove that X happened?,9,M,Matthew,Justin,C,0.19,41446,18
+10,12,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Donna,NA,control,1.0,11089,18
+11,13,inform_Sam,18,X happened,F,Julian is Cuban,factH,Did Kathleen inform Sam that X happened?,18,F,Margaret,Ruth,C,0.98,10470,18
+12,14,be_right_that,16,X happened,M,Josh is a 75-year old man,factL,Is Sharon right that X happened?,16,F,George,Stephanie,C,0.13,4198,18
+13,15,demonstrate,6,X happened,F,Mia is a nun,factL,Did Ray demonstrate that X happened?,6,M,Donna,Eric,C,0.56,3390,18
+14,16,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Robert,NA,control,0.32,17278,18
+15,17,think,11,X happened,M,Danny is a diabetic,factL,Does Amanda think that X happened?,11,F,Steven,Angela,NonProj,0.48,5284,18
+16,18,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,George,NA,control,0.97,9448,18
+17,19,suggest,3,X happened,M,Emma is in first grade,factL,Did Justin suggest that X happened?,3,M,Kenneth,Gary,C,0.35,4954,18
+18,20,reveal,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie reveal that X happened?,14,F,Robert,Diane,NonProj,0.74,3743,18
+19,21,discover,8,X happened,F,Emily has been saving for a year,factH,Did Brian discover that X happened?,8,M,Linda,Tyler,NonProj,0.58,4166,18
+20,22,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Richard,NA,control,1.0,8146,18
+21,23,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Lisa,NA,control,1.0,13834,18
+22,24,say,7,X happened,M,Isabella is from Argentina,factH,Did Kevin say that X happened?,7,M,David,Alexander,C,0.58,3513,18
+23,25,admit,4,X happened,F,Olivia works the third shift,factH,Did Jerry admit that X happened?,4,M,Helen,Nicholas,C,0.71,3104,18
+24,26,establish,10,X happened,F,Zoe is a math major,factH,Did Tim establish that X happened?,10,M,Karen,Benjamin,NonProj,0.67,2485,18
+25,27,confess,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia confess that X happened?,17,F,Paul,Nicole,C,0.81,2387,18
+0,2,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,David,NA,control,1.0,45947,19
+1,3,announce,2,X happened,F,Josie loves France,factH,Did Scott announce that X happened?,2,M,Karen,Raymond,C,0.96,28763,19
+2,4,reveal,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin reveal that X happened?,7,M,Betty,Patrick,NonProj,0.95,45647,19
+3,5,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Betty,NA,control,0.97,81720,19
+4,6,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,George,NA,control,0.01,89958,19
+5,7,acknowledge,3,X happened,M,Emma is in first grade,factL,Did Justin acknowledge that X happened?,3,M,Robert,Nicholas,C,0.97,23143,19
+6,8,confess,4,X happened,M,Olivia has two small children,factL,Did Jerry confess that X happened?,4,M,George,Eric,C,0.01,31920,19
+7,9,annoyed,15,X happened,M,Tony has been sober for 20 years,factL,Is Rebecca annoyed that X happened?,15,F,Paul,Stephanie,NonProj,0.98,21225,19
+8,10,discover,18,X happened,F,Julian is German,factL,Did Kathleen discover that X happened?,18,F,Margaret,Kathleen,NonProj,0.97,111287,19
+9,11,demonstrate,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie demonstrate that X happened?,14,F,David,Brenda,C,0.99,17423,19
+10,12,establish,5,X happened,F,Sophia is a hipster,factH,Did Ben establish that X happened?,5,M,Donna,Benjamin,NonProj,0.01,17240,19
+11,13,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Nancy,NA,control,0.02,25392,19
+12,14,pretend,20,X happened,M,Charley lives in Mexico,factH,Did Anna pretend that X happened?,20,F,Mark,Melissa,NonProj,0.98,23487,19
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Margaret,NA,control,0.99,23880,19
+14,16,think,9,X happened,M,Grace loves her sister,factH,Does Andrew think that X happened?,9,M,Kenneth,Tyler,NonProj,0.0,56511,19
+15,17,suggest,10,X happened,M,Zoe is a math major,factH,Did Tim suggest that X happened?,10,M,James,Ronald,C,0.01,15816,19
+16,18,admit,1,X happened,F,Mary is a middle school student,factL,Did Patrick admit that X happened?,1,M,Jessica,Jeffrey,C,0.01,19792,19
+17,19,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Dorothy,NA,control,0.01,28039,19
+18,20,see,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia see that X happened?,17,F,Carol,Heather,NonProj,0.01,13135,19
+19,21,say,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth say that X happened?,19,F,Nancy,Carolyn,C,0.09,20488,19
+20,22,confirm,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa confirm that X happened?,12,F,Ashley,Nicole,C,0.04,229405,19
+21,23,prove,11,X happened,F,Danny loves cake,factH,Did Amanda prove that X happened?,11,F,Linda,Rachel,C,0.01,27512,19
+22,24,hear,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon hear that X happened?,16,F,Richard,Sharon,C,0.79,14375,19
+23,25,know,8,X happened,F,Emily never has any money,factL,Does Brian know that X happened?,8,M,Dorothy,Jacob,NonProj,0.5,6296,19
+24,26,inform_Sam,13,X happened,M,Jackson is obese,factL,Did Laura inform Sam that X happened?,13,F,Christopher,Angela,C,0.68,4024,19
+25,27,be_right_that,6,X happened,F,Mia is a college student,factH,Is Ray right that X happened?,6,M,Michelle,Kevin,C,0.88,6088,19
+0,2,inform_Sam,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth inform Sam that X happened?,19,F,Carol,Virginia,C,0.85,572419,20
+1,3,discover,2,X happened,F,Josie doesn't have a passport,factL,Did Scott discover that X happened?,2,M,Nancy,Nicholas,NonProj,0.15,2456,20
+2,4,be_right_that,14,X happened,F,Jayden doesn't have a driver's license,factL,Is Stephanie right that X happened?,14,F,Sarah,Angela,C,0.92,2112,20
+3,5,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Lisa,NA,control,0.25,2296,20
+4,6,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,William,NA,control,0.66,3528,20
+5,7,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Mark,NA,control,0.18,1991,20
+6,8,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Sandra,NA,control,0.78,1673,20
+7,9,know,3,X happened,F,Emma is in law school,factH,Does Justin know that X happened?,3,M,Kimberly,Scott,NonProj,0.22,1470,20
+8,10,confirm,11,X happened,F,Danny is a diabetic,factL,Did Amanda confirm that X happened?,11,F,Sandra,Catherine,C,0.71,2337,20
+9,11,admit,9,X happened,F,Grace loves her sister,factH,Did Andrew admit that X happened?,9,M,Helen,Ryan,C,0.21,1920,20
+10,12,suggest,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben suggest that X happened?,5,M,Lisa,Andrew,C,0.8,1616,20
+11,13,acknowledge,4,X happened,M,Olivia works the third shift,factH,Did Jerry acknowledge that X happened?,4,M,James,Timothy,C,0.12,1856,20
+12,14,say,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia say that X happened?,17,F,William,Diane,C,0.81,3576,20
+13,15,demonstrate,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa demonstrate that X happened?,12,F,Kenneth,Sharon,C,0.19,2360,20
+14,16,announce,7,X happened,F,Isabella is from Argentina,factH,Did Kevin announce that X happened?,7,M,Susan,Justin,C,0.81,1968,20
+15,17,pretend,6,X happened,M,Mia is a college student,factH,Did Ray pretend that X happened?,6,M,Thomas,Eric,NonProj,0.21,5800,20
+16,18,reveal,13,X happened,M,Jackson is obese,factL,Did Laura reveal that X happened?,13,F,Paul,Amanda,NonProj,0.85,1864,20
+17,19,confess,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca confess that X happened?,15,F,Mark,Heather,C,0.93,15472,20
+18,20,annoyed,10,X happened,F,Zoe is a math major,factH,Is Tim annoyed that X happened?,10,M,Linda,Brian,NonProj,0.14,3792,20
+19,21,hear,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon hear that X happened?,16,F,Robert,Carolyn,C,0.89,3191,20
+20,22,see,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick see that X happened?,1,M,Jessica,Jacob,NonProj,0.13,2313,20
+21,23,prove,8,X happened,F,Emily never has any money,factL,Did Brian prove that X happened?,8,M,Elizabeth,Benjamin,C,0.88,1896,20
+22,24,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Elizabeth,NA,control,0.16,2048,20
+23,25,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Jennifer,NA,control,0.81,1672,20
+24,26,establish,20,X happened,F,Charley lives in Korea,factL,Did Anna establish that X happened?,20,F,Karen,Julie,NonProj,0.17,8047,20
+25,27,think,18,X happened,F,Julian is German,factL,Does Kathleen think that X happened?,18,F,Jennifer,Anna,NonProj,0.86,2113,20
+0,2,demonstrate,20,X happened,M,Charley lives in Mexico,factH,Did Anna demonstrate that X happened?,20,F,Mark,Ruth,C,0.23,16055,21
+1,3,annoyed,19,X happened,F,Jon lives 10 miles away from work,factL,Is Ruth annoyed that X happened?,19,F,Karen,Nicole,NonProj,0.96,10421,21
+2,4,hear,11,X happened,F,Danny is a diabetic,factL,Did Amanda hear that X happened?,11,F,Sandra,Stephanie,C,0.88,4003,21
+3,5,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Michelle,NA,control,0.92,6515,21
+4,6,acknowledge,18,X happened,M,Julian is Cuban,factH,Did Kathleen acknowledge that X happened?,18,F,Kenneth,Brenda,C,0.86,2621,21
+5,7,know,1,X happened,M,Mary is taking a prenatal yoga class,factH,Does Patrick know that X happened?,1,M,William,Jacob,NonProj,0.37,5080,21
+6,8,confirm,2,X happened,F,Josie doesn't have a passport,factL,Did Scott confirm that X happened?,2,M,Lisa,Ronald,C,0.24,7298,21
+7,9,be_right_that,7,X happened,F,Isabella is a vegetarian,factL,Is Kevin right that X happened?,7,M,Elizabeth,Alexander,C,0.13,5204,21
+8,10,see,13,X happened,F,Jackson is obese,factL,Did Laura see that X happened?,13,F,Michelle,Shirley,NonProj,0.38,5763,21
+9,11,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Robert,NA,control,0.85,4542,21
+10,12,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Sandra,NA,control,0.84,2765,21
+11,13,establish,5,X happened,F,Sophia is a hipster,factH,Did Ben establish that X happened?,5,M,Dorothy,Jeffrey,NonProj,0.13,8395,21
+12,14,confess,4,X happened,F,Olivia works the third shift,factH,Did Jerry confess that X happened?,4,M,Ashley,Nicholas,C,0.11,3156,21
+13,15,suggest,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie suggest that X happened?,14,F,Nancy,Heather,C,0.14,5811,21
+14,16,think,12,X happened,M,Frank has always wanted a pet,factH,Does Melissa think that X happened?,12,F,Thomas,Catherine,NonProj,0.08,2199,21
+15,17,discover,6,X happened,M,Mia is a nun,factL,Did Ray discover that X happened?,6,M,James,Scott,NonProj,0.25,6206,21
+16,18,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Karen,NA,control,0.88,4195,21
+17,19,inform_Sam,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia inform Sam that X happened?,17,F,Betty,Amy,C,0.85,3200,21
+18,20,admit,3,X happened,F,Emma is in first grade,factL,Did Justin admit that X happened?,3,M,Susan,Ryan,C,0.29,7083,21
+19,21,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Christopher,NA,control,0.81,5063,21
+20,22,prove,10,X happened,M,Zoe is 5 years old,factL,Did Tim prove that X happened?,10,M,Christopher,Benjamin,C,0.22,2668,21
+21,23,say,8,X happened,F,Emily has been saving for a year,factH,Did Brian say that X happened?,8,M,Jessica,Eric,C,0.17,3747,21
+22,24,reveal,9,X happened,F,Grace hates her sister,factL,Did Andrew reveal that X happened?,9,M,Linda,Patrick,NonProj,0.28,5292,21
+23,25,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Elizabeth,NA,control,0.88,4020,21
+24,26,pretend,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon pretend that X happened?,16,F,Robert,Cynthia,NonProj,0.13,5587,21
+25,27,announce,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca announce that X happened?,15,F,Kimberly,Virginia,C,0.3,6632,21
+0,2,establish,2,X happened,M,Josie loves France,factH,Did Scott establish that X happened?,2,M,Richard,Timothy,NonProj,0.79,59793,22
+1,3,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,David,NA,control,0.74,48222,22
+2,4,inform_Sam,6,X happened,F,Mia is a college student,factH,Did Ray inform Sam that X happened?,6,M,Betty,Eric,C,0.71,6768,22
+3,5,reveal,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick reveal that X happened?,1,M,Donna,Gary,NonProj,0.67,29321,22
+4,6,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Dorothy,NA,control,0.46,27605,22
+5,7,confess,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth confess that X happened?,19,F,Margaret,Anna,C,0.55,12896,22
+6,8,hear,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia hear that X happened?,17,F,Carol,Heather,C,0.66,201553,22
+7,9,confirm,8,X happened,M,Emily has been saving for a year,factH,Did Brian confirm that X happened?,8,M,Kenneth,Edward,C,0.6,2871,22
+8,10,prove,11,X happened,M,Danny loves cake,factH,Did Amanda prove that X happened?,11,F,Mark,Catherine,C,0.71,2720,22
+9,11,suggest,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca suggest that X happened?,15,F,Sandra,Rebecca,C,0.25,1834,22
+10,12,acknowledge,18,X happened,F,Julian is German,factL,Did Kathleen acknowledge that X happened?,18,F,Jennifer,Sharon,C,0.58,1646,22
+11,13,admit,9,X happened,M,Grace loves her sister,factH,Did Andrew admit that X happened?,9,M,George,Jeffrey,C,0.49,2750,22
+12,14,demonstrate,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie demonstrate that X happened?,14,F,Jessica,Diane,C,0.65,2352,22
+13,15,announce,20,X happened,F,Charley lives in Korea,factL,Did Anna announce that X happened?,20,F,Karen,Julie,C,0.36,3576,22
+14,16,be_right_that,3,X happened,M,Emma is in first grade,factL,Is Justin right that X happened?,3,M,William,Brian,C,0.62,2296,22
+15,17,think,12,X happened,M,Frank is allergic to cats,factL,Does Melissa think that X happened?,12,F,Thomas,Brenda,NonProj,0.34,2138,22
+16,18,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Paul,NA,control,0.63,2173,22
+17,19,say,4,X happened,M,Olivia has two small children,factL,Did Jerry say that X happened?,4,M,David,Gregory,C,0.34,2577,22
+18,20,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Susan,NA,control,0.65,2231,22
+19,21,annoyed,5,X happened,F,Sophia is a hipster,factH,Is Ben annoyed that X happened?,5,M,Linda,Nicholas,NonProj,0.35,2232,22
+20,22,discover,13,X happened,M,Jackson is obese,factL,Did Laura discover that X happened?,13,F,Paul,Angela,NonProj,0.75,2103,22
+21,23,pretend,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon pretend that X happened?,16,F,Dorothy,Carolyn,NonProj,0.35,1440,22
+22,24,know,10,X happened,F,Zoe is 5 years old,factL,Does Tim know that X happened?,10,M,Susan,Ronald,NonProj,0.65,1303,22
+23,25,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,William,NA,control,0.69,1298,22
+24,26,see,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin see that X happened?,7,M,Helen,Patrick,NonProj,0.38,1278,22
+25,27,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Helen,NA,control,0.63,1184,22
+0,2,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,William,NA,control,0.74,9510,23
+1,3,establish,4,X happened,F,Olivia has two small children,factL,Did Jerry establish that X happened?,4,M,Elizabeth,Justin,NonProj,0.21,1951,23
+2,4,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Karen,NA,control,0.72,4031,23
+3,5,acknowledge,7,X happened,F,Isabella is from Argentina,factH,Did Kevin acknowledge that X happened?,7,M,Jennifer,Raymond,C,0.83,55107,23
+4,6,reveal,13,X happened,F,Jackson is obese,factL,Did Laura reveal that X happened?,13,F,Dorothy,Cynthia,NonProj,0.22,2471,23
+5,7,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Lisa,NA,control,0.75,2584,23
+6,8,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,George,NA,control,0.29,2025,23
+7,9,confirm,9,X happened,M,Grace hates her sister,factL,Did Andrew confirm that X happened?,9,M,William,Jerry,C,0.79,2041,23
+8,10,hear,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick hear that X happened?,1,M,Linda,Gregory,C,0.71,11240,23
+9,11,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Sarah,NA,control,0.22,1871,23
+10,12,pretend,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia pretend that X happened?,17,F,James,Christina,NonProj,0.91,2600,23
+11,13,see,11,X happened,F,Danny loves cake,factH,Did Amanda see that X happened?,11,F,Helen,Ruth,NonProj,0.31,2896,23
+12,14,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Michelle,NA,control,0.84,2248,23
+13,15,say,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie say that X happened?,14,F,Sandra,Diane,C,0.27,2528,23
+14,16,discover,18,X happened,M,Julian is Cuban,factH,Did Kathleen discover that X happened?,18,F,Kenneth,Stephanie,NonProj,0.78,1711,23
+15,17,admit,12,X happened,M,Frank is allergic to cats,factL,Did Melissa admit that X happened?,12,F,Mark,Carolyn,C,0.9,6240,23
+16,18,suggest,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon suggest that X happened?,16,F,Karen,Virginia,C,0.21,1816,23
+17,19,confess,8,X happened,F,Emily never has any money,factL,Did Brian confess that X happened?,8,M,Michelle,Nicholas,C,0.82,2071,23
+18,20,inform_Sam,2,X happened,F,Josie doesn't have a passport,factL,Did Scott inform Sam that X happened?,2,M,Jessica,Timothy,C,0.31,2143,23
+19,21,announce,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth announce that X happened?,19,F,Lisa,Catherine,C,0.8,1671,23
+20,22,prove,15,X happened,M,Tony really likes to party with his friends,factH,Did Rebecca prove that X happened?,15,F,Thomas,Joyce,C,0.28,2056,23
+21,23,be_right_that,20,X happened,M,Charley lives in Mexico,factH,Is Anna right that X happened?,20,F,Richard,Amanda,C,0.81,3640,23
+22,24,demonstrate,10,X happened,M,Zoe is a math major,factH,Did Tim demonstrate that X happened?,10,M,Robert,Brian,C,0.29,1608,23
+23,25,know,5,X happened,M,Sophia is a high end fashion model,factL,Does Ben know that X happened?,5,M,George,Scott,NonProj,0.85,1504,23
+24,26,annoyed,3,X happened,F,Emma is in first grade,factL,Is Justin annoyed that X happened?,3,M,Sarah,Brandon,NonProj,0.36,2176,23
+25,27,think,6,X happened,F,Mia is a college student,factH,Does Ray think that X happened?,6,M,Donna,Jeffrey,NonProj,0.79,1487,23
+0,2,discover,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie discover that X happened?,14,F,Kenneth,Shirley,NonProj,0.86,2485,24
+1,3,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,David,NA,control,0.72,1304,24
+2,4,say,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth say that X happened?,19,F,Sarah,Stephanie,C,0.29,2096,24
+3,5,reveal,3,X happened,M,Emma is in law school,factH,Did Justin reveal that X happened?,3,M,Mark,Ryan,NonProj,0.81,1500,24
+4,6,demonstrate,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca demonstrate that X happened?,15,F,Nancy,Virginia,C,0.54,1284,24
+5,7,know,12,X happened,F,Frank is allergic to cats,factL,Does Melissa know that X happened?,12,F,Helen,Rebecca,NonProj,0.7,1345,24
+6,8,confess,18,X happened,M,Julian is Cuban,factH,Did Kathleen confess that X happened?,18,F,Steven,Heather,C,0.18,1296,24
+7,9,inform_Sam,2,X happened,F,Josie loves France,factH,Did Scott inform Sam that X happened?,2,M,Lisa,Timothy,C,0.77,1294,24
+8,10,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Karen,NA,control,0.85,2552,24
+9,11,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Helen,NA,control,0.11,1872,24
+10,12,suggest,6,X happened,M,Mia is a college student,factH,Did Ray suggest that X happened?,6,M,William,Gregory,C,0.76,2863,24
+11,13,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Linda,NA,control,0.59,2008,24
+12,14,acknowledge,8,X happened,M,Emily has been saving for a year,factH,Did Brian acknowledge that X happened?,8,M,Matthew,Nicholas,C,0.86,1656,24
+13,15,think,10,X happened,F,Zoe is a math major,factH,Does Tim think that X happened?,10,M,Carol,Scott,NonProj,0.43,1746,24
+14,16,pretend,20,X happened,F,Charley lives in Mexico,factH,Did Anna pretend that X happened?,20,F,Margaret,Nicole,NonProj,0.69,1525,24
+15,17,be_right_that,16,X happened,F,Josh is a 75-year old man,factL,Is Sharon right that X happened?,16,F,Jessica,Amanda,C,0.9,1976,24
+16,18,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Susan,NA,control,0.12,1712,24
+17,19,prove,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia prove that X happened?,17,F,Paul,Diane,C,0.69,1600,24
+18,20,announce,9,X happened,M,Grace hates her sister,factL,Did Andrew announce that X happened?,9,M,David,Brandon,C,0.33,1279,24
+19,21,annoyed,7,X happened,M,Isabella is from Argentina,factH,Is Kevin annoyed that X happened?,7,M,James,Jerry,NonProj,0.73,1408,24
+20,22,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Jessica,NA,control,0.43,2008,24
+21,23,establish,11,X happened,F,Danny is a diabetic,factL,Did Amanda establish that X happened?,11,F,Karen,Julie,NonProj,0.85,1504,24
+22,24,confirm,4,X happened,F,Olivia has two small children,factL,Did Jerry confirm that X happened?,4,M,Kimberly,Alexander,C,0.34,1351,24
+23,25,admit,13,X happened,F,Jackson is obese,factL,Did Laura admit that X happened?,13,F,Susan,Sharon,C,0.74,1352,24
+24,26,hear,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben hear that X happened?,5,M,Linda,Larry,C,0.92,2280,24
+25,27,see,1,X happened,F,Mary is a middle school student,factL,Did Patrick see that X happened?,1,M,Ashley,Benjamin,NonProj,0.81,1844,24
+0,2,admit,13,X happened,F,Jackson is training for a marathon,factH,Did Laura admit that X happened?,13,F,Elizabeth,Christina,C,0.79,2483,25
+1,3,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Donna,NA,control,0.5,1798,25
+2,4,reveal,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin reveal that X happened?,7,M,Michelle,Jacob,NonProj,0.82,1551,25
+3,5,confirm,18,X happened,F,Julian is German,factL,Did Kathleen confirm that X happened?,18,F,Carol,Virginia,C,0.63,1376,25
+4,6,say,4,X happened,F,Olivia works the third shift,factH,Did Jerry say that X happened?,4,M,Karen,Nicholas,C,0.75,2100,25
+5,7,hear,1,X happened,F,Mary is a middle school student,factL,Did Patrick hear that X happened?,1,M,Jennifer,Jerry,C,0.8,1740,25
+6,8,demonstrate,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth demonstrate that X happened?,19,F,Jessica,Cynthia,C,0.54,1744,25
+7,9,see,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon see that X happened?,16,F,George,Angela,NonProj,0.8,1299,25
+8,10,pretend,3,X happened,M,Emma is in law school,factH,Did Justin pretend that X happened?,3,M,James,Gary,NonProj,0.48,1605,25
+9,11,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Matthew,NA,control,0.81,1911,25
+10,12,think,6,X happened,M,Mia is a nun,factL,Does Ray think that X happened?,6,M,Richard,Edward,NonProj,0.76,1659,25
+11,13,be_right_that,10,X happened,F,Zoe is 5 years old,factL,Is Tim right that X happened?,10,M,Susan,Andrew,C,0.68,1607,25
+12,14,prove,8,X happened,F,Emily has been saving for a year,factH,Did Brian prove that X happened?,8,M,Kimberly,Gregory,C,0.64,1576,25
+13,15,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Nancy,NA,control,0.81,2374,25
+14,16,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Carol,NA,control,0.82,1819,25
+15,17,discover,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca discover that X happened?,15,F,Kenneth,Ruth,NonProj,0.66,1513,25
+16,18,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Richard,NA,control,0.78,1675,25
+17,19,establish,9,X happened,F,Grace loves her sister,factH,Did Andrew establish that X happened?,9,M,Helen,Ryan,NonProj,0.76,2048,25
+18,20,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Susan,NA,control,0.67,1440,25
+19,21,announce,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia announce that X happened?,17,F,Matthew,Diane,C,0.8,1539,25
+20,22,suggest,2,X happened,F,Josie doesn't have a passport,factL,Did Scott suggest that X happened?,2,M,Nancy,Scott,C,0.48,1358,25
+21,23,acknowledge,20,X happened,M,Charley lives in Mexico,factH,Did Anna acknowledge that X happened?,20,F,Mark,Joyce,C,0.73,1513,25
+22,24,confess,5,X happened,M,Sophia is a hipster,factH,Did Ben confess that X happened?,5,M,Paul,Kevin,C,0.78,6276,25
+23,25,know,12,X happened,M,Frank is allergic to cats,factL,Does Melissa know that X happened?,12,F,William,Amy,NonProj,0.66,1649,25
+24,26,annoyed,14,X happened,F,Jayden doesn't have a driver's license,factL,Is Stephanie annoyed that X happened?,14,F,Donna,Stephanie,NonProj,0.78,1483,25
+25,27,inform_Sam,11,X happened,F,Danny loves cake,factH,Did Amanda inform Sam that X happened?,11,F,Linda,Brenda,C,0.61,1411,25
+0,2,confess,10,X happened,F,Zoe is 5 years old,factL,Did Tim confess that X happened?,10,M,Helen,Benjamin,C,0.84,2137,26
+1,3,see,4,X happened,F,Olivia works the third shift,factH,Did Jerry see that X happened?,4,M,Elizabeth,Andrew,NonProj,0.67,1280,26
+2,4,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Christopher,NA,control,0.84,1448,26
+3,5,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Helen,NA,control,0.65,1277,26
+4,6,hear,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca hear that X happened?,15,F,Christopher,Angela,C,0.53,1360,26
+5,7,discover,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia discover that X happened?,17,F,Susan,Laura,NonProj,0.82,1128,26
+6,8,confirm,20,X happened,F,Charley lives in Korea,factL,Did Anna confirm that X happened?,20,F,Michelle,Brenda,C,0.65,1391,26
+7,9,establish,13,X happened,F,Jackson is obese,factL,Did Laura establish that X happened?,13,F,Betty,Diane,NonProj,0.85,1138,26
+8,10,admit,5,X happened,F,Sophia is a hipster,factH,Did Ben admit that X happened?,5,M,Nancy,Scott,C,0.79,58665,26
+9,11,prove,18,X happened,M,Julian is Cuban,factH,Did Kathleen prove that X happened?,18,F,Kenneth,Sharon,C,0.75,12583,26
+10,12,be_right_that,9,X happened,M,Grace loves her sister,factH,Is Andrew right that X happened?,9,M,Mark,Ryan,C,0.72,2041,26
+11,13,inform_Sam,2,X happened,F,Josie doesn't have a passport,factL,Did Scott inform Sam that X happened?,2,M,Margaret,Nicholas,C,0.75,2029,26
+12,14,announce,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie announce that X happened?,14,F,Jennifer,Janet,C,0.84,3605,26
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Michelle,NA,control,0.73,2112,26
+14,16,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Margaret,NA,control,0.86,2782,26
+15,17,reveal,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth reveal that X happened?,19,F,Dorothy,Anna,NonProj,0.7,2515,26
+16,18,say,8,X happened,M,Emily has been saving for a year,factH,Did Brian say that X happened?,8,M,George,Justin,C,0.8,1648,26
+17,19,think,12,X happened,M,Frank is allergic to cats,factL,Does Melissa think that X happened?,12,F,Thomas,Ruth,NonProj,0.7,1398,26
+18,20,know,1,X happened,M,Mary is a middle school student,factL,Does Patrick know that X happened?,1,M,Richard,Jerry,NonProj,0.54,1274,26
+19,21,annoyed,7,X happened,M,Isabella is from Argentina,factH,Is Kevin annoyed that X happened?,7,M,James,Tyler,NonProj,0.77,1528,26
+20,22,demonstrate,3,X happened,F,Emma is in first grade,factL,Did Justin demonstrate that X happened?,3,M,Jessica,Brandon,C,0.67,1488,26
+21,23,acknowledge,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon acknowledge that X happened?,16,F,Kimberly,Rachel,C,0.83,1415,26
+22,24,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jessica,NA,control,0.72,1586,26
+23,25,suggest,6,X happened,F,Mia is a nun,factL,Did Ray suggest that X happened?,6,M,Carol,Timothy,C,0.8,1277,26
+24,26,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.76,1320,26
+25,27,pretend,11,X happened,M,Danny loves cake,factH,Did Amanda pretend that X happened?,11,F,David,Melissa,NonProj,0.67,1411,26
+0,2,see,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie see that X happened?,14,F,Steven,Diane,NonProj,0.65,10996,27
+1,3,annoyed,18,X happened,M,Julian is Cuban,factH,Is Kathleen annoyed that X happened?,18,F,Matthew,Brenda,NonProj,0.72,3679,27
+2,4,know,17,X happened,F,Owen lives in New Orleans,factL,Does Cynthia know that X happened?,17,F,Betty,Amanda,NonProj,0.63,3144,27
+3,5,demonstrate,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca demonstrate that X happened?,15,F,James,Amy,C,0.66,2920,27
+4,6,admit,20,X happened,F,Charley lives in Korea,factL,Did Anna admit that X happened?,20,F,Elizabeth,Catherine,C,0.62,2184,27
+5,7,be_right_that,6,X happened,F,Mia is a nun,factL,Is Ray right that X happened?,6,M,Jessica,Larry,C,0.62,3600,27
+6,8,discover,7,X happened,M,Isabella is from Argentina,factH,Did Kevin discover that X happened?,7,M,William,Brian,NonProj,0.65,1952,27
+7,9,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Betty,NA,control,0.69,2928,27
+8,10,suggest,5,X happened,F,Sophia is a hipster,factH,Did Ben suggest that X happened?,5,M,Lisa,Jerry,C,0.66,2216,27
+9,11,say,1,X happened,M,Mary is taking a prenatal yoga class,factH,Did Patrick say that X happened?,1,M,Richard,Raymond,C,0.65,1936,27
+10,12,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Carol,NA,control,0.72,4376,27
+11,13,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Helen,NA,control,0.81,2208,27
+12,14,hear,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth hear that X happened?,19,F,Carol,Sharon,C,0.63,2240,27
+13,15,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,0.66,2032,27
+14,16,inform_Sam,8,X happened,F,Emily has been saving for a year,factH,Did Brian inform Sam that X happened?,8,M,Ashley,Jeffrey,C,0.72,1431,27
+15,17,pretend,13,X happened,M,Jackson is obese,factL,Did Laura pretend that X happened?,13,F,Mark,Janet,NonProj,0.72,1320,27
+16,18,think,12,X happened,F,Frank is allergic to cats,factL,Does Melissa think that X happened?,12,F,Dorothy,Shirley,NonProj,0.75,1225,27
+17,19,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Dorothy,NA,control,0.75,1479,27
+18,20,confess,3,X happened,M,Emma is in first grade,factL,Did Justin confess that X happened?,3,M,David,Gary,C,0.64,1368,27
+19,21,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jennifer,NA,control,0.71,1200,27
+20,22,confirm,4,X happened,F,Olivia has two small children,factL,Did Jerry confirm that X happened?,4,M,Jennifer,Jacob,C,0.67,2760,27
+21,23,establish,2,X happened,F,Josie loves France,factH,Did Scott establish that X happened?,2,M,Margaret,Nicholas,NonProj,0.69,1198,27
+22,24,prove,9,X happened,F,Grace loves her sister,factH,Did Andrew prove that X happened?,9,M,Nancy,Timothy,C,0.72,1393,27
+23,25,reveal,10,X happened,F,Zoe is 5 years old,factL,Did Tim reveal that X happened?,10,M,Helen,Tyler,NonProj,0.69,1144,27
+24,26,announce,11,X happened,M,Danny loves cake,factH,Did Amanda announce that X happened?,11,F,Thomas,Julie,C,0.69,1079,27
+25,27,acknowledge,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon acknowledge that X happened?,16,F,Kimberly,Nicole,C,0.68,999,27
+0,2,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Sandra,NA,control,0.77,9132,28
+1,3,inform_Sam,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa inform Sam that X happened?,12,F,Matthew,Nicole,C,0.75,4960,28
+2,4,say,7,X happened,F,Isabella is from Argentina,factH,Did Kevin say that X happened?,7,M,Dorothy,Tyler,C,0.82,4537,28
+3,5,demonstrate,4,X happened,F,Olivia has two small children,factL,Did Jerry demonstrate that X happened?,4,M,Sarah,Alexander,C,0.73,5703,28
+4,6,prove,20,X happened,F,Charley lives in Mexico,factH,Did Anna prove that X happened?,20,F,Betty,Stephanie,C,0.68,3304,28
+5,7,pretend,6,X happened,F,Mia is a nun,factL,Did Ray pretend that X happened?,6,M,Jessica,Brandon,NonProj,0.64,5687,28
+6,8,discover,3,X happened,M,Emma is in first grade,factL,Did Justin discover that X happened?,3,M,Steven,Jerry,NonProj,0.78,4394,28
+7,9,confess,18,X happened,M,Julian is Cuban,factH,Did Kathleen confess that X happened?,18,F,William,Anna,C,0.28,4950,28
+8,10,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Jessica,NA,control,0.74,4263,28
+9,11,be_right_that,15,X happened,M,Tony really likes to party with his friends,factH,Is Rebecca right that X happened?,15,F,David,Catherine,C,0.67,4176,28
+10,12,hear,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia hear that X happened?,17,F,Susan,Janet,C,0.73,3727,28
+11,13,reveal,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth reveal that X happened?,19,F,Paul,Brenda,NonProj,0.24,3104,28
+12,14,think,16,X happened,F,Josh is a 75-year old man,factL,Does Sharon think that X happened?,16,F,Carol,Angela,NonProj,0.69,2961,28
+13,15,acknowledge,11,X happened,F,Danny loves cake,factH,Did Amanda acknowledge that X happened?,11,F,Nancy,Cynthia,C,0.3,3367,28
+14,16,announce,8,X happened,F,Emily has been saving for a year,factH,Did Brian announce that X happened?,8,M,Lisa,Nicholas,C,0.68,2721,28
+15,17,annoyed,5,X happened,F,Sophia is a high end fashion model,factL,Is Ben annoyed that X happened?,5,M,Kimberly,Gary,NonProj,0.34,3568,28
+16,18,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.6,2289,28
+17,19,confirm,1,X happened,F,Mary is a middle school student,factL,Did Patrick confirm that X happened?,1,M,Michelle,Ryan,C,0.3,2950,28
+18,20,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Steven,NA,control,0.64,4097,28
+19,21,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Kimberly,NA,control,0.35,5175,28
+20,22,suggest,13,X happened,F,Jackson is obese,factL,Did Laura suggest that X happened?,13,F,Sandra,Carolyn,C,0.65,2403,28
+21,23,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Paul,NA,control,0.4,2892,28
+22,24,establish,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie establish that X happened?,14,F,Linda,Shirley,NonProj,0.66,2121,28
+23,25,see,9,X happened,M,Grace loves her sister,factH,Did Andrew see that X happened?,9,M,James,Edward,NonProj,0.42,2447,28
+24,26,admit,2,X happened,M,Josie loves France,factH,Did Scott admit that X happened?,2,M,Mark,Larry,C,0.67,2615,28
+25,27,know,10,X happened,M,Zoe is 5 years old,factL,Does Tim know that X happened?,10,M,Robert,Scott,NonProj,0.41,2720,28
+0,2,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Betty,NA,control,0.93,5453,29
+1,3,reveal,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon reveal that X happened?,16,F,Robert,Shirley,NonProj,0.75,1824,29
+2,4,admit,12,X happened,F,Frank is allergic to cats,factL,Did Melissa admit that X happened?,12,F,Betty,Rebecca,C,0.85,1664,29
+3,5,prove,3,X happened,M,Emma is in law school,factH,Did Justin prove that X happened?,3,M,William,Edward,C,0.81,1894,29
+4,6,demonstrate,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin demonstrate that X happened?,7,M,Michelle,Nicholas,C,0.81,1537,29
+5,7,acknowledge,2,X happened,M,Josie doesn't have a passport,factL,Did Scott acknowledge that X happened?,2,M,Richard,Brandon,C,0.81,1360,29
+6,8,discover,5,X happened,F,Sophia is a hipster,factH,Did Ben discover that X happened?,5,M,Donna,Justin,NonProj,0.89,1456,29
+7,9,say,10,X happened,M,Zoe is a math major,factH,Did Tim say that X happened?,10,M,Steven,Gary,C,0.88,1718,29
+8,10,confess,11,X happened,M,Danny is a diabetic,factL,Did Amanda confess that X happened?,11,F,James,Virginia,C,0.8,2216,29
+9,11,annoyed,6,X happened,M,Mia is a college student,factH,Is Ray annoyed that X happened?,6,M,George,Tyler,NonProj,0.81,2600,29
+10,12,announce,15,X happened,M,Tony has been sober for 20 years,factL,Did Rebecca announce that X happened?,15,F,Paul,Catherine,C,0.86,1567,29
+11,13,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Michelle,NA,control,0.82,1545,29
+12,14,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Mark,NA,control,0.84,1463,29
+13,15,think,20,X happened,M,Charley lives in Mexico,factH,Does Anna think that X happened?,20,F,Christopher,Diane,NonProj,0.87,1735,29
+14,16,know,17,X happened,M,Owen lives in New Orleans,factL,Does Cynthia know that X happened?,17,F,Matthew,Angela,NonProj,0.85,1430,29
+15,17,confirm,13,X happened,F,Jackson is training for a marathon,factH,Did Laura confirm that X happened?,13,F,Lisa,Christina,C,0.88,1594,29
+16,18,pretend,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie pretend that X happened?,14,F,Mark,Stephanie,NonProj,0.91,1383,29
+17,19,hear,9,X happened,F,Grace hates her sister,factL,Did Andrew hear that X happened?,9,M,Margaret,Eric,C,0.88,1679,29
+18,20,suggest,8,X happened,F,Emily never has any money,factL,Did Brian suggest that X happened?,8,M,Nancy,Larry,C,0.81,1448,29
+19,21,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Matthew,NA,control,0.85,1280,29
+20,22,establish,1,X happened,F,Mary is a middle school student,factL,Did Patrick establish that X happened?,1,M,Kimberly,Kevin,NonProj,0.86,1231,29
+21,23,inform_Sam,18,X happened,M,Julian is Cuban,factH,Did Kathleen inform Sam that X happened?,18,F,Thomas,Joyce,C,0.85,1263,29
+22,24,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,James,NA,control,0.93,1247,29
+23,25,see,4,X happened,M,Olivia works the third shift,factH,Did Jerry see that X happened?,4,M,David,Jeffrey,NonProj,0.86,1697,29
+24,26,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Richard,NA,control,0.8,1361,29
+25,27,be_right_that,19,X happened,F,Jon lives 2 blocks away from work,factH,Is Ruth right that X happened?,19,F,Jennifer,Sharon,C,0.85,3007,29
+0,2,say,1,X happened,F,Mary is a middle school student,factL,Did Patrick say that X happened?,1,M,Linda,Eric,C,0.65,4758,30
+1,3,confirm,13,X happened,F,Jackson is obese,factL,Did Laura confirm that X happened?,13,F,Jessica,Rebecca,C,0.29,3062,30
+2,4,prove,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie prove that X happened?,14,F,Kimberly,Amy,C,0.84,2305,30
+3,5,demonstrate,8,X happened,F,Emily has been saving for a year,factH,Did Brian demonstrate that X happened?,8,M,Jennifer,Alexander,C,0.25,1768,30
+4,6,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Karen,NA,control,0.82,4280,30
+5,7,see,6,X happened,M,Mia is a nun,factL,Did Ray see that X happened?,6,M,George,Ryan,NonProj,0.24,1608,30
+6,8,be_right_that,18,X happened,M,Julian is Cuban,factH,Is Kathleen right that X happened?,18,F,Paul,Sharon,C,0.82,2112,30
+7,9,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Jessica,NA,control,0.29,3488,30
+8,10,admit,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth admit that X happened?,19,F,Carol,Anna,C,0.89,1661,30
+9,11,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Robert,NA,control,0.25,1770,30
+10,12,suggest,15,X happened,M,Tony really likes to party with his friends,factH,Did Rebecca suggest that X happened?,15,F,David,Cynthia,C,0.8,1960,30
+11,13,confess,11,X happened,M,Danny loves cake,factH,Did Amanda confess that X happened?,11,F,James,Carolyn,C,0.2,1830,30
+12,14,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Steven,NA,control,0.82,1585,30
+13,15,establish,3,X happened,F,Emma is in law school,factH,Did Justin establish that X happened?,3,M,Michelle,Justin,NonProj,0.29,1704,30
+14,16,announce,4,X happened,F,Olivia works the third shift,factH,Did Jerry announce that X happened?,4,M,Sandra,Edward,C,0.83,1904,30
+15,17,annoyed,17,X happened,F,Owen lives in New Orleans,factL,Is Cynthia annoyed that X happened?,17,F,Sarah,Kathleen,NonProj,0.32,1617,30
+16,18,reveal,10,X happened,M,Zoe is 5 years old,factL,Did Tim reveal that X happened?,10,M,Mark,Larry,NonProj,0.79,1640,30
+17,19,know,7,X happened,F,Isabella is from Argentina,factH,Does Kevin know that X happened?,7,M,Helen,Brian,NonProj,0.33,1576,30
+18,20,hear,12,X happened,F,Frank is allergic to cats,factL,Did Melissa hear that X happened?,12,F,Margaret,Diane,C,0.75,1616,30
+19,21,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Linda,NA,control,0.34,1376,30
+20,22,inform_Sam,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben inform Sam that X happened?,5,M,Robert,Timothy,C,0.79,1295,30
+21,23,pretend,9,X happened,M,Grace loves her sister,factH,Did Andrew pretend that X happened?,9,M,William,Jacob,NonProj,0.84,2752,30
+22,24,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.35,1792,30
+23,25,acknowledge,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon acknowledge that X happened?,16,F,Thomas,Ruth,C,0.79,1752,30
+24,26,discover,2,X happened,M,Josie doesn't have a passport,factL,Did Scott discover that X happened?,2,M,Steven,Nicholas,NonProj,0.29,1503,30
+25,27,think,20,X happened,F,Charley lives in Korea,factL,Does Anna think that X happened?,20,F,Karen,Shirley,NonProj,0.78,1202,30
+0,2,reveal,4,X happened,F,Olivia works the third shift,factH,Did Jerry reveal that X happened?,4,M,Susan,Larry,NonProj,0.91,16654,31
+1,3,demonstrate,10,X happened,M,Zoe is 5 years old,factL,Did Tim demonstrate that X happened?,10,M,James,Eric,C,0.83,9952,31
+2,4,confess,6,X happened,M,Mia is a college student,factH,Did Ray confess that X happened?,6,M,George,Edward,C,0.95,6403,31
+3,5,pretend,2,X happened,F,Josie loves France,factH,Did Scott pretend that X happened?,2,M,Sarah,Brandon,NonProj,0.14,19608,31
+4,6,see,13,X happened,M,Jackson is obese,factL,Did Laura see that X happened?,13,F,Thomas,Julie,NonProj,0.87,7108,31
+5,7,know,8,X happened,F,Emily never has any money,factL,Does Brian know that X happened?,8,M,Margaret,Brian,NonProj,0.97,7285,31
+6,8,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Dorothy,NA,control,0.96,7689,31
+7,9,admit,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon admit that X happened?,16,F,Dorothy,Laura,C,0.89,6352,31
+8,10,establish,9,X happened,F,Grace loves her sister,factH,Did Andrew establish that X happened?,9,M,Jennifer,Benjamin,NonProj,0.78,7706,31
+9,11,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Elizabeth,NA,control,0.96,7177,31
+10,12,suggest,1,X happened,M,Mary is taking a prenatal yoga class,factH,Did Patrick suggest that X happened?,1,M,Richard,Ronald,C,0.22,6474,31
+11,13,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Mark,NA,control,0.96,7746,31
+12,14,announce,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin announce that X happened?,7,M,Karen,Andrew,C,0.34,10360,31
+13,15,say,5,X happened,F,Sophia is a hipster,factH,Did Ben say that X happened?,5,M,Ashley,Justin,C,0.18,6932,31
+14,16,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Margaret,NA,control,0.98,7836,31
+15,17,prove,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie prove that X happened?,14,F,Nancy,Christina,C,0.11,10043,31
+16,18,acknowledge,11,X happened,F,Danny is a diabetic,factL,Did Amanda acknowledge that X happened?,11,F,Jessica,Carolyn,C,0.2,6079,31
+17,19,inform_Sam,20,X happened,F,Charley lives in Korea,factL,Did Anna inform Sam that X happened?,20,F,Linda,Brenda,C,0.42,9066,31
+18,20,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Karen,NA,control,0.93,11145,31
+19,21,confirm,3,X happened,M,Emma is in first grade,factL,Did Justin confirm that X happened?,3,M,Mark,Timothy,C,0.09,8811,31
+20,22,hear,19,X happened,M,Jon lives 2 blocks away from work,factH,Did Ruth hear that X happened?,19,F,Robert,Cynthia,C,0.77,7470,31
+21,23,annoyed,15,X happened,M,Tony really likes to party with his friends,factH,Is Rebecca annoyed that X happened?,15,F,Christopher,Diane,NonProj,0.92,5235,31
+22,24,discover,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia discover that X happened?,17,F,Lisa,Rachel,NonProj,0.17,9184,31
+23,25,think,12,X happened,F,Frank has always wanted a pet,factH,Does Melissa think that X happened?,12,F,Michelle,Angela,NonProj,0.05,10882,31
+24,26,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Jessica,NA,control,0.98,5373,31
+25,27,be_right_that,18,X happened,F,Julian is German,factL,Is Kathleen right that X happened?,18,F,Elizabeth,Rebecca,C,0.07,9517,31
+0,2,confirm,3,X happened,F,Emma is in law school,factH,Did Justin confirm that X happened?,3,M,Susan,Jerry,C,0.86,9899,32
+1,3,hear,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie hear that X happened?,14,F,Nancy,Sharon,C,0.78,6352,32
+2,4,prove,2,X happened,F,Josie loves France,factH,Did Scott prove that X happened?,2,M,Margaret,Alexander,C,0.5,2010,32
+3,5,announce,18,X happened,F,Julian is German,factL,Did Kathleen announce that X happened?,18,F,Jessica,Kathleen,C,0.61,1640,32
+4,6,demonstrate,1,X happened,M,Mary is taking a prenatal yoga class,factH,Did Patrick demonstrate that X happened?,1,M,Richard,Larry,C,0.74,1510,32
+5,7,say,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth say that X happened?,19,F,Paul,Rebecca,C,0.48,1750,32
+6,8,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,0.66,1654,32
+7,9,discover,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca discover that X happened?,15,F,Karen,Joyce,NonProj,0.72,22026,32
+8,10,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Christopher,NA,control,0.56,2100,32
+9,11,inform_Sam,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin inform Sam that X happened?,7,M,Christopher,Raymond,C,0.74,1834,32
+10,12,know,11,X happened,M,Danny is a diabetic,factL,Does Amanda know that X happened?,11,F,James,Amanda,NonProj,0.57,1650,32
+11,13,pretend,8,X happened,F,Emily never has any money,factL,Did Brian pretend that X happened?,8,M,Jennifer,Edward,NonProj,0.82,1821,32
+12,14,annoyed,16,X happened,F,Josh is a 5-year old boy,factH,Is Sharon annoyed that X happened?,16,F,Donna,Rachel,NonProj,0.62,1554,32
+13,15,admit,4,X happened,M,Olivia works the third shift,factH,Did Jerry admit that X happened?,4,M,Kenneth,Gregory,C,0.79,1897,32
+14,16,acknowledge,9,X happened,F,Grace hates her sister,factL,Did Andrew acknowledge that X happened?,9,M,Dorothy,Jeffrey,C,0.62,1938,32
+15,17,be_right_that,17,X happened,F,Owen lives in New Orleans,factL,Is Cynthia right that X happened?,17,F,Betty,Shirley,C,0.8,2200,32
+16,18,see,6,X happened,F,Mia is a nun,factL,Did Ray see that X happened?,6,M,Lisa,Nicholas,NonProj,0.88,6440,32
+17,19,suggest,20,X happened,M,Charley lives in Mexico,factH,Did Anna suggest that X happened?,20,F,William,Carolyn,C,0.62,2549,32
+18,20,reveal,13,X happened,F,Jackson is training for a marathon,factH,Did Laura reveal that X happened?,13,F,Kimberly,Christina,NonProj,0.76,1720,32
+19,21,think,5,X happened,F,Sophia is a hipster,factH,Does Ben think that X happened?,5,M,Carol,Patrick,NonProj,0.56,2485,32
+20,22,confess,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa confess that X happened?,12,F,Sandra,Amy,C,0.7,1855,32
+21,23,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Betty,NA,control,0.69,2146,32
+22,24,establish,10,X happened,F,Zoe is 5 years old,factL,Did Tim establish that X happened?,10,M,Ashley,Scott,NonProj,0.68,1819,32
+23,25,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Ashley,NA,control,0.65,1961,32
+24,26,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Karen,NA,control,0.72,1974,32
+25,27,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Paul,NA,control,0.63,1419,32
+0,2,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Matthew,NA,control,0.89,8647,33
+1,3,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,0.85,6393,33
+2,4,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Steven,NA,control,0.93,5740,33
+3,5,confess,2,X happened,M,Josie doesn't have a passport,factL,Did Scott confess that X happened?,2,M,David,Benjamin,C,0.41,4228,33
+4,6,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Margaret,NA,control,0.92,10187,33
+5,7,prove,6,X happened,M,Mia is a college student,factH,Did Ray prove that X happened?,6,M,Richard,Edward,C,0.48,3980,33
+6,8,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Nancy,NA,control,0.71,3488,33
+7,9,hear,12,X happened,F,Frank is allergic to cats,factL,Did Melissa hear that X happened?,12,F,Nancy,Janet,C,0.57,3678,33
+8,10,demonstrate,8,X happened,M,Emily has been saving for a year,factH,Did Brian demonstrate that X happened?,8,M,Robert,Alexander,C,0.66,2955,33
+9,11,annoyed,10,X happened,F,Zoe is a math major,factH,Is Tim annoyed that X happened?,10,M,Ashley,Andrew,NonProj,0.88,2445,33
+10,12,confirm,1,X happened,M,Mary is a middle school student,factL,Did Patrick confirm that X happened?,1,M,Thomas,Kevin,C,0.28,3311,33
+11,13,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Christopher,NA,control,1.0,6045,33
+12,14,announce,20,X happened,F,Charley lives in Korea,factL,Did Anna announce that X happened?,20,F,Margaret,Stephanie,C,0.77,3160,33
+13,15,pretend,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia pretend that X happened?,17,F,Kenneth,Heather,NonProj,0.43,3541,33
+14,16,establish,18,X happened,M,Julian is Cuban,factH,Did Kathleen establish that X happened?,18,F,George,Sharon,NonProj,0.54,3103,33
+15,17,reveal,13,X happened,F,Jackson is training for a marathon,factH,Did Laura reveal that X happened?,13,F,Betty,Laura,NonProj,0.64,2216,33
+16,18,discover,11,X happened,M,Danny loves cake,factH,Did Amanda discover that X happened?,11,F,Mark,Diane,NonProj,0.85,2682,33
+17,19,think,3,X happened,M,Emma is in law school,factH,Does Justin think that X happened?,3,M,Paul,Eric,NonProj,0.39,3062,33
+18,20,be_right_that,7,X happened,F,Isabella is from Argentina,factH,Is Kevin right that X happened?,7,M,Jessica,Tyler,C,0.49,2417,33
+19,21,inform_Sam,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie inform Sam that X happened?,14,F,James,Cynthia,C,0.74,2559,33
+20,22,say,4,X happened,M,Olivia has two small children,factL,Did Jerry say that X happened?,4,M,Steven,Ronald,C,0.39,4747,33
+21,23,see,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca see that X happened?,15,F,Karen,Julie,NonProj,0.35,19308,33
+22,24,acknowledge,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon acknowledge that X happened?,16,F,Lisa,Shirley,C,0.64,9377,33
+23,25,know,19,X happened,M,Jon lives 10 miles away from work,factL,Does Ruth know that X happened?,19,F,Matthew,Melissa,NonProj,0.74,7690,33
+24,26,suggest,9,X happened,F,Grace hates her sister,factL,Did Andrew suggest that X happened?,9,M,Elizabeth,Jacob,C,0.53,2515,33
+25,27,admit,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben admit that X happened?,5,M,Christopher,Larry,C,0.65,2937,33
+0,2,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Richard,NA,control,0.87,1900,34
+1,3,see,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa see that X happened?,12,F,Mark,Angela,NonProj,0.9,1416,34
+2,4,be_right_that,16,X happened,F,Josh is a 5-year old boy,factH,Is Sharon right that X happened?,16,F,Michelle,Joyce,C,0.28,1169,34
+3,5,announce,13,X happened,F,Jackson is obese,factL,Did Laura announce that X happened?,13,F,Sandra,Janet,C,0.76,1018,34
+4,6,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Elizabeth,NA,control,0.41,856,34
+5,7,discover,3,X happened,F,Emma is in law school,factH,Did Justin discover that X happened?,3,M,Nancy,Kevin,NonProj,0.75,968,34
+6,8,confess,15,X happened,M,Tony really likes to party with his friends,factH,Did Rebecca confess that X happened?,15,F,Paul,Kathleen,C,0.37,959,34
+7,9,know,17,X happened,F,Owen lives in New Orleans,factL,Does Cynthia know that X happened?,17,F,Elizabeth,Stephanie,NonProj,0.77,2025,34
+8,10,say,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth say that X happened?,19,F,Margaret,Nicole,C,0.89,1047,34
+9,11,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Margaret,NA,control,0.71,977,34
+10,12,prove,6,X happened,M,Mia is a college student,factH,Did Ray prove that X happened?,6,M,Christopher,Andrew,C,0.77,1623,34
+11,13,demonstrate,10,X happened,M,Zoe is 5 years old,factL,Did Tim demonstrate that X happened?,10,M,Kenneth,Jacob,C,0.87,2289,34
+12,14,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,George,NA,control,0.67,1408,34
+13,15,suggest,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin suggest that X happened?,7,M,Lisa,Alexander,C,0.79,1103,34
+14,16,pretend,9,X happened,F,Grace hates her sister,factL,Did Andrew pretend that X happened?,9,M,Linda,Jeffrey,NonProj,0.72,1952,34
+15,17,confirm,5,X happened,F,Sophia is a hipster,factH,Did Ben confirm that X happened?,5,M,Susan,Ronald,C,0.81,1086,34
+16,18,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Kimberly,NA,control,0.44,1017,34
+17,19,admit,1,X happened,M,Mary is taking a prenatal yoga class,factH,Did Patrick admit that X happened?,1,M,James,Justin,C,0.69,1008,34
+18,20,acknowledge,20,X happened,M,Charley lives in Korea,factL,Did Anna acknowledge that X happened?,20,F,Richard,Melissa,C,0.8,1040,34
+19,21,hear,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie hear that X happened?,14,F,Kimberly,Ruth,C,0.56,1319,34
+20,22,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Linda,NA,control,0.74,1031,34
+21,23,annoyed,4,X happened,M,Olivia has two small children,factL,Is Jerry annoyed that X happened?,4,M,Steven,Tyler,NonProj,0.44,1240,34
+22,24,establish,18,X happened,M,Julian is German,factL,Did Kathleen establish that X happened?,18,F,George,Brenda,NonProj,0.6,968,34
+23,25,inform_Sam,2,X happened,F,Josie loves France,factH,Did Scott inform Sam that X happened?,2,M,Jessica,Edward,C,0.51,2160,34
+24,26,think,11,X happened,F,Danny loves cake,factH,Does Amanda think that X happened?,11,F,Dorothy,Christina,NonProj,0.69,1095,34
+25,27,reveal,8,X happened,F,Emily has been saving for a year,factH,Did Brian reveal that X happened?,8,M,Sarah,Larry,NonProj,0.8,1065,34
+0,2,annoyed,19,X happened,M,Jon lives 2 blocks away from work,factH,Is Ruth annoyed that X happened?,19,F,Thomas,Laura,NonProj,0.92,3816,35
+1,3,announce,5,X happened,M,Sophia is a hipster,factH,Did Ben announce that X happened?,5,M,Steven,Larry,C,0.08,2645,35
+2,4,know,8,X happened,F,Emily has been saving for a year,factH,Does Brian know that X happened?,8,M,Ashley,Jeffrey,NonProj,0.91,5646,35
+3,5,see,4,X happened,F,Olivia has two small children,factL,Did Jerry see that X happened?,4,M,Jessica,Eric,NonProj,0.9,3727,35
+4,6,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Donna,NA,control,0.96,3864,35
+5,7,confirm,18,X happened,M,Julian is German,factL,Did Kathleen confirm that X happened?,18,F,Mark,Kathleen,C,0.12,5006,35
+6,8,think,15,X happened,F,Tony really likes to party with his friends,factH,Does Rebecca think that X happened?,15,F,Susan,Amy,NonProj,0.06,4209,35
+7,9,acknowledge,9,X happened,M,Grace hates her sister,factL,Did Andrew acknowledge that X happened?,9,M,James,Gregory,C,0.25,7558,35
+8,10,establish,2,X happened,M,Josie doesn't have a passport,factL,Did Scott establish that X happened?,2,M,George,Ronald,NonProj,0.11,2953,35
+9,11,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Mark,NA,control,0.92,4732,35
+10,12,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Carol,NA,control,0.98,6375,35
+11,13,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,James,NA,control,0.97,4186,35
+12,14,be_right_that,12,X happened,F,Frank is allergic to cats,factL,Is Melissa right that X happened?,12,F,Margaret,Anna,C,0.12,4294,35
+13,15,say,10,X happened,F,Zoe is 5 years old,factL,Did Tim say that X happened?,10,M,Carol,Brian,C,0.11,2946,35
+14,16,confess,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia confess that X happened?,17,F,Linda,Virginia,C,0.23,3891,35
+15,17,demonstrate,13,X happened,F,Jackson is obese,factL,Did Laura demonstrate that X happened?,13,F,Dorothy,Diane,C,0.14,4230,35
+16,18,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,George,NA,control,0.99,4183,35
+17,19,inform_Sam,6,X happened,M,Mia is a college student,factH,Did Ray inform Sam that X happened?,6,M,Robert,Raymond,C,0.83,7051,35
+18,20,hear,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon hear that X happened?,16,F,Paul,Brenda,C,0.91,3670,35
+19,21,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Margaret,NA,control,0.99,14123,35
+20,22,discover,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie discover that X happened?,14,F,David,Rebecca,NonProj,0.99,3726,35
+21,23,reveal,20,X happened,F,Charley lives in Korea,factL,Did Anna reveal that X happened?,20,F,Donna,Heather,NonProj,0.76,6286,35
+22,24,prove,3,X happened,M,Emma is in first grade,factL,Did Justin prove that X happened?,3,M,William,Kevin,C,0.17,3561,35
+23,25,suggest,11,X happened,M,Danny loves cake,factH,Did Amanda suggest that X happened?,11,F,Richard,Shirley,C,0.13,5280,35
+24,26,admit,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick admit that X happened?,1,M,Nancy,Patrick,C,0.19,5099,35
+25,27,pretend,7,X happened,M,Isabella is from Argentina,factH,Did Kevin pretend that X happened?,7,M,Matthew,Benjamin,NonProj,0.08,4229,35
+0,2,admit,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth admit that X happened?,19,F,George,Catherine,C,0.89,2705,36
+1,3,establish,18,X happened,F,Julian is German,factL,Did Kathleen establish that X happened?,18,F,Jennifer,Kathleen,NonProj,0.24,2544,36
+2,4,pretend,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia pretend that X happened?,17,F,Matthew,Diane,NonProj,0.89,1830,36
+3,5,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Elizabeth,NA,control,0.51,2289,36
+4,6,demonstrate,12,X happened,M,Frank is allergic to cats,factL,Did Melissa demonstrate that X happened?,12,F,Steven,Angela,C,0.53,1624,36
+5,7,prove,8,X happened,M,Emily never has any money,factL,Did Brian prove that X happened?,8,M,Christopher,Nicholas,C,0.91,2576,36
+6,8,think,15,X happened,F,Tony really likes to party with his friends,factH,Does Rebecca think that X happened?,15,F,Carol,Virginia,NonProj,0.52,1482,36
+7,9,acknowledge,4,X happened,F,Olivia has two small children,factL,Did Jerry acknowledge that X happened?,4,M,Nancy,Jerry,C,0.86,1694,36
+8,10,be_right_that,2,X happened,M,Josie loves France,factH,Is Scott right that X happened?,2,M,James,Edward,C,0.19,1841,36
+9,11,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jennifer,NA,control,0.5,1384,36
+10,12,suggest,13,X happened,M,Jackson is training for a marathon,factH,Did Laura suggest that X happened?,13,F,William,Shirley,C,0.82,1439,36
+11,13,confess,10,X happened,M,Zoe is a math major,factH,Did Tim confess that X happened?,10,M,David,Brandon,C,0.86,2511,36
+12,14,confirm,1,X happened,F,Mary is a middle school student,factL,Did Patrick confirm that X happened?,1,M,Linda,Gregory,C,0.17,1585,36
+13,15,annoyed,20,X happened,F,Charley lives in Mexico,factH,Is Anna annoyed that X happened?,20,F,Lisa,Heather,NonProj,0.77,2179,36
+14,16,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Linda,NA,control,0.84,6692,36
+15,17,hear,3,X happened,F,Emma is in first grade,factL,Did Justin hear that X happened?,3,M,Karen,Ryan,C,0.22,2762,36
+16,18,see,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin see that X happened?,7,M,Susan,Alexander,NonProj,0.82,2263,36
+17,19,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Karen,NA,control,0.82,1770,36
+18,20,discover,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie discover that X happened?,14,F,Sandra,Janet,NonProj,0.16,1289,36
+19,21,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Thomas,NA,control,0.18,1404,36
+20,22,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Steven,NA,control,0.88,1402,36
+21,23,know,5,X happened,M,Sophia is a high end fashion model,factL,Does Ben know that X happened?,5,M,Thomas,Larry,NonProj,0.52,1705,36
+22,24,announce,11,X happened,F,Danny is a diabetic,factL,Did Amanda announce that X happened?,11,F,Elizabeth,Nicole,C,0.8,2870,36
+23,25,reveal,6,X happened,F,Mia is a college student,factH,Did Ray reveal that X happened?,6,M,Kimberly,Ronald,NonProj,0.76,1407,36
+24,26,say,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon say that X happened?,16,F,Ashley,Amanda,C,0.46,1143,36
+25,27,inform_Sam,9,X happened,M,Grace loves her sister,factH,Did Andrew inform Sam that X happened?,9,M,Robert,Andrew,C,0.2,1816,36
+0,2,think,17,X happened,M,Owen lives in New Orleans,factL,Does Cynthia think that X happened?,17,F,Richard,Amanda,NonProj,0.61,4093,37
+1,3,annoyed,11,X happened,M,Danny is a diabetic,factL,Is Amanda annoyed that X happened?,11,F,Steven,Laura,NonProj,0.6,2751,37
+2,4,establish,9,X happened,M,Grace loves her sister,factH,Did Andrew establish that X happened?,9,M,David,Raymond,NonProj,0.43,2528,37
+3,5,confirm,13,X happened,M,Jackson is obese,factL,Did Laura confirm that X happened?,13,F,Christopher,Ruth,C,0.77,2368,37
+4,6,hear,10,X happened,F,Zoe is 5 years old,factL,Did Tim hear that X happened?,10,M,Ashley,Eric,C,0.38,2096,37
+5,7,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,William,NA,control,0.84,1768,37
+6,8,say,20,X happened,M,Charley lives in Korea,factL,Did Anna say that X happened?,20,F,George,Joyce,C,0.29,2368,37
+7,9,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Mark,NA,control,0.51,2120,37
+8,10,reveal,18,X happened,F,Julian is Cuban,factH,Did Kathleen reveal that X happened?,18,F,Helen,Brenda,NonProj,0.58,3008,37
+9,11,know,5,X happened,M,Sophia is a hipster,factH,Does Ben know that X happened?,5,M,Paul,Alexander,NonProj,0.62,1721,37
+10,12,discover,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie discover that X happened?,14,F,Jessica,Catherine,NonProj,0.79,2070,37
+11,13,be_right_that,16,X happened,F,Josh is a 75-year old man,factL,Is Sharon right that X happened?,16,F,Jennifer,Virginia,C,0.44,1841,37
+12,14,confess,4,X happened,M,Olivia works the third shift,factH,Did Jerry confess that X happened?,4,M,James,Gregory,C,0.72,1640,37
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Ashley,NA,control,0.5,2160,37
+14,16,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Christopher,NA,control,0.44,2054,37
+15,17,pretend,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick pretend that X happened?,1,M,Dorothy,Benjamin,NonProj,0.65,1945,37
+16,18,admit,7,X happened,F,Isabella is from Argentina,factH,Did Kevin admit that X happened?,7,M,Betty,Patrick,C,0.27,1783,37
+17,19,prove,3,X happened,F,Emma is in law school,factH,Did Justin prove that X happened?,3,M,Elizabeth,Jerry,C,0.54,2119,37
+18,20,acknowledge,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth acknowledge that X happened?,19,F,Nancy,Nicole,C,0.63,2049,37
+19,21,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,George,NA,control,0.37,1583,37
+20,22,inform_Sam,8,X happened,M,Emily never has any money,factL,Did Brian inform Sam that X happened?,8,M,Mark,Justin,C,0.78,1456,37
+21,23,demonstrate,2,X happened,M,Josie doesn't have a passport,factL,Did Scott demonstrate that X happened?,2,M,William,Kevin,C,0.42,2007,37
+22,24,suggest,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa suggest that X happened?,12,F,Kimberly,Rebecca,C,0.86,3057,37
+23,25,see,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca see that X happened?,15,F,Michelle,Diane,NonProj,0.41,4616,37
+24,26,announce,6,X happened,M,Mia is a nun,factL,Did Ray announce that X happened?,6,M,Matthew,Tyler,C,0.87,2315,37
+25,27,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Jessica,NA,control,0.43,2255,37
+0,2,confirm,11,X happened,F,Danny is a diabetic,factL,Did Amanda confirm that X happened?,11,F,Sandra,Shirley,C,0.69,5254,38
+1,3,admit,16,X happened,F,Josh is a 75-year old man,factL,Did Sharon admit that X happened?,16,F,Michelle,Heather,C,0.25,5500,38
+2,4,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,James,NA,control,0.7,5359,38
+3,5,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Dorothy,NA,control,0.44,4498,38
+4,6,inform_Sam,1,X happened,F,Mary is a middle school student,factL,Did Patrick inform Sam that X happened?,1,M,Karen,Justin,C,0.52,5650,38
+5,7,acknowledge,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa acknowledge that X happened?,12,F,Betty,Nicole,C,0.7,4521,38
+6,8,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Christopher,NA,control,0.53,3572,38
+7,9,demonstrate,7,X happened,F,Isabella is from Argentina,factH,Did Kevin demonstrate that X happened?,7,M,Donna,Nicholas,C,0.7,3426,38
+8,10,pretend,8,X happened,F,Emily has been saving for a year,factH,Did Brian pretend that X happened?,8,M,Elizabeth,Larry,NonProj,0.49,3629,38
+9,11,suggest,9,X happened,M,Grace loves her sister,factH,Did Andrew suggest that X happened?,9,M,Steven,Alexander,C,0.74,3881,38
+10,12,announce,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth announce that X happened?,19,F,Lisa,Stephanie,C,0.67,3154,38
+11,13,discover,18,X happened,F,Julian is Cuban,factH,Did Kathleen discover that X happened?,18,F,Helen,Virginia,NonProj,0.59,2985,38
+12,14,establish,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben establish that X happened?,5,M,Dorothy,Timothy,NonProj,0.39,5371,38
+13,15,know,3,X happened,F,Emma is in first grade,factL,Does Justin know that X happened?,3,M,Nancy,Ryan,NonProj,0.27,3100,38
+14,16,be_right_that,4,X happened,M,Olivia has two small children,factL,Is Jerry right that X happened?,4,M,Christopher,Raymond,C,0.8,6241,38
+15,17,say,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca say that X happened?,15,F,Jessica,Diane,C,0.5,4431,38
+16,18,think,20,X happened,M,Charley lives in Mexico,factH,Does Anna think that X happened?,20,F,George,Julie,NonProj,0.58,6637,38
+17,19,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Lisa,NA,control,0.7,5741,38
+18,20,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Michelle,NA,control,0.45,4360,38
+19,21,reveal,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie reveal that X happened?,14,F,Paul,Cynthia,NonProj,0.46,11720,38
+20,22,see,6,X happened,M,Mia is a nun,factL,Did Ray see that X happened?,6,M,Robert,Jeffrey,NonProj,0.76,27525,38
+21,23,prove,10,X happened,F,Zoe is a math major,factH,Did Tim prove that X happened?,10,M,Susan,Tyler,C,0.55,3997,38
+22,24,hear,13,X happened,F,Jackson is training for a marathon,factH,Did Laura hear that X happened?,13,F,Ashley,Laura,C,0.79,5633,38
+23,25,annoyed,2,X happened,F,Josie doesn't have a passport,factL,Is Scott annoyed that X happened?,2,M,Carol,Andrew,NonProj,0.5,9365,38
+24,26,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.58,16619,38
+25,27,confess,17,X happened,M,Owen lives in New Orleans,factL,Did Cynthia confess that X happened?,17,F,James,Amanda,C,0.65,23783,38
+0,2,reveal,6,X happened,M,Mia is a nun,factL,Did Ray reveal that X happened?,6,M,David,Edward,NonProj,0.8,3221,39
+1,3,admit,5,X happened,M,Sophia is a hipster,factH,Did Ben admit that X happened?,5,M,James,Gary,C,0.83,1407,39
+2,4,say,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa say that X happened?,12,F,Kimberly,Joyce,C,0.85,1457,39
+3,5,inform_Sam,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie inform Sam that X happened?,14,F,Christopher,Diane,C,0.74,1040,39
+4,6,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Betty,NA,control,0.82,1008,39
+5,7,establish,20,X happened,F,Charley lives in Mexico,factH,Did Anna establish that X happened?,20,F,Susan,Nicole,NonProj,0.81,1128,39
+6,8,be_right_that,17,X happened,F,Owen lives in New Orleans,factL,Is Cynthia right that X happened?,17,F,Dorothy,Heather,C,0.63,1416,39
+7,9,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Steven,NA,control,0.79,1431,39
+8,10,know,18,X happened,F,Julian is German,factL,Does Kathleen know that X happened?,18,F,Lisa,Christina,NonProj,0.66,2353,39
+9,11,suggest,1,X happened,M,Mary is a middle school student,factL,Did Patrick suggest that X happened?,1,M,Thomas,Alexander,C,0.77,1544,39
+10,12,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,David,NA,control,0.82,1455,39
+11,13,announce,11,X happened,M,Danny loves cake,factH,Did Amanda announce that X happened?,11,F,William,Shirley,C,0.94,1095,39
+12,14,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Elizabeth,NA,control,0.79,1664,39
+13,15,confirm,2,X happened,M,Josie doesn't have a passport,factL,Did Scott confirm that X happened?,2,M,George,Scott,C,1.0,2057,39
+14,16,think,15,X happened,F,Tony really likes to party with his friends,factH,Does Rebecca think that X happened?,15,F,Jennifer,Amy,NonProj,0.74,2473,39
+15,17,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Dorothy,NA,control,0.87,1207,39
+16,18,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,George,NA,control,0.77,1280,39
+17,19,annoyed,9,X happened,F,Grace hates her sister,factL,Is Andrew annoyed that X happened?,9,M,Betty,Jacob,NonProj,0.83,1392,39
+18,20,hear,4,X happened,M,Olivia works the third shift,factH,Did Jerry hear that X happened?,4,M,Paul,Eric,C,0.82,1503,39
+19,21,pretend,13,X happened,F,Jackson is training for a marathon,factH,Did Laura pretend that X happened?,13,F,Carol,Angela,NonProj,0.93,1433,39
+20,22,see,3,X happened,M,Emma is in first grade,factL,Did Justin see that X happened?,3,M,Matthew,Gregory,NonProj,0.84,1336,39
+21,23,confess,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth confess that X happened?,19,F,Steven,Amanda,C,0.87,1296,39
+22,24,discover,10,X happened,M,Zoe is a math major,factH,Did Tim discover that X happened?,10,M,Kenneth,Jerry,NonProj,0.88,1360,39
+23,25,demonstrate,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin demonstrate that X happened?,7,M,Donna,Patrick,C,0.76,1320,39
+24,26,prove,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon prove that X happened?,16,F,Jessica,Rachel,C,0.86,1431,39
+25,27,acknowledge,8,X happened,F,Emily never has any money,factL,Did Brian acknowledge that X happened?,8,M,Elizabeth,Ronald,C,0.85,2233,39
+0,2,hear,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick hear that X happened?,1,M,Donna,Benjamin,C,1.0,32582,40
+1,3,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Michelle,NA,control,0.91,17921,40
+2,4,know,11,X happened,F,Danny is a diabetic,factL,Does Amanda know that X happened?,11,F,Nancy,Kathleen,NonProj,0.94,15563,40
+3,5,inform_Sam,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon inform Sam that X happened?,16,F,James,Joyce,C,0.84,9220,40
+4,6,admit,18,X happened,F,Julian is Cuban,factH,Did Kathleen admit that X happened?,18,F,Betty,Rachel,C,0.54,15695,40
+5,7,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Elizabeth,NA,control,0.75,14342,40
+6,8,acknowledge,20,X happened,F,Charley lives in Korea,factL,Did Anna acknowledge that X happened?,20,F,Susan,Angela,C,0.79,9815,40
+7,9,discover,6,X happened,F,Mia is a nun,factL,Did Ray discover that X happened?,6,M,Michelle,Tyler,NonProj,0.61,8601,40
+8,10,see,5,X happened,M,Sophia is a hipster,factH,Did Ben see that X happened?,5,M,David,Nicholas,NonProj,0.57,26744,40
+9,11,be_right_that,8,X happened,M,Emily has been saving for a year,factH,Is Brian right that X happened?,8,M,William,Larry,C,0.34,9753,40
+10,12,confess,10,X happened,F,Zoe is 5 years old,factL,Did Tim confess that X happened?,10,M,Ashley,Eric,C,0.34,6731,40
+11,13,announce,13,X happened,M,Jackson is training for a marathon,factH,Did Laura announce that X happened?,13,F,Thomas,Cynthia,C,0.42,8123,40
+12,14,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Ashley,NA,control,0.23,21151,40
+13,15,reveal,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin reveal that X happened?,7,M,Elizabeth,Brandon,NonProj,0.23,20972,40
+14,16,confirm,12,X happened,F,Frank is allergic to cats,factL,Did Melissa confirm that X happened?,12,F,Kimberly,Anna,C,0.37,5721,40
+15,17,annoyed,3,X happened,F,Emma is in law school,factH,Is Justin annoyed that X happened?,3,M,Jennifer,Jacob,NonProj,0.9,4936,40
+16,18,suggest,2,X happened,M,Josie doesn't have a passport,factL,Did Scott suggest that X happened?,2,M,Kenneth,Ryan,C,0.2,4423,40
+17,19,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Lisa,NA,control,0.97,7923,40
+18,20,establish,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia establish that X happened?,17,F,George,Christina,NonProj,0.27,5987,40
+19,21,say,9,X happened,F,Grace hates her sister,factL,Did Andrew say that X happened?,9,M,Karen,Timothy,C,0.18,6957,40
+20,22,think,4,X happened,F,Olivia works the third shift,factH,Does Jerry think that X happened?,4,M,Margaret,Brian,NonProj,0.16,5699,40
+21,23,pretend,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca pretend that X happened?,15,F,Lisa,Heather,NonProj,0.11,4672,40
+22,24,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Susan,NA,control,0.94,6251,40
+23,25,prove,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie prove that X happened?,14,F,Paul,Nicole,C,0.19,7498,40
+24,26,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Nancy,NA,control,0.93,6453,40
+25,27,demonstrate,19,X happened,M,Jon lives 2 blocks away from work,factH,Did Ruth demonstrate that X happened?,19,F,Christopher,Rebecca,C,0.27,5408,40
+0,2,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Carol,NA,control,0.78,41127,41
+1,3,hear,18,X happened,F,Julian is German,factL,Did Kathleen hear that X happened?,18,F,Kimberly,Julie,C,0.08,18449,41
+2,4,say,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick say that X happened?,1,M,Margaret,Brian,C,0.45,22791,41
+3,5,confirm,8,X happened,M,Emily has been saving for a year,factH,Did Brian confirm that X happened?,8,M,Paul,Jacob,C,0.29,8747,41
+4,6,discover,4,X happened,F,Olivia works the third shift,factH,Did Jerry discover that X happened?,4,M,Ashley,Nicholas,NonProj,0.21,3758,41
+5,7,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,George,NA,control,0.69,2823,41
+6,8,see,11,X happened,M,Danny is a diabetic,factL,Did Amanda see that X happened?,11,F,Thomas,Sharon,NonProj,0.47,2028,41
+7,9,suggest,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon suggest that X happened?,16,F,George,Amy,C,0.81,2714,41
+8,10,think,20,X happened,M,Charley lives in Korea,factL,Does Anna think that X happened?,20,F,Kenneth,Stephanie,NonProj,0.33,2370,41
+9,11,establish,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca establish that X happened?,15,F,Michelle,Diane,NonProj,0.77,2588,41
+10,12,prove,9,X happened,M,Grace loves her sister,factH,Did Andrew prove that X happened?,9,M,James,Tyler,C,0.49,2307,41
+11,13,annoyed,13,X happened,F,Jackson is obese,factL,Is Laura annoyed that X happened?,13,F,Carol,Carolyn,NonProj,0.75,3644,41
+12,14,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Michelle,NA,control,0.28,2869,41
+13,15,admit,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia admit that X happened?,17,F,Jessica,Shirley,C,0.76,2128,41
+14,16,inform_Sam,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth inform Sam that X happened?,19,F,Jennifer,Catherine,C,0.5,1641,41
+15,17,know,6,X happened,M,Mia is a college student,factH,Does Ray know that X happened?,6,M,Richard,Patrick,NonProj,0.3,2210,41
+16,18,demonstrate,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie demonstrate that X happened?,14,F,Steven,Ruth,C,0.6,1560,41
+17,19,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Steven,NA,control,0.69,2420,41
+18,20,reveal,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben reveal that X happened?,5,M,Mark,Raymond,NonProj,0.35,1850,41
+19,21,confess,3,X happened,M,Emma is in law school,factH,Did Justin confess that X happened?,3,M,William,Alexander,C,0.81,3008,41
+20,22,be_right_that,12,X happened,F,Frank has always wanted a pet,factH,Is Melissa right that X happened?,12,F,Nancy,Virginia,C,0.58,2910,41
+21,23,pretend,10,X happened,M,Zoe is a math major,factH,Did Tim pretend that X happened?,10,M,Christopher,Larry,NonProj,0.75,2259,41
+22,24,announce,2,X happened,F,Josie loves France,factH,Did Scott announce that X happened?,2,M,Susan,Benjamin,C,0.37,2448,41
+23,25,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Jessica,NA,control,0.72,2113,41
+24,26,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Matthew,NA,control,0.75,2781,41
+25,27,acknowledge,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin acknowledge that X happened?,7,M,Matthew,Ronald,C,0.44,3080,41
+0,2,confess,3,X happened,M,Emma is in first grade,factL,Did Justin confess that X happened?,3,M,Robert,Gregory,C,0.63,2325,42
+1,3,prove,2,X happened,M,Josie doesn't have a passport,factL,Did Scott prove that X happened?,2,M,James,Jacob,C,0.65,1303,42
+2,4,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Robert,NA,control,0.66,1856,42
+3,5,think,8,X happened,F,Emily never has any money,factL,Does Brian think that X happened?,8,M,Linda,Raymond,NonProj,0.67,1952,42
+4,6,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Linda,NA,control,0.74,1207,42
+5,7,confirm,10,X happened,F,Zoe is 5 years old,factL,Did Tim confirm that X happened?,10,M,Susan,Benjamin,C,0.79,1081,42
+6,8,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Richard,NA,control,0.74,1047,42
+7,9,annoyed,1,X happened,F,Mary is a middle school student,factL,Is Patrick annoyed that X happened?,1,M,Jessica,Justin,NonProj,0.73,953,42
+8,10,say,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca say that X happened?,15,F,Karen,Laura,C,0.73,871,42
+9,11,admit,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia admit that X happened?,17,F,Nancy,Diane,C,0.71,1088,42
+10,12,know,14,X happened,F,Jayden's car is in the shop,factH,Does Stephanie know that X happened?,14,F,Kimberly,Amanda,NonProj,0.67,4135,42
+11,13,reveal,13,X happened,M,Jackson is training for a marathon,factH,Did Laura reveal that X happened?,13,F,Kenneth,Virginia,NonProj,0.68,1616,42
+12,14,hear,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa hear that X happened?,12,F,Michelle,Angela,C,0.53,1384,42
+13,15,pretend,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon pretend that X happened?,16,F,Helen,Rebecca,NonProj,0.79,3200,42
+14,16,inform_Sam,11,X happened,M,Danny is a diabetic,factL,Did Amanda inform Sam that X happened?,11,F,Richard,Kathleen,C,0.71,2104,42
+15,17,see,6,X happened,M,Mia is a college student,factH,Did Ray see that X happened?,6,M,Matthew,Timothy,NonProj,0.76,1657,42
+16,18,demonstrate,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth demonstrate that X happened?,19,F,Margaret,Sharon,C,0.74,1559,42
+17,19,be_right_that,5,X happened,F,Sophia is a hipster,factH,Is Ben right that X happened?,5,M,Sandra,Edward,C,0.74,1384,42
+18,20,acknowledge,7,X happened,F,Isabella is from Argentina,factH,Did Kevin acknowledge that X happened?,7,M,Dorothy,Larry,C,0.65,1913,42
+19,21,announce,4,X happened,M,Olivia works the third shift,factH,Did Jerry announce that X happened?,4,M,Paul,Jeffrey,C,0.64,1261,42
+20,22,establish,18,X happened,F,Julian is German,factL,Did Kathleen establish that X happened?,18,F,Jennifer,Cynthia,NonProj,0.7,1499,42
+21,23,suggest,9,X happened,M,Grace loves her sister,factH,Did Andrew suggest that X happened?,9,M,William,Eric,C,0.76,2448,42
+22,24,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,James,NA,control,0.68,1823,42
+23,25,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Steven,NA,control,0.75,1568,42
+24,26,discover,20,X happened,M,Charley lives in Korea,factL,Did Anna discover that X happened?,20,F,Steven,Anna,NonProj,0.78,1551,42
+25,27,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Jennifer,NA,control,0.72,2720,42
+0,2,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Susan,NA,control,0.59,4997,43
+1,3,pretend,18,X happened,M,Julian is Cuban,factH,Did Kathleen pretend that X happened?,18,F,David,Brenda,NonProj,0.64,1326,43
+2,4,confess,4,X happened,M,Olivia works the third shift,factH,Did Jerry confess that X happened?,4,M,James,Nicholas,C,0.68,1343,43
+3,5,confirm,10,X happened,F,Zoe is 5 years old,factL,Did Tim confirm that X happened?,10,M,Susan,Brandon,C,0.62,1520,43
+4,6,discover,5,X happened,F,Sophia is a hipster,factH,Did Ben discover that X happened?,5,M,Betty,Jacob,NonProj,0.65,1383,43
+5,7,admit,20,X happened,F,Charley lives in Korea,factL,Did Anna admit that X happened?,20,F,Nancy,Melissa,C,0.62,1016,43
+6,8,inform_Sam,9,X happened,M,Grace hates her sister,factL,Did Andrew inform Sam that X happened?,9,M,Thomas,Ryan,C,0.68,1304,43
+7,9,be_right_that,19,X happened,M,Jon lives 10 miles away from work,factL,Is Ruth right that X happened?,19,F,Steven,Heather,C,0.69,1210,43
+8,10,hear,8,X happened,M,Emily has been saving for a year,factH,Did Brian hear that X happened?,8,M,Christopher,Ronald,C,0.6,1668,43
+9,11,see,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin see that X happened?,7,M,Kimberly,Patrick,NonProj,0.68,1215,43
+10,12,annoyed,16,X happened,M,Josh is a 5-year old boy,factH,Is Sharon annoyed that X happened?,16,F,Matthew,Joyce,NonProj,0.68,1343,43
+11,13,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Kimberly,NA,control,0.53,953,43
+12,14,establish,13,X happened,M,Jackson is training for a marathon,factH,Did Laura establish that X happened?,13,F,William,Carolyn,NonProj,0.64,1096,43
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Nancy,NA,control,0.7,1064,43
+14,16,prove,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia prove that X happened?,17,F,Donna,Nicole,C,0.73,1104,43
+15,17,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Sandra,NA,control,0.7,1177,43
+16,18,acknowledge,6,X happened,F,Mia is a nun,factL,Did Ray acknowledge that X happened?,6,M,Linda,Benjamin,C,0.79,1823,43
+17,19,reveal,3,X happened,F,Emma is in first grade,factL,Did Justin reveal that X happened?,3,M,Carol,Larry,NonProj,0.73,1216,43
+18,20,think,1,X happened,F,Mary is a middle school student,factL,Does Patrick think that X happened?,1,M,Sandra,Gregory,NonProj,0.72,1296,43
+19,21,announce,14,X happened,M,Jayden doesn't have a driver's license,factL,Did Stephanie announce that X happened?,14,F,George,Rebecca,C,0.67,1072,43
+20,22,demonstrate,2,X happened,F,Josie doesn't have a passport,factL,Did Scott demonstrate that X happened?,2,M,Michelle,Justin,C,0.65,1247,43
+21,23,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,George,NA,control,0.71,1288,43
+22,24,say,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa say that X happened?,12,F,Mark,Sharon,C,0.69,1384,43
+23,25,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Michelle,NA,control,0.72,3192,43
+24,26,know,11,X happened,F,Danny loves cake,factH,Does Amanda know that X happened?,11,F,Sarah,Catherine,NonProj,0.71,1511,43
+25,27,suggest,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca suggest that X happened?,15,F,Margaret,Christina,C,0.73,1817,43
+0,2,confirm,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia confirm that X happened?,17,F,Betty,Nicole,C,0.96,9111,44
+1,3,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Sandra,NA,control,0.88,2449,44
+2,4,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Paul,NA,control,0.88,4765,44
+3,5,inform_Sam,6,X happened,M,Mia is a college student,factH,Did Ray inform Sam that X happened?,6,M,David,Edward,C,0.75,2000,44
+4,6,acknowledge,3,X happened,M,Emma is in law school,factH,Did Justin acknowledge that X happened?,3,M,Mark,Patrick,C,0.83,718680,44
+5,7,announce,5,X happened,F,Sophia is a hipster,factH,Did Ben announce that X happened?,5,M,Helen,Gregory,C,0.73,1801,44
+6,8,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Thomas,NA,control,0.24,1859,44
+7,9,think,7,X happened,F,Isabella is a vegetarian,factL,Does Kevin think that X happened?,7,M,Sarah,Brian,NonProj,0.7,1980,44
+8,10,say,2,X happened,F,Josie doesn't have a passport,factL,Did Scott say that X happened?,2,M,Nancy,Timothy,C,0.78,1909,44
+9,11,prove,11,X happened,F,Danny loves cake,factH,Did Amanda prove that X happened?,11,F,Carol,Angela,C,0.33,1329,44
+10,12,admit,9,X happened,M,Grace loves her sister,factH,Did Andrew admit that X happened?,9,M,Robert,Jacob,C,0.85,1831,44
+11,13,know,15,X happened,F,Tony really likes to party with his friends,factH,Does Rebecca know that X happened?,15,F,Linda,Julie,NonProj,0.74,1878,44
+12,14,see,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon see that X happened?,16,F,Thomas,Joyce,NonProj,0.6,1650,44
+13,15,annoyed,8,X happened,M,Emily never has any money,factL,Is Brian annoyed that X happened?,8,M,Paul,Scott,NonProj,0.85,1439,44
+14,16,be_right_that,13,X happened,F,Jackson is obese,factL,Is Laura right that X happened?,13,F,Susan,Amanda,C,0.89,1649,44
+15,17,pretend,20,X happened,F,Charley lives in Mexico,factH,Did Anna pretend that X happened?,20,F,Jessica,Virginia,NonProj,0.72,1680,44
+16,18,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Susan,NA,control,0.87,2110,44
+17,19,reveal,18,X happened,F,Julian is German,factL,Did Kathleen reveal that X happened?,18,F,Sandra,Janet,NonProj,0.7,1350,44
+18,20,confess,1,X happened,M,Mary is a middle school student,factL,Did Patrick confess that X happened?,1,M,Richard,Ryan,C,0.59,1279,44
+19,21,hear,12,X happened,M,Frank is allergic to cats,factL,Did Melissa hear that X happened?,12,F,Kenneth,Ruth,C,0.86,1770,44
+20,22,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Lisa,NA,control,0.88,1369,44
+21,23,establish,19,X happened,F,Jon lives 2 blocks away from work,factH,Did Ruth establish that X happened?,19,F,Karen,Carolyn,NonProj,0.89,2450,44
+22,24,suggest,10,X happened,F,Zoe is 5 years old,factL,Did Tim suggest that X happened?,10,M,Lisa,Kevin,C,0.9,1380,44
+23,25,discover,14,X happened,F,Jayden's car is in the shop,factH,Did Stephanie discover that X happened?,14,F,Donna,Diane,NonProj,0.75,1930,44
+24,26,demonstrate,4,X happened,F,Olivia works the third shift,factH,Did Jerry demonstrate that X happened?,4,M,Kimberly,Justin,C,0.83,1581,44
+25,27,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Nancy,NA,control,0.94,11248,44
+0,2,confirm,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa confirm that X happened?,12,F,Helen,Stephanie,C,0.51,16400,45
+1,3,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Matthew,NA,control,1.0,10937,45
+2,4,inform_Sam,7,X happened,M,Isabella is from Argentina,factH,Did Kevin inform Sam that X happened?,7,M,Christopher,Justin,C,1.0,5473,45
+3,5,reveal,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie reveal that X happened?,14,F,Sandra,Sharon,NonProj,0.51,7506,45
+4,6,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Sandra,NA,control,1.0,3604,45
+5,7,pretend,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia pretend that X happened?,17,F,Nancy,Christina,NonProj,0.0,5700,45
+6,8,know,3,X happened,M,Emma is in law school,factH,Does Justin know that X happened?,3,M,Steven,Jerry,NonProj,1.0,6854,45
+7,9,confess,4,X happened,F,Olivia works the third shift,factH,Did Jerry confess that X happened?,4,M,Susan,Ronald,C,0.5,4346,45
+8,10,annoyed,13,X happened,F,Jackson is training for a marathon,factH,Is Laura annoyed that X happened?,13,F,Donna,Brenda,NonProj,1.0,3439,45
+9,11,announce,2,X happened,M,Josie doesn't have a passport,factL,Did Scott announce that X happened?,2,M,Paul,Brian,C,0.51,3753,45
+10,12,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Mark,NA,control,1.0,4749,45
+11,13,see,8,X happened,F,Emily never has any money,factL,Did Brian see that X happened?,8,M,Elizabeth,Brandon,NonProj,0.5,2178,45
+12,14,suggest,18,X happened,M,Julian is German,factL,Did Kathleen suggest that X happened?,18,F,Richard,Rachel,C,0.52,1876,45
+13,15,establish,19,X happened,F,Jon lives 10 miles away from work,factL,Did Ruth establish that X happened?,19,F,Karen,Joyce,NonProj,0.49,2709,45
+14,16,demonstrate,1,X happened,F,Mary is a middle school student,factL,Did Patrick demonstrate that X happened?,1,M,Margaret,Raymond,C,0.49,2703,45
+15,17,admit,6,X happened,F,Mia is a college student,factH,Did Ray admit that X happened?,6,M,Carol,Tyler,C,0.49,1877,45
+16,18,think,11,X happened,M,Danny is a diabetic,factL,Does Amanda think that X happened?,11,F,Matthew,Julie,NonProj,0.51,3160,45
+17,19,hear,16,X happened,M,Josh is a 75-year old man,factL,Did Sharon hear that X happened?,16,F,George,Janet,C,0.51,2636,45
+18,20,prove,9,X happened,M,Grace hates her sister,factL,Did Andrew prove that X happened?,9,M,Mark,Gregory,C,0.51,5330,45
+19,21,discover,15,X happened,F,Tony has been sober for 20 years,factL,Did Rebecca discover that X happened?,15,F,Linda,Nicole,NonProj,0.5,4075,45
+20,22,acknowledge,10,X happened,F,Zoe is a math major,factH,Did Tim acknowledge that X happened?,10,M,Ashley,Kevin,C,0.5,4217,45
+21,23,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Karen,NA,control,1.0,4924,45
+22,24,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,George,NA,control,1.0,3576,45
+23,25,be_right_that,20,X happened,F,Charley lives in Mexico,factH,Is Anna right that X happened?,20,F,Lisa,Ruth,C,1.0,3146,45
+24,26,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Richard,NA,control,1.0,4048,45
+25,27,say,5,X happened,M,Sophia is a hipster,factH,Did Ben say that X happened?,5,M,Thomas,Scott,C,0.53,2460,45
+0,2,pretend,3,X happened,F,Emma is in first grade,factL,Did Justin pretend that X happened?,3,M,Kimberly,Scott,NonProj,0.69,3857,46
+1,3,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Matthew,NA,control,0.62,1355,46
+2,4,confess,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca confess that X happened?,15,F,Betty,Melissa,C,0.84,1225,46
+3,5,say,8,X happened,F,Emily never has any money,factL,Did Brian say that X happened?,8,M,Jennifer,Ryan,C,0.29,935,46
+4,6,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,David,NA,control,0.78,1279,46
+5,7,prove,6,X happened,F,Mia is a college student,factH,Did Ray prove that X happened?,6,M,Sarah,Andrew,C,0.72,4159,46
+6,8,think,17,X happened,F,Owen lives in Chicago,factH,Does Cynthia think that X happened?,17,F,Donna,Catherine,NonProj,0.43,1048,46
+7,9,discover,11,X happened,M,Danny loves cake,factH,Did Amanda discover that X happened?,11,F,George,Cynthia,NonProj,0.79,1168,46
+8,10,be_right_that,10,X happened,F,Zoe is 5 years old,factL,Is Tim right that X happened?,10,M,Margaret,Raymond,C,0.21,950,46
+9,11,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Susan,NA,control,0.82,5205,46
+10,12,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Helen,NA,control,0.74,8168,46
+11,13,hear,18,X happened,F,Julian is German,factL,Did Kathleen hear that X happened?,18,F,Helen,Amy,C,0.72,1208,46
+12,14,see,5,X happened,M,Sophia is a high end fashion model,factL,Did Ben see that X happened?,5,M,David,Alexander,NonProj,0.23,1110,46
+13,15,inform_Sam,2,X happened,M,Josie loves France,factH,Did Scott inform Sam that X happened?,2,M,Paul,Patrick,C,0.19,969,46
+14,16,demonstrate,4,X happened,F,Olivia works the third shift,factH,Did Jerry demonstrate that X happened?,4,M,Linda,Justin,C,0.22,902,46
+15,17,confirm,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon confirm that X happened?,16,F,Nancy,Christina,C,0.97,1334,46
+16,18,acknowledge,20,X happened,M,Charley lives in Mexico,factH,Did Anna acknowledge that X happened?,20,F,Robert,Carolyn,C,0.16,977,46
+17,19,know,13,X happened,M,Jackson is obese,factL,Does Laura know that X happened?,13,F,Matthew,Rachel,NonProj,0.75,967,46
+18,20,annoyed,12,X happened,M,Frank has always wanted a pet,factH,Is Melissa annoyed that X happened?,12,F,William,Sharon,NonProj,0.77,914,46
+19,21,reveal,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth reveal that X happened?,19,F,James,Rebecca,NonProj,0.91,1166,46
+20,22,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Jennifer,NA,control,0.28,911,46
+21,23,announce,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie announce that X happened?,14,F,Susan,Shirley,C,0.78,1352,46
+22,24,admit,1,X happened,F,Mary is a middle school student,factL,Did Patrick admit that X happened?,1,M,Karen,Jacob,C,0.31,978,46
+23,25,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,James,NA,control,0.88,1125,46
+24,26,suggest,9,X happened,F,Grace hates her sister,factL,Did Andrew suggest that X happened?,9,M,Sandra,Tyler,C,0.83,1296,46
+25,27,establish,7,X happened,F,Isabella is from Argentina,factH,Did Kevin establish that X happened?,7,M,Elizabeth,Edward,NonProj,0.15,1689,46
+0,2,know,19,X happened,F,Jon lives 10 miles away from work,factL,Does Ruth know that X happened?,19,F,Kimberly,Sharon,NonProj,1.0,33543,47
+1,3,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Michelle,NA,control,0.63,2500,47
+2,4,admit,1,X happened,M,Mary is taking a prenatal yoga class,factH,Did Patrick admit that X happened?,1,M,Steven,Tyler,C,0.37,1063,47
+3,5,annoyed,8,X happened,F,Emily never has any money,factL,Is Brian annoyed that X happened?,8,M,Dorothy,Eric,NonProj,0.74,787,47
+4,6,prove,13,X happened,F,Jackson is training for a marathon,factH,Did Laura prove that X happened?,13,F,Nancy,Brenda,C,0.42,772,47
+5,7,think,4,X happened,F,Olivia has two small children,factL,Does Jerry think that X happened?,4,M,Michelle,Ryan,NonProj,0.97,2449,47
+6,8,control,control6,X happened,M,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Paul,NA,control,0.99,1110,47
+7,9,see,20,X happened,F,Charley lives in Korea,factL,Did Anna see that X happened?,20,F,Betty,Christina,NonProj,0.11,1664,47
+8,10,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Sarah,NA,control,0.98,952,47
+9,11,inform_Sam,18,X happened,M,Julian is German,factL,Did Kathleen inform Sam that X happened?,18,F,Matthew,Amy,C,0.56,1120,47
+10,12,acknowledge,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon acknowledge that X happened?,16,F,Margaret,Shirley,C,0.82,1071,47
+11,13,demonstrate,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa demonstrate that X happened?,12,F,Robert,Anna,C,0.35,860,47
+12,14,hear,17,X happened,M,Owen lives in Chicago,factH,Did Cynthia hear that X happened?,17,F,Kenneth,Angela,C,0.95,858,47
+13,15,say,6,X happened,F,Mia is a college student,factH,Did Ray say that X happened?,6,M,Ashley,Jacob,C,0.29,1176,47
+14,16,discover,2,X happened,M,Josie loves France,factH,Did Scott discover that X happened?,2,M,George,Benjamin,NonProj,0.82,1047,47
+15,17,confess,10,X happened,F,Zoe is a math major,factH,Did Tim confess that X happened?,10,M,Sandra,Jerry,C,0.35,753,47
+16,18,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Matthew,NA,control,0.79,814,47
+17,19,announce,3,X happened,M,Emma is in first grade,factL,Did Justin announce that X happened?,3,M,James,Scott,C,0.95,1076,47
+18,20,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Elizabeth,NA,control,0.79,763,47
+19,21,pretend,9,X happened,F,Grace hates her sister,factL,Did Andrew pretend that X happened?,9,M,Elizabeth,Patrick,NonProj,0.56,720,47
+20,22,confirm,7,X happened,M,Isabella is a vegetarian,factL,Did Kevin confirm that X happened?,7,M,Paul,Jeffrey,C,0.94,816,47
+21,23,suggest,11,X happened,F,Danny is a diabetic,factL,Did Amanda suggest that X happened?,11,F,Lisa,Heather,C,0.72,1230,47
+22,24,reveal,5,X happened,F,Sophia is a high end fashion model,factL,Did Ben reveal that X happened?,5,M,Sarah,Ronald,NonProj,0.79,737,47
+23,25,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Betty,NA,control,0.6,702,47
+24,26,establish,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca establish that X happened?,15,F,Carol,Diane,NonProj,0.37,1724,47
+25,27,be_right_that,14,X happened,M,Jayden's car is in the shop,factH,Is Stephanie right that X happened?,14,F,Christopher,Amanda,C,0.91,1851,47
+0,2,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Betty,NA,control,0.92,49026,48
+1,3,reveal,12,X happened,F,Frank has always wanted a pet,factH,Did Melissa reveal that X happened?,12,F,Helen,Ruth,NonProj,0.94,30238,48
+2,4,confess,7,X happened,F,Isabella is a vegetarian,factL,Did Kevin confess that X happened?,7,M,Sarah,Larry,C,0.92,6120,48
+3,5,pretend,2,X happened,F,Josie doesn't have a passport,factL,Did Scott pretend that X happened?,2,M,Betty,Raymond,NonProj,0.94,8087,48
+4,6,hear,19,X happened,M,Jon lives 2 blocks away from work,factH,Did Ruth hear that X happened?,19,F,James,Christina,C,0.35,8072,48
+5,7,admit,10,X happened,F,Zoe is 5 years old,factL,Did Tim admit that X happened?,10,M,Linda,Gary,C,0.28,5380,48
+6,8,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Margaret,NA,control,0.94,7140,48
+7,9,announce,3,X happened,F,Emma is in first grade,factL,Did Justin announce that X happened?,3,M,Karen,Brian,C,0.9,17941,48
+8,10,know,11,X happened,F,Danny is a diabetic,factL,Does Amanda know that X happened?,11,F,Kimberly,Joyce,NonProj,0.85,71319,48
+9,11,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Karen,NA,control,0.05,8550,48
+10,12,suggest,16,X happened,F,Josh is a 5-year old boy,factH,Did Sharon suggest that X happened?,16,F,Ashley,Angela,C,0.21,4960,48
+11,13,inform_Sam,9,X happened,F,Grace hates her sister,factL,Did Andrew inform Sam that X happened?,9,M,Margaret,Ryan,C,0.91,5051,48
+12,14,prove,5,X happened,M,Sophia is a hipster,factH,Did Ben prove that X happened?,5,M,Steven,Eric,C,0.85,15749,48
+13,15,see,8,X happened,M,Emily has been saving for a year,factH,Did Brian see that X happened?,8,M,Paul,Gregory,NonProj,0.85,11370,48
+14,16,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Lisa,NA,control,0.28,7210,48
+15,17,confirm,6,X happened,M,Mia is a nun,factL,Did Ray confirm that X happened?,6,M,David,Kevin,C,0.24,5298,48
+16,18,discover,13,X happened,F,Jackson is obese,factL,Did Laura discover that X happened?,13,F,Lisa,Nicole,NonProj,0.27,31302,48
+17,19,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Sarah,NA,control,0.96,6380,48
+18,20,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Linda,NA,control,0.78,6800,48
+19,21,annoyed,15,X happened,M,Tony has been sober for 20 years,factL,Is Rebecca annoyed that X happened?,15,F,Richard,Janet,NonProj,0.9,8501,48
+20,22,say,17,X happened,F,Owen lives in Chicago,factH,Did Cynthia say that X happened?,17,F,Elizabeth,Catherine,C,0.92,15909,48
+21,23,acknowledge,4,X happened,M,Olivia works the third shift,factH,Did Jerry acknowledge that X happened?,4,M,Robert,Justin,C,0.9,7780,48
+22,24,think,20,X happened,M,Charley lives in Mexico,factH,Does Anna think that X happened?,20,F,Christopher,Heather,NonProj,0.83,5681,48
+23,25,establish,1,X happened,F,Mary is taking a prenatal yoga class,factH,Did Patrick establish that X happened?,1,M,Donna,Jeffrey,NonProj,0.84,5690,48
+24,26,demonstrate,14,X happened,F,Jayden doesn't have a driver's license,factL,Did Stephanie demonstrate that X happened?,14,F,Susan,Rebecca,C,0.83,4469,48
+25,27,be_right_that,18,X happened,M,Julian is Cuban,factH,Is Kathleen right that X happened?,18,F,Mark,Stephanie,C,0.72,3340,48
+0,2,admit,1,X happened,F,Mary is a middle school student,factL,Did Patrick admit that X happened?,1,M,Kimberly,Gregory,C,0.05,20492,49
+1,3,prove,9,X happened,F,Grace loves her sister,factH,Did Andrew prove that X happened?,9,M,Jennifer,Alexander,C,0.48,130704,49
+2,4,suggest,13,X happened,F,Jackson is obese,factL,Did Laura suggest that X happened?,13,F,Nancy,Ruth,C,0.07,7567,49
+3,5,pretend,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie pretend that X happened?,14,F,James,Julie,NonProj,0.02,6600,49
+4,6,establish,4,X happened,M,Olivia has two small children,factL,Did Jerry establish that X happened?,4,M,Paul,Edward,NonProj,0.5,4417,49
+5,7,know,17,X happened,M,Owen lives in New Orleans,factL,Does Cynthia know that X happened?,17,F,Richard,Virginia,NonProj,0.98,12068,49
+6,8,be_right_that,2,X happened,F,Josie doesn't have a passport,factL,Is Scott right that X happened?,2,M,Michelle,Kevin,C,0.04,8493,49
+7,9,control,control2,X happened,F,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Nancy,NA,control,0.99,11043,49
+8,10,announce,15,X happened,F,Tony really likes to party with his friends,factH,Did Rebecca announce that X happened?,15,F,Susan,Joyce,C,0.97,5491,49
+9,11,control,control3,X happened,F,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,Carol,NA,control,0.97,6981,49
+10,12,discover,7,X happened,F,Isabella is from Argentina,factH,Did Kevin discover that X happened?,7,M,Sandra,Jerry,NonProj,0.55,5852,49
+11,13,see,6,X happened,M,Mia is a college student,factH,Did Ray see that X happened?,6,M,Thomas,Eric,NonProj,0.99,6813,49
+12,14,confess,11,X happened,M,Danny loves cake,factH,Did Amanda confess that X happened?,11,F,Matthew,Diane,C,0.71,8736,49
+13,15,control,control4,X happened,F,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,Kimberly,NA,control,0.98,10952,49
+14,16,confirm,10,X happened,M,Zoe is a math major,factH,Did Tim confirm that X happened?,10,M,David,Andrew,C,0.07,8760,49
+15,17,say,20,X happened,F,Charley lives in Mexico,factH,Did Anna say that X happened?,20,F,Sarah,Christina,C,0.05,11487,49
+16,18,control,control5,X happened,M,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Paul,NA,control,0.05,12927,49
+17,19,control,control1,X happened,M,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Mark,NA,control,0.05,6735,49
+18,20,hear,5,X happened,M,Sophia is a hipster,factH,Did Ben hear that X happened?,5,M,George,Ronald,C,0.03,3182,49
+19,21,inform_Sam,18,X happened,F,Julian is German,factL,Did Kathleen inform Sam that X happened?,18,F,Betty,Sharon,C,0.97,14498,49
+20,22,reveal,3,X happened,F,Emma is in first grade,factL,Did Justin reveal that X happened?,3,M,Margaret,Patrick,NonProj,0.98,3601,49
+21,23,annoyed,16,X happened,F,Josh is a 75-year old man,factL,Is Sharon annoyed that X happened?,16,F,Carol,Kathleen,NonProj,0.97,3022,49
+22,24,acknowledge,8,X happened,F,Emily has been saving for a year,factH,Did Brian acknowledge that X happened?,8,M,Dorothy,Brandon,C,0.51,4538,49
+23,25,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Linda,NA,control,0.98,8802,49
+24,26,demonstrate,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth demonstrate that X happened?,19,F,Mark,Nicole,C,0.33,5633,49
+25,27,think,12,X happened,F,Frank is allergic to cats,factL,Does Melissa think that X happened?,12,F,Linda,Rachel,NonProj,0.07,4124,49
+0,2,see,13,X happened,F,Jackson is obese,factL,Did Laura see that X happened?,13,F,Betty,Nicole,NonProj,0.8,15342,50
+1,3,establish,17,X happened,F,Owen lives in New Orleans,factL,Did Cynthia establish that X happened?,17,F,Michelle,Melissa,NonProj,0.53,27492,50
+2,4,annoyed,7,X happened,M,Isabella is a vegetarian,factL,Is Kevin annoyed that X happened?,7,M,David,Raymond,NonProj,0.71,2607,50
+3,5,announce,18,X happened,M,Julian is German,factL,Did Kathleen announce that X happened?,18,F,Matthew,Janet,C,0.24,3035,50
+4,6,control,control3,X happened,M,Todd goes to the gym 3 times a week,NA,"Did Todd stop playing football in high school, despite the fact that X happened?",control3,NA,David,NA,control,0.8,5418,50
+5,7,be_right_that,11,X happened,F,Danny loves cake,factH,Is Amanda right that X happened?,11,F,Dorothy,Angela,C,0.59,2219,50
+6,8,think,8,X happened,M,Emily has been saving for a year,factH,Does Brian think that X happened?,8,M,Paul,Jerry,NonProj,0.87,1970,50
+7,9,control,control6,X happened,F,Hendrick just bought a car,NA,"Did Hendrick's car get more expensive, now that X happened?",control6,NA,Betty,NA,control,0.62,3008,50
+8,10,confess,9,X happened,F,Grace hates her sister,factL,Did Andrew confess that X happened?,9,M,Linda,Gregory,C,0.83,2130,50
+9,11,demonstrate,1,X happened,F,Mary is a middle school student,factL,Did Patrick demonstrate that X happened?,1,M,Susan,Gary,C,0.24,2529,50
+10,12,control,control4,X happened,M,Vanessa won a prize at school,NA,"Did Vanessa improve at math, now that X happened?",control4,NA,George,NA,control,0.69,39279,50
+11,13,know,3,X happened,M,Emma is in law school,factH,Does Justin know that X happened?,3,M,James,Larry,NonProj,0.34,2060,50
+12,14,suggest,5,X happened,F,Sophia is a hipster,factH,Did Ben suggest that X happened?,5,M,Nancy,Andrew,C,0.82,1830,50
+13,15,say,10,X happened,F,Zoe is 5 years old,factL,Did Tim say that X happened?,10,M,Carol,Alexander,C,0.6,5347,50
+14,16,pretend,2,X happened,F,Josie loves France,factH,Did Scott pretend that X happened?,2,M,Karen,Jeffrey,NonProj,0.88,1811,50
+15,17,control,control5,X happened,F,Trish sent Madison a card,NA,"Did Madison have a baby, despite the fact that X happened?",control5,NA,Carol,NA,control,0.44,1584,50
+16,18,inform_Sam,6,X happened,F,Mia is a college student,factH,Did Ray inform Sam that X happened?,6,M,Margaret,Patrick,C,0.76,7487,50
+17,19,prove,14,X happened,M,Jayden's car is in the shop,factH,Did Stephanie prove that X happened?,14,F,Thomas,Joyce,C,0.61,2186,50
+18,20,hear,19,X happened,M,Jon lives 10 miles away from work,factL,Did Ruth hear that X happened?,19,F,Kenneth,Christina,C,0.8,1851,50
+19,21,control,control1,X happened,F,Zack is a member of the golf club,NA,"Is Zack coming to the meeting tomorrow, even though X happened last night?",control1,NA,Kimberly,NA,control,0.44,1913,50
+20,22,reveal,20,X happened,F,Charley lives in Korea,factL,Did Anna reveal that X happened?,20,F,Kimberly,Rebecca,NonProj,0.82,1877,50
+21,23,control,control2,X happened,M,Mary visited her aunt on Sunday,NA,Did Mary's aunt get sick before or after X happened?,control2,NA,Matthew,NA,control,0.61,1839,50
+22,24,discover,12,X happened,M,Frank has always wanted a pet,factH,Did Melissa discover that X happened?,12,F,Robert,Rachel,NonProj,0.84,1783,50
+23,25,admit,16,X happened,M,Josh is a 5-year old boy,factH,Did Sharon admit that X happened?,16,F,William,Anna,C,0.56,2008,50
+24,26,confirm,4,X happened,M,Olivia has two small children,factL,Did Jerry confirm that X happened?,4,M,George,Nicholas,C,0.78,2149,50
+25,27,acknowledge,15,X happened,M,Tony really likes to party with his friends,factH,Did Rebecca acknowledge that X happened?,15,F,Christopher,Julie,C,0.46,2500,50
