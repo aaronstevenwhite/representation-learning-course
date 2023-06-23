@@ -1,16 +1,15 @@
 ---
-title: "Module 1: Island Effects"
+title: Overview
 bibliography: ../references.bib
 ---
 
-::: {.callout-caution}
-## Availability
-
-This section will be available Monday, 19 June 2023. Please complete the below reading prior to that date.
-:::
-
 ::: {.callout-tip}
 ## Reading
-1. @sprouse_experimental_2016 on variation in the strength of island effects on acceptability judgments. We will use the data collected for that paper, which can be found [here](https://www.jonsprouse.com/data/NLLT2016/), in this module.
-2. @sprouse_acceptability_2018 on the relationship between acceptability and grammaticality. We will specifically be concerned with his discussion of what apparent gradience in acceptability implies about discreteness v. continuity in grammatical representations.
+**Data:** @sprouse_experimental_2016 on variation in the strength of island effects on acceptabiliy judgments. We will use the data collected for that paper, which can be found [here](https://www.jonsprouse.com/data/NLLT2016/), in this module.
+
+**Theory:** @sprouse_acceptability_2018 on the relationship between acceptability and grammaticality. We will specifically be concerned with his discussion in Section 3.3 of what apparent gradience in acceptability implies about discreteness v. continuity in grammatical representations.
 :::
+
+In this first module of the course, we are going to focus on minimally extending standard statistical models used in analyzing acceptability judgments–[generalized linear](https://en.wikipedia.org/wiki/Generalized_linear_model) [mixed effects models](https://en.wikipedia.org/wiki/Mixed_model)–in order to probe the nature of the grammatical representations that drive acceptability judgments. We will consider two possibilities discussed by @sprouse_acceptability_2018: (a) that the grammatical representations underlying acceptability judgments are *discrete* (or *categorical*); and (b) the grammatical representations are *continuous* (or *gradient*).
+
+The basic recipe, which we will repeat through the course, is (i) to define two or more (families of) models–in this case, one that assumes that the grammatical representation is categorical and another that assumes the representation is gradient; (ii) to fit both models to the data from some acceptability judgment data–in this case, to the data collected by @sprouse_experimental_2016; and (iii) to compare how well the two models fit the data, weighed against some measure of how parsimonious (or conversely, complex) each model is.

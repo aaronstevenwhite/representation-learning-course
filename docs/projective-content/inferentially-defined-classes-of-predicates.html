@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.321">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Representation Learning for Syntactic and Semantic Theory - Inferentially defined classes of predicates</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../projective-content/model-definition.html" rel="next">
+<link href="../projective-content/index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../projective-content/index.html">Module 2: Projective Content</a></li><li class="breadcrumb-item"><a href="../projective-content/inferentially-defined-classes-of-predicates.html">Inferentially defined classes of predicates</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Representation Learning for Syntactic and Semantic Theory</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../motivations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../methodological-approach.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methodological Approach</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-structure-and-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Structure and Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Foundational Concepts in Probability and Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is a probability?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random variables and probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Module 1: Island Effects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Module 2: Projective Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Inferentially defined classes of predicates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 3: Selection</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-lexical-indeterminacy-possibility" id="toc-the-lexical-indeterminacy-possibility" class="nav-link active" data-scroll-target="#the-lexical-indeterminacy-possibility">The lexical indeterminacy possibility</a></li>
+  <li><a href="#are-there-factive-predicates-yes." id="toc-are-there-factive-predicates-yes." class="nav-link" data-scroll-target="#are-there-factive-predicates-yes.">Are there factive predicates? Yes.</a></li>
+  <li><a href="#summing-up" id="toc-summing-up" class="nav-link" data-scroll-target="#summing-up">Summing up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Inferentially defined classes of predicates</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In discussing the results of their Experiments 1a and 1b, <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022, 565</a>)</span> suggest “…that projection does not categorically distinguish canonically factive predicates from others: contrary to what is expected on definition 3a, we observed that the [contents of the complements (CCs)] of predicates standardly classified as factive are not categorically more projective than the CCs of all other predicates.”<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/dt-2022-experiment1a.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">The results of Experiment 1a reported by <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span>.</figcaption><p></p>
+</figure>
+</div>
+<p>Indeed, in discussing Experiment 1a (p.&nbsp;563), they make the much stronger claim that “…the results of experiment 1a suggest that projection does not identify a coherent class of factive predicates” because drawing a line “between factive predicates and others based on the projection of the CCs…cannot be done in a nonarbitrary way” (p.&nbsp;562).</p>
+<p><span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022, 567</a>)</span> furthermore argue on the basis of similar datasets–the <a href="http://megaattitude.io/projects/mega-veridicality/">MegaVeridicality dataset</a> <span class="citation" data-cites="white_role_2018 white_lexicosyntactic_2018">(<a href="#ref-white_role_2018" role="doc-biblioref">White and Rawlins 2018</a>; <a href="#ref-white_lexicosyntactic_2018" role="doc-biblioref">White et al. 2018</a>)</span>, the <a href="https://github.com/mcdm/CommitmentBank">CommitmentBank</a> <span class="citation" data-cites="demarneffe_commitmentbank_2019">(<a href="#ref-demarneffe_commitmentbank_2019" role="doc-biblioref">Marneffe, Simons, and Tonhauser 2019</a>)</span>, and the VerbVeridicality <span class="citation" data-cites="ross_well_2019">(<a href="#ref-ross_well_2019" role="doc-biblioref">Ross and Pavlick 2019</a>)</span> datasets–that “…contrary to what is expected under the definition of factive predicates in 3a, the results of our experiments 1a and 1b as well as our meta-analyses of the CommitmentBank, the VerbVeridicality data set, and the MegaVeridicality data set suggest that projection of the CC does not identify a coherent class of factive predicates” and that this challenge is made even stronger by “…the diversity of the empirical evidence: it comes from constructed and naturally occurring examples, from examples presented with and without a context, from examples with diverse and with minimal lexical content, from clause-embedding predicates embedded under different entailment-canceling operators, and from projection ratings collected through different response tasks” (<em>ibid</em>, p.&nbsp;568).</p>
+<section id="the-lexical-indeterminacy-possibility" class="level2">
+<h2 class="anchored" data-anchor-id="the-lexical-indeterminacy-possibility">The lexical indeterminacy possibility</h2>
+<p>They go on to admit, however, that (p.&nbsp;583) “…the observed gradience in projection may be compatible with a binary factivity category in combination with two assumptions: first, that predicates may be ambiguous between a factive lexical entry, on which the CC is presupposed and hence projects, and a nonfactive lexical entry, on which the CC is not presupposed <span class="citation" data-cites="spector_uniform_2015 karttunen_chameleon-like_2014">(for such a proposal for clause-embedding predicates see <a href="#ref-spector_uniform_2015" role="doc-biblioref">Spector and Egré 2015, 1736</a>; for a similar proposal for evaluative adjectives see <a href="#ref-karttunen_chameleon-like_2014" role="doc-biblioref">Karttunen et al. 2014</a>)</span>; and, second, that interpreters may be uncertain about which lexical entry a speaker intended in their utterance” and that “[u]nder such a view, a categorical notion of factivity is upheld, and the observed projection gradience can be hypothesized to be due to listeners’ uncertainty about the use of any given predicate, which may be resolved preferentially one way or another through pragmatic factors.”</p>
+<p>This possibility remains live in large part because, while they are working with quantitative data, the stronger argument that the measures of projection they look at does not “identify a coherent class of factive predicates” is based purely on qualitative arguments. So in point of fact, the paper really only provides evidence for the weaker claim that “predicates standardly classified as factive are not categorically more projective than the CCs of all other predicates.” But of course, the standard classification could just be wrong.</p>
+<p>In this context, they go on to discuss the idea that one might assess the stronger argument quantitatively using mixture models, but they decline to do so. They have two reasons for this. The first is another argument based on qualitative analysis: ““[t]he account sketched above, on which predicates may have a factive lexical entry, a nonfactive one, or both, does not lead us to expect projection data distributions…that are best captured by three or four components, let alone distributions that are best captured by five or six components” (p.&nbsp;583). The second is that “[m]ixture models are not, however, a theory of factivity or projection, and as such they do not specify what the generative model underlying the components is.”</p>
+<p>We will discuss second argument as a motivation for the modeling we will do in the next section. Before doing that, we’ll assess the first argument in the context of the work by <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span>.</p>
+</section>
+<section id="are-there-factive-predicates-yes." class="level2">
+<h2 class="anchored" data-anchor-id="are-there-factive-predicates-yes.">Are there factive predicates? Yes.</h2>
+<p>The main motivation for <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> is to understand “which patterns of lexically triggered doxastic, bouletic, neg(ation)-raising, and veridicality inferences are (un)attested across clause-embedding verbs in English”, with the overarching aim of understanding where we see “[g]aps in logically possible patterns of lexically triggered inferences…because they suggest potentially deep constraints on lexicalization <span class="citation" data-cites="horn_semantic_1972 barwise_generalized_1981 levin_wiping_1991">(<a href="#ref-horn_semantic_1972" role="doc-biblioref">Horn 1972</a>; <a href="#ref-barwise_generalized_1981" role="doc-biblioref">Barwise and Cooper 1981</a>; <a href="#ref-levin_wiping_1991" role="doc-biblioref">Levin and Rappaport Hovav 1991</a>, a.o.)</span>” (<em>ibid</em>, p.&nbsp;570). To carry out this investigation, they use a multiview mixed effects mixture model to synthesize data from the MegaVeridicality dataset–the same used by <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span>–along with the <a href="http://megaattitude.io/projects/mega-negraising/">MegaNegRaising</a> <span class="citation" data-cites="an_lexical_2020">(<a href="#ref-an_lexical_2020" role="doc-biblioref">An and White 2020</a>)</span> and <a href="http://megaattitude.io/projects/mega-intensionality/">MegaIntensionality</a> datasets.</p>
+<p>What <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> find is that, once we appropriately model potential sources of noise in the way people approach various tasks, there are a small number of clusters of inference patterns attested across predicates that not only correspond extremely closely to those one might expect from the literature but that predict the syntactic distribution of those predicates surprisingly well.</p>
+<p>They plot (their Figure 2, p.&nbsp;580) the centroids of these clusters in terms of the mean likelihood for a particular inference associated with that cluster. We will not be concerned with their particular labels for the clusters except to say that they are based on qualitative analysis of the predicates that show up in those clusters.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="figures/veridicality-loadings-15.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p></p><figcaption class="figure-caption">Cluster centroids from <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> for veridicality responses.</figcaption><p></p>
+</figure>
+</div>
+<p>The first thing to note about this plot are the five clusters to the right–whose likelihoods for both the entailment inference <code>A __ that S ~&gt; S</code> and the projective inference <code>A not __ that S ~&gt; S</code>–are extremely close to 1.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> The second thing to note is that, among the predicates that show lower likelihood for the projective inference (<code>A not __ that S ~&gt; S</code>), there is substantial variability in how strong that projective inference is.</p>
+</section>
+<section id="summing-up" class="level2">
+<h2 class="anchored" data-anchor-id="summing-up">Summing up</h2>
+<p>The findings of <span class="citation" data-cites="kane_intensional_2022">Kane, Gantt, and White (<a href="#ref-kane_intensional_2022" role="doc-biblioref">2022</a>)</span> suggest two things: (i) there are in fact clearly distinguishable subclasses of factive predicates (generally, constituted by emotives and/or miratives); and (ii) consistent with what <span class="citation" data-cites="degen_factive_2022">Degen and Tonhauser (<a href="#ref-degen_factive_2022" role="doc-biblioref">2022</a>)</span> observe, some classes of predicates are associated with inferences that are somehow “weaker” (on average) than those that are sometimes called the “true factives” <span class="citation" data-cites="karttunen_observations_1971">(<a href="#ref-karttunen_observations_1971" role="doc-biblioref">Karttunen 1971</a>)</span>. The main question we’ll deal with in our models for this module is what it means for the inferences associated with some class to be “weaker”.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-an_lexical_2020" class="csl-entry" role="listitem">
+An, Hannah, and Aaron White. 2020. <span>“The Lexical and Grammatical Sources of Neg-Raising Inferences.”</span> <em>Proceedings of the Society for Computation in Linguistics</em> 3 (1): 220–33. https://doi.org/<a href="https://doi.org/10.7275/yts0-q989">https://doi.org/10.7275/yts0-q989</a>.
+</div>
+<div id="ref-barwise_generalized_1981" class="csl-entry" role="listitem">
+Barwise, Jon, and Robin Cooper. 1981. <span>“Generalized Quantifiers and Natural Language.”</span> <em>Linguistics and Philosophy</em> 4 (2): 159–219. <a href="https://doi.org/10.1007/BF00350139">https://doi.org/10.1007/BF00350139</a>.
+</div>
+<div id="ref-degen_factive_2022" class="csl-entry" role="listitem">
+Degen, Judith, and Judith Tonhauser. 2022. <span>“Are There Factive Predicates? An Empirical Investigation.”</span> <em>Language</em> 98 (3): 552–91. <a href="https://doi.org/10.1353/lan.0.0271">https://doi.org/10.1353/lan.0.0271</a>.
+</div>
+<div id="ref-djarv_cognitive_2018" class="csl-entry" role="listitem">
+Djärv, Kajsa, Jérémy Zehr, and Florian Schwarz. 2018. <span>“Cognitive Vs. Emotive Factives: An Experimental Differentiation.”</span> In <em>Proceedings of <span>Sinn</span> Und <span>Bedeutung</span> 21</em>, edited by Robert Truswell, Chris Cummins, Caroline Heycock, Brian Rabern, and Hannah Rohde, 367–86.
+</div>
+<div id="ref-horn_semantic_1972" class="csl-entry" role="listitem">
+Horn, Laurence. 1972. <span>“On the <span>Semantic</span> <span>Properties</span> of <span>Logical</span> <span>Operators</span> in <span>English</span>.”</span> PhD thesis, UCLA.
+</div>
+<div id="ref-kane_intensional_2022" class="csl-entry" role="listitem">
+Kane, Benjamin, Will Gantt, and Aaron Steven White. 2022. <span>“Intensional <span>Gaps</span>: <span>Relating</span> Veridicality, Factivity, Doxasticity, Bouleticity, and Neg-Raising.”</span> <em>Semantics and Linguistic Theory</em> 31 (January): 570–605. <a href="https://doi.org/10.3765/salt.v31i0.5137">https://doi.org/10.3765/salt.v31i0.5137</a>.
+</div>
+<div id="ref-karttunen_observations_1971" class="csl-entry" role="listitem">
+Karttunen, Lauri. 1971. <span>“Some Observations on Factivity.”</span> <em>Papers in Linguistics</em> 4 (1): 55–69.
+</div>
+<div id="ref-karttunen_chameleon-like_2014" class="csl-entry" role="listitem">
+Karttunen, Lauri, Stanley Peters, Annie Zaenen, and Cleo Condoravdi. 2014. <span>“The <span>Chameleon</span>-Like <span>Nature</span> of <span>Evaluative</span> <span>Adjectives</span>.”</span> In <em>Empirical <span>Issues</span> in <span>Syntax</span> and <span>Semantics</span></em>, edited by Christopher Piñón, 10:233–50. Paris: CSSP-CNRS.
+</div>
+<div id="ref-levin_wiping_1991" class="csl-entry" role="listitem">
+Levin, Beth, and Malka Rappaport Hovav. 1991. <span>“Wiping the Slate Clean: <span>A</span> Lexical Semantic Exploration.”</span> <em>Cognition</em> 41 (1-3): 123–51. <a href="https://doi.org/10.1016/0010-0277(91)90034-2">https://doi.org/10.1016/0010-0277(91)90034-2</a>.
+</div>
+<div id="ref-demarneffe_commitmentbank_2019" class="csl-entry" role="listitem">
+Marneffe, Marie-Catherine de, Mandy Simons, and Judith Tonhauser. 2019. <span>“The <span>C</span>ommitment<span>B</span>ank: <span>I</span>nvestigating Projection in Naturally Occurring Discourse.”</span> In <em>Proceedings of <span>S</span>inn Und <span>B</span>edeutung</em>, 23:107–24. 2.
+</div>
+<div id="ref-ross_well_2019" class="csl-entry" role="listitem">
+Ross, Alexis, and Ellie Pavlick. 2019. <span>“How Well Do <span>NLI</span> Models Capture Verb Veridicality?”</span> In <em>Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)</em>, 2230–40. Hong Kong, China: Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/D19-1228">https://doi.org/10.18653/v1/D19-1228</a>.
+</div>
+<div id="ref-spector_uniform_2015" class="csl-entry" role="listitem">
+Spector, Benjamin, and Paul Egré. 2015. <span>“A Uniform Semantics for Embedded Interrogatives: <span>An</span> Answer, Not Necessarily the Answer.”</span> <em>Synthese</em> 192 (6): 1729–84. <a href="https://doi.org/10.1007/s11229-015-0722-4">https://doi.org/10.1007/s11229-015-0722-4</a>.
+</div>
+<div id="ref-white_role_2018" class="csl-entry" role="listitem">
+White, Aaron Steven, and Kyle Rawlins. 2018. <span>“The Role of Veridicality and Factivity in Clause Selection.”</span> In <em>Proceedings of the 48th <span>Annual</span> <span>Meeting</span> of the <span>North</span> <span>East</span> <span>Linguistic</span> <span>Society</span></em>, edited by Sherry Hucklebridge and Max Nelson, 221–34. Amherst, MA: GLSA Publications.
+</div>
+<div id="ref-white_lexicosyntactic_2018" class="csl-entry" role="listitem">
+White, Aaron Steven, Rachel Rudinger, Kyle Rawlins, and Benjamin Van Durme. 2018. <span>“Lexicosyntactic <span>Inference</span> in <span>Neural</span> <span>Models</span>.”</span> In <em>Proceedings of the 2018 <span>Conference</span> on <span>Empirical</span> <span>Methods</span> in <span>Natural</span> <span>Language</span> <span>Processing</span></em>, 4717–24. Brussels, Belgium: Association for Computational Linguistics. <a href="https://doi.org/10.18653/v1/D18-1501">https://doi.org/10.18653/v1/D18-1501</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>A similar qualitative observation is also made in passing by <span class="citation" data-cites="white_role_2018">White and Rawlins (<a href="#ref-white_role_2018" role="doc-biblioref">2018, 228</a>)</span> using the <a href="http://megaattitude.io/projects/mega-veridicality/">MegaVeridicality dataset</a>: “…there are not necessarily clear dividing lines between these classes present in the data, suggesting that speaker’s inferences about veridicality are generally quite gradient and likely influenced by the fine-grained semantics of particular verbs.”<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>These clusters furthermore tend to include emotive–e.g.&nbsp;<em>love</em> and <em>hate</em>–and/or mirative predicates–e.g.&nbsp;<em>surprise</em>. This pattern accords with evidence about the strength of these inferences observed in other experimental work <span class="citation" data-cites="djarv_cognitive_2018">(see, e.g., <a href="#ref-djarv_cognitive_2018" role="doc-biblioref">Djärv, Zehr, and Schwarz 2018</a>)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../projective-content/index.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../projective-content/model-definition.html" class="pagination-link">
+        <span class="nav-page-text">Model definition</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>
