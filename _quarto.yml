@@ -18,6 +18,9 @@ project:
     - projective-content/model-definition.ipynb
     - projective-content/model-fitting-and-comparison.ipynb
     - selection/index.qmd
+    - selection/a-brief-primer-on-gradient-based-optimization.qmd
+    - selection/model-definition.ipynb
+    - selection/model-fitting-and-comparison.ipynb
     - thematic-roles/index.qmd
 
 
@@ -49,7 +52,12 @@ website:
           - projective-content/inferentially-defined-classes-of-predicates.qmd
           - projective-content/model-definition.ipynb
           - projective-content/model-fitting-and-comparison.ipynb
-      - selection/index.qmd
+      - section: "Module 3: Selection"
+        contents:
+          - selection/index.qmd
+          - selection/a-brief-primer-on-gradient-based-optimization.qmd
+          - selection/model-definition.ipynb
+          - selection/model-fitting-and-comparison.ipynb
       - thematic-roles/index.qmd
 
 format:
