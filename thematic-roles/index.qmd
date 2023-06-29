@@ -6,7 +6,7 @@ bibliography: ../references.bib
 ::: {.callout-caution}
 ## Availability
 
-This section will be available Thursday, 29 June 2023. Please complete the below reading prior to that date.
+This section will be available Friday, 30 June 2023. Please complete the below reading prior to that date.
 :::
 
 ::: {.callout-tip}
