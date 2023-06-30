@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Representation Learning for Syntactic and Semantic Theory - Thematic Roles</title>
+<title>Representation Learning for Syntactic and Semantic Theory - Module 4: Thematic Roles</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,6 +49,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../thematic-roles/learning-distributional-representations.html" rel="next">
 <link href="../selection/model-fitting-and-comparison.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -93,7 +94,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thematic-roles/index.html">Module 4: Thematic Roles</a></li><li class="breadcrumb-item"><a href="../thematic-roles/index.html">Thematic Roles</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thematic-roles/index.html">Module 4: Thematic Roles</a></li><li class="breadcrumb-item"><a href="../thematic-roles/index.html">Module 4: Thematic Roles</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -276,10 +277,37 @@ div.csl-indent {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Thematic Roles</span></a>
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/learning-distributional-representations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Distributional representations from language models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
   </div>
 </li>
       </ul>
@@ -297,7 +325,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Thematic Roles</h1>
+<h1 class="title">Module 4: Thematic Roles</h1>
 </div>
 
 
@@ -312,19 +340,6 @@ div.csl-indent {
 
 </header>
 
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Availability
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This section will be available Friday, 30 June 2023. Please complete the below reading prior to that date.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -339,6 +354,7 @@ Reading
 <p><strong>Theory:</strong> <span class="citation" data-cites="levin_argument_2005">Levin and Rappaport Hovav (<a href="#ref-levin_argument_2005" role="doc-biblioref">2005</a>, Ch. 2)</span> on the explanatory role of generalized thematic roles.</p>
 </div>
 </div>
+<p>In this fourth and final module of the course, we are going to focus on introducing nontrivial structure into the representations we learn from annotated corpus data while retaining the benefits of mixed effects models. As a case study, we’re going to be interested in the question–discussed by <span class="citation" data-cites="levin_argument_2005">Levin and Rappaport Hovav (<a href="#ref-levin_argument_2005" role="doc-biblioref">2005</a>, Ch. 2)</span>–of what sorts of representations determine the relationship between individual thematic roles and syntactic positions.</p>
 
 
 
@@ -602,6 +618,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../thematic-roles/learning-distributional-representations.html" class="pagination-link">
+        <span class="nav-page-text">Distributional representations from language models</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

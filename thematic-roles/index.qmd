@@ -3,12 +3,6 @@ title: "Module 4: Thematic Roles"
 bibliography: ../references.bib
 ---
 
-::: {.callout-caution}
-## Availability
-
-This section will be available Friday, 30 June 2023. Please complete the below reading prior to that date.
-:::
-
 ::: {.callout-tip}
 ## Reading
 
@@ -17,3 +11,4 @@ This section will be available Friday, 30 June 2023. Please complete the below r
 **Theory:** @levin_argument_2005[Ch. 2] on the explanatory role of generalized thematic roles.
 :::
 
+In this fourth and final module of the course, we are going to focus on introducing nontrivial structure into the representations we learn from annotated corpus data while retaining the benefits of mixed effects models. As a case study, we're going to be interested in the question–discussed by @levin_argument_2005[Ch. 2]–of what sorts of representations determine the relationship between individual thematic roles and syntactic positions.

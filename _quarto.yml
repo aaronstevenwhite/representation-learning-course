@@ -22,6 +22,9 @@ project:
     - selection/model-definition.ipynb
     - selection/model-fitting-and-comparison.ipynb
     - thematic-roles/index.qmd
+    - thematic-roles/learning-distributional-representations.ipynb
+    - thematic-roles/model-definition.ipynb
+    - thematic-roles/model-fitting-and-comparison.ipynb
 
 
 website:
@@ -58,7 +61,12 @@ website:
           - selection/a-brief-primer-on-gradient-based-optimization.qmd
           - selection/model-definition.ipynb
           - selection/model-fitting-and-comparison.ipynb
-      - thematic-roles/index.qmd
+      - section: "Module 4: Thematic Roles"
+        contents:
+          - thematic-roles/index.qmd
+          - thematic-roles/learning-distributional-representations.ipynb
+          - thematic-roles/model-definition.ipynb
+          - thematic-roles/model-fitting-and-comparison.ipynb
 
 format:
   html:

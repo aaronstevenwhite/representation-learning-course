@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Representation Learning for Syntactic and Semantic Theory - Methodological Approach</title>
+<title>Representation Learning for Syntactic and Semantic Theory - Model definition</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,47 +20,28 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./course-structure-and-content.html" rel="next">
-<link href="./motivations.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../thematic-roles/model-fitting-and-comparison.html" rel="next">
+<link href="../thematic-roles/learning-distributional-representations.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -82,7 +63,7 @@ div.csl-indent {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar docked">
@@ -94,7 +75,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./methodological-approach.html">Methodological Approach</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../thematic-roles/index.html">Module 4: Thematic Roles</a></li><li class="breadcrumb-item"><a href="../thematic-roles/model-definition.html">Model definition</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +90,7 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Representation Learning for Syntactic and Semantic Theory</a> 
+      <a href="../">Representation Learning for Syntactic and Semantic Theory</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -121,31 +102,31 @@ div.csl-indent {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">About</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./installation.html" class="sidebar-item-text sidebar-link">
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Installation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./motivations.html" class="sidebar-item-text sidebar-link">
+  <a href="../motivations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Motivations</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./methodological-approach.html" class="sidebar-item-text sidebar-link active">
+  <a href="../methodological-approach.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Methodological Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course-structure-and-content.html" class="sidebar-item-text sidebar-link">
+  <a href="../course-structure-and-content.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course Structure and Content</span></a>
   </div>
 </li>
@@ -160,19 +141,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">What is a probability?</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
+  <a href="../foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Random variables and probability distributions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
+  <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistical Inference</span></a>
   </div>
 </li>
@@ -189,19 +170,19 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./island-effects/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model definition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model Fitting and Comparison</span></a>
   </div>
 </li>
@@ -218,25 +199,25 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projective-content/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Inferentially defined classes of predicates</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
+  <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model definition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+  <a href="../projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model fitting and comparison</span></a>
   </div>
 </li>
@@ -253,25 +234,25 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./selection/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./selection/a-brief-primer-on-gradient-based-optimization.html" class="sidebar-item-text sidebar-link">
+  <a href="../selection/a-brief-primer-on-gradient-based-optimization.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A brief primer on gradient-based optimization</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./selection/model-definition.html" class="sidebar-item-text sidebar-link">
+  <a href="../selection/model-definition.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model definition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./selection/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+  <a href="../selection/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model fitting and comparison</span></a>
   </div>
 </li>
@@ -288,25 +269,25 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thematic-roles/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Module 4: Thematic Roles</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thematic-roles/learning-distributional-representations.html" class="sidebar-item-text sidebar-link">
+  <a href="../thematic-roles/learning-distributional-representations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Distributional representations from language models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thematic-roles/model-definition.html" class="sidebar-item-text sidebar-link">
+  <a href="../thematic-roles/model-definition.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Model definition</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./thematic-roles/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+  <a href="../thematic-roles/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model fitting and comparison</span></a>
   </div>
 </li>
@@ -325,7 +306,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Methodological Approach</h1>
+<h1 class="title">Model definition</h1>
 </div>
 
 
@@ -340,40 +321,23 @@ div.csl-indent {
 
 </header>
 
-<p>This course is highly methodologically opinionated in taking a <em>hypothesis-driven</em> approach to representation learning, rather than the now common <em>analysis-driven</em> approach seen in much work at the intersection of computational linguistics and natural language processing <span class="citation" data-cites="baroni_proper_2022 pavlick_symbols_2023">(see <a href="#ref-baroni_proper_2022" role="doc-biblioref">Baroni 2022</a>; <a href="#ref-pavlick_symbols_2023" role="doc-biblioref">Pavlick 2023</a> and references therein)</span>. Hypothesis-driven approaches to representation learning are distinguished from analysis-driven approaches in that they aim to finely delineate hypotheses about the nature of a phenomenon in terms of the constraints they place on the representations to be learned. In contrast, analysis-driven approaches aim to learn highly expressive representations and then extract generalizations about those representations <em>post hoc</em>.</p>
-<p>This methodological distinction is roughly analogous to one observed in the theoretical syntax literature–a distinction classically exemplified by work in transformational grammar in the 1970s and 1980s. For background: transformational grammars are extremely expressive–generating the <a href="https://en.wikipedia.org/wiki/Recursively_enumerable_language">recursively enumerable languages</a> <span class="citation" data-cites="peters_generative_1973">(<a href="#ref-peters_generative_1973" role="doc-biblioref">Peters and Ritchie 1973</a>)</span>. But it is relatively well accepted that natural languages are a subset of a much smaller class of languages–itself a strict subset of the context sensitive languages <span class="citation" data-cites="joshi_convergence_1990">(<a href="#ref-joshi_convergence_1990" role="doc-biblioref">Joshi, Shanker, and Weir 1990</a>)</span>. Insofar as one is merely interested in observational adequacy, there isn’t really a reason not to use a highly expressive formalism, like a transformational grammar; but insofar as one is interested in specifying “…the observed data…in terms of significant generalizations that express underlying regularities in the language” <span class="citation" data-cites="chomsky_current_1964">(<a href="#ref-chomsky_current_1964" role="doc-biblioref">Chomsky 1964, 63</a>)</span>–e.g.&nbsp;to obtain <em>descriptive adequacy</em>–then it is necessary to go beyond simply specifying an observationally adequate transformational grammar.</p>
-<p>On the one hand, one might implement this idea by stating metaanalytical generalizations about the observationally adequate analyses in the too-expressive formalism, with the ultimate goal of reifying those generalizations as constraints on the formalism <span class="citation" data-cites="chomsky_conditions_1973">(see <a href="#ref-chomsky_conditions_1973" role="doc-biblioref">Chomsky 1973</a> <em>et seq</em>)</span>. This approach is similar to what I refer to above as analysis-driven representation learning.</p>
-<p>On the other hand, one might attempt to take a more constrained formalism–e.g.&nbsp;some <a href="https://en.wikipedia.org/wiki/Mildly_context-sensitive_grammar_formalism">mildly context sensitive formalism</a>, such as combinatory categorial grammars <span class="citation" data-cites="steedman_surface_1996">(<a href="#ref-steedman_surface_1996" role="doc-biblioref">Steedman 1996</a>)</span> or minimalist grammars <span class="citation" data-cites="stabler_derivational_1997">(<a href="#ref-stabler_derivational_1997" role="doc-biblioref">Stabler 1997</a>)</span>–and ask how well that formalism can cover the data. This approach is similar to what I refer to above as hypothesis-driven representation learning–the approach taken in this course.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Availability
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This section will be available at a later date.</p>
+</div>
+</div>
 
 
 
-
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-baroni_proper_2022" class="csl-entry" role="listitem">
-Baroni, Marco. 2022. <span>“On the <span>Proper</span> <span>Role</span> of <span>Linguistically</span> <span>Oriented</span> <span>Deep</span> <span>Net</span> <span>Analysis</span> in <span>Linguistic</span> <span>Theorising</span>.”</span> In <em>Algebraic <span>Structures</span> in <span>Natural</span> <span>Language</span></em>. CRC Press.
-</div>
-<div id="ref-chomsky_current_1964" class="csl-entry" role="listitem">
-Chomsky, Noam. 1964. <span>“Current Issues in Linguistic Theory.”</span> Edited by J. Fodor and J. Katz. <em>The Structure of Language</em>. New York: Prentice Hall.
-</div>
-<div id="ref-chomsky_conditions_1973" class="csl-entry" role="listitem">
-———. 1973. <span>“Conditions on Transformations.”</span> In <em>A <span>Festschrift</span> for <span>Morris</span> <span>Halle</span></em>, edited by S. Anderson and P. Kiparsky, 232–86. New York: Holt, Rinehart, &amp; Winston.
-</div>
-<div id="ref-joshi_convergence_1990" class="csl-entry" role="listitem">
-Joshi, Aravind, Vijay K. Shanker, and David Weir. 1990. <span>“The <span>Convergence</span> of <span>Mildly</span> <span>Context</span>-<span>Sensitive</span> <span>Grammar</span> <span>Formalisms</span>.”</span> MS-CIS-90-01. Philadelphia: Department of Computer; Information Science, University of Pennsylvania. <a href="https://repository.upenn.edu/cis_reports/539">https://repository.upenn.edu/cis_reports/539</a>.
-</div>
-<div id="ref-pavlick_symbols_2023" class="csl-entry" role="listitem">
-Pavlick, Ellie. 2023. <span>“Symbols and Grounding in Large Language Models.”</span> <em>Philosophical Transactions of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 381 (2251). <a href="https://doi.org/10.1098/rsta.2022.0041">https://doi.org/10.1098/rsta.2022.0041</a>.
-</div>
-<div id="ref-peters_generative_1973" class="csl-entry" role="listitem">
-Peters, P. Stanley, and R. W. Ritchie. 1973. <span>“On the Generative Power of Transformational Grammars.”</span> <em>Information Sciences</em> 6 (January): 49–83. <a href="https://doi.org/10.1016/0020-0255(73)90027-3">https://doi.org/10.1016/0020-0255(73)90027-3</a>.
-</div>
-<div id="ref-stabler_derivational_1997" class="csl-entry" role="listitem">
-Stabler, Edward. 1997. <span>“Derivational Minimalism.”</span> In <em>Logical <span>Aspects</span> of <span>Computational</span> <span>Linguistics</span></em>, edited by Christian Retoré, 68–95. Lecture <span>Notes</span> in <span>Computer</span> <span>Science</span>. Berlin, Heidelberg: Springer. <a href="https://doi.org/10.1007/BFb0052152">https://doi.org/10.1007/BFb0052152</a>.
-</div>
-<div id="ref-steedman_surface_1996" class="csl-entry" role="listitem">
-Steedman, Mark. 1996. <em>Surface Structure and Interpretation</em>. Cambridge, MA: MIT Press.
-</div>
-</div></section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -611,13 +575,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./motivations.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Motivations</span>
+      <a href="../thematic-roles/learning-distributional-representations.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Distributional representations from language models</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./course-structure-and-content.html" class="pagination-link">
-        <span class="nav-page-text">Course Structure and Content</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../thematic-roles/model-fitting-and-comparison.html" class="pagination-link">
+        <span class="nav-page-text">Model fitting and comparison</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -625,5 +589,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>
