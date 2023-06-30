@@ -1,13 +1,7 @@
 ---
-title: "Module 3: Selection"
+title: Overview
 bibliography: ../references.bib
 ---
-
-::: {.callout-caution}
-## Availability
-
-This section will be available Monday, 26 June 2023. Please complete the below reading prior to that date.
-:::
 
 ::: {.callout-tip}
 ## Reading
@@ -16,3 +10,8 @@ This section will be available Monday, 26 June 2023. Please complete the below r
 
 **Theory:** @lohninger_typology_2020 on the typology of complement clauses. We will specifically be concerned with their hypothesis that the distributional complement clauses is constrained by a monotonicity constraint relating ordered semantic types to ordered syntactic types.
 :::
+
+In this third module of the course, we are going to focus on introducing nontrivial structure into the representations we learn from experimental data while retaining the benefits of mixed effects models. As a case study, we're going to be interested in the question–discussed by @lohninger_typology_2020–of whether the relationship between semantic types and syntactic types (at least complement clauses) is constrained to preserve ordering structures associated with the two sets of types. 
+
+We're going to continue working with our general recipe, which crucially involves stating our model families in terms of a set of probabilistic assumptions, but in order to support model fitting, we're going to move to a slightly different paradigm for estimating the parameters of our models. Rather than sampling from the posterior distribution implied by our model, we will compute maximum a posteriori (MAP) estimates using gradient-based optimization techniques, which I'll give a brief primer on in the next section. 
+

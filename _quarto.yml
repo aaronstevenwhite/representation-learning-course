@@ -11,9 +11,17 @@ project:
     - foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.ipynb
     - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
     - island-effects/index.qmd
+    - island-effects/model-definition.ipynb
+    - island-effects/model-fitting-and-comparison.ipynb
     - projective-content/index.qmd
+    - projective-content/inferentially-defined-classes-of-predicates.qmd
+    - projective-content/model-definition.ipynb
+    - projective-content/model-fitting-and-comparison.ipynb
     - selection/index.qmd
-    - thematic-roles/index.ipynb
+    - selection/a-brief-primer-on-gradient-based-optimization.qmd
+    - selection/model-definition.ipynb
+    - selection/model-fitting-and-comparison.ipynb
+    - thematic-roles/index.qmd
 
 
 website:
@@ -33,12 +41,24 @@ website:
           - foundational-concepts-in-probability-and-statistics/index.ipynb
           - foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.ipynb
           - foundational-concepts-in-probability-and-statistics/statistical-inference.ipynb
-      - island-effects/index.qmd
-      - projective-content/index.qmd
-      - selection/index.qmd
-      - section: "Module 4: Thematic Roles"
+      - section: "Module 1: Island Effects"
         contents:
-          - thematic-roles/index.ipynb
+          - island-effects/index.qmd
+          - island-effects/model-definition.ipynb
+          - island-effects/model-fitting-and-comparison.ipynb
+      - section: "Module 2: Projective Content"
+        contents:
+          - projective-content/index.qmd
+          - projective-content/inferentially-defined-classes-of-predicates.qmd
+          - projective-content/model-definition.ipynb
+          - projective-content/model-fitting-and-comparison.ipynb
+      - section: "Module 3: Selection"
+        contents:
+          - selection/index.qmd
+          - selection/a-brief-primer-on-gradient-based-optimization.qmd
+          - selection/model-definition.ipynb
+          - selection/model-fitting-and-comparison.ipynb
+      - thematic-roles/index.qmd
 
 format:
   html:
@@ -49,10 +69,11 @@ format:
 
 filters:
   - include-code-files
+  - line-highlight
 
-# comments:
-#   giscus: 
-#     repo: aaronstevenwhite/representation-learning-course
+comments:
+  giscus: 
+    repo: aaronstevenwhite/representation-learning-course
 
 
 

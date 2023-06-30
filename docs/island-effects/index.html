@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Representation Learning for Syntactic and Semantic Theory - Module 1: Island Effects</title>
+<title>Representation Learning for Syntactic and Semantic Theory - Overview</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../projective-content/index.html" rel="next">
+<link href="../island-effects/model-definition.html" rel="next">
 <link href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -60,6 +60,7 @@ div.csl-indent {
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +94,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../island-effects/index.html">Module 1: Island Effects</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../island-effects/index.html">Module 1: Island Effects</a></li><li class="breadcrumb-item"><a href="../island-effects/index.html">Overview</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -177,34 +178,106 @@ div.csl-indent {
 </li>
       </ul>
   </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Module 1: Island Effects</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 2: Projective Content</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Module 3: Selection</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Module 4: Thematic Roles</span></a>
+ <span class="menu-text">Module 1: Island Effects</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Module 2: Projective Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferentially defined classes of predicates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Module 3: Selection</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/a-brief-primer-on-gradient-based-optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A brief primer on gradient-based optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Thematic Roles</span></a>
@@ -225,7 +298,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Module 1: Island Effects</h1>
+<h1 class="title">Overview</h1>
 </div>
 
 
@@ -240,19 +313,6 @@ div.csl-indent {
 
 </header>
 
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Availability
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This section will be available Monday, 19 June 2023. Please complete the below reading prior to that date.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -263,12 +323,12 @@ Reading
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><span class="citation" data-cites="sprouse_experimental_2016">Sprouse et al. (<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">2016</a>)</span> on variation in the strength of island effects on acceptability judgments. We will use the data collected for that paper, which can be found <a href="https://www.jonsprouse.com/data/NLLT2016/">here</a>, in this module.</li>
-<li><span class="citation" data-cites="sprouse_acceptability_2018">Sprouse (<a href="#ref-sprouse_acceptability_2018" role="doc-biblioref">2018</a>)</span> on the relationship between acceptability and grammaticality. We will specifically be concerned with his discussion of what apparent gradience in acceptability implies about discreteness v. continuity in grammatical representations.</li>
-</ol>
+<p><strong>Data:</strong> <span class="citation" data-cites="sprouse_experimental_2016">Sprouse et al. (<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">2016</a>)</span> on variation in the strength of island effects on acceptabiliy judgments. We will use the data collected for that paper, which can be found <a href="https://www.jonsprouse.com/data/NLLT2016/">here</a>, in this module.</p>
+<p><strong>Theory:</strong> <span class="citation" data-cites="sprouse_acceptability_2018">Sprouse (<a href="#ref-sprouse_acceptability_2018" role="doc-biblioref">2018</a>)</span> on the relationship between acceptability and grammaticality. We will specifically be concerned with his discussion in Section 3.3 of what apparent gradience in acceptability implies about discreteness v. continuity in grammatical representations.</p>
 </div>
 </div>
+<p>In this first module of the course, we are going to focus on minimally extending standard statistical models used in analyzing acceptability judgments–<a href="https://en.wikipedia.org/wiki/Generalized_linear_model">generalized linear</a> <a href="https://en.wikipedia.org/wiki/Mixed_model">mixed effects models</a>–in order to probe the nature of the grammatical representations that drive acceptability judgments. We will consider two possibilities discussed by <span class="citation" data-cites="sprouse_acceptability_2018">Sprouse (<a href="#ref-sprouse_acceptability_2018" role="doc-biblioref">2018</a>)</span>: (a) that the grammatical representations underlying acceptability judgments are <em>discrete</em> (or <em>categorical</em>); and (b) the grammatical representations are <em>continuous</em> (or <em>gradient</em>).</p>
+<p>The basic recipe, which we will repeat through the course, is (i) to define two or more (families of) models–in this case, one that assumes that the grammatical representation is categorical and another that assumes the representation is gradient; (ii) to fit both models to the data from some acceptability judgment data–in this case, to the data collected by <span class="citation" data-cites="sprouse_experimental_2016">Sprouse et al. (<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">2016</a>)</span>; and (iii) to compare how well the two models fit the data, weighed against some measure of how parsimonious (or conversely, complex) each model is.</p>
 
 
 
@@ -514,6 +574,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="pagination-link">
@@ -521,8 +583,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../projective-content/index.html" class="pagination-link">
-        <span class="nav-page-text">Module 2: Projective Content</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../island-effects/model-definition.html" class="pagination-link">
+        <span class="nav-page-text">Model definition</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -530,4 +592,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
 </body></html>

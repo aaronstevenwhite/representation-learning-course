@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.321">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Representation Learning for Syntactic and Semantic Theory - Model Fitting and Comparison</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../projective-content/index.html" rel="next">
+<link href="../island-effects/model-definition.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../island-effects/index.html">Module 1: Island Effects</a></li><li class="breadcrumb-item"><a href="../island-effects/model-fitting-and-comparison.html">Model Fitting and Comparison</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Representation Learning for Syntactic and Semantic Theory</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">About</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../installation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Installation</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../motivations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Motivations</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../methodological-approach.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Methodological Approach</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course-structure-and-content.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course Structure and Content</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Foundational Concepts in Probability and Statistics</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">What is a probability?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/random-variables-and-probability-distributions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Random variables and probability distributions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistical Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Module 1: Island Effects</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../island-effects/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Model Fitting and Comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Module 2: Projective Content</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/inferentially-defined-classes-of-predicates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Inferentially defined classes of predicates</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../projective-content/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Module 3: Selection</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/a-brief-primer-on-gradient-based-optimization.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A brief primer on gradient-based optimization</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/model-definition.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model definition</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../selection/model-fitting-and-comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model fitting and comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../thematic-roles/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Module 4: Thematic Roles</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#an-initial-fit" id="toc-an-initial-fit" class="nav-link active" data-scroll-target="#an-initial-fit">An initial fit</a></li>
+  <li><a href="#generalizing-to-other-models" id="toc-generalizing-to-other-models" class="nav-link" data-scroll-target="#generalizing-to-other-models">Generalizing to other models</a>
+  <ul class="collapse">
+  <li><a href="#mixed-effects-models" id="toc-mixed-effects-models" class="nav-link" data-scroll-target="#mixed-effects-models">Mixed effects models</a></li>
+  <li><a href="#clustered-mixed-effects-models" id="toc-clustered-mixed-effects-models" class="nav-link" data-scroll-target="#clustered-mixed-effects-models">Clustered mixed effects models</a></li>
+  </ul></li>
+  <li><a href="#model-comparison" id="toc-model-comparison" class="nav-link" data-scroll-target="#model-comparison">Model comparison</a></li>
+  <li><a href="#digging-into-the-clustered-mixed-effects-models" id="toc-digging-into-the-clustered-mixed-effects-models" class="nav-link" data-scroll-target="#digging-into-the-clustered-mixed-effects-models">Digging into the clustered mixed effects models</a>
+  <ul class="collapse">
+  <li><a href="#grammaticality-penalties" id="toc-grammaticality-penalties" class="nav-link" data-scroll-target="#grammaticality-penalties">Grammaticality penalties</a></li>
+  <li><a href="#membership-probabilities" id="toc-membership-probabilities" class="nav-link" data-scroll-target="#membership-probabilities">Membership probabilities</a></li>
+  </ul></li>
+  <li><a href="#summing-up" id="toc-summing-up" class="nav-link" data-scroll-target="#summing-up">Summing up</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Model Fitting and Comparison</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-tags="[]" data-execution_count="1">
+<details>
+<summary>Load Sprouse et al.’s Experiments 1 and 3</summary>
+<div class="sourceCode cell-code" id="cb1" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> DataFrame, read_csv, concat</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_data(fname: <span class="bu">str</span>, remove_fillers: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>) <span class="op">-&gt;</span> DataFrame:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Load Sprouse et al.'s (2016) data</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">    fname</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">        The filename of the data</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    remove_fillers</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">        Whether to remove the fillers</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    data</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">        The data</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># read the raw data skipping comment rows at the beginning</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> read_csv(fname, skiprows<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove NaN judgments</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> data.query(<span class="st">"~judgment.isnull()"</span>)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fill NaNs</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col <span class="kw">in</span> [<span class="st">"dependency"</span>, <span class="st">"structure"</span>, <span class="st">"distance"</span>, <span class="st">"island"</span>]:</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        data.loc[:,col] <span class="op">=</span> data[col].fillna(<span class="st">"filler"</span>)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># remove fillers</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> remove_fillers:</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>        data <span class="op">=</span> data.query(<span class="st">"dependency != 'filler'"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> data</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>data_dir <span class="op">=</span> <span class="st">"./data/SCGC.data/"</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>data_exp1_test <span class="op">=</span> load_data(</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_dir, <span class="st">"Experiment 1 results - English.csv"</span>),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    remove_fillers<span class="op">=</span><span class="va">True</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>data_exp3_test <span class="op">=</span> load_data(</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    os.path.join(data_dir, <span class="st">"Experiment 3 results - English D-linking.csv"</span>),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    remove_fillers<span class="op">=</span><span class="va">True</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>data_exp3_test[<span class="st">"dependency"</span>] <span class="op">=</span> data_exp3_test.dependency.<span class="bu">map</span>({</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="st">"WH"</span>: <span class="st">"DlinkedWH"</span>, <span class="st">"RC"</span>: <span class="st">"DlinkedRC"</span>, <span class="st">"filler"</span>: <span class="st">"filler"</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>data_exp1_test[<span class="st">"exp"</span>] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>data_exp3_test[<span class="st">"exp"</span>] <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>data_test <span class="op">=</span> concat([data_exp1_test, data_exp3_test])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="2">
+<details>
+<summary>Silence STAN logger</summary>
+<div class="sourceCode cell-code" id="cb2" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> logging</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>logger <span class="op">=</span> logging.getLogger(<span class="st">'cmdstanpy'</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>logger.addHandler(logging.NullHandler())</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>logger.propagate <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>logger.setLevel(logging.CRITICAL)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>We will fit our model families using Markov chain Monte Carlo (MCMC) as implemented in STAN. As I mentioned in the last section, you can find a very brief introduction to MCMC in STAN <a href="../foundational-concepts-in-probability-and-statistics/statistical-inference.html#implementing-samplers-in-stan">here</a> in the course notes on <a href="../foundational-concepts-in-probability-and-statistics/statistical inference">statistical inference</a>.</p>
+<p>To compare our model families, we want to quantitatively measure the fit of those theories’ best analyses to the data (identified by a particular parameterization) and–as a measure of parsimony–weight that fit against how many such best analyses there are. The more constrained the family of theories, the fewer such best analyses it will have and thus the more parsimonious we will consider it. A common way to implement this comparison is using an <a href="https://en.wikipedia.org/wiki/Model_selection#Criteria">information criterion</a>.</p>
+<p>Most information criteria attempt to estimate (a family of) models’ performance on data it was not fit to <span class="citation" data-cites="gelman_understanding_2014">(<a href="#ref-gelman_understanding_2014" role="doc-biblioref">Gelman, Hwang, and Vehtari 2014</a>)</span>. They have have two components: a measure of the model’s fit to the data–usually the log-likelihood of the data–and a measure of the complexity of the family of models. Model complexity can be computed from a point estimate (the maximum likelihood estimate) directly in terms of the number of parameters in the model family–as in the Akaike Information Criterion (AIC) or the Bayesian Information Criterion–or in terms of variability in the likelihood conditioning on samples from the posterior–as in the Deviance Information Criterion (DIC) and the Watanabe-Akaike (or Widely Applicable) Information Criterion (WAIC). The rough idea behind using the latter is that–more expressive models will show more variability in the likelihood for a particular observation, since there are more good analyses under the model due to its flexibility. The information criterion is then a combination of the measure of fit and the measure of complexity.</p>
+<p>We will use Pareto smoothed importance sampling leave-one-out cross-validation (PSIS-LOO), which is a gold-standard for information criteria <span class="citation" data-cites="vehtari_practical_2017">(<a href="#ref-vehtari_practical_2017" role="doc-biblioref">Vehtari, Gelman, and Gabry 2017</a>)</span>. This criterion attempts to estimate a model’s performance on responses it was not fit to using importance sampling–a basic version of which we covered <a href="../foundational-concepts-in-probability-and-statistics/statistical inference#monte-carlo-integration">here</a> in the course notes on <a href="../foundational-concepts-in-probability-and-statistics/statistical inference">statistical inference</a>.</p>
+<section id="an-initial-fit" class="level2">
+<h2 class="anchored" data-anchor-id="an-initial-fit">An initial fit</h2>
+<p>To get started, let’s fit <a href="model-definition#a-first-poor-approximation">our intercept-only model</a> using the <a href="https://mc-stan.org/cmdstanpy/"><code>cmdstanpy</code></a> interface to STAN. We’ll start by defining how to map (or <em>hash</em>) columns of our data to indices. We’ll use this for hashing subject identifiers here and item identifiers later.</p>
+<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> ndarray</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> Series</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hash_series(series: Series, indexation: <span class="bu">int</span><span class="op">=</span><span class="dv">1</span>) <span class="op">-&gt;</span> <span class="bu">tuple</span>[ndarray, ndarray]:</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Hash a series to numeric codes</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    column</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">        The series to hash</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    index</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">        The starting index (defaults to 1)</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># enforce 0- or 1-indexation</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> indexation <span class="kw">not</span> <span class="kw">in</span> [<span class="dv">0</span>, <span class="dv">1</span>]:</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="st">"Must choose either 0- or 1-indexation."</span>)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># convert the series to a category</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    category_series <span class="op">=</span> series.astype(<span class="st">"category"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># get the hash</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    hash_map <span class="op">=</span> category_series.cat.categories.values</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># map to one-indexed codes</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    hashed_series <span class="op">=</span> (category_series.cat.codes <span class="op">+</span> indexation).values</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hash_map, hashed_series</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We then need to define how to construct data for input to our STAN model from the data collected by <span class="citation" data-cites="sprouse_experimental_2016">(<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">Sprouse et al. 2016</a>)</span>.</p>
+<div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> construct_intercept_only_model_data(data: DataFrame) <span class="op">-&gt;</span> <span class="bu">dict</span>:</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    subj_hash_map, subj_hashed <span class="op">=</span> hash_series(data.subject)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"N_resp"</span>: data.shape[<span class="dv">0</span>],</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"N_subj"</span>: subj_hash_map.shape[<span class="dv">0</span>],</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"N_resp_levels"</span>: <span class="dv">7</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"subj"</span>: subj_hashed,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"resp"</span>: data.judgment.astype(<span class="bu">int</span>).values</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The output of this function must exactly match our <code>data</code> block (and it does).</p>
+<div class="sourceCode" id="cb5" data-startfrom="1" data-code-line-numbers=""><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_resp;                           <span class="co">// number of responses</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N_subj;                           <span class="co">// number of subjects</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">2</span>&gt; N_resp_levels;                    <span class="co">// number of possible likert scale acceptability judgment responses</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_subj&gt; subj[N_resp];        <span class="co">// subject who gave response n</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">1</span>,<span class="kw">upper</span>=N_resp_levels&gt; resp[N_resp]; <span class="co">// likert scale acceptability judgment responses </span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Next, we will define a function that constructs the data, compiles the model, and fits it.</p>
+<div class="cell" data-tags="[]" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> arviz</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arviz <span class="im">import</span> InferenceData</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmdstanpy <span class="im">import</span> CmdStanModel</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fit_intercept_only_model(data: DataFrame) <span class="op">-&gt;</span> InferenceData:</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    model_path <span class="op">=</span> <span class="st">"models/intercept-only-model/intercept-only-model.stan"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    model <span class="op">=</span> CmdStanModel(stan_file<span class="op">=</span>model_path)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    model_data <span class="op">=</span> construct_intercept_only_model_data(data_test)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    model_fit <span class="op">=</span> model.sample(data<span class="op">=</span>model_data)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> arviz.from_cmdstanpy(model_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb7" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>intercept_only_model_fit <span class="op">=</span> fit_intercept_only_model(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"c8518fa12b314f7e99ac19555fb15169","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"f1363d4ab2824fa581e70d7704c782f4","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"6556cab28c4e4aa099a9e95f02d798eb","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"cae3f5d0c6574556a3679cb6f0ae0c49","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre data-code-line-numbers=""><code>                                                                                                                                                                                                                                                                                                                                </code></pre>
+</div>
+</div>
+<p>We can peak at the posterior distribution over the intercept term (<code>acc_mean</code>) and the <code>cutpoints</code>. We see that the intercept term falls just about at the cutpoint between the 4 and 5 bins.</p>
+<div class="cell" data-tags="[]" data-execution_count="61">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb9" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arviz <span class="im">import</span> plot_forest</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    intercept_only_model_fit,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"acc_mean"</span>, <span class="st">"cutpoints"</span>],</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="dv">3</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>This slight right bias makes sense in light of the distribution of responses in the data.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="cell" data-tags="[]" data-execution_count="63">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb10" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> arange</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplot</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> subplot()</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>ax.hist(data_test.judgment, bins<span class="op">=</span>arange(<span class="dv">1</span>, <span class="dv">9</span>), rwidth<span class="op">=</span><span class="fl">0.5</span>, align<span class="op">=</span><span class="st">"left"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">"Likert scale acceptability judgments (Experiments 1 and 3)"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Likert scale acceptability judgment"</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_ylabel(<span class="st">"Count"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If we look at the <code>jumps</code>, we note that there tends to be a preference for ordinal response levels that are nearer to the edges of the scale–with the bin size for 4 (<code>jumps[2]</code>) almost half the bin size of 2 (<code>jumps[0]</code>) and 6 (<code>jumps[4]</code>). The relative size of <code>subj_intercept_std</code> indicates that subjects can differ in their left- or right-bias by approximately an entire ordinal response level.</p>
+<div class="cell" data-tags="[]" data-execution_count="62">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb11" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    intercept_only_model_fit,</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"subj_intercept_std"</span>, <span class="st">"jumps"</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="dv">2</span>),</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="generalizing-to-other-models" class="level2">
+<h2 class="anchored" data-anchor-id="generalizing-to-other-models">Generalizing to other models</h2>
+<p>To faciliate code reuse, we’ll develop an <a href="https://docs.python.org/3/library/abc.html">abstract base class</a> (ABC) that defines our fitting procedure. The main things to focus on here are the <code>IslandEffectsModel.construct_model_data</code> and <code>IslandEffectsModel.fit</code> methods–the lattr of which is modeled on the <a href="https://scikit-learn.org/stable/"><code>sklearn</code></a> API.</p>
+<div class="cell" data-tags="[]" data-source-line-numbers="25-34,39-87" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb12" data-source-line-numbers="25-34,39-87" data-code-line-numbers="25-34,39-87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cmdstanpy</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> abc <span class="im">import</span> ABC</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> typing <span class="im">import</span> Optional</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> dataclasses <span class="im">import</span> dataclass</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> ndarray</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> cmdstanpy <span class="im">import</span> CmdStanModel</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> IslandEffectsData:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    N_resp: <span class="bu">int</span>            <span class="co"># number of responses</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    N_subj: <span class="bu">int</span>            <span class="co"># number of subjects</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    N_resp_levels: <span class="bu">int</span>     <span class="co"># number of possible likert scale acceptability judgment responses</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    subj: ndarray          <span class="co"># subject who gave response n</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    resp: ndarray          <span class="co"># likert scale acceptability judgment responses</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> IslandEffectsModel(ABC):</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""An abstract base class for island effects models"""</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>    stan_file: <span class="bu">str</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>    data_class <span class="op">=</span> IslandEffectsData</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model <span class="op">=</span> CmdStanModel(stan_file<span class="op">=</span><span class="va">self</span>.stan_file)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> construct_model_data(<span class="va">self</span>, data: DataFrame):</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        subj_hash_map, subj_hashed <span class="op">=</span> hash_series(data.subject)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_resp"</span>: data.shape[<span class="dv">0</span>],</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_subj"</span>: subj_hash_map.shape[<span class="dv">0</span>],</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_resp_levels"</span>: <span class="dv">7</span>,</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>            <span class="st">"subj"</span>: subj_hashed,</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>            <span class="st">"resp"</span>: data.judgment.astype(<span class="bu">int</span>).values</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _validate_data(<span class="va">self</span>):</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.data_class(<span class="op">**</span><span class="va">self</span>.model_data)</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> fit(</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>, </span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>        data: DataFrame,</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>        save_dir: Optional[<span class="bu">str</span>] <span class="op">=</span> <span class="va">None</span>,</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>        verbose: <span class="bu">bool</span> <span class="op">=</span> <span class="va">False</span>,</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>        map_initialization: <span class="bu">bool</span> <span class="op">=</span> <span class="va">True</span>,</span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>        seed: <span class="bu">int</span> <span class="op">=</span> <span class="dv">50493</span>,</span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>        <span class="op">**</span>kwargs</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">-&gt;</span> InferenceData:</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> verbose:</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Constructing model data..."</span>)</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.model_data <span class="op">=</span> <span class="va">self</span>.construct_model_data(data)</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>._validate_data()</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> map_initialization:</span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> verbose:</span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"Fitting model with MAP initialization..."</span>)</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a>            map_estimate <span class="op">=</span> <span class="va">self</span>._compute_map_estimate(seed)</span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb12-61"><a href="#cb12-61" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">"inits"</span> <span class="kw">in</span> kwargs:</span>
+<span id="cb12-62"><a href="#cb12-62" aria-hidden="true" tabindex="-1"></a>                <span class="co"># inits passed to fit() should override MAP</span></span>
+<span id="cb12-63"><a href="#cb12-63" aria-hidden="true" tabindex="-1"></a>                map_estimate.update(kwargs[<span class="st">"inits"</span>])</span>
+<span id="cb12-64"><a href="#cb12-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-65"><a href="#cb12-65" aria-hidden="true" tabindex="-1"></a>            kwargs[<span class="st">"inits"</span>] <span class="op">=</span> map_estimate</span>
+<span id="cb12-66"><a href="#cb12-66" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-67"><a href="#cb12-67" aria-hidden="true" tabindex="-1"></a>        <span class="cf">elif</span> verbose:</span>
+<span id="cb12-68"><a href="#cb12-68" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Fitting model..."</span>)</span>
+<span id="cb12-69"><a href="#cb12-69" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-70"><a href="#cb12-70" aria-hidden="true" tabindex="-1"></a>        <span class="co"># sample from the posterior starting at the MAP</span></span>
+<span id="cb12-71"><a href="#cb12-71" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.raw_model_fit <span class="op">=</span> <span class="va">self</span>.model.sample(</span>
+<span id="cb12-72"><a href="#cb12-72" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span><span class="va">self</span>.model_data,</span>
+<span id="cb12-73"><a href="#cb12-73" aria-hidden="true" tabindex="-1"></a>            <span class="op">**</span>kwargs</span>
+<span id="cb12-74"><a href="#cb12-74" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-75"><a href="#cb12-75" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-76"><a href="#cb12-76" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> save_dir <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb12-77"><a href="#cb12-77" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> verbose:</span>
+<span id="cb12-78"><a href="#cb12-78" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="st">"Saving model..."</span>)</span>
+<span id="cb12-79"><a href="#cb12-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-80"><a href="#cb12-80" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.save(save_dir)</span>
+<span id="cb12-81"><a href="#cb12-81" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb12-82"><a href="#cb12-82" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> verbose:</span>
+<span id="cb12-83"><a href="#cb12-83" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Running MCMC diagnostics..."</span>)</span>
+<span id="cb12-84"><a href="#cb12-84" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>()</span>
+<span id="cb12-85"><a href="#cb12-85" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="va">self</span>.diagnose())</span>
+<span id="cb12-86"><a href="#cb12-86" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-87"><a href="#cb12-87" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span></span>
+<span id="cb12-88"><a href="#cb12-88" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-89"><a href="#cb12-89" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _compute_map_estimate(<span class="va">self</span>, seed: <span class="bu">int</span>):</span>
+<span id="cb12-90"><a href="#cb12-90" aria-hidden="true" tabindex="-1"></a>        <span class="co"># compute MAP fit</span></span>
+<span id="cb12-91"><a href="#cb12-91" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.map_model_fit <span class="op">=</span> <span class="va">self</span>.model.optimize(</span>
+<span id="cb12-92"><a href="#cb12-92" aria-hidden="true" tabindex="-1"></a>            data<span class="op">=</span><span class="va">self</span>.model_data,</span>
+<span id="cb12-93"><a href="#cb12-93" aria-hidden="true" tabindex="-1"></a>            seed<span class="op">=</span>seed,</span>
+<span id="cb12-94"><a href="#cb12-94" aria-hidden="true" tabindex="-1"></a>            algorithm<span class="op">=</span><span class="st">"lbfgs"</span>,</span>
+<span id="cb12-95"><a href="#cb12-95" aria-hidden="true" tabindex="-1"></a>            tol_obj<span class="op">=</span><span class="fl">1.</span></span>
+<span id="cb12-96"><a href="#cb12-96" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb12-97"><a href="#cb12-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-98"><a href="#cb12-98" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.map_model_fit.stan_variables()</span>
+<span id="cb12-99"><a href="#cb12-99" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-100"><a href="#cb12-100" aria-hidden="true" tabindex="-1"></a>    <span class="at">@property</span></span>
+<span id="cb12-101"><a href="#cb12-101" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> model_fit(<span class="va">self</span>):</span>
+<span id="cb12-102"><a href="#cb12-102" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> arviz.from_cmdstanpy(<span class="va">self</span>.raw_model_fit)</span>
+<span id="cb12-103"><a href="#cb12-103" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-104"><a href="#cb12-104" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> save(<span class="va">self</span>, save_dir: <span class="bu">str</span> <span class="op">=</span> <span class="st">"."</span>):</span>
+<span id="cb12-105"><a href="#cb12-105" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.raw_model_fit.save_csvfiles(save_dir)</span>
+<span id="cb12-106"><a href="#cb12-106" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-107"><a href="#cb12-107" aria-hidden="true" tabindex="-1"></a>    <span class="at">@classmethod</span></span>
+<span id="cb12-108"><a href="#cb12-108" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> from_csv(cls, path: <span class="bu">str</span>, <span class="op">**</span>kwargs):</span>
+<span id="cb12-109"><a href="#cb12-109" aria-hidden="true" tabindex="-1"></a>        model <span class="op">=</span> cls(<span class="op">**</span>kwargs)</span>
+<span id="cb12-110"><a href="#cb12-110" aria-hidden="true" tabindex="-1"></a>        model.raw_model_fit <span class="op">=</span> cmdstanpy.from_csv(path)</span>
+<span id="cb12-111"><a href="#cb12-111" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb12-112"><a href="#cb12-112" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> diagnose(<span class="va">self</span>):</span>
+<span id="cb12-113"><a href="#cb12-113" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">self</span>.raw_model_fit.diagnose()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>It is then straightforward to simply specify the STAN model file as a class attribute of some subclass of this ABC.</p>
+<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> InterceptOnlyModel(IslandEffectsModel):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    stan_file <span class="op">=</span> <span class="st">"models/intercept-only-model/intercept-only-model.stan"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb14" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>intercept_only_model <span class="op">=</span> InterceptOnlyModel()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>intercept_only_model.fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can similarly specify and fit our item random effects model by (i) specifying the appropriate STAN file; and (ii) adding item information to the model’s data representation.</p>
+<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ItemRandomEffectsData(IslandEffectsData):</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    N_item: <span class="bu">int</span>              <span class="co"># number of items</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    item: ndarray            <span class="co"># item corresponding to response n</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ItemRandomEffectsModel(InterceptOnlyModel):</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    stan_file <span class="op">=</span> <span class="st">"models/item-random-effects-model/item-random-effects-model.stan"</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    data_class <span class="op">=</span> ItemRandomEffectsData</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> construct_model_data(<span class="va">self</span>, data: DataFrame):</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>        model_data <span class="op">=</span> <span class="bu">super</span>().construct_model_data(data)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item_hash_map, item_hashed <span class="op">=</span> hash_series(data.item)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>        model_data.update({</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_item"</span>: <span class="va">self</span>.item_hash_map.shape[<span class="dv">0</span>],</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"item"</span>: item_hashed</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> model_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb16" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>item_random_effects_model <span class="op">=</span> ItemRandomEffectsModel()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>item_random_effects_model.fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>This model yields a similar posterior for <code>acc_mean</code> and <code>cutpoints</code>–though the posterior of <code>acc_mean</code> has higher variance.</p>
+<div class="cell" data-tags="[]" data-execution_count="137">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb17" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    item_random_effects_model.model_fit,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"acc_mean"</span>, <span class="st">"cutpoints"</span>],</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="dv">3</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>It also yields a similar posterior distribution for <code>subj_intercept_std</code> and <code>jumps</code>. As we would expect, since it is the only way that differences among items can be explained, <code>item_intercept_std</code> is substantially larger than <code>subj_intercept_std</code>.</p>
+<div class="cell" data-tags="[]" data-execution_count="138">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb18" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    item_random_effects_model.model_fit,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"item_intercept_std"</span>, <span class="st">"subj_intercept_std"</span>, <span class="st">"jumps"</span>],</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="fl">2.5</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If we compare these two models using PSIS-LOO–measured in terms of <em>expected log-pointwise density</em> (ELPD)–we observe that (unsurprisingly) the item random effects model fits the data substantially better. This can be seen by the fact that its ELPD is substantially higher.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arviz <span class="im">import</span> compare</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>compare_dict <span class="op">=</span> {</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Intercept-only model"</span>: intercept_only_model.model_fit, </span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Item random effects model"</span>: item_random_effects_model.model_fit</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>model_comparison <span class="op">=</span> compare(compare_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="65">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb20" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arviz <span class="im">import</span> plot_compare</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_compare(model_comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-19-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>If we look at the item random intercept model’s <span class="math inline">\(p_\text{loo}\)</span>, which is the measure of model complexity, we also see that it is substantially higher. But because the fit is so much better, when we combine <span class="math inline">\(p_\text{loo}\)</span> with the likelihood to derive ELPD<span class="math inline">\(_\text{loo}\)</span>, the model is still preferred.</p>
+<div class="cell" data-tags="[]" data-execution_count="69">
+<div class="sourceCode cell-code" id="cb21" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>model_comparison[[<span class="st">"elpd_loo"</span>, <span class="st">"p_loo"</span>, <span class="st">"se"</span>, <span class="st">"elpd_diff"</span>, <span class="st">"dse"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="69">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">elpd_loo</th>
+<th data-quarto-table-cell-role="th">p_loo</th>
+<th data-quarto-table-cell-role="th">se</th>
+<th data-quarto-table-cell-role="th">elpd_diff</th>
+<th data-quarto-table-cell-role="th">dse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Item random effects model</td>
+<td>-10793.713336</td>
+<td>568.829390</td>
+<td>61.709994</td>
+<td>0.000000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Intercept-only model</td>
+<td>-13420.902081</td>
+<td>273.016164</td>
+<td>29.042153</td>
+<td>2627.188745</td>
+<td>57.07066</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>As we move forward, we will be particularly interested in <code>elpd_diff</code> and <code>dse</code>. <code>elpd_diff</code> tells us how much better the best model family in terms of PSIS-LOO is, and <code>dse</code> tells us the standard error of that difference. One important thing to note is that we can also compute a standard error of ELPD<span class="math inline">\(_\text{loo}\)</span> itself (<code>se</code> above), but <code>dse</code> is note computable from this quantity, since <code>dse</code> is computed pointwise.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<section id="mixed-effects-models" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-effects-models">Mixed effects models</h3>
+<p>To implement our three vanilla mixed effects models–the <em>no interaction model</em>, <em>minimal interaction model</em>, and <em>maximal interaction model</em>–we will develop an generalization of the ABC that accepts formulae for the fixed effects, by-item effect, and by-subject effects.</p>
+<div class="cell" data-tags="[]" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb22" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MixedEffectsData(IslandEffectsData):</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    N_fixed: <span class="bu">int</span>                 <span class="co"># number of fixed predictors</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    fixed_predictors: ndarray    <span class="co"># predictors (length and dependency type) including intercept</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    N_item: <span class="bu">int</span>                  <span class="co"># number of items</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    N_by_item: <span class="bu">int</span>               <span class="co"># number of random by-item predictors</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    by_item_predictors: ndarray  <span class="co"># by-item predictors (length and dependency type) including intercept</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    N_by_subj: <span class="bu">int</span>               <span class="co"># number of random by-subject predictors</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    by_subj_predictors: ndarray  <span class="co"># by-subject predictors (length and dependency type) including intercept</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    item: ndarray                <span class="co"># item corresponding to response n</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb23" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> patsy</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> array</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> MixedEffectsModel(IslandEffectsModel):</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    stan_file <span class="op">=</span> <span class="st">"models/mixed-effects-model/mixed-effects-model.stan"</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    data_class <span class="op">=</span> MixedEffectsData</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>, fixed_formula: <span class="bu">str</span>, by_subj_formula: <span class="bu">str</span>, by_item_formula: <span class="bu">str</span>, </span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    ):</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>()</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fixed_formula <span class="op">=</span> fixed_formula</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.by_subj_formula <span class="op">=</span> by_subj_formula</span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.by_item_formula <span class="op">=</span> by_item_formula</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> construct_model_data(<span class="va">self</span>, data: DataFrame):</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        model_data <span class="op">=</span> <span class="bu">super</span>().construct_model_data(data)</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.fixed_predictors <span class="op">=</span> patsy.dmatrix(</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.fixed_formula, data, return_type<span class="op">=</span><span class="st">"dataframe"</span></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.by_subj_predictors <span class="op">=</span> patsy.dmatrix(</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.by_subj_formula, data, return_type<span class="op">=</span><span class="st">"dataframe"</span></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.by_item_predictors <span class="op">=</span> patsy.dmatrix(</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.by_item_formula, data, return_type<span class="op">=</span><span class="st">"dataframe"</span></span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.item_hash_map, item_hashed <span class="op">=</span> hash_series(data.item)</span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a>        model_data.update({</span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_fixed"</span>: <span class="va">self</span>.fixed_predictors.shape[<span class="dv">1</span>],</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a>            <span class="st">"fixed_predictors"</span>: <span class="va">self</span>.fixed_predictors.values,</span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_by_subj"</span>: <span class="va">self</span>.by_subj_predictors.shape[<span class="dv">1</span>],</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">"by_subj_predictors"</span>: <span class="va">self</span>.by_subj_predictors.values,</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_item"</span>: <span class="va">self</span>.item_hash_map.shape[<span class="dv">0</span>],</span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_by_item"</span>: <span class="va">self</span>.by_item_predictors.shape[<span class="dv">1</span>],</span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a>            <span class="st">"by_item_predictors"</span>: <span class="va">self</span>.by_item_predictors.values,</span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>            <span class="st">"item"</span>: item_hashed</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> model_data</span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _compute_map_estimate(<span class="va">self</span>, seed:<span class="bu">int</span>):</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a>        map_estimate <span class="op">=</span> <span class="bu">super</span>()._compute_map_estimate(seed)</span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vname, v <span class="kw">in</span> map_estimate.items():</span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">"cov"</span> <span class="kw">in</span> vname <span class="kw">and</span> <span class="kw">not</span> <span class="bu">hasattr</span>(v, <span class="st">"shape"</span>):</span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>                map_estimate[vname] <span class="op">=</span> array([[v]])</span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> map_estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then fit the three models by specifying <a href="model-definition#adding-grammar-and-processing-effects">the formulae from the last section</a>.</p>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb24" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>distance_levels <span class="op">=</span> [<span class="st">"short"</span>, <span class="st">"long"</span>]</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>structure_levels <span class="op">=</span> [<span class="st">"non"</span>, <span class="st">"island"</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>dependency_levels <span class="op">=</span> [<span class="st">"WH"</span>, <span class="st">"RC"</span>, <span class="st">"DlinkedWH"</span>, <span class="st">"DlinkedRC"</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>island_levels <span class="op">=</span> [<span class="st">"WH"</span>, <span class="st">"SUB"</span>, <span class="st">"ADJ"</span>, <span class="st">"NP"</span>]</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>distance_term <span class="op">=</span> <span class="st">"C(distance, levels=distance_levels)"</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>structure_term <span class="op">=</span> <span class="st">"C(structure, levels=structure_levels)"</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>island_term <span class="op">=</span> <span class="st">"C(island, levels=island_levels)"</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>dependency_term <span class="op">=</span> <span class="st">"C(dependency, levels=dependency_levels)"</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>no_interaction_model <span class="op">=</span> MixedEffectsModel(</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    fixed_formula<span class="op">=</span><span class="ss">f"~ (</span><span class="sc">{</span>distance_term<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>structure_term<span class="sc">}</span><span class="ss">) * </span><span class="sc">{</span>island_term<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>dependency_term<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    by_subj_formula<span class="op">=</span><span class="ss">f"~ 1"</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    by_item_formula<span class="op">=</span><span class="st">"~ 1"</span>,</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>no_interaction_model.fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb25" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>twoway_interaction_model <span class="op">=</span> MixedEffectsModel(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    fixed_formula<span class="op">=</span>no_interaction_model.fixed_formula <span class="op">+</span> <span class="ss">f"+ </span><span class="sc">{</span>distance_term<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>structure_term<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    by_subj_formula<span class="op">=</span>no_interaction_model.by_subj_formula,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    by_item_formula<span class="op">=</span><span class="st">"~ 1"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>twoway_interaction_model.fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb26" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>full_interaction_model <span class="op">=</span> MixedEffectsModel(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    fixed_formula<span class="op">=</span><span class="ss">f"~ </span><span class="sc">{</span>distance_term<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>structure_term<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>island_term<span class="sc">}</span><span class="ss"> * </span><span class="sc">{</span>dependency_term<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    by_subj_formula<span class="op">=</span>no_interaction_model.by_subj_formula,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    by_item_formula<span class="op">=</span><span class="st">"~ 1"</span>,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>full_interaction_model.fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="clustered-mixed-effects-models" class="level3">
+<h3 class="anchored" data-anchor-id="clustered-mixed-effects-models">Clustered mixed effects models</h3>
+<p>To implement the clustered mixed effects models, we need to add a way of specifying which interactions we would like to model as discrete. We’ll enforce that, if an item does not instantiate <code>distance</code>=<code>long</code> and <code>island</code>=<code>island</code>, it gets mapped to <code>no_interaction</code>.</p>
+<div class="cell" data-tags="[]" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb27" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="at">@dataclass</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ClusteredMixedEffectsData(MixedEffectsData):</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    N_grammaticality_levels: <span class="bu">int</span>          <span class="co"># number of grammaticality levels</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    N_interactions: <span class="bu">int</span>                   <span class="co"># number of interactions to model as discrete</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    interactions: ndarray                 <span class="co"># interactions to model as discrete </span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ClusteredMixedEffectsModel(MixedEffectsModel):</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    data_class <span class="op">=</span> ClusteredMixedEffectsData</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, n_grammaticality_levels: <span class="bu">int</span>, <span class="op">**</span>kwargs):</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>        <span class="bu">super</span>().<span class="fu">__init__</span>(<span class="op">**</span>kwargs)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_grammaticality_levels <span class="op">=</span> n_grammaticality_levels</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> construct_model_data(<span class="va">self</span>, data: DataFrame):</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>        model_data <span class="op">=</span> <span class="bu">super</span>().construct_model_data(data)</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.interactions_hash, interactions <span class="op">=</span> hash_series(</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>            data[[<span class="st">"distance"</span>, <span class="st">"structure"</span>, <span class="st">"island"</span>, <span class="st">"dependency"</span>]].<span class="bu">apply</span>(</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>                <span class="kw">lambda</span> x: x[<span class="dv">2</span>] <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span> x[<span class="dv">3</span>] <span class="cf">if</span> x[<span class="dv">0</span>] <span class="op">==</span> <span class="st">"long"</span> <span class="kw">and</span> x[<span class="dv">1</span>] <span class="op">==</span> <span class="st">"island"</span> <span class="cf">else</span> <span class="st">"no_interaction"</span>,</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>                axis<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>        model_data.update({</span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_grammaticality_levels"</span>: <span class="va">self</span>.n_grammaticality_levels,</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>            <span class="st">"N_interactions"</span>: <span class="va">self</span>.interactions_hash.shape[<span class="dv">0</span>],</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>            <span class="st">"interactions"</span>: interactions</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> model_data</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> ConstrainedClusteredMixedEffectsModel(ClusteredMixedEffectsModel):</span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>    stan_file <span class="op">=</span> <span class="st">"models/constrained-clustered-interaction-model/constrained-clustered-interaction-model.stan"</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> UnconstrainedClusteredMixedEffectsModel(ClusteredMixedEffectsModel):</span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>    stan_file <span class="op">=</span> <span class="st">"models/unconstrained-clustered-interaction-model/unconstrained-clustered-interaction-model.stan"</span></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> _compute_map_estimate(<span class="va">self</span>, seed:<span class="bu">int</span>):</span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a>        map_estimate <span class="op">=</span> <span class="bu">super</span>()._compute_map_estimate(seed)</span>
+<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> vname, v <span class="kw">in</span> map_estimate.items():</span>
+<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="st">"penalty"</span> <span class="kw">in</span> vname <span class="kw">and</span> <span class="kw">not</span> <span class="bu">hasattr</span>(v, <span class="st">"shape"</span>):</span>
+<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>                map_estimate[vname] <span class="op">=</span> array([v])</span>
+<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> map_estimate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We will consider models with 2, 3, and 4 levels of grammaticality.</p>
+<div class="cell" data-tags="[]">
+<div class="sourceCode cell-code" id="cb28" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>discrete_models <span class="op">=</span> {}</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>continuous_models <span class="op">=</span> {}</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> g <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">5</span>):</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fitting discrete model with </span><span class="sc">{</span>g<span class="sc">}</span><span class="ss"> grammaticality levels..."</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    constrained_models[g] <span class="op">=</span> ConstrainedClusteredMixedEffectsModel(</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        n_grammaticality_levels<span class="op">=</span>g,</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        fixed_formula<span class="op">=</span>no_interaction_model.fixed_formula,</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        by_subj_formula<span class="op">=</span>no_interaction_model.by_subj_formula,</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>        by_item_formula<span class="op">=</span><span class="st">"~ 1"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    constrained_models[g].fit(data_test)</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Fitting continuous model with </span><span class="sc">{</span>g<span class="sc">}</span><span class="ss"> grammaticality levels..."</span>)</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    unconstrained_models[g] <span class="op">=</span> UnconstrainedClusteredMixedEffectsModel(</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>        n_grammaticality_levels<span class="op">=</span>g,</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>        fixed_formula<span class="op">=</span>no_interaction_model.fixed_formula,</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>        by_subj_formula<span class="op">=</span>no_interaction_model.by_subj_formula,</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>        by_item_formula<span class="op">=</span><span class="st">"~ 1"</span>,</span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>    unconstrained_models[g].fit(data_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="model-comparison" class="level2">
+<h2 class="anchored" data-anchor-id="model-comparison">Model comparison</h2>
+<p>Finally, we will compute the model comparison using PSIS-LOO. These models are ranked by ELPD<span class="math inline">\(_\text{loo}\)</span>.</p>
+<div class="cell" data-tags="[]" data-execution_count="73">
+<div class="sourceCode cell-code" id="cb29" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>compare_dict <span class="op">=</span> {</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"No interaction model"</span>: no_interaction_model.model_fit,</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Minimal interaction model"</span>: twoway_interaction_model.model_fit,</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Maximal interaction model"</span>: full_interaction_model.model_fit</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_grammaticality_levels, m <span class="kw">in</span> constrained_models.items():</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="ss">f"Constrained model (</span><span class="sc">{</span>n_grammaticality_levels<span class="sc">}</span><span class="ss"> levels)"</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    compare_dict[name] <span class="op">=</span> m.model_fit</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_grammaticality_levels, m <span class="kw">in</span> unconstrained_models.items():</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>    name <span class="op">=</span> <span class="ss">f"Unconstrained model (</span><span class="sc">{</span>n_grammaticality_levels<span class="sc">}</span><span class="ss"> levels)"</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    compare_dict[name] <span class="op">=</span> m.model_fit</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>model_comparison <span class="op">=</span> compare(compare_dict)</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>model_comparison[[<span class="st">"elpd_loo"</span>, <span class="st">"p_loo"</span>, <span class="st">"elpd_diff"</span>, <span class="st">"dse"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="73">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">elpd_loo</th>
+<th data-quarto-table-cell-role="th">p_loo</th>
+<th data-quarto-table-cell-role="th">elpd_diff</th>
+<th data-quarto-table-cell-role="th">dse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Constrained model (4 levels)</td>
+<td>-10716.830739</td>
+<td>566.988072</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Unconstrained model (4 levels)</td>
+<td>-10717.042327</td>
+<td>567.278971</td>
+<td>0.211588</td>
+<td>0.629807</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Constrained model (3 levels)</td>
+<td>-10718.938079</td>
+<td>569.969504</td>
+<td>2.107341</td>
+<td>0.684705</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Unconstrained model (3 levels)</td>
+<td>-10719.299001</td>
+<td>569.839128</td>
+<td>2.468262</td>
+<td>0.880495</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Constrained model (2 levels)</td>
+<td>-10719.712935</td>
+<td>567.872110</td>
+<td>2.882196</td>
+<td>1.703436</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Minimal interaction model</td>
+<td>-10721.546329</td>
+<td>565.649372</td>
+<td>4.715591</td>
+<td>2.948452</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">Unconstrained model (2 levels)</td>
+<td>-10721.878888</td>
+<td>569.544818</td>
+<td>5.048149</td>
+<td>1.610423</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">Maximal interaction model</td>
+<td>-10721.923465</td>
+<td>574.947989</td>
+<td>5.092726</td>
+<td>1.902887</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">No interaction model</td>
+<td>-10725.226354</td>
+<td>573.342717</td>
+<td>8.395615</td>
+<td>4.284287</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>There are a few things to note about this comparison.</p>
+<p>First, all models that have grammatical effects dominate the no interaction model. This ranking is not surprising, given the difference of differences we saw in the last section, but it is a good sanity check.</p>
+<p>Second, the minimal and maximal interaction models have effectively the same ELPD<span class="math inline">\(_\text{loo}\)</span>, even though the <span class="math inline">\(p_\text{loo}\)</span> for the maximal interaction model is nearly 10 points higher. This pattern indicates that the maximal interaction model fits better than the minimal interaction model–as we would expect–but when trading complexity off with fit, there is not reason to prefer the better-fitting maximal interaction model to the worse-fitting minimal interaction model (or vice versa).</p>
+<p>Finally, nearly all the clustered mixed effects models dominate the minimal and maximal interaction models, with more levels (at least up to 4) improving the PSIS-LOO. This result, which is driven by improved fit without a substantial increase in complexity as evidenced by the <span class="math inline">\(p_\text{loo}\)</span>s, is promising for the clustered mixed effects models. We need to be cautious in interpreting this ranking, however, since the ratio of difference in ELPD to <code>dse</code>–especially in for the minimal interaction model–is small and these comparisons are being conducted <em>post hoc</em>. Ideally, to confirm this ranking, we would collect a new sample that would likely need to be quite a bit larger than the one collected by <span class="citation" data-cites="sprouse_experimental_2016">Sprouse et al. (<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">2016</a>)</span>.</p>
+</section>
+<section id="digging-into-the-clustered-mixed-effects-models" class="level2">
+<h2 class="anchored" data-anchor-id="digging-into-the-clustered-mixed-effects-models">Digging into the clustered mixed effects models</h2>
+<p>One useful aspect of the clustered mixed effects models is that they allow us to dig into (i) the penalty along the acceptability continuum associated with ungrammaticality; and (ii) which level of grammaticality would be associated with a particular structure using the membership probabilities.</p>
+<section id="grammaticality-penalties" class="level3">
+<h3 class="anchored" data-anchor-id="grammaticality-penalties">Grammaticality penalties</h3>
+<p>The penalty of each level of ungrammaticality in the constrained model is approximately -0.75.</p>
+<div class="cell" data-tags="[]" data-execution_count="94">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb30" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>    constrained_models[<span class="dv">4</span>].model_fit,</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"penalty"</span>, <span class="st">"jumps"</span>],</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="fl">3.5</span>),</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>For comparison, the effects of <code>distance</code>=<code>long</code> and <code>structure</code>=<code>island</code> are each about -1.5. So the effect of one increment of ungrammaticality is about half that of the effects of <code>distance</code>=<code>long</code> and <code>structure</code>=<code>island</code>.</p>
+<div class="cell" data-tags="[]" data-execution_count="158">
+<div class="sourceCode cell-code" id="cb31" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> arviz <span class="im">import</span> summary</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_factor_levels(x):</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    extracted <span class="op">=</span> re.findall(<span class="st">"C\(([A-z]+).+?\)\[T\.([A-z]+)\]"</span>, x)</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' x '</span>.join([<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> k, v <span class="kw">in</span> extracted])</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>constrained_coefs <span class="op">=</span> summary(constrained_models[<span class="dv">4</span>].model_fit, <span class="st">"fixed_coefs"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>constrained_coefs.index <span class="op">=</span> constrained_models[<span class="dv">4</span>].fixed_predictors.columns.<span class="bu">map</span>(format_factor_levels)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>constrained_coefs[[<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_3%"</span>, <span class="st">"hdi_97%"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="158">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sd</th>
+<th data-quarto-table-cell-role="th">hdi_3%</th>
+<th data-quarto-table-cell-role="th">hdi_97%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td>6.935</td>
+<td>0.365</td>
+<td>6.270</td>
+<td>7.634</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long</td>
+<td>-1.606</td>
+<td>0.426</td>
+<td>-2.359</td>
+<td>-0.784</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island</td>
+<td>-1.407</td>
+<td>0.437</td>
+<td>-2.210</td>
+<td>-0.588</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB</td>
+<td>-2.188</td>
+<td>0.466</td>
+<td>-3.091</td>
+<td>-1.328</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ</td>
+<td>-1.783</td>
+<td>0.446</td>
+<td>-2.629</td>
+<td>-0.973</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP</td>
+<td>-0.181</td>
+<td>0.468</td>
+<td>-0.981</td>
+<td>0.740</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">dependency=RC</td>
+<td>-3.002</td>
+<td>0.467</td>
+<td>-3.894</td>
+<td>-2.119</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">dependency=DlinkedWH</td>
+<td>-0.993</td>
+<td>0.328</td>
+<td>-1.606</td>
+<td>-0.372</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">dependency=DlinkedRC</td>
+<td>-2.717</td>
+<td>0.475</td>
+<td>-3.651</td>
+<td>-1.881</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB</td>
+<td>2.820</td>
+<td>0.559</td>
+<td>1.720</td>
+<td>3.854</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ</td>
+<td>-0.187</td>
+<td>0.547</td>
+<td>-1.220</td>
+<td>0.797</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=NP</td>
+<td>-1.260</td>
+<td>0.552</td>
+<td>-2.299</td>
+<td>-0.205</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB</td>
+<td>-2.169</td>
+<td>0.577</td>
+<td>-3.270</td>
+<td>-1.126</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ</td>
+<td>-0.491</td>
+<td>0.558</td>
+<td>-1.649</td>
+<td>0.480</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=NP</td>
+<td>0.869</td>
+<td>0.574</td>
+<td>-0.182</td>
+<td>1.969</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x dependency=RC</td>
+<td>0.648</td>
+<td>0.560</td>
+<td>-0.444</td>
+<td>1.675</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x dependency=DlinkedWH</td>
+<td>1.217</td>
+<td>0.386</td>
+<td>0.546</td>
+<td>1.975</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x dependency=DlinkedRC</td>
+<td>0.424</td>
+<td>0.560</td>
+<td>-0.621</td>
+<td>1.493</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x dependency=RC</td>
+<td>0.672</td>
+<td>0.573</td>
+<td>-0.428</td>
+<td>1.721</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x dependency=DlinkedWH</td>
+<td>0.551</td>
+<td>0.385</td>
+<td>-0.173</td>
+<td>1.250</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x dependency=DlinkedRC</td>
+<td>0.374</td>
+<td>0.573</td>
+<td>-0.631</td>
+<td>1.539</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=RC</td>
+<td>2.011</td>
+<td>0.666</td>
+<td>0.759</td>
+<td>3.279</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=RC</td>
+<td>2.763</td>
+<td>0.651</td>
+<td>1.543</td>
+<td>3.957</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP x dependency=RC</td>
+<td>1.326</td>
+<td>0.636</td>
+<td>0.165</td>
+<td>2.556</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=DlinkedWH</td>
+<td>1.839</td>
+<td>0.410</td>
+<td>1.087</td>
+<td>2.612</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=DlinkedWH</td>
+<td>0.406</td>
+<td>0.402</td>
+<td>-0.319</td>
+<td>1.164</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=NP x dependency=DlinkedWH</td>
+<td>-0.253</td>
+<td>0.435</td>
+<td>-1.049</td>
+<td>0.580</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=DlinkedRC</td>
+<td>2.783</td>
+<td>0.646</td>
+<td>1.585</td>
+<td>4.035</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=DlinkedRC</td>
+<td>2.111</td>
+<td>0.636</td>
+<td>0.906</td>
+<td>3.276</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP x dependency=DlinkedRC</td>
+<td>1.367</td>
+<td>0.640</td>
+<td>0.194</td>
+<td>2.547</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=RC</td>
+<td>-1.074</td>
+<td>0.746</td>
+<td>-2.465</td>
+<td>0.341</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=RC</td>
+<td>-0.675</td>
+<td>0.805</td>
+<td>-2.237</td>
+<td>0.779</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=RC</td>
+<td>-0.282</td>
+<td>0.758</td>
+<td>-1.678</td>
+<td>1.156</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=DlinkedWH</td>
+<td>-1.749</td>
+<td>0.496</td>
+<td>-2.721</td>
+<td>-0.874</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=DlinkedWH</td>
+<td>-0.086</td>
+<td>0.477</td>
+<td>-0.987</td>
+<td>0.783</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=DlinkedWH</td>
+<td>-0.379</td>
+<td>0.514</td>
+<td>-1.366</td>
+<td>0.538</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=DlinkedRC</td>
+<td>-0.915</td>
+<td>0.761</td>
+<td>-2.315</td>
+<td>0.527</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=DlinkedRC</td>
+<td>-0.359</td>
+<td>0.787</td>
+<td>-1.768</td>
+<td>1.169</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=DlinkedRC</td>
+<td>-0.322</td>
+<td>0.763</td>
+<td>-1.797</td>
+<td>1.046</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=RC</td>
+<td>0.655</td>
+<td>0.789</td>
+<td>-0.944</td>
+<td>2.056</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=RC</td>
+<td>-0.620</td>
+<td>0.831</td>
+<td>-2.219</td>
+<td>0.890</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=RC</td>
+<td>-0.066</td>
+<td>0.777</td>
+<td>-1.468</td>
+<td>1.426</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=DlinkedWH</td>
+<td>-0.798</td>
+<td>0.497</td>
+<td>-1.715</td>
+<td>0.120</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=DlinkedWH</td>
+<td>-0.290</td>
+<td>0.477</td>
+<td>-1.161</td>
+<td>0.603</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=DlinkedWH</td>
+<td>-0.245</td>
+<td>0.522</td>
+<td>-1.294</td>
+<td>0.648</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=DlinkedRC</td>
+<td>-0.218</td>
+<td>0.801</td>
+<td>-1.740</td>
+<td>1.292</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=DlinkedRC</td>
+<td>-0.223</td>
+<td>0.798</td>
+<td>-1.664</td>
+<td>1.271</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=DlinkedRC</td>
+<td>0.150</td>
+<td>0.780</td>
+<td>-1.381</td>
+<td>1.545</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>In contrast, the penalty for the first level of ungrammaticality in the unconstrained model is a bit over -1 with the remaining penalties being a bit stronger than -0.5.</p>
+<div class="cell" data-tags="[]" data-execution_count="95">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb32" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> plot_forest(</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>    unconstrained_models[<span class="dv">4</span>].model_fit,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    var_names<span class="op">=</span>[<span class="st">"penalty"</span>, <span class="st">"jumps"</span>],</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    combined<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    figsize<span class="op">=</span>(<span class="fl">11.5</span>, <span class="fl">3.5</span>),</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-31-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>And the pattern of fixed effects coefficients for the unconstrained model is very similr to that for the constrained model.</p>
+<div class="cell" data-tags="[]" data-execution_count="159">
+<div class="sourceCode cell-code" id="cb33" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> format_factor_levels(x):</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>    extracted <span class="op">=</span> re.findall(<span class="st">"C\(([A-z]+).+?\)\[T\.([A-z]+)\]"</span>, x)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' x '</span>.join([<span class="ss">f"</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">=</span><span class="sc">{</span>v<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> k, v <span class="kw">in</span> extracted])</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>unconstrained_coefs <span class="op">=</span> summary(unconstrained_models[<span class="dv">4</span>].model_fit, <span class="st">"fixed_coefs"</span>)</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>unconstrained_coefs.index <span class="op">=</span> unconstrained_models[<span class="dv">4</span>].fixed_predictors.columns.<span class="bu">map</span>(format_factor_levels)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>unconstrained_coefs[[<span class="st">"mean"</span>, <span class="st">"sd"</span>, <span class="st">"hdi_3%"</span>, <span class="st">"hdi_97%"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="159">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">mean</th>
+<th data-quarto-table-cell-role="th">sd</th>
+<th data-quarto-table-cell-role="th">hdi_3%</th>
+<th data-quarto-table-cell-role="th">hdi_97%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th"></td>
+<td>7.024</td>
+<td>0.467</td>
+<td>6.161</td>
+<td>7.821</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long</td>
+<td>-1.613</td>
+<td>0.421</td>
+<td>-2.376</td>
+<td>-0.795</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island</td>
+<td>-1.446</td>
+<td>0.429</td>
+<td>-2.211</td>
+<td>-0.576</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB</td>
+<td>-2.188</td>
+<td>0.466</td>
+<td>-3.069</td>
+<td>-1.322</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ</td>
+<td>-1.792</td>
+<td>0.457</td>
+<td>-2.624</td>
+<td>-0.912</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP</td>
+<td>-0.164</td>
+<td>0.459</td>
+<td>-1.063</td>
+<td>0.682</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">dependency=RC</td>
+<td>-3.018</td>
+<td>0.456</td>
+<td>-3.845</td>
+<td>-2.166</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">dependency=DlinkedWH</td>
+<td>-1.029</td>
+<td>0.335</td>
+<td>-1.640</td>
+<td>-0.382</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">dependency=DlinkedRC</td>
+<td>-2.744</td>
+<td>0.461</td>
+<td>-3.607</td>
+<td>-1.865</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB</td>
+<td>2.818</td>
+<td>0.551</td>
+<td>1.709</td>
+<td>3.776</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ</td>
+<td>-0.186</td>
+<td>0.544</td>
+<td>-1.238</td>
+<td>0.800</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=NP</td>
+<td>-1.310</td>
+<td>0.546</td>
+<td>-2.324</td>
+<td>-0.258</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB</td>
+<td>-2.146</td>
+<td>0.574</td>
+<td>-3.236</td>
+<td>-1.074</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ</td>
+<td>-0.450</td>
+<td>0.566</td>
+<td>-1.523</td>
+<td>0.590</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=NP</td>
+<td>0.866</td>
+<td>0.549</td>
+<td>-0.158</td>
+<td>1.899</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x dependency=RC</td>
+<td>0.670</td>
+<td>0.543</td>
+<td>-0.328</td>
+<td>1.694</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x dependency=DlinkedWH</td>
+<td>1.249</td>
+<td>0.411</td>
+<td>0.526</td>
+<td>2.027</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x dependency=DlinkedRC</td>
+<td>0.460</td>
+<td>0.543</td>
+<td>-0.544</td>
+<td>1.486</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x dependency=RC</td>
+<td>0.734</td>
+<td>0.569</td>
+<td>-0.305</td>
+<td>1.812</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x dependency=DlinkedWH</td>
+<td>0.599</td>
+<td>0.407</td>
+<td>-0.183</td>
+<td>1.305</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x dependency=DlinkedRC</td>
+<td>0.451</td>
+<td>0.571</td>
+<td>-0.649</td>
+<td>1.479</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=RC</td>
+<td>2.021</td>
+<td>0.664</td>
+<td>0.791</td>
+<td>3.249</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=RC</td>
+<td>2.736</td>
+<td>0.650</td>
+<td>1.471</td>
+<td>3.861</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP x dependency=RC</td>
+<td>1.288</td>
+<td>0.622</td>
+<td>0.195</td>
+<td>2.556</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=DlinkedWH</td>
+<td>1.876</td>
+<td>0.418</td>
+<td>1.064</td>
+<td>2.609</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=DlinkedWH</td>
+<td>0.443</td>
+<td>0.409</td>
+<td>-0.307</td>
+<td>1.240</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=NP x dependency=DlinkedWH</td>
+<td>-0.246</td>
+<td>0.441</td>
+<td>-1.081</td>
+<td>0.590</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=SUB x dependency=DlinkedRC</td>
+<td>2.784</td>
+<td>0.631</td>
+<td>1.517</td>
+<td>3.905</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">island=ADJ x dependency=DlinkedRC</td>
+<td>2.101</td>
+<td>0.628</td>
+<td>0.942</td>
+<td>3.262</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">island=NP x dependency=DlinkedRC</td>
+<td>1.337</td>
+<td>0.626</td>
+<td>0.088</td>
+<td>2.466</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=RC</td>
+<td>-1.093</td>
+<td>0.739</td>
+<td>-2.407</td>
+<td>0.398</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=RC</td>
+<td>-0.645</td>
+<td>0.780</td>
+<td>-2.064</td>
+<td>0.841</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=RC</td>
+<td>-0.240</td>
+<td>0.731</td>
+<td>-1.579</td>
+<td>1.168</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=DlinkedWH</td>
+<td>-1.784</td>
+<td>0.504</td>
+<td>-2.669</td>
+<td>-0.782</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=DlinkedWH</td>
+<td>-0.122</td>
+<td>0.499</td>
+<td>-1.034</td>
+<td>0.803</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=DlinkedWH</td>
+<td>-0.360</td>
+<td>0.539</td>
+<td>-1.402</td>
+<td>0.588</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=SUB x dependency=DlinkedRC</td>
+<td>-0.915</td>
+<td>0.750</td>
+<td>-2.318</td>
+<td>0.511</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">distance=long x island=ADJ x dependency=DlinkedRC</td>
+<td>-0.356</td>
+<td>0.758</td>
+<td>-1.790</td>
+<td>1.014</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">distance=long x island=NP x dependency=DlinkedRC</td>
+<td>-0.287</td>
+<td>0.736</td>
+<td>-1.637</td>
+<td>1.144</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=RC</td>
+<td>0.601</td>
+<td>0.787</td>
+<td>-0.846</td>
+<td>2.085</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=RC</td>
+<td>-0.652</td>
+<td>0.835</td>
+<td>-2.218</td>
+<td>0.838</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=RC</td>
+<td>-0.064</td>
+<td>0.755</td>
+<td>-1.475</td>
+<td>1.384</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=DlinkedWH</td>
+<td>-0.850</td>
+<td>0.514</td>
+<td>-1.794</td>
+<td>0.112</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=DlinkedWH</td>
+<td>-0.338</td>
+<td>0.505</td>
+<td>-1.272</td>
+<td>0.605</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=DlinkedWH</td>
+<td>-0.241</td>
+<td>0.543</td>
+<td>-1.243</td>
+<td>0.752</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=SUB x dependency=DlinkedRC</td>
+<td>-0.268</td>
+<td>0.798</td>
+<td>-1.746</td>
+<td>1.285</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">structure=island x island=ADJ x dependency=DlinkedRC</td>
+<td>-0.280</td>
+<td>0.799</td>
+<td>-1.807</td>
+<td>1.158</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">structure=island x island=NP x dependency=DlinkedRC</td>
+<td>0.137</td>
+<td>0.752</td>
+<td>-1.256</td>
+<td>1.592</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="membership-probabilities" class="level3">
+<h3 class="anchored" data-anchor-id="membership-probabilities">Membership probabilities</h3>
+<p>Turning to the level of grammaticality associated with particular structures, in the constrained model, we see that the majority split between levels 1 and 2, with level 3 reserved for WH question formation out of an NP or WH island.</p>
+<div class="cell" data-tags="[]" data-execution_count="161">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb34" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> exp, arange, argsort</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplots</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>log_membership_probs_constrained <span class="op">=</span> constrained_models[<span class="dv">4</span>].raw_model_fit.stan_variable(<span class="st">"log_membership"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>membership_probs_constrained <span class="op">=</span> exp(log_membership_probs_constrained).mean(<span class="dv">0</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>expected_membership_constrained <span class="op">=</span> (membership_probs_constrained<span class="op">*</span>arange(<span class="dv">4</span>)).mean(<span class="dv">1</span>)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>sort_indices_constrained <span class="op">=</span> argsort(expected_membership_constrained)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">8</span>))</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> ax.imshow(membership_probs_constrained[sort_indices_constrained])</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(arange(<span class="dv">4</span>))</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Grammaticality level"</span>)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(arange(<span class="dv">17</span>), discrete_models[<span class="dv">4</span>].interactions_hash[sort_indices])</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Interaction"</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>img.set_cmap(<span class="st">'binary'</span>)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> fig.colorbar(img, label<span class="op">=</span><span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>We see a similar pattern in the unconstrained model.</p>
+<div class="cell" data-tags="[]" data-execution_count="120">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb35" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> exp, arange, argsort</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.pyplot <span class="im">import</span> subplots</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>log_membership_probs_unconstrained <span class="op">=</span> unconstrained_models[<span class="dv">3</span>].raw_model_fit.stan_variable(<span class="st">"log_membership"</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>membership_probs_unconstrained <span class="op">=</span> exp(log_membership_probs_unconstrained).mean(<span class="dv">0</span>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>expected_membership_unconstrained <span class="op">=</span> (membership_probs_unconstrained<span class="op">*</span>arange(<span class="dv">3</span>)).mean(<span class="dv">1</span>)</span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>sort_indices <span class="op">=</span> argsort(expected_membership_unconstrained)</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">8</span>))</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>img <span class="op">=</span> ax.imshow(membership_probs_unconstrained[sort_indices])</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>ax.set_xticks(arange(<span class="dv">3</span>))</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"Grammaticality level"</span>)</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>ax.set_yticks(arange(<span class="dv">17</span>), unconstrained_models[<span class="dv">3</span>].interactions_hash[sort_indices])</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Interaction"</span>)</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>img.set_cmap(<span class="st">'binary'</span>)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> fig.colorbar(img, label<span class="op">=</span><span class="st">"Probability"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-34-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Comparing the expected grammaticality level for each structure with the difference of differences we observed for that structure, we see a very tight correlation.</p>
+<div class="cell" data-tags="[]" data-execution_count="163">
+<details>
+<summary>Plotting code</summary>
+<div class="sourceCode cell-code" id="cb36" data-source-line-numbers="nil" data-code-line-numbers="nil"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pandas <span class="im">import</span> merge</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> seaborn <span class="im">import</span> PairGrid, scatterplot, histplot</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>factors <span class="op">=</span> [</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"island"</span>, <span class="st">"dependency"</span>,</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"distance"</span>, <span class="st">"structure"</span> </span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>data_test_itemmeans <span class="op">=</span> data_test.groupby(</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    factors <span class="op">+</span> [<span class="st">"item"</span>]</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>)[[<span class="st">"zscores"</span>]].mean().reset_index()</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>data_test_itemmeans[<span class="st">"itemnum"</span>] <span class="op">=</span> data_test_itemmeans.item.<span class="bu">map</span>(</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: x.split(<span class="st">"."</span>)[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>data_test_itemmeans_cast <span class="op">=</span> data_test_itemmeans.pivot_table(</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>[<span class="st">"island"</span>, <span class="st">"dependency"</span>, <span class="st">"itemnum"</span>], </span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"distance"</span>, <span class="st">"structure"</span>], </span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span><span class="st">"zscores"</span></span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>short_diffs <span class="op">=</span> data_test_itemmeans_cast.short.non <span class="op">-\</span></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>              data_test_itemmeans_cast.short.island</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>long_diffs <span class="op">=</span> data_test_itemmeans_cast.<span class="bu">long</span>.non <span class="op">-\</span></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a>             data_test_itemmeans_cast.<span class="bu">long</span>.island</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>diffs_of_diffs <span class="op">=</span> (short_diffs <span class="op">-</span> long_diffs).reset_index()</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>diffs_of_diffs[<span class="st">"island_dependency"</span>] <span class="op">=</span> diffs_of_diffs.island <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span> diffs_of_diffs.dependency</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>diffs_of_diffs <span class="op">=</span> diffs_of_diffs.rename(columns<span class="op">=</span>{</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    <span class="dv">0</span>: <span class="st">"diff_of_diffs"</span></span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>diffs_of_diffs_mean <span class="op">=</span> diffs_of_diffs.groupby(<span class="st">"island_dependency"</span>)[[<span class="st">"diff_of_diffs"</span>]].mean()</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>expected_membership_constrained_df <span class="op">=</span> DataFrame(</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a>    expected_membership_constrained,</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>constrained_models[<span class="dv">3</span>].interactions_hash,</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"constrained"</span>]</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>expected_membership_unconstrained_df <span class="op">=</span> DataFrame(</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>    expected_membership_unconstrained,</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>    index<span class="op">=</span>unconstrained_models[<span class="dv">3</span>].interactions_hash,</span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"unconstrained"</span>]</span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>diffs_of_diffs_expected_membership <span class="op">=</span> merge(</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>    diffs_of_diffs_mean, </span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>    merge(</span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>        expected_membership_unconstrained_df, </span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>        expected_membership_constrained_df, </span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>        left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span>), </span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a>    left_index<span class="op">=</span><span class="va">True</span>, right_index<span class="op">=</span><span class="va">True</span></span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a>g <span class="op">=</span> PairGrid(</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>    diffs_of_diffs_expected_membership,</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a>    diag_sharey<span class="op">=</span><span class="va">False</span>, corner<span class="op">=</span><span class="va">True</span></span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a>g.map_diag(histplot, bins<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> g.map_lower(scatterplot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<p><img src="model-fitting-and-comparison_files/figure-html/cell-35-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="summing-up" class="level2">
+<h2 class="anchored" data-anchor-id="summing-up">Summing up</h2>
+<p>In this first module of the course, we focused on minimally extending standard statistical models used in analyzing acceptability judgments–<a href="https://en.wikipedia.org/wiki/Generalized_linear_model">generalized linear</a> <a href="https://en.wikipedia.org/wiki/Mixed_model">mixed effects models</a>–in order to probe the nature of the grammatical representations that drive acceptability judgments. We considered two possibilities discussed by <span class="citation" data-cites="sprouse_acceptability_2018">Sprouse (<a href="#ref-sprouse_acceptability_2018" role="doc-biblioref">2018</a>)</span>: (a) that the grammatical representations underlying acceptability judgments are <em>discrete</em> (or <em>categorical</em>); and (b) the grammatical representations are <em>continuous</em> (or <em>gradient</em>).</p>
+<p>The basic recipe, which we will repeat through the course, was (i) to define two or more (families of) models–in this case, our not interaction, minimal interaction, maximal interaction, and clustered interaction models; (ii) to fit both models to the data from some acceptability judgment data–in this case, to the data collected by <span class="citation" data-cites="sprouse_experimental_2016">Sprouse et al. (<a href="#ref-sprouse_experimental_2016" role="doc-biblioref">2016</a>)</span>; and (iii) to compare how well the two models fit the data, weighed against some measure of how parsimonious (or conversely, complex) each model is using PSIS-LOO.</p>
+<p>We saw that the models that inject additional discrete structure into the standard mixed effects models not only imrpove fit while keeping complexity at bay, they are also quite interpretable. In the next module, we will look at a similar approach to modeling inference judgment data.</p>
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-gelman_understanding_2014" class="csl-entry" role="listitem">
+Gelman, Andrew, Jessica Hwang, and Aki Vehtari. 2014. <span>“Understanding Predictive Information Criteria for <span>Bayesian</span> Models.”</span> <em>Statistics and Computing</em> 24 (6): 997–1016. <a href="https://doi.org/10.1007/s11222-013-9416-2">https://doi.org/10.1007/s11222-013-9416-2</a>.
+</div>
+<div id="ref-sprouse_acceptability_2018" class="csl-entry" role="listitem">
+Sprouse, Jon. 2018. <span>“Acceptability Judgments and Grammaticality, Prospects and Challenges.”</span> In <em>The Impact of the Chomskyan Revolution in Linguistics</em>, edited by Norbert Hornstein, Howard Lasnik, Pritty Patel-Grosz, and Charles Yang, 195–224. Berlin, Boston: De Gruyter Mouton. <a href="https://doi.org/doi:10.1515/9781501506925-199">https://doi.org/doi:10.1515/9781501506925-199</a>.
+</div>
+<div id="ref-sprouse_experimental_2016" class="csl-entry" role="listitem">
+Sprouse, Jon, Ivano Caponigro, Ciro Greco, and Carlo Cecchetto. 2016. <span>“Experimental Syntax and the Variation of Island Effects in English and Italian.”</span> <em>Natural Language &amp; Linguistic Theory</em> 34: 307–44. <a href="https://doi.org/10.1007/s11049-015-9286-8">https://doi.org/10.1007/s11049-015-9286-8</a>.
+</div>
+<div id="ref-vehtari_practical_2017" class="csl-entry" role="listitem">
+Vehtari, Aki, Andrew Gelman, and Jonah Gabry. 2017. <span>“Practical <span>Bayesian</span> Model Evaluation Using Leave-One-Out Cross-Validation and <span>WAIC</span>.”</span> <em>Statistics and Computing</em> 27 (5): 1413–32. <a href="https://doi.org/10.1007/s11222-016-9696-4">https://doi.org/10.1007/s11222-016-9696-4</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Note that this distribution is different from the one observed <a href="model-definition#data-collection-instrument">here</a> because we are only fitting to the test items. The fillers are removed.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>A good analogy here is between an unpaired <span class="math inline">\(t\)</span>-test and a paired <span class="math inline">\(t\)</span>-test.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://giscus.app/client.js" data-repo="aaronstevenwhite/representation-learning-course" data-repo-id="R_kgDOJsrvfQ" data-category="General" data-category-id="DIC_kwDOJsrvfc4CXIDs" data-mapping="title" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../island-effects/model-definition.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Model definition</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../projective-content/index.html" class="pagination-link">
+        <span class="nav-page-text">Overview</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+<script src="../site_libs/quarto-contrib/line-highlight-1.0.0/line-highlight.js" defer="true"></script>
+</body></html>
