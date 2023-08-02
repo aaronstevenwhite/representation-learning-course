@@ -596,20 +596,27 @@ div.csl-indent {
 <p><img src="model-definition_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>One way that researchers deal with this issue–especially when the number of 0 and 1 responses is small is to nudge those responses toward 0.5 slightly. The issue with this approach is that this nudging requires one to specify the amount that the value should be nudged, and that amount can matter a lot for models fit to the data–depending on what sort of model it is.</p>
-<p>There are at least two ways one might try to avoid this issue. The first is to use what is known as a zero-one-inflated beta model. This sort of model assumes that the responses come from some mixture of a continuous random variable <span class="math inline">\(\gamma_n \sim \text{Beta}\left(\nu\mu_n, \nu\left(1-\mu_n\right)\right)\)</span> and two Bernoulli distributions <span class="math inline">\(\zeta_n \sim \text{Bernoulli}\left(\pi^\text{zero}_n\right)\)</span> and <span class="math inline">\(\omega_n \sim \text{Bernoulli}\left(\pi^\text{one}_n\right)\)</span>. The mixture itself is defined in terms of a selection <span class="math inline">\(d_n \sim \text{Cat}(\boldsymbol\theta_n)\)</span> of which random variable to sample from:</p>
+<p>One way that researchers deal with this issue–especially when the number of 0 and 1 responses is small is to nudge those responses toward 0.5 slightly. The issue with this approach is that this nudging requires one to specify the amount that the value should be nudged, and that amount can matter a lot for models fit to the data–depending on what sort of model it is. There are at least two ways one might try to avoid this issue.</p>
+<section id="zero-one-inflated-beta-models" class="level4">
+<h4 class="anchored" data-anchor-id="zero-one-inflated-beta-models">Zero-one-inflated beta models</h4>
+<p>The first is to use what is known as a zero-one-inflated beta model. This sort of model assumes that the responses come from some mixture of a continuous random variable <span class="math inline">\(\beta_n \sim \text{Beta}\left(\nu\mu_{\text{item}(n)}, \nu\left(1-\mu_{\text{item}(n)}\right)\right)\)</span> and a Bernoulli random variable <span class="math inline">\(b_n \sim \text{Bern}\left(\pi_{\text{item}(n)}\right)\)</span>. The mixture itself is defined in terms of a selection <span class="math inline">\(d_n \sim \text{Bern}\left(\theta\right)\)</span> of which random variable to sample from:</p>
 <p><span class="math display">\[Y_n = \begin{cases}
-\zeta_n &amp; \text{if } d_n = 0\\
-\omega_n &amp; \text{if } d_n = 1\\
-\gamma_{\text{item}(n)} &amp; \text{otherwise}\\
+b_n &amp; \text{if } d_n = 1\\
+\beta_n &amp; \text{otherwise}\\
 \end{cases}\]</span></p>
-<p>This approach is useful because it provides an intrepretable way of assessing how likely it is that the model believes the likelihood to be exactly 0 or exactly 1 is. But besides requiring a substantial number of additional parameters that one would need to design definitions for–<span class="math inline">\(\pi^\text{zero}_n\)</span>, <span class="math inline">\(\pi^\text{one}_n\)</span>, and <span class="math inline">\(\boldsymbol\theta_n\)</span>–this model makes some assumptions that we just don’t want to make. For instance, it assumes that if you as a responder are targeting 0 or 1 (as indicated by <span class="math inline">\(d_n\)</span>), you always hit it exactly. But no one is that accurate; there is always noise in response scale use–especially when you get subjects who are responding very quickly, as crowd-sourced workers tend to.</p>
+<p>This approach is useful because it provides an interpretable way of assessing how likely it is that the model believes the likelihood to be exactly 0 or exactly 1. But besides requiring additional parameters that one would need to design definitions for–<span class="math inline">\(\pi_{\text{item}(n)}\)</span> and <span class="math inline">\(\theta\)</span>–this model makes some assumptions that we just don’t want to make.</p>
+<p>For instance, it assumes that if you as a responder are targeting 0 or 1 (as indicated by <span class="math inline">\(d_n\)</span>), you always hit it exactly. But no one is that accurate; there is always noise in response scale use–especially when you get subjects who are responding very quickly, as crowd-sourced workers tend to.</p>
+<p>Worse, though, is that it basically assumes that all models have some amount of discreteness in them: the Bernoulli-distributed portion of the model. We want to avoid this sort of discreteness in the context of the fundamental gradience hypothesis. This property is the real deal-breaker.</p>
+</section>
+<section id="truncated-normal-models" class="level4">
+<h4 class="anchored" data-anchor-id="truncated-normal-models">Truncated normal models</h4>
 <p>An alternative model that both reduce this complexity and provides support on <span class="math inline">\(\{0, 1\}\)</span> in addition to <span class="math inline">\((0, 1)\)</span> uses the <a href="https://en.wikipedia.org/wiki/Truncated_normal_distribution">truncated normal distribution</a> to model the slider responses.</p>
 <p><span class="math display">\[p(y_n; \mu_n, \sigma, a, b) = \begin{cases}
 \frac{\mathcal{N}(y_n; \mu_n, \sigma_n^2)}{\Phi(b; \mu_n, \sigma_n^2) - \Phi(a; \mu_n, \sigma_n^2)} &amp; \text{if } y_n \in [a, b]\\
 0 &amp; \text{otherwise}
 \end{cases}\]</span></p>
 <p>where <span class="math inline">\(\Phi\)</span> is the CDF of the normal distribution. So this distribution basically constrains the support of a <span class="math inline">\(\mathcal{N}(\mu, \sigma^2)\)</span> to <span class="math inline">\([a, b]\)</span> and then renormalizes the distribution to ensure that it satisfies <a href="../foundational-concepts-in-probability-and-statistics/#what-it-means-to-measure-a-possibility">the assumption of unit measure</a>.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> One way to think of what this distribution assumes is that subjects target some value <span class="math inline">\(\mu_n\)</span> when they respond, but they miss that exact value–e.g.&nbsp;because of uninteresting motor planning factors (and any other potential source of uncorrelated noise).</p>
+</section>
 </section>
 <section id="the-prior-belief-model" class="level3">
 <h3 class="anchored" data-anchor-id="the-prior-belief-model">The prior belief model</h3>
