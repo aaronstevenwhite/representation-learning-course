@@ -26,7 +26,7 @@ The site itself is built using [Quarto](https://quarto.org/). The source files f
 The development of these course materials builds on collaborations between Aaron Steven White and a variety of other researchers:
 
 1. [Module 1](island-effects/) of this course builds on unpublished collaborative research with [Jon Sprouse](https://www.jonsprouse.com/). A version of this work was presented as [a poster](http://aaronstevenwhite.io/presentations/posters/white_sprouse_wccfl34_poster.pdf) at WCCFL34. 
-2. [Module 2](projective-content/) builds on unpublished collaborative research with [Julian Grove](https://juliangrove.github.io/), who led the development of the models covered in that module. 
+2. [Module 2](projective-content/) builds on [unpublished collaborative research](https://lingbuzz.net/lingbuzz/007450) with [Julian Grove](https://juliangrove.github.io/), who led the development of the models covered in that module. 
 3. [Module 3](selection/) builds on collaborative research with [Kyle Rawlins](https://rawlins.io/) as well as the rest of the [MegaAttitude Project](http://megaattitude.io/) team. 
 4. [Module 4](thematic-roles/) builds on work with [Kyle Rawlins](https://rawlins.io/) and [Ben Van Durme](https://www.cs.jhu.edu/~vandurme/) as well as the rest of the [Decompositional Semantics Initiative](http://decomp.io/) team–with specific acknowledgment of [Will Gantt](https://wgantt.github.io/) and [Elias Stengel-Eskin](https://esteng.github.io/) for their work on the [decomp toolkit](https://github.com/decompositional-semantics-initiative/decomp).
 
